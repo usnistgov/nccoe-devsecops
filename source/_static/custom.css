@@ -1,0 +1,53 @@
+/* Custom styles can be added here. These will likely be styles for custom tables
+or other per document settings that do not make sense to include in the template */
+#frontmatter h1:first-of-type {
+    display: none;
+}
+
+div.cover-author-block {
+    text-align: left;
+}
+
+.rst-content section ul li,
+.rst-content section ol {
+    margin-top: 0.3em;
+}
+
+.rst-content dl.glossary dt {
+    border-top: 1px solid #e1e4e5;
+    padding: 3em 2em 0 2em;
+    margin-bottom: 0 !important;
+ }
+
+.rst-content dl.glossary dd {
+    margin: 0 !important;
+    padding: 2em;
+}
+
+.glossary dd:nth-of-type(odd),
+.glossary dt:nth-of-type(odd) {
+    background-color: #f3f6f6;
+}
+
+.rst-content dl.glossary {
+    border-left: 1px solid #e1e4e5;
+    border-right: 1px solid #e1e4e5;
+    border-bottom: 1px solid #e1e4e5;
+}
+
+.rst-content figure figcaption,
+.rst-content figure .caption-text,
+.rst-content table.docutils caption,
+.rst-content table.docutils caption span
+ {
+    color: #626060;
+    font-weight: bold;
+    text-align: center;
+    font-size: 100% !important;
+    font-style: normal;
+    font: bold 100%/1 arial,sans-serif
+}
+
+figure {
+    text-align: center;
+}
