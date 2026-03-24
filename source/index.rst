@@ -7,7 +7,7 @@
 .. raw:: html
 
     <style>.rst-content section h1:first-of-type {display: none;}</style>
-    <h1 class="cover-h1">Secure Software Development, Security, and Operations (DevSecOps) Practices</h1>
+    <h1 class="cover-h1">Secure Software Development, Security, and Operations (DevSecOps) Practices</h1> <!-- manual title because raw html won't accept rst substitution -->
 
 =============================================================================
 Secure Software Development, Security, and Operations (DevSecOps) Practices
@@ -20,7 +20,7 @@ Secure Software Development, Security, and Operations (DevSecOps) Practices
    |
    |
 
-   February 2026
+   March 2026
 
    |
 
@@ -50,6 +50,7 @@ Secure Software Development, Security, and Operations (DevSecOps) Practices
 
 
       | **Parisa Grayeli**
+      | **Joshua Klosterman**
       | **Phillip Millwee**
       | **Deanna Stanley**
       | **Allen Tan**
@@ -93,8 +94,8 @@ Secure Software Development, Security, and Operations (DevSecOps) Practices
 
 
 
+      | **Matt Brown**
       | **Tom Gleason**
-      | **Shruti Sundaresh**
       | Endor Labs
       
 
@@ -112,7 +113,7 @@ Secure Software Development, Security, and Operations (DevSecOps) Practices
 
 
       | **Philippe Mulet**
-      | **Ritchie Schacher**
+      | **Harmeet Singh**
       | IBM
 
    .. container:: cover-author-block
@@ -125,7 +126,6 @@ Secure Software Development, Security, and Operations (DevSecOps) Practices
 
 
 
-      | **Tony Berning**
       | **Keng Lim**
       | **Sameer Shukla**
       | NextLabs
@@ -144,8 +144,8 @@ Secure Software Development, Security, and Operations (DevSecOps) Practices
 
 
 
+      | **Guy Chernobrov**
       | **Daniel Nebenzahl**
-      | **Nir Peleg**
       | Scribe Security
 
    |
@@ -160,3 +160,38 @@ National Institute of Standards and Technology
 
 
 .. |nccoenistlogos| image:: /_static/img/nccoe-logo.svg
+
+.. |doclogo| image:: /_static/img/department-of-commerce-small.png
+   :width: 1.27153in
+   :height: 1.24861in
+
+
+
+.. toctree::
+   :maxdepth: 4
+   :glob:
+
+   executive-summary
+   
+
+.. toctree::
+   :maxdepth: 4
+   :glob:
+   :numbered:
+
+   introduction
+   project-overview
+   notational-reference-model
+   collaborators
+   example-implementations
+   next-steps
+   
+
+.. toctree::
+   :maxdepth: 4
+   :glob:
+
+   appendix-a
+   appendix-b
+   appendix-c
+   appendix-d
