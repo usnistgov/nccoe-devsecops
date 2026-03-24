@@ -1,0 +1,1545 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RJSMY46M5C"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RJSMY46M5C');
+    </script>
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4. Example Implementations &mdash; Secure Software Development, Security, and Operations (DevSecOps) Practices  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=29363509" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-2.3.0/datatables.min.css" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3e258017" />
+
+  <link rel="stylesheet" href="_static/css/datatables.min.css">
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+      <script src="https://cdn.datatables.net/v/dt/dt-2.3.0/datatables.min.js"></script>
+      <script src="_static/activate_datatables.js"></script>
+      <script src="_static/main.js?v=6f23e640"></script>
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/d3.min.js"></script>
+    <script src="_static/js/mermaid.min.js"></script>
+    <script>
+      // Configure and let Mermaid auto-run when DOM is ready
+      window.addEventListener('DOMContentLoaded', () => {
+        mermaid.initialize({startOnLoad: true,securityLevel: 'loose'});
+      });
+    </script>
+    <script src="_static/js/datatables.min.js"></script>
+    <script src="_static/js/main.js"></script>
+    <link rel="stylesheet" href="_static/css/leaveNotice.css">
+    <script src="_static/js/jquery.leaveNotice-nist.js"></script>
+    <script src="_static/js/applyLeaveNotice.js"
+            data-site-name="Secure Software Development, Security, and Operations (DevSecOps) Practices"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // only run on pages that have: .. meta::  :comments: on
+      if (!document.querySelector('meta[name="comments"][content="on"]')) return;
+
+      var base = "_static/";
+
+      // load CSS
+      var css = document.createElement('link');
+      css.rel = 'stylesheet';
+      css.href = base + 'css/annotator.min.css';
+      document.head.appendChild(css);
+
+      // load annotator, then our capture script
+      var a = document.createElement('script');
+      a.src = base + 'js/annotator-full.min.js';
+      a.onload = function () {
+        var c = document.createElement('script');
+        c.src = base + 'js/comment-capture.js';
+        c.setAttribute('data-email', "nccoe-devsecops@list.nist.gov");
+        c.setAttribute('data-site-name', "Secure Software Development, Security, and Operations (DevSecOps) Practices");
+        c.setAttribute('data-subject', "[Doc review] Secure Software Development, Security, and Operations (DevSecOps) Practices — {N} comments");
+        c.setAttribute('data-static-base', base);
+        document.body.appendChild(c);
+      };
+      document.body.appendChild(a);
+    });
+    </script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. Next Steps" href="next-steps.html" />
+    <link rel="prev" title="3. Notional Reference Model for DevSecOps for Demonstration of NIST SSDF" href="notational-reference-model.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+  
+    <header class="nist-header" id="nist-header" role="banner">
+    
+        <a href="https://www.nist.gov/" title="National Institute of Standards and Technology"
+            class="nist-header__logo-link" rel="home">
+            <svg aria-hidden="true" class="nist-header__logo-icon" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                width="24" height="32" viewBox="0 0 24 32">
+                <path
+                    d="M20.911 5.375l-9.482 9.482 9.482 9.482c0.446 0.446 0.446 1.161 0 1.607l-2.964 2.964c-0.446 0.446-1.161 0.446-1.607 0l-13.25-13.25c-0.446-0.446-0.446-1.161 0-1.607l13.25-13.25c0.446-0.446 1.161-0.446 1.607 0l2.964 2.964c0.446 0.446 0.446 1.161 0 1.607z">
+                </path>
+            </svg>
+            <svg class="nist-header__logo-image" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                viewBox="-237 385.7 109.7 29.3">
+                <title>National Institute of Standards and Technology</title>
+                <g>
+                    <path class="st0" d="M-231,415h-6v-23.1c0,0,0-4.4,4.4-5.8c4-1.3,6.6,1.3,6.6,1.3l19.7,21.3c1,0.6,1.4,0,1.4-0.6v-22h6.1V409
+              c0,1.9-1.6,4.4-4,5.3c-2.4,0.9-4.9,0.9-7.9-1.7l-18.5-20c-0.5-0.5-1.8-0.6-1.8,0.4L-231,415L-231,415z"></path>
+                    <path class="st0" d="M-195,386.1h6.1v20.7c0,2.2,1.9,2.2,3.6,2.2h26.8c1.1,0,2.4-1.3,2.4-2.7c0-1.4-1.3-2.8-2.5-2.8H-176
+              c-3,0.1-9.2-2.7-9.2-8.5c0-7.1,5.9-8.8,8.6-9h49.4v6.1h-12.3V415h-6v-22.9h-30.2c-2.9-0.2-4.9,4.7-0.2,5.4h18.6
+              c2.8,0,7.4,2.4,7.5,8.4c0,6.1-3.6,9-7.5,9H-185c-4.5,0-6.2-1.1-7.8-2.5c-1.5-1.5-1.7-2.3-2.2-5.3L-195,386.1
+              C-194.9,386.1-195,386.1-195,386.1z"></path>
+                </g>
+            </svg>
+        </a>
+    
+    </header>
+  
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+
+          
+          
+          <a class="nccoe-logo"  href="index.html" aria-label="NIST | National Cybersecurity Center of Excellence (NCCoE)">
+            <!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+            <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
+              xmlns="http://www.w3.org/2000/svg" xml:space="preserve" enable-background="new 75 0 245 75"
+              viewBox="75 0 245 75" height="82.323px" width="273.268px" y="0px" x="0px" class="nccoe-logo-svg"
+              version="1.1">
+              <style type="text/css">
+                .nccoe-logo-svg .st0 {
+                  fill: #4F8BBE;
+                }
+
+                .nccoe-logo-svg .st1 {
+                  fill: none;
+                }
+
+                .nccoe-logo-svg .st2 {
+                  fill: #818286;
+                }
+
+                .nccoe-logo-svg .st3 {
+                  fill: #D3AF73;
+                }
+
+                .nccoe-logo-svg .st4 {
+                  fill: #E89824;
+                }
+
+                .nccoe-logo-svg .st5 {
+                  fill: #10659C;
+                }
+
+                .nccoe-logo-svg .st6 {
+                  fill: none;
+                  stroke: #000000;
+                  stroke-width: 1.0443;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                  stroke-miterlimit: 10;
+                }
+              </style>
+              <g>
+                <g>
+                  <path d="M79.1,51.4h-3.4V38.1c0,0,0-2.5,2.5-3.3c2.3-0.7,3.8,0.7,3.8,0.7l11.3,12.3c0.6,0.4,0.8,0,0.8-0.4V34.8h3.5V48
+          			c0,1.1-0.9,2.5-2.3,3.1c-1.3,0.5-2.8,0.5-4.6-1L80.1,38.5c-0.3-0.3-1-0.3-1,0.3V51.4L79.1,51.4z"></path>
+                  <path d="M99.8,34.8h3.5v11.9c0,1.3,1,1.3,2.1,1.3h15.4c0.6,0,1.4-0.8,1.4-1.5c0-0.8-0.7-1.6-1.4-1.6h-10c-1.7,0.1-5.3-1.5-5.3-4.9
+          			c0-4.1,3.4-5,4.9-5.2h28.4v3.5h-7.1v13.1h-3.4V38.3h-17.4c-1.7-0.1-2.8,2.7-0.1,3.1h10.7c1.6,0,4.3,1.4,4.3,4.8
+          			c0,3.5-2.1,5.2-4.3,5.2h-15.8c-2.6,0-3.5-0.6-4.5-1.5c-0.9-0.8-1-1.3-1.3-3.1V34.8L99.8,34.8z"></path>
+                </g>
+              </g>
+              <rect x="158.3" y="42.8" class="st0" width="4.1" height="1"></rect>
+              <rect x="174" y="43" class="st0" width="16.8" height="0.5"></rect>
+              <path class="st1" d="M172.6,34.4c-4.9,0-8.9,4-8.9,8.9c0,4.9,4,8.9,8.9,8.9c2.8,0,5.4-1.3,7-3.4l-4.5-5.1c-0.3,1-1.3,1.8-2.4,1.8
+          	c-1.4,0-2.5-1.1-2.5-2.5s1.1-2.5,2.5-2.5c1.1,0,2,0.7,2.4,1.7l4.3-4.6C177.6,35.6,175.2,34.4,172.6,34.4z"></path>
+              <path class="st1" d="M172.6,29.5c-7.6,0-13.7,6.2-13.7,13.7S165,57,172.6,57c4.1,0,7.8-1.8,10.3-4.7l-1.7-1.9c-2.1,2.5-5.2,4-8.6,4
+          	c-6.2,0-11.3-5.1-11.3-11.3c0-6.2,5.1-11.3,11.3-11.3c3.3,0,6.3,1.4,8.4,3.7l1.6-1.7C180.1,31.2,176.5,29.5,172.6,29.5z">
+              </path>
+              <path class="st1" d="M172.1,25.1c-10,0-18.2,8.2-18.2,18.2c0,10,8.2,18.2,18.2,18.2c5.4,0,10.2-2.3,13.5-6l-2-2.2
+          	c-2.7,3-6.7,5-11.1,5c-8.3,0-15-6.7-15-15s6.7-15,15-15c4.3,0,8.1,1.8,10.8,4.7l2-2.1C182,27.3,177.3,25.1,172.1,25.1z">
+              </path>
+              <path class="st0" d="M172.6,52.1c-4.9,0-8.9-4-8.9-8.9c0-4.9,4-8.9,8.9-8.9c2.7,0,5,1.2,6.7,3l1.7-1.8c-2.1-2.3-5-3.7-8.4-3.7
+          	c-6.2,0-11.3,5.1-11.3,11.3c0,6.2,5.1,11.3,11.3,11.3c3.5,0,6.6-1.6,8.6-4l-1.7-1.9C177.9,50.8,175.4,52.1,172.6,52.1z">
+              </path>
+              <path class="st2"
+                d="M172.6,57c-7.6,0-13.7-6.2-13.7-13.7s6.2-13.7,13.7-13.7c3.9,0,7.5,1.7,10,4.3l0.8-0.9
+          	c-2.7-2.9-6.6-4.7-10.8-4.7c-8.3,0-15,6.7-15,15s6.7,15,15,15c4.4,0,8.4-1.9,11.1-5l-0.8-0.9C180.4,55.2,176.7,57,172.6,57z"></path>
+              <path class="st3" d="M172.1,61.4c-10,0-18.2-8.2-18.2-18.2c0-10,8.2-18.2,18.2-18.2c5.2,0,9.9,2.2,13.2,5.7l0.3-0.4
+          	c-3.4-3.6-8.2-5.8-13.5-5.8c-10.3,0-18.6,8.3-18.6,18.6c0,10.3,8.3,18.6,18.6,18.6c5.5,0,10.4-2.4,13.8-6.1l-0.3-0.4
+          	C182.3,59.1,177.5,61.4,172.1,61.4z"></path>
+              <path class="st4" d="M175,42.4c-0.4-1-1.3-1.7-2.4-1.7c-1.4,0-2.5,1.1-2.5,2.5c0,1.4,1.1,2.5,2.5,2.5c1.1,0,2.1-0.8,2.4-1.8
+          	c0.1-0.2,0.1-0.5,0.1-0.8C175.2,42.9,175.1,42.6,175,42.4z"></path>
+              <g>
+                <path class="st5" d="M190.9,28.8l1.5,0L195,33c0.2,0.4,0.5,1,0.5,1l0,0c0,0,0-0.8,0-1.3l0-3.9l1.5,0l0,7.5l-1.5,0l-2.6-4.1
+          		c-0.2-0.4-0.5-1-0.5-1h0c0,0,0,0.8,0,1.3l0,3.9l-1.5,0L190.9,28.8z"></path>
+                <path class="st5" d="M200.2,28.8l1.6,0l2.7,7.5l-1.6,0l-0.5-1.6l-2.7,0l-0.5,1.6l-1.5,0L200.2,28.8z M200,33.5l2,0l-0.7-2.2
+          		c-0.1-0.4-0.3-1.2-0.3-1.2h0c0,0-0.2,0.8-0.3,1.2L200,33.5z"></path>
+                <path class="st5" d="M203.7,28.8l6,0l0,1.3l-2.3,0l0,6.2l-1.5,0l0-6.2l-2.3,0L203.7,28.8z"></path>
+                <path class="st5" d="M210.5,28.7l1.5,0l0,7.5l-1.5,0L210.5,28.7z"></path>
+                <path class="st5" d="M212.9,32.5c0-2.2,1.4-3.9,3.6-3.9c2.2,0,3.6,1.7,3.6,3.9s-1.4,3.9-3.6,3.9C214.4,36.4,212.9,34.7,212.9,32.5z
+          		 M218.6,32.5c0-1.5-0.7-2.7-2.1-2.7c-1.4,0-2.1,1.2-2.1,2.7c0,1.5,0.7,2.7,2.1,2.6C217.9,35.1,218.6,33.9,218.6,32.5z">
+                </path>
+                <path class="st5" d="M221,28.7l1.5,0l2.5,4.2c0.2,0.4,0.5,1,0.5,1h0c0,0,0-0.8,0-1.3l0-3.9l1.5,0l0,7.5l-1.5,0L223,32
+          		c-0.2-0.4-0.5-1-0.5-1h0c0,0,0,0.8,0,1.3l0,3.9l-1.5,0L221,28.7z"></path>
+                <path class="st5" d="M230.2,28.6l1.6,0l2.7,7.5l-1.6,0l-0.5-1.6l-2.7,0l-0.5,1.6l-1.5,0L230.2,28.6z M230,33.4l2,0l-0.7-2.2
+          		c-0.1-0.4-0.3-1.2-0.3-1.2h0c0,0-0.2,0.8-0.3,1.2L230,33.4z"></path>
+                <path class="st5" d="M235.1,28.6l1.5,0l0,6.2l3.5,0l0,1.3l-5,0L235.1,28.6z"></path>
+                <path class="st5" d="M190.7,43.1c0-2.2,1.4-3.9,3.6-3.9c1.8,0,2.9,1.1,3.1,2.5l-1.5,0c-0.1-0.8-0.7-1.2-1.6-1.2c-1.4,0-2,1.2-2,2.7
+          		c0,1.5,0.8,2.6,2.1,2.6c0.9,0,1.5-0.5,1.6-1.3l1.5,0c0,0.7-0.3,1.3-0.8,1.8c-0.5,0.5-1.2,0.8-2.3,0.8
+          		C192.2,47,190.7,45.4,190.7,43.1z"></path>
+                <path class="st5" d="M199.7,43.9l-2.5-4.6l1.7,0l1.1,2.2c0.2,0.4,0.5,1.1,0.5,1.1h0c0,0,0.3-0.6,0.5-1.1l1.1-2.2l1.6,0l-2.5,4.6
+          		l0,2.9l-1.5,0L199.7,43.9z"></path>
+                <path class="st5" d="M204.4,39.3l3.4,0c0.8,0,1.4,0.2,1.8,0.5c0.4,0.4,0.6,0.8,0.6,1.4c0,0.8-0.5,1.3-1.2,1.5v0
+          		c0.8,0.2,1.4,0.9,1.4,1.9c0,0.7-0.2,1.2-0.7,1.6c-0.4,0.4-1.1,0.6-1.9,0.6l-3.4,0L204.4,39.3z M207.5,42.3c0.7,0,1.1-0.3,1.1-0.9
+          		c0-0.6-0.4-0.9-1.1-0.9l-1.7,0l0,1.8L207.5,42.3z M205.9,45.5l1.8,0c0.7,0,1.2-0.4,1.2-1c0-0.7-0.5-1.1-1.2-1.1l-1.7,0L205.9,45.5z
+          		"></path>
+                <path class="st5" d="M211.2,39.2l5.5,0l0,1.3l-4,0l0,1.7l3.5,0l0,1.2l-3.5,0l0,2l4,0l0,1.3l-5.6,0L211.2,39.2z">
+                </path>
+                <path class="st5" d="M217.7,39.2l3.4,0c1.4,0,2.4,0.8,2.4,2.1c0,0.9-0.4,1.6-1.4,1.8l0,0c0.7,0.2,1.1,0.6,1.2,1.5
+          		c0.1,1.1,0.1,1.9,0.3,2v0.1l-1.5,0c-0.2-0.1-0.2-0.9-0.3-1.7c-0.1-0.8-0.5-1.3-1.5-1.3l-1.2,0l0,3l-1.5,0L217.7,39.2z M219.3,42.5
+          		l1.6,0c0.8,0,1.2-0.4,1.2-1c0-0.6-0.4-1.1-1.2-1.1l-1.7,0L219.3,42.5z"></path>
+                <path class="st5" d="M224.3,44.3l1.5,0c0.1,0.9,0.6,1.3,1.7,1.3c0.8,0,1.5-0.3,1.5-1c0-0.7-0.7-0.9-1.9-1.1
+          		c-1.3-0.3-2.6-0.6-2.6-2.2c0-1.5,1.2-2.3,2.9-2.3c1.7,0,2.8,0.8,2.9,2.3l-1.5,0c-0.1-0.8-0.7-1.1-1.5-1.1c-0.8,0-1.4,0.4-1.4,0.9
+          		c0,0.6,0.5,0.8,1.6,1c1.5,0.3,2.8,0.7,2.8,2.3c0,1.5-1.2,2.4-2.9,2.4C225.5,46.8,224.3,45.9,224.3,44.3z"></path>
+                <path class="st5" d="M231.3,39.1l5.5,0l0,1.3l-4,0l0,1.7l3.5,0l0,1.2l-3.5,0l0,2l4,0l0,1.3l-5.6,0L231.3,39.1z">
+                </path>
+                <path class="st5" d="M237.4,42.9c0-2.2,1.4-3.9,3.6-3.9c1.8,0,2.9,1.1,3.1,2.5l-1.5,0c-0.1-0.8-0.7-1.2-1.6-1.2c-1.4,0-2,1.2-2,2.7
+          		c0,1.5,0.8,2.6,2.1,2.6c0.9,0,1.5-0.5,1.6-1.3l1.5,0c0,0.7-0.3,1.3-0.8,1.8c-0.5,0.5-1.2,0.8-2.3,0.8
+          		C238.9,46.8,237.4,45.1,237.4,42.9z"></path>
+                <path class="st5" d="M244.8,44.2l0-5.1l1.5,0l0,5.1c0,0.8,0.4,1.3,1.4,1.3c1,0,1.4-0.6,1.4-1.3l0-5.1l1.5,0l0,5.1
+          		c0,1.6-1,2.5-2.9,2.6C245.8,46.7,244.8,45.8,244.8,44.2z"></path>
+                <path class="st5" d="M251.7,39l3.4,0c1.4,0,2.4,0.8,2.4,2.1c0,0.9-0.4,1.6-1.4,1.8l0,0c0.7,0.2,1.1,0.6,1.2,1.5
+          		c0.1,1.1,0.1,1.9,0.3,2v0.1l-1.5,0c-0.2-0.1-0.2-0.9-0.3-1.7c-0.1-0.8-0.5-1.3-1.5-1.3l-1.2,0l0,3l-1.5,0L251.7,39z M253.3,42.3
+          		l1.6,0c0.8,0,1.2-0.4,1.2-1c0-0.6-0.4-1.1-1.2-1.1l-1.7,0L253.3,42.3z"></path>
+                <path class="st5" d="M258.6,39l1.5,0l0,7.5l-1.5,0L258.6,39z"></path>
+                <path class="st5" d="M260.9,39l6,0l0,1.3l-2.3,0l0,6.2l-1.5,0l0-6.2l-2.3,0L260.9,39z"></path>
+                <path class="st5" d="M269.8,43.6l-2.5-4.6l1.7,0l1.1,2.2c0.2,0.5,0.5,1.1,0.5,1.1l0,0c0,0,0.3-0.6,0.5-1.1l1.1-2.2l1.6,0l-2.5,4.6
+          		l0,2.9l-1.5,0L269.8,43.6z"></path>
+                <path class="st5" d="M190.9,53.6c0-2.2,1.3-3.9,3.5-3.9c1.8,0,2.8,1,3,2.4l-0.9,0c-0.2-0.9-0.9-1.6-2.1-1.6c-1.6,0-2.6,1.3-2.6,3.1
+          		c0,1.8,1,3.1,2.6,3.1c1.4,0,2.1-1,2.2-2.1l0.9,0c0,0.7-0.4,1.6-0.9,2.1c-0.5,0.5-1.3,0.8-2.2,0.8C192.3,57.5,190.9,55.8,190.9,53.6
+          		z"></path>
+                <path class="st5" d="M198.6,49.8l5.3,0l0,0.8l-4.4,0l0,2.4l4,0l0,0.8l-4,0l0,2.6l4.5,0l0,0.9l-5.4,0L198.6,49.8z">
+                </path>
+                <path class="st5" d="M205.1,49.8l1,0l3.4,5.2c0.3,0.4,0.6,1,0.6,1h0l0-6.2l0.9,0l0,7.5l-1,0l-3.5-5.2c-0.2-0.4-0.6-0.9-0.6-0.9h0
+          		l0,6.2l-0.9,0L205.1,49.8z"></path>
+                <path class="st5" d="M211.9,49.7l5.9,0l0,0.8l-2.5,0l0,6.7l-0.9,0l0-6.7l-2.5,0L211.9,49.7z"></path>
+                <path class="st5" d="M218.8,49.7l5.3,0l0,0.8l-4.4,0l0,2.4l4,0l0,0.8l-4,0l0,2.6l4.5,0l0,0.9l-5.4,0L218.8,49.7z">
+                </path>
+                <path class="st5" d="M225.4,49.7l3.5,0c1.3,0,2.2,0.8,2.2,2c0,0.9-0.4,1.6-1.3,1.9v0c0.8,0.3,1,0.8,1.1,1.9
+          		c0.1,1.2,0.2,1.5,0.4,1.6l0,0l-1,0c-0.2-0.1-0.2-0.4-0.3-1.7c-0.1-1.1-0.5-1.5-1.5-1.5l-2.1,0l0,3.2l-0.9,0L225.4,49.7z
+          		 M226.3,53.2l2.2,0c1,0,1.6-0.5,1.6-1.4c0-0.9-0.4-1.4-1.5-1.4l-2.3,0L226.3,53.2z"></path>
+                <path class="st5" d="M233.6,53.4c0-2.2,1.4-3.9,3.7-3.9s3.7,1.7,3.7,3.9c0,2.2-1.4,3.9-3.7,3.9S233.6,55.6,233.6,53.4z M240,53.3
+          		c0-1.8-1-3.1-2.7-3.1s-2.7,1.3-2.7,3.1s1,3.1,2.7,3.1S240,55.1,240,53.3z"></path>
+                <path class="st5" d="M242.1,49.6l5.1,0l0,0.8l-4.1,0l0,2.3l3.5,0l0,0.8l-3.5,0l0,3.5l-0.9,0L242.1,49.6z"></path>
+                <path class="st5" d="M249.8,49.5l5.3,0l0,0.8l-4.4,0l0,2.4l4,0l0,0.8l-4,0l0,2.6l4.5,0l0,0.9l-5.4,0L249.8,49.5z">
+                </path>
+                <path class="st5"
+                  d="M258.4,53.2l-2.4-3.7l1.1,0l1.9,3h0l1.9-3l1,0l-2.4,3.7L262,57l-1.1,0l-1.9-3.2h0l-2,3.2l-1.1,0L258.4,53.2z">
+                </path>
+                <path class="st5" d="M261.9,53.2c0-2.2,1.3-3.9,3.5-3.9c1.8,0,2.8,1,3,2.4l-0.9,0c-0.2-0.9-0.9-1.6-2.1-1.6c-1.6,0-2.6,1.3-2.6,3.1
+          		c0,1.8,1,3.1,2.6,3.1c1.4,0,2.1-1,2.2-2.1l0.9,0c0,0.7-0.4,1.6-0.9,2.1c-0.5,0.5-1.3,0.8-2.2,0.8C263.3,57.1,261.9,55.5,261.9,53.2
+          		z"></path>
+                <path class="st5" d="M269.6,49.5l5.3,0l0,0.8l-4.4,0l0,2.4l4,0l0,0.8l-4,0l0,2.6l4.5,0l0,0.9l-5.4,0L269.6,49.5z">
+                </path>
+                <path class="st5" d="M276.2,49.4l0.9,0l0,6.6l3.9,0l0,0.9l-4.9,0L276.2,49.4z"></path>
+                <path class="st5" d="M282,49.4l0.9,0l0,6.6l3.9,0l0,0.9l-4.9,0L282,49.4z"></path>
+                <path class="st5" d="M287.8,49.4l5.3,0l0,0.8l-4.4,0l0,2.4l4,0l0,0.8l-4,0l0,2.6l4.5,0l0,0.9l-5.4,0L287.8,49.4z">
+                </path>
+                <path class="st5" d="M294.3,49.3l1,0l3.4,5.2c0.3,0.4,0.6,1,0.6,1h0l0-6.2l0.9,0l0,7.5l-1,0l-3.5-5.2c-0.2-0.4-0.6-0.9-0.6-0.9h0
+          		l0,6.2l-0.9,0L294.3,49.3z"></path>
+                <path class="st5"
+                  d="M301.3,53.1c0-2.2,1.3-3.9,3.5-3.9c1.8,0,2.8,1,3,2.4l-0.9,0c-0.2-0.9-0.9-1.6-2.1-1.6c-1.6,0-2.6,1.3-2.6,3.1
+          		c0,1.8,1,3.1,2.6,3.1c1.4,0,2.1-1,2.2-2.1l0.9,0c0,0.7-0.4,1.6-0.9,2.1c-0.5,0.5-1.3,0.8-2.2,0.8C302.7,57,301.3,55.3,301.3,53.1z">
+                </path>
+                <path class="st5" d="M309,49.3l5.3,0l0,0.8l-4.4,0l0,2.4l4,0l0,0.8l-4,0l0,2.6l4.5,0l0,0.9l-5.4,0L309,49.3z"></path>
+              </g>
+              <polyline class="st6" points="143.9,24.8 143.9,40 148.6,42.7 143.9,45.5 143.9,61.2 "></polyline>
+
+            </svg>
+          </a>
+          <a class="project-title" href="index.html">
+          Secure Software Development, Security, and Operations (DevSecOps) Practices
+          </a>
+
+          <a class="project-page-link" href="https://www.nccoe.nist.gov/projects/secure-software-development-security-and-operations-devsecops-practices">
+            Go to Project Page
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search" aria-label="Search" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="executive-summary.html">DevSecOps Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="executive-summary.html#executive-summary">Executive Summary</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#background">1.1. Background</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#development-security-and-operations-devsecops">1.1.1. Development, Security, and Operations (DevSecOps)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#the-role-of-ai-in-software-development">1.1.2. The Role of AI in Software Development</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#the-role-of-zero-trust-in-software-development">1.1.3. The Role of Zero Trust in Software Development</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#audience">1.2. Audience</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#scope">1.3. Scope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#challenges">1.4. Challenges</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="project-overview.html">2. Project Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notational-reference-model.html">3. Notional Reference Model for DevSecOps for Demonstration of NIST SSDF</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notational-reference-model.html#phases-of-the-continuous-devsecops-lifecycle">3.1. Phases of the Continuous DevSecOps Lifecycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notational-reference-model.html#plan">3.1.1. Plan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notational-reference-model.html#develop">3.1.2. Develop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notational-reference-model.html#build">3.1.3. Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notational-reference-model.html#test">3.1.4. Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notational-reference-model.html#release">3.1.5. Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notational-reference-model.html#deploy">3.1.6. Deploy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notational-reference-model.html#operate">3.1.7. Operate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notational-reference-model.html#continuous-improvements-security-and-monitoring">3.2. Continuous Improvements, Security and Monitoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notational-reference-model.html#continuous-feedback">3.3. Continuous Feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notational-reference-model.html#continuous-integration-continuous-delivery-ci-cd-pipeline">3.4. Continuous Integration/Continuous Delivery (CI/CD) Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notational-reference-model.html#zero-trust-security">3.5. Zero Trust Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notational-reference-model.html#artificial-intelligence">3.6. Artificial Intelligence</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Example Implementations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#example-implementation-1-e1">4.1. Example Implementation 1 (E1)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#plan">4.1.1. Plan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#develop">4.1.2. Develop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build">4.1.3. Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test">4.1.4. Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#release">4.1.5. Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deploy">4.1.6. Deploy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#operate">4.1.7. Operate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#continuous-improvements-security-and-monitoring">4.1.8. Continuous Improvements, Security and Monitoring</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="next-steps.html">5. Next Steps</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="appendix-a.html">Appendix A List of Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-b.html">Appendix B Component Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-c.html">Appendix C Collaborators and their Contribution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-1-ami">C.1. AMI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-1-1-meridian-firmware-management-service">C.1.1. Meridian Firmware Management Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-1-2-meridian-security-services-vms-and-sbom">C.1.2. Meridian Security Services: VMS and SBOM</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-2-black-duck">C.2. Black Duck</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-2-1-polaris-platform">C.2.1. Polaris Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-2-2-black-duck-sca">C.2.2. Black Duck SCA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-2-3-black-duck-coverity">C.2.3. Black Duck Coverity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-2-4-continuous-dynamic">C.2.4. Continuous Dynamic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-2-5-software-risk-manager-srm">C.2.5. Software Risk Manager (SRM)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-3-cyberark-software">C.3. CyberArk Software</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-3-1-cyberark-privilege-cloud">C.3.1. CyberArk Privilege Cloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-3-2-cyberark-endpoint-privilege-manager">C.3.2. CyberArk Endpoint Privilege Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-3-3-cyberark-code-sign-manager">C.3.3. CyberArk Code Sign Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-3-4-cyberark-secrets-hub">C.3.4. CyberArk Secrets Hub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-3-5-cyberark-conjur-cloud">C.3.5. CyberArk Conjur Cloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-3-6-cyberark-workload-identity">C.3.6. CyberArk Workload Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-3-7-cyberark-certificate-manager-saas">C.3.7. CyberArk Certificate Manager SaaS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-3-8-cyberark-certificate-manager-self-hosted">C.3.8. CyberArk Certificate Manager (Self-Hosted)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-4-dell-technologies">C.4. Dell Technologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-5-digicert">C.5. DigiCert</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-5-1-digicert-software-trust-manager">C.5.1. DigiCert Software Trust Manager</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-6-endor-labs">C.6. Endor Labs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-6-1-reachability-based-sca">C.6.1. Reachability-Based SCA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-6-2-endor-code-sast-secret-scanning">C.6.2. Endor Code (SAST + Secret Scanning)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-6-3-container-scanning">C.6.3. Container Scanning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-6-4-endor-patches">C.6.4. Endor Patches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-6-5-ai-code-security-review">C.6.5. AI Code Security Review</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-7-gitlab">C.7. GitLab</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-7-1-the-gitlab-platform">C.7.1. The GitLab Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-7-2-gitlab-duo-ai">C.7.2. GitLab Duo (AI)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-8-google">C.8. Google</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-8-1-cloud-workstations">C.8.1. Cloud Workstations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-8-2-google-cloud-build">C.8.2. Google Cloud Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-8-3-artifact-registry-and-artifact-analysis">C.8.3. Artifact Registry and Artifact Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-8-4-binary-authorization">C.8.4. Binary Authorization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-8-5-cloud-deploy">C.8.5. Cloud Deploy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-8-6-google-kubernetes-engine">C.8.6. Google Kubernetes Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-8-7-cloud-run">C.8.7. Cloud Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-8-8-security-command-center">C.8.8. Security Command Center</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-8-9-deps-dev">C.8.9. deps.dev</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-9-ibm">C.9. IBM</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-9-1-ibm-cloud-and-devsecops">C.9.1 IBM Cloud and DevSecOps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-9-2-ibm-cloud-continuous-delivery">C.9.2 IBM Cloud Continuous Delivery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-9-3-ibm-cloud-container-registry-and-vulnerability-advisor">C.9.3 IBM Cloud Container Registry and Vulnerability Advisor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-9-4-ibm-cloud-kubernetes-service-and-red-hat-openshift-services">C.9.4 IBM Cloud Kubernetes Service and Red Hat OpenShift Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-9-5-ibm-cloud-secrets-manager">C.9.5 IBM Cloud Secrets Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-9-6-ibm-cloud-key-protect">C.9.6 IBM Cloud Key Protect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-9-7-ibm-cloud-object-storage-s3compatible">C.9.7 IBM Cloud Object Storage (S3‑Compatible)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-10-microsoft-and-github-advanced-security-ghazdo">C.10. Microsoft and GitHub Advanced Security (GHAzDO)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-1-azure-container-registry-acr">C.10.1. Azure Container Registry (ACR)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-2-azure-devops-azdo">C.10.2. Azure DevOps (AzDO)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-3-azure-entra-id">C.10.3. Azure Entra ID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-4-azure-key-vault-akv">C.10.4. Azure Key Vault (AKV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-5-azure-managed-devops-pool-mdp">C.10.5. Azure Managed DevOps Pool (MDP)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-6-azure-privileged-identity-management-pim">C.10.6. Azure Privileged Identity Management (PIM)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-7-azure-sentinel">C.10.7. Azure Sentinel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-8-bicep-and-azure-resource-manager-arm">C.10.8. Bicep and Azure Resource Manager (ARM)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-9-github-advanced-security-ghas">C.10.9. GitHub Advanced Security (GHAS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-10-github-copilot">C.10.10. GitHub Copilot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-11-ides-visual-studio-and-visual-studio-code-vs-code">C.10.11. IDEs – Visual Studio and Visual Studio Code (VS Code)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-12-microsoft-defender-for-cloud-mdc">C.10.12. Microsoft Defender for Cloud (MDC)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-13-microsoft-sbom-tool">C.10.13. Microsoft SBOM Tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-14-notary-project">C.10.14. Notary Project</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-11-nextlabs">C.11. NextLabs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-11-1-nextlabs-cloudaz-zero-trust-policy-platform">C.11.1. NextLabs CloudAz Zero Trust Policy Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-11-2-nextlabs-policy-enforcer">C.11.2. NextLabs Policy Enforcer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="appendix-c.html#c-11-2-1-application-enforcer-externalized-authorization-management-abac">C.11.2.1. Application Enforcer – Externalized Authorization Management &amp; ABAC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="appendix-c.html#c-11-2-2-data-access-enforcer-secure-global-data-access">C.11.2.2. Data Access Enforcer – Secure Global Data Access</a></li>
+<li class="toctree-l4"><a class="reference internal" href="appendix-c.html#c-11-2-3-skydrm-enterprise-digital-rights-management">C.11.2.3. SkyDRM – Enterprise Digital Rights Management</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-12-palo-alto-networks">C.12. Palo Alto Networks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-12-1-cortex-cloud-security-platform">C.12.1. Cortex Cloud Security Platform</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-13-sagittal-ai">C.13. Sagittal AI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-13-1-neo">C.13.1. Neo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-14-scribe-security">C.14. Scribe Security</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-14-1-scribehub">C.14.1. ScribeHub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-14-2-heyman">C.14.2. Heyman</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-d.html">Appendix D Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Secure Software Development, Security, and Operations (DevSecOps) Practices</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4. </span>Example Implementations</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/example-implementations.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="example-implementations">
+<h1><span class="section-number">4. </span>Example Implementations<a class="headerlink" href="#example-implementations" title="Link to this heading"></a></h1>
+<p>This section covers the details for each of the example implementations that are implemented at the NCCoE. Note: Products marked as “N/A” were not included in
+specific example implementations. This is due to either the product being unavailable from the collaborator or project time constraints at the NCCoE that
+prevented full integration.</p>
+<section id="example-implementation-1-e1">
+<span id="e1"></span><h2><span class="section-number">4.1. </span>Example Implementation 1 (E1)<a class="headerlink" href="#example-implementation-1-e1" title="Link to this heading"></a></h2>
+<p>This section describes the architecture and the products used in the example implementation 1 (E1). For the purposes of this document, Example Implementation 1 is referred to as E1. Subsequent implementations will be introduced and numbered sequentially in future publications. The collaborators involved in the E1 include Microsoft,
+Black Duck, CyberArk, DigiCert, Endor Labs, and Sagittal AI.</p>
+<p>The figure below shows the architecture used in E1. Microsoft Azure Platform as a Service (PaaS) and Azure DevOps (AzDO) are used as the foundation for this
+implementation. The E1 environment establishes three separate environments, which provide networking and computing as Infrastructure as a Service (IaaS). These
+three environments provide hermetic build environments for providing isolated and independent verification of IaaS and components needed for E1 functionality.
+Microsoft Bicep is used to deploy and manage these three environments:</p>
+<ol class="arabic simple">
+<li><p>The Build/Test environment</p></li>
+<li><p>The Release environment</p></li>
+<li><p>The Deploy/Operate environment</p></li>
+</ol>
+<p>Each environment provides the previously mentioned networking, computing, and services necessary to facilitate E1 experimentation. The list below provides a
+descriptive breakdown of components and their purposes:</p>
+<ul class="simple">
+<li><p>Azure Virtual Network (VNet) – This provides underlying network connectivity and Internet Protocol (IP) address space. It also provides attachment points for
+many supporting services, such as Network Address Translation (NAT) Gateway, Private Endpoints, Load Balancer, and many others. The VNets for E1 include
+Develop, Build/Test, Release, Deploy/Operate and Management VNets.</p></li>
+<li><p>Subnets – Each virtual network is divided into multiple subnets that serve to isolate traffic and group services. These subnets include:</p>
+<ul>
+<li><p>Workload subnet – Workloads in each environment are managed via Azure Kubernetes Services (AKS). These workloads consist of applications that are used to
+simulate functional applications.</p></li>
+<li><p>Shared Services subnet – The shared services hosted in each environment describe PaaS components that are leveraged commonly across one or more subnet.
+Shared services include Azure Container Registry, Azure Log Analytics, Private Endpoint, and Azure Storage Account</p></li>
+<li><p>Managed DevOps Pools (MDP) subnet – This service provides on-demand compute to perform automated actions used by Azure DevOps. These actions create,
+destroy, configure, and manage the many resources that are described in this section. MDP services include MDP Agent.</p></li>
+<li><p>Web subnet – The web subnet provides ingress functionality to each environment. Workloads hosted in the workload subnet are exposed to external
+connectivity via Azure Load Balancers that are provisioned in the Web subnet.</p></li>
+</ul>
+</li>
+<li><p>Azure Key Vault – This service exists in the management VNet and provides certificates, keys, and secrets to each of the environments that are hosted as part
+of E1.</p></li>
+<li><p>Azure Virtual Machine or Microsoft DevBox – These services provide the compute resources used for management and simulated development activities for E1.</p></li>
+<li><p>Azure DevOps (AzDO) – AzDO is Software as a Service (SaaS) and provides the SCM, ticketing systems, issue tracking, and CI/CD functionality used for E1.</p></li>
+<li><p>NCCoE Azure Tenant – This tenant is used for NCCoE’s DevSecOps project and other NCCoE projects. For the DevSecOps project components below are used
+showcasing the zero trust capabilities used in E1:</p>
+<ul>
+<li><p>Microsoft Entra Conditional Access and Entra Governance – Microsoft Entra Conditional Access provides automated access controls based on user and device
+risk, while Entra Governance manages identity lifecycle and permissions, both serving as core components of a Zero Trust security strategy by ensuring
+only the right users have the right access under the right conditions. Entra Conditional Access is used as the policy Engine (PE)/Policy Administrator
+(PA) and Policy Enforcement Point (PEP).</p></li>
+<li><p>Microsoft Intune – manages and secures devices and applications, ensuring that only verified and trusted endpoints can access organizational resources,
+which is essential for enforcing Zero Trust principles.</p></li>
+<li><p>Microsoft Defender for EndPoint – provides advanced threat protection and monitoring for devices, helping to detect, prevent, and respond to security
+threats, which supports Zero Trust by continuously validating device health and security before granting access to resources.</p></li>
+<li><p>Microsoft Defender for Cloud – provides unified security management and threat protection across cloud and hybrid environments, supporting Zero Trust by
+continuously assessing, monitoring, and enforcing security policies to ensure only secure resources and users can access cloud workloads.</p></li>
+<li><p>Microsoft Sentinel – security information and event management (SIEM) solution that collects, analyzes, and correlates security data from across an
+organization’s infrastructure to detect, investigate, and respond to threats. In addition to its SIEM capabilities, Sentinel also functions as a Security
+Orchestration, Automation, and Response (SOAR) platform, allowing security teams to automate incident response, orchestrate workflows, and streamline
+security operations through built-in playbooks and integrations with other security tools.</p></li>
+<li><p>For details of the zero trust implementation at the NCCoE, please refer to the NCCoE’s <a class="reference external" href="https://www.nccoe.nist.gov/projects/implementing-zero-trust-architecture">Implementing a Zero Trust
+Architecture</a> (ZTA) project. The DevSecOps project reused the components
+implemented for the NCCoE ZTA project.</p></li>
+</ul>
+</li>
+<li><p>All the other collaborators products including Blackduck, CyberArk, DigiCert, Endor labs, and Sagittal AI are SaaS based and are connected to Microsoft’s
+environment using Microsoft’s NAT Gateway as shown in the figure below.</p></li>
+</ul>
+<figure class="align-default" id="id1">
+<img alt="This diagram provides information about the Example Implementation 1 Architecture as described above." src="_images/example-implementation-1-architecture.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">Implementation 1 Architecture</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="plan">
+<span id="plan-1"></span><h3><span class="section-number">4.1.1. </span>Plan<a class="headerlink" href="#plan" title="Link to this heading"></a></h3>
+<p>Table below shows the components used for the Plan phase in E1.</p>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-number">Table 4.1 </span><span class="caption-text">Plan Phase Products used in E1</span><a class="headerlink" href="#id2" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Component</strong></p></th>
+<th class="head"><p><strong>Product</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Certificate Management System</p></td>
+<td><div class="line-block">
+<div class="line">DigiCert Software Trust Manager,</div>
+<div class="line">Microsoft AKV - Certificate object type</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Configuration Management System</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft ARM,</div>
+<div class="line">Microsoft AzDO – Pipelines,</div>
+<div class="line">Microsoft Azure Dev Center,</div>
+<div class="line">Microsoft Azure MDP</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Credential Management System</p></td>
+<td><p>Microsoft Azure Entra ID</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cyber Intelligence, Threat, and Security Metadata Feeds (e.g., OpenSSF, NVD, OSV, and CVE/CWE)</p></td>
+<td><div class="line-block">
+<div class="line">Endor Labs Reachability-Based SCA - Vulnerability Database,</div>
+<div class="line">Microsoft MDC,</div>
+<div class="line">Sagittal Neo</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Firmware Services</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>HSM (including Software or Virtual HSMs)</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Product Management System</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft AzDO – Delivery Plans,</div>
+<div class="line">Sagittal Neo</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Project Management System (e.g., Team Planning, Team Collaboration, and Training)</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft AzDO – Sprints and Backlogs,</div>
+<div class="line">Sagittal Neo</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Requirements Management System</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft AzDO – Delivery Plans,</div>
+<div class="line">Sagittal Neo</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Risk Management System</p></td>
+<td><div class="line-block">
+<div class="line">Black Duck SRM,</div>
+<div class="line">Endor Labs endorctl – Reachability-Based SCA, Endor Code (SAST + Secret Scanning), Container Scanning, Endor Patches, AI Code Security Review,</div>
+<div class="line">Microsoft Azure Sentinel,</div>
+<div class="line">Microsoft MDC – Cloud Ops Security, CSPM, CWPP</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Secrets Management System</p></td>
+<td><div class="line-block">
+<div class="line">CyberArk Privilege Cloud,</div>
+<div class="line">CyberArk Secrets Hub,</div>
+<div class="line">DigiCert Software Trust Manager,</div>
+<div class="line">Microsoft AKV – Secrets object type</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Threat Modeling System</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft Threat Modeling Tool</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Ticketing System</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft AzDO – Boards,</div>
+<div class="line">Sagittal Neo</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Zero Trust Security System</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft Azure Entra ID – Conditional Access, Identity Governance,</div>
+<div class="line">Microsoft Azure PIM,</div>
+<div class="line">Microsoft Intune,</div>
+<div class="line">Microsoft MDC,</div>
+<div class="line">Microsoft Sentinel</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="develop">
+<span id="develop-1"></span><h3><span class="section-number">4.1.2. </span>Develop<a class="headerlink" href="#develop" title="Link to this heading"></a></h3>
+<p>Table below shows the components used for the Develop phase in E1.</p>
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-number">Table 4.2 </span><span class="caption-text">Develop Phase Products used in E1</span><a class="headerlink" href="#id3" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Component</strong></p></th>
+<th class="head"><p><strong>Product</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Artifact Repository (e.g., Internal and External)</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft ACR,</div>
+<div class="line">Microsoft AzDO – Artifacts</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Artifact Signing and Verification (e.g., Source Code, Commits, Images, Binaries, and Libraries)</p></td>
+<td><div class="line-block">
+<div class="line">Black Duck SCA,</div>
+<div class="line">DigiCert Software Trust Manager,</div>
+<div class="line">Endor Labs endorctl – Artifact Signing and Verification,</div>
+<div class="line">Microsoft ACR</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>CI/CD Pipeline (Developer Initiated)</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft ARM,</div>
+<div class="line">Microsoft Azure CLI,</div>
+<div class="line">Microsoft Bicep</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Developer Tools (e.g., IDE, CLI, and Binaries)</p></td>
+<td><div class="line-block">
+<div class="line">Black Duck Polaris Platform – fAST Static, fAST SCA,</div>
+<div class="line">Black Duck SCA,</div>
+<div class="line">Black Duck SRM,</div>
+<div class="line">Black Duck Code Sight (IDE Plugin),</div>
+<div class="line">Endor Labs endorctl - Reachability-Based SCA, Endor Code (SAST + Secret Scanning), Container Scanner, Endor Patches, AI Code Security Review,</div>
+<div class="line">Microsoft GitHub Copilot,</div>
+<div class="line">Microsoft VS Code</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>IaC Scanner</p></td>
+<td><div class="line-block">
+<div class="line">Black Duck SCA,</div>
+<div class="line">Endor Labs Endor Code (SAST + Secret Scanning)</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>IaC Scripts</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft ARM,</div>
+<div class="line">Microsoft Bicep</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Lint Tool</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft GitHub Copilot,</div>
+<div class="line">Sagittal Neo</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Secret Scanner</p></td>
+<td><div class="line-block">
+<div class="line">Black Duck Polaris Platform – fAST SAST,</div>
+<div class="line">Endor Labs Endor Code (SAST + Secret Scanning)</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>SCA System</p></td>
+<td><div class="line-block">
+<div class="line">Black Duck Polaris Platform – fAST SCA,</div>
+<div class="line">Black Duck SCA,</div>
+<div class="line">Endor Labs Reachability-Based SCA,</div>
+<div class="line">Sagittal Neo</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Software Libraries (e.g., Internal and External)</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft ACR,</div>
+<div class="line">Microsoft AzDO – Artifacts</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>SCM System (e.g., Version Control, Commit Hooks, and Branch/Merge protection)</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft AzDO – Repos,</div>
+<div class="line">Sagittal Neo</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>SAST System</p></td>
+<td><div class="line-block">
+<div class="line">Black Duck Polaris Platform – fAST Static,</div>
+<div class="line">Endor Labs Endor Code (SAST + Secret Scanning),</div>
+<div class="line">Microsoft GitHub Copilot,</div>
+<div class="line">Sagittal Neo</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Unit Test Framework</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft GitHub Copilot,</div>
+<div class="line">Sagittal Neo</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Zero Trust Security System</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft Azure Entra ID – Conditional Access, Identity Governance,</div>
+<div class="line">Microsoft Azure PIM,</div>
+<div class="line">Microsoft Intune,</div>
+<div class="line">Microsoft MDC,</div>
+<div class="line">Microsoft Sentinel</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="build">
+<span id="build-1"></span><h3><span class="section-number">4.1.3. </span>Build<a class="headerlink" href="#build" title="Link to this heading"></a></h3>
+<p>Table below shows the components used for the Build phase in E1.</p>
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-number">Table 4.3 </span><span class="caption-text">Build Phase Products used in E1</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Component</strong></p></th>
+<th class="head"><p><strong>Product</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Artifact Repository (e.g., Internal and External)</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft ACR,</div>
+<div class="line">Microsoft AzDO – Artifacts</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Artifact Signing and Verification (e.g., Images, Binaries, and Libraries)</p></td>
+<td><div class="line-block">
+<div class="line">Black Duck SCA,</div>
+<div class="line">DigiCert Software Trust Manager,</div>
+<div class="line">Endor Labs endorctl – Artifact Signing and Verification,</div>
+<div class="line">Microsoft ACR,</div>
+<div class="line">Microsoft AzDO – Pipelines,</div>
+<div class="line">Open-source Notary Project</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Attestation Signing and Verification Tool (e.g., SLSA)</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Build Tools (e.g., CLI and Binaries)</p></td>
+<td><div class="line-block">
+<div class="line">Endor Labs Reachability-Based SCA,</div>
+<div class="line">Microsoft Azure MDP</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>CI/CD Pipeline (Build Environment, e.g., Automation, Actions, Runners, and Build Agents)</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft AzDO – Pipelines,</div>
+<div class="line">Microsoft Azure MDP</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Container Image Scanner</p></td>
+<td><div class="line-block">
+<div class="line">Black Duck SCA,</div>
+<div class="line">Endor Labs Container Scanning,</div>
+<div class="line">Microsoft MDC – Containers</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>IaC Scanner</p></td>
+<td><div class="line-block">
+<div class="line">Black Duck SCA,</div>
+<div class="line">Endor Labs Endor Code (SAST + Secret Scanning),</div>
+<div class="line">Microsoft GHAzDO,</div>
+<div class="line">Microsoft MDC – DevOps Security</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>IaC Scripts</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft ARM,</div>
+<div class="line">Microsoft Bicep</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Lint Tool</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft AzDO – Pipeline</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>SAST System</p></td>
+<td><div class="line-block">
+<div class="line">Black Duck Polaris Platform – fAST SAST,</div>
+<div class="line">Endor Labs Endor Code (SAST + Secret Scanning),</div>
+<div class="line">Microsoft GHAzDO,</div>
+<div class="line">Microsoft MDC – DevOps Security</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>SCA System</p></td>
+<td><div class="line-block">
+<div class="line">Black Duck Polaris Platform – fAST SCA,</div>
+<div class="line">Black Duck SCA,</div>
+<div class="line">Endor Labs Reachability-Based SCA,</div>
+<div class="line">Microsoft GHAzDO,</div>
+<div class="line">Microsoft MDC – CWPP, Containers, DevOps Security</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Secret Scanner</p></td>
+<td><div class="line-block">
+<div class="line">Black Duck Polaris Platform – fAST SAST,</div>
+<div class="line">Endor Labs Endor Code (SAST + Secret Scanning),</div>
+<div class="line">Microsoft GHAzDO</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Provenance Generation and Verification Tool (e.g., SBOM)</p></td>
+<td><div class="line-block">
+<div class="line">Endor Labs Reachability-Based SCA,</div>
+<div class="line">Endor Labs Reachability-Based SCA - SBOM Generation,</div>
+<div class="line">DigiCert Software Trust Manager,</div>
+<div class="line">Microsoft SBOM Tool,</div>
+<div class="line">Open-source Notary Project</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Software Libraries (e.g., Internal and External)</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft ACR,</div>
+<div class="line">Microsoft AzDO – Artifacts</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Unit Test Framework</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft AzDO – Pipelines</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Zero Trust Security System</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft Azure Entra ID – Conditional Access, Identity Governance,</div>
+<div class="line">Microsoft Azure PIM,</div>
+<div class="line">Microsoft Intune,</div>
+<div class="line">Microsoft MDC,</div>
+<div class="line">Microsoft Sentinel</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="test">
+<span id="test-1"></span><h3><span class="section-number">4.1.4. </span>Test<a class="headerlink" href="#test" title="Link to this heading"></a></h3>
+<p>Table below shows the components used for the Test phase in E1.</p>
+<table class="docutils align-default" id="id5">
+<caption><span class="caption-number">Table 4.4 </span><span class="caption-text">Test Phase Products used in E1</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Component</strong></p></th>
+<th class="head"><p><strong>Product</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Acceptance Test Tool</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>API Test Tool</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Artifact Repository (e.g., Internal and External)</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft ACR,</div>
+<div class="line">Microsoft AzDO – Artifacts</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Artifact Signing and Verification Tool (e.g., Images, Binaries, and Libraries)</p></td>
+<td><div class="line-block">
+<div class="line">Black Duck SCA,</div>
+<div class="line">DigiCert Software Trust Manager,</div>
+<div class="line">Endor Labs endorctl – Artifact Signing and Verification,</div>
+<div class="line">Microsoft ACR,</div>
+<div class="line">Microsoft AzDO – Pipelines,</div>
+<div class="line">Open-source Notary Project</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Attestation Signing and Verification Tool (e.g., SLSA)</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>CI/CD Execution, Test and Security Policy Verification Tool</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>CI/CD pipeline (Test Environment, e.g., Automation, Actions, Runners, and Build Agents)</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft AzDO – Pipelines,</div>
+<div class="line">Microsoft Azure MDP</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Container Image Scanner</p></td>
+<td><div class="line-block">
+<div class="line">Black Duck SCA,</div>
+<div class="line">Endor Labs Container Scanning,</div>
+<div class="line">Microsoft MDC - Containers</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>DAST System</p></td>
+<td><div class="line-block">
+<div class="line">Black Duck Polaris Platform – fAST Dynamic</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Fuzz Test Tool</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>IaC Scanner</p></td>
+<td><div class="line-block">
+<div class="line">Black Duck SCA,</div>
+<div class="line">Endor Labs Endor Code (SAST + Secret Scanning),</div>
+<div class="line">Microsoft GHAzDO,</div>
+<div class="line">Microsoft MDC – DevOps Security</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>IaC Scripts</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft ARM,</div>
+<div class="line">Microsoft Bicep</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Integration Test Tool</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>IAST System</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Provenance Generation and Verification Tool (e.g., SBOM)</p></td>
+<td><div class="line-block">
+<div class="line">Black Duck Polaris Platform – fAST SCA – SBOM generation,</div>
+<div class="line">Black Duck SCA – SBOM generation,</div>
+<div class="line">Endor Labs Reachability-Based SCA,</div>
+<div class="line">Endor Labs Reachability-Based SCA - SBOM Generation,</div>
+<div class="line">DigiCert Software Trust Manager,</div>
+<div class="line">Microsoft SBOM Tool,</div>
+<div class="line">Open-source Notary Project</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Regression Test Tool</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>SAST System</p></td>
+<td><div class="line-block">
+<div class="line">Black Duck Polaris Platform – fAST Static,</div>
+<div class="line">Endor Labs Endor Code (SAST + Secret Scanning),</div>
+<div class="line">Microsoft GHAzDO,</div>
+<div class="line">Microsoft MDC – DevOps Security</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>SCA System</p></td>
+<td><div class="line-block">
+<div class="line">Black Duck Polaris Platform – fAST SCA,</div>
+<div class="line">Black Duck SCA,</div>
+<div class="line">Endor Labs Reachability-Based SCA,</div>
+<div class="line">Microsoft GHAzDO,</div>
+<div class="line">Microsoft MDC – CWPP, Containers, DevOps Security</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Smoke Test Tool</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Unit Test Framework</p></td>
+<td><p>Microsoft AzDO – Pipelines</p></td>
+</tr>
+<tr class="row-even"><td><p>Zero Trust Security System</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft Azure Entra ID – Conditional Access, Identity Governance,</div>
+<div class="line">Microsoft Azure PIM,</div>
+<div class="line">Microsoft Intune,</div>
+<div class="line">Microsoft MDC,</div>
+<div class="line">Microsoft Sentinel</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="release">
+<span id="release-1"></span><h3><span class="section-number">4.1.5. </span>Release<a class="headerlink" href="#release" title="Link to this heading"></a></h3>
+<p>Table below shows the components used for the Release phase in E1.</p>
+<table class="docutils align-default" id="id6">
+<caption><span class="caption-number">Table 4.5 </span><span class="caption-text">Release Phase Products used in E1</span><a class="headerlink" href="#id6" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Component</strong></p></th>
+<th class="head"><p><strong>Product</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Acceptance Test Tool</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Artifact Repository (e.g., Internal and External)</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft ACR,</div>
+<div class="line">Microsoft AzDO – Artifacts</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Artifact Signing and Verification Tool (e.g., Images, Binaries, and Libraries)</p></td>
+<td><div class="line-block">
+<div class="line">Endor Labs endorctl – Artifact Signing and Verification,</div>
+<div class="line">DigiCert Software Trust Manager,</div>
+<div class="line">Microsoft ACR,</div>
+<div class="line">Microsoft AzDO – Pipelines,</div>
+<div class="line">Open-source Notary Project</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Attestation Signing and Verification Tool (e.g., SLSA)</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>CI/CD Pipeline (Release Environment, e.g., Automation, Actions, Runners, and Build Agents)</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft AzDO – Pipelines,</div>
+<div class="line">Microsoft Azure MDP</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Container Image Scanner</p></td>
+<td><div class="line-block">
+<div class="line">Black Duck SCA,</div>
+<div class="line">Endor Labs Container Scanning,</div>
+<div class="line">Microsoft MDC - Containers</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>DAST System</p></td>
+<td><p>Black Duck Polaris Platform – fAST Dynamic</p></td>
+</tr>
+<tr class="row-odd"><td><p>IaC Scanner</p></td>
+<td><div class="line-block">
+<div class="line">Black Duck SCA,</div>
+<div class="line">Endor Labs Endor Code (SAST + Secret Scanning),</div>
+<div class="line">Microsoft GHAzDO,</div>
+<div class="line">Microsoft MDC – DevOps Security</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>IaC Scripts</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft ARM,</div>
+<div class="line">Microsoft Bicep</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>IAST System</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Package Management System</p></td>
+<td><p>Microsoft AzDO – Artifacts</p></td>
+</tr>
+<tr class="row-odd"><td><p>Provenance Generation and Verification Tool (e.g., SBOM)</p></td>
+<td><div class="line-block">
+<div class="line">DigiCert Software Trust Manager,</div>
+<div class="line">Microsoft SBOM Tool,</div>
+<div class="line">Open-source Notary Project</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Release Management System</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft AzDO – Pipelines,</div>
+<div class="line">Microsoft Azure MDP</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>SCA System</p></td>
+<td><div class="line-block">
+<div class="line">Black Duck Polaris – fAST SCA,</div>
+<div class="line">Black Duck SCA,</div>
+<div class="line">Endor Labs Reachability-Based SCA,</div>
+<div class="line">Microsoft GHAzDO,</div>
+<div class="line">Microsoft MDC – CWPP, Containers, DevOps Security</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Smoke Test Tool</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Zero Trust Security System</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft Azure Entra ID – Conditional Access, Identity Governance,</div>
+<div class="line">Microsoft Azure PIM,</div>
+<div class="line">Microsoft Intune,</div>
+<div class="line">Microsoft MDC,</div>
+<div class="line">Microsoft Sentinel</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="deploy">
+<span id="deploy-1"></span><h3><span class="section-number">4.1.6. </span>Deploy<a class="headerlink" href="#deploy" title="Link to this heading"></a></h3>
+<p>Table below shows the components used for the Deploy phase in E1.</p>
+<table class="docutils align-default" id="id7">
+<caption><span class="caption-number">Table 4.6 </span><span class="caption-text">Deploy Phase Products used in E1</span><a class="headerlink" href="#id7" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Component</strong></p></th>
+<th class="head"><p><strong>Product</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Artifact Repository (e.g., Internal and External)</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft ACR,</div>
+<div class="line">Microsoft AzDO – Artifacts</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Artifact Signing and Verification Tool (Verification Only) (e.g., Images, Binaries, and Libraries)</p></td>
+<td><div class="line-block">
+<div class="line">DigiCert Software Trust Manager,</div>
+<div class="line">Microsoft ACR,</div>
+<div class="line">Microsoft AzDO – Pipelines,</div>
+<div class="line">Open-source Notary Project</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Attestation Signing and Verification Tool (Verification Only) (e.g., SLSA)</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>CI/CD Pipeline (Deploy Environment, e.g., Container and Virtualization Environment)</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft AzDO – Pipelines,</div>
+<div class="line">Microsoft Azure MDP</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Deployment Management System (e.g., Release Orchestration, Rollback, and Canary)</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft AzDO – Pipelines,</div>
+<div class="line">Microsoft Azure MDP</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>IaC Scanner</p></td>
+<td><div class="line-block">
+<div class="line">Black Duck SCA,</div>
+<div class="line">Endor Labs Endor Code (SAST + Secret Scanning),</div>
+<div class="line">Microsoft GHAzDO,</div>
+<div class="line">Microsoft MDC – DevOps Security</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>IaC Scripts</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft ARM,</div>
+<div class="line">Microsoft Bicep</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Provenance Generation and Verification Tool (Verification Only) (e.g., SBOM)</p></td>
+<td><div class="line-block">
+<div class="line">Black Duck SCA,</div>
+<div class="line">DigiCert Software Trust Manager,</div>
+<div class="line">Endor Labs Reachability-Based SCA – SBOM Generation,</div>
+<div class="line">Microsoft SBOM Tool,</div>
+<div class="line">Open-source Notary Project</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Zero Trust Security System</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft Azure Entra ID – Conditional Access, Identity Governance,</div>
+<div class="line">Microsoft Azure PIM,</div>
+<div class="line">Microsoft Intune,</div>
+<div class="line">Microsoft MDC,</div>
+<div class="line">Microsoft Sentinel</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="operate">
+<span id="operate-1"></span><h3><span class="section-number">4.1.7. </span>Operate<a class="headerlink" href="#operate" title="Link to this heading"></a></h3>
+<p>Table below shows the components used for the Operate phase in E1.</p>
+<table class="docutils align-default" id="id8">
+<caption><span class="caption-number">Table 4.7 </span><span class="caption-text">Operate Phase Products used in E1</span><a class="headerlink" href="#id8" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Component</strong></p></th>
+<th class="head"><p><strong>Product</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CI/CD pipeline (Operate Environment, e.g., Container and Virtualization Environment)</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft AzDO – Pipelines,</div>
+<div class="line">Microsoft Azure MDP</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>IaC Scripts</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft ARM,</div>
+<div class="line">Microsoft Bicep</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Runtime Signature Verification Tool</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Zero Trust Security System</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft Azure Entra ID – Conditional Access, Identity Governance,</div>
+<div class="line">Microsoft Azure PIM,</div>
+<div class="line">Microsoft Intune,</div>
+<div class="line">Microsoft MDC,</div>
+<div class="line">Microsoft Sentinel</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="continuous-improvements-security-and-monitoring">
+<span id="continuous-improvements-security-and-monitoring-1"></span><h3><span class="section-number">4.1.8. </span>Continuous Improvements, Security and Monitoring<a class="headerlink" href="#continuous-improvements-security-and-monitoring" title="Link to this heading"></a></h3>
+<p>Table below shows the components used during the continuous improvements, security, and monitoring in E1.</p>
+<table class="docutils align-default" id="id9">
+<caption><span class="caption-number">Table 4.8 </span><span class="caption-text">Continuous Improvements, Security and Monitoring Phase Products used in E1</span><a class="headerlink" href="#id9" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Component</strong></p></th>
+<th class="head"><p><strong>Product</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Certificate Management System</p></td>
+<td><div class="line-block">
+<div class="line">DigiCert Software Trust Manager,</div>
+<div class="line">Microsoft AKV – Certificate object type</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>CI/CD pipeline (Plan, Develop, Build, Test, Release, Deploy, Operate Environments)</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft AzDO – Pipelines,</div>
+<div class="line">Microsoft Azure MDP</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Configuration Management System</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft AzDO – Pipelines,</div>
+<div class="line">Microsoft Azure Dev Center,</div>
+<div class="line">Microsoft Azure MDP,</div>
+<div class="line">Microsoft ARM</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Credential Management System</p></td>
+<td><p>Microsoft Azure Entra ID</p></td>
+</tr>
+<tr class="row-even"><td><p>Firmware Services</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>HSM (including Software or Virtual HSMs)</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Operations Monitoring System (e.g., Infrastructure Management, Log Management, and Performance Monitoring)</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft Azure Log Analytics,</div>
+<div class="line">Microsoft MDC – Cloud Ops Security, CSPM, CWPP, DevOps Security, Containers, Endpoint,</div>
+<div class="line">Microsoft Sentinel</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Risk Management System</p></td>
+<td><div class="line-block">
+<div class="line">Black Duck SRM,</div>
+<div class="line">Endor Labs endorctl – Reachability-Based SCA, Endor Code (SAST + Secret Scanning), Container Scanning, Endor Patches, AI Code Security Review,</div>
+<div class="line">Microsoft MDC – Cloud Ops Security, CSPM, CWPP,</div>
+<div class="line">Microsoft Azure Sentinel</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>SCM System (e.g., Version Control, Commit Hooks, and Branch/Merge Protection)</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft AzDO – Repos,</div>
+<div class="line">Sagittal Neo</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Secrets Management System</p></td>
+<td><div class="line-block">
+<div class="line">CyberArk Privilege Cloud,</div>
+<div class="line">CyberArk Secrets Hub,</div>
+<div class="line">DigiCert Software Trust Manager,</div>
+<div class="line">Microsoft AKV – Secrets object type</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Security Monitoring System (e.g., Vulnerability Management, Incident Management, SIEM, and SOAR)</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft Azure Log Analytics,</div>
+<div class="line">Microsoft MDC – Cloud Ops Security, CSPM, CWPP, DevOps Security, Containers, Endpoint, Microsoft Sentinel</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Team Collaboration Tools</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft AzDO – Boards, Delivery Plans,</div>
+<div class="line">Sagittal Neo</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Threat Modeling System</p></td>
+<td><p>Microsoft Threat Modeling Tool</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ticketing System</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft AzDO – Boards,</div>
+<div class="line">Sagittal Neo</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Zero Trust Security System</p></td>
+<td><div class="line-block">
+<div class="line">Microsoft Azure Entra ID – Conditional Access, Identity Governance,</div>
+<div class="line">Microsoft Azure PIM,</div>
+<div class="line">Microsoft Intune,</div>
+<div class="line">Microsoft MDC,</div>
+<div class="line">Microsoft Sentinel</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <div class="page-footer"><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="notational-reference-model.html" class="btn btn-neutral float-left" title="3. Notional Reference Model for DevSecOps for Demonstration of NIST SSDF" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="next-steps.html" class="btn btn-neutral float-right" title="5. Next Steps" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+</div>
+        </div>
+      </div>
+      <footer class="nist-footer">
+  <div class="nist-footer__inner">
+    <div class="nist-footer__menu" role="navigation">
+      <ul>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy-policy">Site Privacy</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/oism/accessibility">Accessibility</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy">Privacy Program</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/oism/copyrights">Copyrights</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.commerce.gov/vulnerability-disclosure-policy">Vulnerability Disclosure</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/no-fear-act-policy">No Fear Act Policy</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/foia">FOIA</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/environmental-policy-statement">Environmental Policy</a>
+        </li>
+        <li class="nist-footer__menu-item ">
+          <a href="https://www.nist.gov/summary-report-scientific-integrity">Scientific Integrity</a>
+        </li>
+        <li class="nist-footer__menu-item ">
+          <a href="https://www.nist.gov/nist-information-quality-standards">Information Quality Standards</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.commerce.gov/">Commerce.gov</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.science.gov/">Science.gov</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.usa.gov/">USA.gov</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://vote.gov/">Vote.gov</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="nist-footer__logo">
+    <a href="https://www.nist.gov/" title="National Institute of Standards and Technology" class="nist-footer__logo-link" rel="home">
+      <img src="https://pages.nist.gov/nist-header-footer/images/nist_logo_brand_white.svg" alt="National Institute of Standards and Technology logo">
+    </a>
+  </div>
+</footer>
+    </section>
+  </div>
+  <script>
+      // expose collapse_navigation theme option to runtime JS so theme scripts can
+      // decide whether to expand first-level toctree entries automatically.
+      window.themeCollapseNavigation = true;
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+    <!-- Old DAP UA tag -->
+    <script async type="text/javascript" id="_fed_an_ua_tag"
+        src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NIST&subagency=github&pua=UA-66610693-1&yt=true&exts=ppsx,pps,f90,sch,rtf,wrl,txz,m1v,xlsm,msi,xsd,f,tif,eps,mpg,xml,pl,xlt,c">
+    </script> 
+
+</body>
+</html>

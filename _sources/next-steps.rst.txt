@@ -1,0 +1,6 @@
+Next Steps 
+===========
+
+The NCCoE project team, in conjunction with the project’s collaborators, defined a conceptual DevSecOps reference model with the objective of demonstrating the application of the NIST SSDF practices. The project team is presently focused on installing and integrating commercially available technologies contributed by collaborators to build multiple cloud-based environments for illustration purposes. Moreover, the team has successfully built the project’s first example environment and is currently engaged in developing and demonstrating relevant use case scenarios within that implementation. Following the completion of this effort, the team will proceed with subsequent environment implementations and continue developing and demonstrating relevant scenarios and use cases within those implementations. This document will be updated accordingly,
+
+In parallel, the NCCoE project team is also focused on an effort to analyze and interpret the NIST SSDF practices and tasks with the objective of decomposing them to more granular and actionable tasks. The goal of this effort is to facilitate the identification of specific activities and technology capabilities necessary for developing relevant demonstration scenarios and use cases for the project. The findings of this effort will be shared in the next update to this document. 

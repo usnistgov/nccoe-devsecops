@@ -1,0 +1,1047 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RJSMY46M5C"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RJSMY46M5C');
+    </script>
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3. Notional Reference Model for DevSecOps for Demonstration of NIST SSDF &mdash; Secure Software Development, Security, and Operations (DevSecOps) Practices  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=29363509" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-2.3.0/datatables.min.css" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3e258017" />
+
+  <link rel="stylesheet" href="_static/css/datatables.min.css">
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+      <script src="https://cdn.datatables.net/v/dt/dt-2.3.0/datatables.min.js"></script>
+      <script src="_static/activate_datatables.js"></script>
+      <script src="_static/main.js?v=6f23e640"></script>
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/d3.min.js"></script>
+    <script src="_static/js/mermaid.min.js"></script>
+    <script>
+      // Configure and let Mermaid auto-run when DOM is ready
+      window.addEventListener('DOMContentLoaded', () => {
+        mermaid.initialize({startOnLoad: true,securityLevel: 'loose'});
+      });
+    </script>
+    <script src="_static/js/datatables.min.js"></script>
+    <script src="_static/js/main.js"></script>
+    <link rel="stylesheet" href="_static/css/leaveNotice.css">
+    <script src="_static/js/jquery.leaveNotice-nist.js"></script>
+    <script src="_static/js/applyLeaveNotice.js"
+            data-site-name="Secure Software Development, Security, and Operations (DevSecOps) Practices"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // only run on pages that have: .. meta::  :comments: on
+      if (!document.querySelector('meta[name="comments"][content="on"]')) return;
+
+      var base = "_static/";
+
+      // load CSS
+      var css = document.createElement('link');
+      css.rel = 'stylesheet';
+      css.href = base + 'css/annotator.min.css';
+      document.head.appendChild(css);
+
+      // load annotator, then our capture script
+      var a = document.createElement('script');
+      a.src = base + 'js/annotator-full.min.js';
+      a.onload = function () {
+        var c = document.createElement('script');
+        c.src = base + 'js/comment-capture.js';
+        c.setAttribute('data-email', "nccoe-devsecops@list.nist.gov");
+        c.setAttribute('data-site-name', "Secure Software Development, Security, and Operations (DevSecOps) Practices");
+        c.setAttribute('data-subject', "[Doc review] Secure Software Development, Security, and Operations (DevSecOps) Practices — {N} comments");
+        c.setAttribute('data-static-base', base);
+        document.body.appendChild(c);
+      };
+      document.body.appendChild(a);
+    });
+    </script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. Example Implementations" href="example-implementations.html" />
+    <link rel="prev" title="2. Project Overview" href="project-overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+  
+    <header class="nist-header" id="nist-header" role="banner">
+    
+        <a href="https://www.nist.gov/" title="National Institute of Standards and Technology"
+            class="nist-header__logo-link" rel="home">
+            <svg aria-hidden="true" class="nist-header__logo-icon" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                width="24" height="32" viewBox="0 0 24 32">
+                <path
+                    d="M20.911 5.375l-9.482 9.482 9.482 9.482c0.446 0.446 0.446 1.161 0 1.607l-2.964 2.964c-0.446 0.446-1.161 0.446-1.607 0l-13.25-13.25c-0.446-0.446-0.446-1.161 0-1.607l13.25-13.25c0.446-0.446 1.161-0.446 1.607 0l2.964 2.964c0.446 0.446 0.446 1.161 0 1.607z">
+                </path>
+            </svg>
+            <svg class="nist-header__logo-image" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                viewBox="-237 385.7 109.7 29.3">
+                <title>National Institute of Standards and Technology</title>
+                <g>
+                    <path class="st0" d="M-231,415h-6v-23.1c0,0,0-4.4,4.4-5.8c4-1.3,6.6,1.3,6.6,1.3l19.7,21.3c1,0.6,1.4,0,1.4-0.6v-22h6.1V409
+              c0,1.9-1.6,4.4-4,5.3c-2.4,0.9-4.9,0.9-7.9-1.7l-18.5-20c-0.5-0.5-1.8-0.6-1.8,0.4L-231,415L-231,415z"></path>
+                    <path class="st0" d="M-195,386.1h6.1v20.7c0,2.2,1.9,2.2,3.6,2.2h26.8c1.1,0,2.4-1.3,2.4-2.7c0-1.4-1.3-2.8-2.5-2.8H-176
+              c-3,0.1-9.2-2.7-9.2-8.5c0-7.1,5.9-8.8,8.6-9h49.4v6.1h-12.3V415h-6v-22.9h-30.2c-2.9-0.2-4.9,4.7-0.2,5.4h18.6
+              c2.8,0,7.4,2.4,7.5,8.4c0,6.1-3.6,9-7.5,9H-185c-4.5,0-6.2-1.1-7.8-2.5c-1.5-1.5-1.7-2.3-2.2-5.3L-195,386.1
+              C-194.9,386.1-195,386.1-195,386.1z"></path>
+                </g>
+            </svg>
+        </a>
+    
+    </header>
+  
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+
+          
+          
+          <a class="nccoe-logo"  href="index.html" aria-label="NIST | National Cybersecurity Center of Excellence (NCCoE)">
+            <!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+            <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
+              xmlns="http://www.w3.org/2000/svg" xml:space="preserve" enable-background="new 75 0 245 75"
+              viewBox="75 0 245 75" height="82.323px" width="273.268px" y="0px" x="0px" class="nccoe-logo-svg"
+              version="1.1">
+              <style type="text/css">
+                .nccoe-logo-svg .st0 {
+                  fill: #4F8BBE;
+                }
+
+                .nccoe-logo-svg .st1 {
+                  fill: none;
+                }
+
+                .nccoe-logo-svg .st2 {
+                  fill: #818286;
+                }
+
+                .nccoe-logo-svg .st3 {
+                  fill: #D3AF73;
+                }
+
+                .nccoe-logo-svg .st4 {
+                  fill: #E89824;
+                }
+
+                .nccoe-logo-svg .st5 {
+                  fill: #10659C;
+                }
+
+                .nccoe-logo-svg .st6 {
+                  fill: none;
+                  stroke: #000000;
+                  stroke-width: 1.0443;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                  stroke-miterlimit: 10;
+                }
+              </style>
+              <g>
+                <g>
+                  <path d="M79.1,51.4h-3.4V38.1c0,0,0-2.5,2.5-3.3c2.3-0.7,3.8,0.7,3.8,0.7l11.3,12.3c0.6,0.4,0.8,0,0.8-0.4V34.8h3.5V48
+          			c0,1.1-0.9,2.5-2.3,3.1c-1.3,0.5-2.8,0.5-4.6-1L80.1,38.5c-0.3-0.3-1-0.3-1,0.3V51.4L79.1,51.4z"></path>
+                  <path d="M99.8,34.8h3.5v11.9c0,1.3,1,1.3,2.1,1.3h15.4c0.6,0,1.4-0.8,1.4-1.5c0-0.8-0.7-1.6-1.4-1.6h-10c-1.7,0.1-5.3-1.5-5.3-4.9
+          			c0-4.1,3.4-5,4.9-5.2h28.4v3.5h-7.1v13.1h-3.4V38.3h-17.4c-1.7-0.1-2.8,2.7-0.1,3.1h10.7c1.6,0,4.3,1.4,4.3,4.8
+          			c0,3.5-2.1,5.2-4.3,5.2h-15.8c-2.6,0-3.5-0.6-4.5-1.5c-0.9-0.8-1-1.3-1.3-3.1V34.8L99.8,34.8z"></path>
+                </g>
+              </g>
+              <rect x="158.3" y="42.8" class="st0" width="4.1" height="1"></rect>
+              <rect x="174" y="43" class="st0" width="16.8" height="0.5"></rect>
+              <path class="st1" d="M172.6,34.4c-4.9,0-8.9,4-8.9,8.9c0,4.9,4,8.9,8.9,8.9c2.8,0,5.4-1.3,7-3.4l-4.5-5.1c-0.3,1-1.3,1.8-2.4,1.8
+          	c-1.4,0-2.5-1.1-2.5-2.5s1.1-2.5,2.5-2.5c1.1,0,2,0.7,2.4,1.7l4.3-4.6C177.6,35.6,175.2,34.4,172.6,34.4z"></path>
+              <path class="st1" d="M172.6,29.5c-7.6,0-13.7,6.2-13.7,13.7S165,57,172.6,57c4.1,0,7.8-1.8,10.3-4.7l-1.7-1.9c-2.1,2.5-5.2,4-8.6,4
+          	c-6.2,0-11.3-5.1-11.3-11.3c0-6.2,5.1-11.3,11.3-11.3c3.3,0,6.3,1.4,8.4,3.7l1.6-1.7C180.1,31.2,176.5,29.5,172.6,29.5z">
+              </path>
+              <path class="st1" d="M172.1,25.1c-10,0-18.2,8.2-18.2,18.2c0,10,8.2,18.2,18.2,18.2c5.4,0,10.2-2.3,13.5-6l-2-2.2
+          	c-2.7,3-6.7,5-11.1,5c-8.3,0-15-6.7-15-15s6.7-15,15-15c4.3,0,8.1,1.8,10.8,4.7l2-2.1C182,27.3,177.3,25.1,172.1,25.1z">
+              </path>
+              <path class="st0" d="M172.6,52.1c-4.9,0-8.9-4-8.9-8.9c0-4.9,4-8.9,8.9-8.9c2.7,0,5,1.2,6.7,3l1.7-1.8c-2.1-2.3-5-3.7-8.4-3.7
+          	c-6.2,0-11.3,5.1-11.3,11.3c0,6.2,5.1,11.3,11.3,11.3c3.5,0,6.6-1.6,8.6-4l-1.7-1.9C177.9,50.8,175.4,52.1,172.6,52.1z">
+              </path>
+              <path class="st2"
+                d="M172.6,57c-7.6,0-13.7-6.2-13.7-13.7s6.2-13.7,13.7-13.7c3.9,0,7.5,1.7,10,4.3l0.8-0.9
+          	c-2.7-2.9-6.6-4.7-10.8-4.7c-8.3,0-15,6.7-15,15s6.7,15,15,15c4.4,0,8.4-1.9,11.1-5l-0.8-0.9C180.4,55.2,176.7,57,172.6,57z"></path>
+              <path class="st3" d="M172.1,61.4c-10,0-18.2-8.2-18.2-18.2c0-10,8.2-18.2,18.2-18.2c5.2,0,9.9,2.2,13.2,5.7l0.3-0.4
+          	c-3.4-3.6-8.2-5.8-13.5-5.8c-10.3,0-18.6,8.3-18.6,18.6c0,10.3,8.3,18.6,18.6,18.6c5.5,0,10.4-2.4,13.8-6.1l-0.3-0.4
+          	C182.3,59.1,177.5,61.4,172.1,61.4z"></path>
+              <path class="st4" d="M175,42.4c-0.4-1-1.3-1.7-2.4-1.7c-1.4,0-2.5,1.1-2.5,2.5c0,1.4,1.1,2.5,2.5,2.5c1.1,0,2.1-0.8,2.4-1.8
+          	c0.1-0.2,0.1-0.5,0.1-0.8C175.2,42.9,175.1,42.6,175,42.4z"></path>
+              <g>
+                <path class="st5" d="M190.9,28.8l1.5,0L195,33c0.2,0.4,0.5,1,0.5,1l0,0c0,0,0-0.8,0-1.3l0-3.9l1.5,0l0,7.5l-1.5,0l-2.6-4.1
+          		c-0.2-0.4-0.5-1-0.5-1h0c0,0,0,0.8,0,1.3l0,3.9l-1.5,0L190.9,28.8z"></path>
+                <path class="st5" d="M200.2,28.8l1.6,0l2.7,7.5l-1.6,0l-0.5-1.6l-2.7,0l-0.5,1.6l-1.5,0L200.2,28.8z M200,33.5l2,0l-0.7-2.2
+          		c-0.1-0.4-0.3-1.2-0.3-1.2h0c0,0-0.2,0.8-0.3,1.2L200,33.5z"></path>
+                <path class="st5" d="M203.7,28.8l6,0l0,1.3l-2.3,0l0,6.2l-1.5,0l0-6.2l-2.3,0L203.7,28.8z"></path>
+                <path class="st5" d="M210.5,28.7l1.5,0l0,7.5l-1.5,0L210.5,28.7z"></path>
+                <path class="st5" d="M212.9,32.5c0-2.2,1.4-3.9,3.6-3.9c2.2,0,3.6,1.7,3.6,3.9s-1.4,3.9-3.6,3.9C214.4,36.4,212.9,34.7,212.9,32.5z
+          		 M218.6,32.5c0-1.5-0.7-2.7-2.1-2.7c-1.4,0-2.1,1.2-2.1,2.7c0,1.5,0.7,2.7,2.1,2.6C217.9,35.1,218.6,33.9,218.6,32.5z">
+                </path>
+                <path class="st5" d="M221,28.7l1.5,0l2.5,4.2c0.2,0.4,0.5,1,0.5,1h0c0,0,0-0.8,0-1.3l0-3.9l1.5,0l0,7.5l-1.5,0L223,32
+          		c-0.2-0.4-0.5-1-0.5-1h0c0,0,0,0.8,0,1.3l0,3.9l-1.5,0L221,28.7z"></path>
+                <path class="st5" d="M230.2,28.6l1.6,0l2.7,7.5l-1.6,0l-0.5-1.6l-2.7,0l-0.5,1.6l-1.5,0L230.2,28.6z M230,33.4l2,0l-0.7-2.2
+          		c-0.1-0.4-0.3-1.2-0.3-1.2h0c0,0-0.2,0.8-0.3,1.2L230,33.4z"></path>
+                <path class="st5" d="M235.1,28.6l1.5,0l0,6.2l3.5,0l0,1.3l-5,0L235.1,28.6z"></path>
+                <path class="st5" d="M190.7,43.1c0-2.2,1.4-3.9,3.6-3.9c1.8,0,2.9,1.1,3.1,2.5l-1.5,0c-0.1-0.8-0.7-1.2-1.6-1.2c-1.4,0-2,1.2-2,2.7
+          		c0,1.5,0.8,2.6,2.1,2.6c0.9,0,1.5-0.5,1.6-1.3l1.5,0c0,0.7-0.3,1.3-0.8,1.8c-0.5,0.5-1.2,0.8-2.3,0.8
+          		C192.2,47,190.7,45.4,190.7,43.1z"></path>
+                <path class="st5" d="M199.7,43.9l-2.5-4.6l1.7,0l1.1,2.2c0.2,0.4,0.5,1.1,0.5,1.1h0c0,0,0.3-0.6,0.5-1.1l1.1-2.2l1.6,0l-2.5,4.6
+          		l0,2.9l-1.5,0L199.7,43.9z"></path>
+                <path class="st5" d="M204.4,39.3l3.4,0c0.8,0,1.4,0.2,1.8,0.5c0.4,0.4,0.6,0.8,0.6,1.4c0,0.8-0.5,1.3-1.2,1.5v0
+          		c0.8,0.2,1.4,0.9,1.4,1.9c0,0.7-0.2,1.2-0.7,1.6c-0.4,0.4-1.1,0.6-1.9,0.6l-3.4,0L204.4,39.3z M207.5,42.3c0.7,0,1.1-0.3,1.1-0.9
+          		c0-0.6-0.4-0.9-1.1-0.9l-1.7,0l0,1.8L207.5,42.3z M205.9,45.5l1.8,0c0.7,0,1.2-0.4,1.2-1c0-0.7-0.5-1.1-1.2-1.1l-1.7,0L205.9,45.5z
+          		"></path>
+                <path class="st5" d="M211.2,39.2l5.5,0l0,1.3l-4,0l0,1.7l3.5,0l0,1.2l-3.5,0l0,2l4,0l0,1.3l-5.6,0L211.2,39.2z">
+                </path>
+                <path class="st5" d="M217.7,39.2l3.4,0c1.4,0,2.4,0.8,2.4,2.1c0,0.9-0.4,1.6-1.4,1.8l0,0c0.7,0.2,1.1,0.6,1.2,1.5
+          		c0.1,1.1,0.1,1.9,0.3,2v0.1l-1.5,0c-0.2-0.1-0.2-0.9-0.3-1.7c-0.1-0.8-0.5-1.3-1.5-1.3l-1.2,0l0,3l-1.5,0L217.7,39.2z M219.3,42.5
+          		l1.6,0c0.8,0,1.2-0.4,1.2-1c0-0.6-0.4-1.1-1.2-1.1l-1.7,0L219.3,42.5z"></path>
+                <path class="st5" d="M224.3,44.3l1.5,0c0.1,0.9,0.6,1.3,1.7,1.3c0.8,0,1.5-0.3,1.5-1c0-0.7-0.7-0.9-1.9-1.1
+          		c-1.3-0.3-2.6-0.6-2.6-2.2c0-1.5,1.2-2.3,2.9-2.3c1.7,0,2.8,0.8,2.9,2.3l-1.5,0c-0.1-0.8-0.7-1.1-1.5-1.1c-0.8,0-1.4,0.4-1.4,0.9
+          		c0,0.6,0.5,0.8,1.6,1c1.5,0.3,2.8,0.7,2.8,2.3c0,1.5-1.2,2.4-2.9,2.4C225.5,46.8,224.3,45.9,224.3,44.3z"></path>
+                <path class="st5" d="M231.3,39.1l5.5,0l0,1.3l-4,0l0,1.7l3.5,0l0,1.2l-3.5,0l0,2l4,0l0,1.3l-5.6,0L231.3,39.1z">
+                </path>
+                <path class="st5" d="M237.4,42.9c0-2.2,1.4-3.9,3.6-3.9c1.8,0,2.9,1.1,3.1,2.5l-1.5,0c-0.1-0.8-0.7-1.2-1.6-1.2c-1.4,0-2,1.2-2,2.7
+          		c0,1.5,0.8,2.6,2.1,2.6c0.9,0,1.5-0.5,1.6-1.3l1.5,0c0,0.7-0.3,1.3-0.8,1.8c-0.5,0.5-1.2,0.8-2.3,0.8
+          		C238.9,46.8,237.4,45.1,237.4,42.9z"></path>
+                <path class="st5" d="M244.8,44.2l0-5.1l1.5,0l0,5.1c0,0.8,0.4,1.3,1.4,1.3c1,0,1.4-0.6,1.4-1.3l0-5.1l1.5,0l0,5.1
+          		c0,1.6-1,2.5-2.9,2.6C245.8,46.7,244.8,45.8,244.8,44.2z"></path>
+                <path class="st5" d="M251.7,39l3.4,0c1.4,0,2.4,0.8,2.4,2.1c0,0.9-0.4,1.6-1.4,1.8l0,0c0.7,0.2,1.1,0.6,1.2,1.5
+          		c0.1,1.1,0.1,1.9,0.3,2v0.1l-1.5,0c-0.2-0.1-0.2-0.9-0.3-1.7c-0.1-0.8-0.5-1.3-1.5-1.3l-1.2,0l0,3l-1.5,0L251.7,39z M253.3,42.3
+          		l1.6,0c0.8,0,1.2-0.4,1.2-1c0-0.6-0.4-1.1-1.2-1.1l-1.7,0L253.3,42.3z"></path>
+                <path class="st5" d="M258.6,39l1.5,0l0,7.5l-1.5,0L258.6,39z"></path>
+                <path class="st5" d="M260.9,39l6,0l0,1.3l-2.3,0l0,6.2l-1.5,0l0-6.2l-2.3,0L260.9,39z"></path>
+                <path class="st5" d="M269.8,43.6l-2.5-4.6l1.7,0l1.1,2.2c0.2,0.5,0.5,1.1,0.5,1.1l0,0c0,0,0.3-0.6,0.5-1.1l1.1-2.2l1.6,0l-2.5,4.6
+          		l0,2.9l-1.5,0L269.8,43.6z"></path>
+                <path class="st5" d="M190.9,53.6c0-2.2,1.3-3.9,3.5-3.9c1.8,0,2.8,1,3,2.4l-0.9,0c-0.2-0.9-0.9-1.6-2.1-1.6c-1.6,0-2.6,1.3-2.6,3.1
+          		c0,1.8,1,3.1,2.6,3.1c1.4,0,2.1-1,2.2-2.1l0.9,0c0,0.7-0.4,1.6-0.9,2.1c-0.5,0.5-1.3,0.8-2.2,0.8C192.3,57.5,190.9,55.8,190.9,53.6
+          		z"></path>
+                <path class="st5" d="M198.6,49.8l5.3,0l0,0.8l-4.4,0l0,2.4l4,0l0,0.8l-4,0l0,2.6l4.5,0l0,0.9l-5.4,0L198.6,49.8z">
+                </path>
+                <path class="st5" d="M205.1,49.8l1,0l3.4,5.2c0.3,0.4,0.6,1,0.6,1h0l0-6.2l0.9,0l0,7.5l-1,0l-3.5-5.2c-0.2-0.4-0.6-0.9-0.6-0.9h0
+          		l0,6.2l-0.9,0L205.1,49.8z"></path>
+                <path class="st5" d="M211.9,49.7l5.9,0l0,0.8l-2.5,0l0,6.7l-0.9,0l0-6.7l-2.5,0L211.9,49.7z"></path>
+                <path class="st5" d="M218.8,49.7l5.3,0l0,0.8l-4.4,0l0,2.4l4,0l0,0.8l-4,0l0,2.6l4.5,0l0,0.9l-5.4,0L218.8,49.7z">
+                </path>
+                <path class="st5" d="M225.4,49.7l3.5,0c1.3,0,2.2,0.8,2.2,2c0,0.9-0.4,1.6-1.3,1.9v0c0.8,0.3,1,0.8,1.1,1.9
+          		c0.1,1.2,0.2,1.5,0.4,1.6l0,0l-1,0c-0.2-0.1-0.2-0.4-0.3-1.7c-0.1-1.1-0.5-1.5-1.5-1.5l-2.1,0l0,3.2l-0.9,0L225.4,49.7z
+          		 M226.3,53.2l2.2,0c1,0,1.6-0.5,1.6-1.4c0-0.9-0.4-1.4-1.5-1.4l-2.3,0L226.3,53.2z"></path>
+                <path class="st5" d="M233.6,53.4c0-2.2,1.4-3.9,3.7-3.9s3.7,1.7,3.7,3.9c0,2.2-1.4,3.9-3.7,3.9S233.6,55.6,233.6,53.4z M240,53.3
+          		c0-1.8-1-3.1-2.7-3.1s-2.7,1.3-2.7,3.1s1,3.1,2.7,3.1S240,55.1,240,53.3z"></path>
+                <path class="st5" d="M242.1,49.6l5.1,0l0,0.8l-4.1,0l0,2.3l3.5,0l0,0.8l-3.5,0l0,3.5l-0.9,0L242.1,49.6z"></path>
+                <path class="st5" d="M249.8,49.5l5.3,0l0,0.8l-4.4,0l0,2.4l4,0l0,0.8l-4,0l0,2.6l4.5,0l0,0.9l-5.4,0L249.8,49.5z">
+                </path>
+                <path class="st5"
+                  d="M258.4,53.2l-2.4-3.7l1.1,0l1.9,3h0l1.9-3l1,0l-2.4,3.7L262,57l-1.1,0l-1.9-3.2h0l-2,3.2l-1.1,0L258.4,53.2z">
+                </path>
+                <path class="st5" d="M261.9,53.2c0-2.2,1.3-3.9,3.5-3.9c1.8,0,2.8,1,3,2.4l-0.9,0c-0.2-0.9-0.9-1.6-2.1-1.6c-1.6,0-2.6,1.3-2.6,3.1
+          		c0,1.8,1,3.1,2.6,3.1c1.4,0,2.1-1,2.2-2.1l0.9,0c0,0.7-0.4,1.6-0.9,2.1c-0.5,0.5-1.3,0.8-2.2,0.8C263.3,57.1,261.9,55.5,261.9,53.2
+          		z"></path>
+                <path class="st5" d="M269.6,49.5l5.3,0l0,0.8l-4.4,0l0,2.4l4,0l0,0.8l-4,0l0,2.6l4.5,0l0,0.9l-5.4,0L269.6,49.5z">
+                </path>
+                <path class="st5" d="M276.2,49.4l0.9,0l0,6.6l3.9,0l0,0.9l-4.9,0L276.2,49.4z"></path>
+                <path class="st5" d="M282,49.4l0.9,0l0,6.6l3.9,0l0,0.9l-4.9,0L282,49.4z"></path>
+                <path class="st5" d="M287.8,49.4l5.3,0l0,0.8l-4.4,0l0,2.4l4,0l0,0.8l-4,0l0,2.6l4.5,0l0,0.9l-5.4,0L287.8,49.4z">
+                </path>
+                <path class="st5" d="M294.3,49.3l1,0l3.4,5.2c0.3,0.4,0.6,1,0.6,1h0l0-6.2l0.9,0l0,7.5l-1,0l-3.5-5.2c-0.2-0.4-0.6-0.9-0.6-0.9h0
+          		l0,6.2l-0.9,0L294.3,49.3z"></path>
+                <path class="st5"
+                  d="M301.3,53.1c0-2.2,1.3-3.9,3.5-3.9c1.8,0,2.8,1,3,2.4l-0.9,0c-0.2-0.9-0.9-1.6-2.1-1.6c-1.6,0-2.6,1.3-2.6,3.1
+          		c0,1.8,1,3.1,2.6,3.1c1.4,0,2.1-1,2.2-2.1l0.9,0c0,0.7-0.4,1.6-0.9,2.1c-0.5,0.5-1.3,0.8-2.2,0.8C302.7,57,301.3,55.3,301.3,53.1z">
+                </path>
+                <path class="st5" d="M309,49.3l5.3,0l0,0.8l-4.4,0l0,2.4l4,0l0,0.8l-4,0l0,2.6l4.5,0l0,0.9l-5.4,0L309,49.3z"></path>
+              </g>
+              <polyline class="st6" points="143.9,24.8 143.9,40 148.6,42.7 143.9,45.5 143.9,61.2 "></polyline>
+
+            </svg>
+          </a>
+          <a class="project-title" href="index.html">
+          Secure Software Development, Security, and Operations (DevSecOps) Practices
+          </a>
+
+          <a class="project-page-link" href="https://www.nccoe.nist.gov/projects/secure-software-development-security-and-operations-devsecops-practices">
+            Go to Project Page
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search" aria-label="Search" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="executive-summary.html">DevSecOps Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="executive-summary.html#executive-summary">Executive Summary</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#background">1.1. Background</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#development-security-and-operations-devsecops">1.1.1. Development, Security, and Operations (DevSecOps)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#the-role-of-ai-in-software-development">1.1.2. The Role of AI in Software Development</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#the-role-of-zero-trust-in-software-development">1.1.3. The Role of Zero Trust in Software Development</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#audience">1.2. Audience</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#scope">1.3. Scope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#challenges">1.4. Challenges</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="project-overview.html">2. Project Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Notional Reference Model for DevSecOps for Demonstration of NIST SSDF</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#phases-of-the-continuous-devsecops-lifecycle">3.1. Phases of the Continuous DevSecOps Lifecycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#plan">3.1.1. Plan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#develop">3.1.2. Develop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build">3.1.3. Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test">3.1.4. Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#release">3.1.5. Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deploy">3.1.6. Deploy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#operate">3.1.7. Operate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#continuous-improvements-security-and-monitoring">3.2. Continuous Improvements, Security and Monitoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#continuous-feedback">3.3. Continuous Feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#continuous-integration-continuous-delivery-ci-cd-pipeline">3.4. Continuous Integration/Continuous Delivery (CI/CD) Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#zero-trust-security">3.5. Zero Trust Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#artificial-intelligence">3.6. Artificial Intelligence</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="example-implementations.html">4. Example Implementations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="example-implementations.html#example-implementation-1-e1">4.1. Example Implementation 1 (E1)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="example-implementations.html#plan">4.1.1. Plan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example-implementations.html#develop">4.1.2. Develop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example-implementations.html#build">4.1.3. Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example-implementations.html#test">4.1.4. Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example-implementations.html#release">4.1.5. Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example-implementations.html#deploy">4.1.6. Deploy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example-implementations.html#operate">4.1.7. Operate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example-implementations.html#continuous-improvements-security-and-monitoring">4.1.8. Continuous Improvements, Security and Monitoring</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="next-steps.html">5. Next Steps</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="appendix-a.html">Appendix A List of Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-b.html">Appendix B Component Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-c.html">Appendix C Collaborators and their Contribution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-1-ami">C.1. AMI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-1-1-meridian-firmware-management-service">C.1.1. Meridian Firmware Management Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-1-2-meridian-security-services-vms-and-sbom">C.1.2. Meridian Security Services: VMS and SBOM</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-2-black-duck">C.2. Black Duck</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-2-1-polaris-platform">C.2.1. Polaris Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-2-2-black-duck-sca">C.2.2. Black Duck SCA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-2-3-black-duck-coverity">C.2.3. Black Duck Coverity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-2-4-continuous-dynamic">C.2.4. Continuous Dynamic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-2-5-software-risk-manager-srm">C.2.5. Software Risk Manager (SRM)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-3-cyberark-software">C.3. CyberArk Software</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-3-1-cyberark-privilege-cloud">C.3.1. CyberArk Privilege Cloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-3-2-cyberark-endpoint-privilege-manager">C.3.2. CyberArk Endpoint Privilege Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-3-3-cyberark-code-sign-manager">C.3.3. CyberArk Code Sign Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-3-4-cyberark-secrets-hub">C.3.4. CyberArk Secrets Hub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-3-5-cyberark-conjur-cloud">C.3.5. CyberArk Conjur Cloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-3-6-cyberark-workload-identity">C.3.6. CyberArk Workload Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-3-7-cyberark-certificate-manager-saas">C.3.7. CyberArk Certificate Manager SaaS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-3-8-cyberark-certificate-manager-self-hosted">C.3.8. CyberArk Certificate Manager (Self-Hosted)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-4-dell-technologies">C.4. Dell Technologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-5-digicert">C.5. DigiCert</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-5-1-digicert-software-trust-manager">C.5.1. DigiCert Software Trust Manager</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-6-endor-labs">C.6. Endor Labs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-6-1-reachability-based-sca">C.6.1. Reachability-Based SCA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-6-2-endor-code-sast-secret-scanning">C.6.2. Endor Code (SAST + Secret Scanning)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-6-3-container-scanning">C.6.3. Container Scanning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-6-4-endor-patches">C.6.4. Endor Patches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-6-5-ai-code-security-review">C.6.5. AI Code Security Review</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-7-gitlab">C.7. GitLab</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-7-1-the-gitlab-platform">C.7.1. The GitLab Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-7-2-gitlab-duo-ai">C.7.2. GitLab Duo (AI)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-8-google">C.8. Google</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-8-1-cloud-workstations">C.8.1. Cloud Workstations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-8-2-google-cloud-build">C.8.2. Google Cloud Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-8-3-artifact-registry-and-artifact-analysis">C.8.3. Artifact Registry and Artifact Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-8-4-binary-authorization">C.8.4. Binary Authorization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-8-5-cloud-deploy">C.8.5. Cloud Deploy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-8-6-google-kubernetes-engine">C.8.6. Google Kubernetes Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-8-7-cloud-run">C.8.7. Cloud Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-8-8-security-command-center">C.8.8. Security Command Center</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-8-9-deps-dev">C.8.9. deps.dev</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-9-ibm">C.9. IBM</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-9-1-ibm-cloud-and-devsecops">C.9.1 IBM Cloud and DevSecOps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-9-2-ibm-cloud-continuous-delivery">C.9.2 IBM Cloud Continuous Delivery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-9-3-ibm-cloud-container-registry-and-vulnerability-advisor">C.9.3 IBM Cloud Container Registry and Vulnerability Advisor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-9-4-ibm-cloud-kubernetes-service-and-red-hat-openshift-services">C.9.4 IBM Cloud Kubernetes Service and Red Hat OpenShift Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-9-5-ibm-cloud-secrets-manager">C.9.5 IBM Cloud Secrets Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-9-6-ibm-cloud-key-protect">C.9.6 IBM Cloud Key Protect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-9-7-ibm-cloud-object-storage-s3compatible">C.9.7 IBM Cloud Object Storage (S3‑Compatible)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-10-microsoft-and-github-advanced-security-ghazdo">C.10. Microsoft and GitHub Advanced Security (GHAzDO)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-1-azure-container-registry-acr">C.10.1. Azure Container Registry (ACR)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-2-azure-devops-azdo">C.10.2. Azure DevOps (AzDO)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-3-azure-entra-id">C.10.3. Azure Entra ID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-4-azure-key-vault-akv">C.10.4. Azure Key Vault (AKV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-5-azure-managed-devops-pool-mdp">C.10.5. Azure Managed DevOps Pool (MDP)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-6-azure-privileged-identity-management-pim">C.10.6. Azure Privileged Identity Management (PIM)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-7-azure-sentinel">C.10.7. Azure Sentinel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-8-bicep-and-azure-resource-manager-arm">C.10.8. Bicep and Azure Resource Manager (ARM)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-9-github-advanced-security-ghas">C.10.9. GitHub Advanced Security (GHAS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-10-github-copilot">C.10.10. GitHub Copilot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-11-ides-visual-studio-and-visual-studio-code-vs-code">C.10.11. IDEs – Visual Studio and Visual Studio Code (VS Code)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-12-microsoft-defender-for-cloud-mdc">C.10.12. Microsoft Defender for Cloud (MDC)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-13-microsoft-sbom-tool">C.10.13. Microsoft SBOM Tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-10-14-notary-project">C.10.14. Notary Project</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-11-nextlabs">C.11. NextLabs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-11-1-nextlabs-cloudaz-zero-trust-policy-platform">C.11.1. NextLabs CloudAz Zero Trust Policy Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-11-2-nextlabs-policy-enforcer">C.11.2. NextLabs Policy Enforcer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="appendix-c.html#c-11-2-1-application-enforcer-externalized-authorization-management-abac">C.11.2.1. Application Enforcer – Externalized Authorization Management &amp; ABAC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="appendix-c.html#c-11-2-2-data-access-enforcer-secure-global-data-access">C.11.2.2. Data Access Enforcer – Secure Global Data Access</a></li>
+<li class="toctree-l4"><a class="reference internal" href="appendix-c.html#c-11-2-3-skydrm-enterprise-digital-rights-management">C.11.2.3. SkyDRM – Enterprise Digital Rights Management</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-12-palo-alto-networks">C.12. Palo Alto Networks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-12-1-cortex-cloud-security-platform">C.12.1. Cortex Cloud Security Platform</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-13-sagittal-ai">C.13. Sagittal AI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-13-1-neo">C.13.1. Neo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-c.html#c-14-scribe-security">C.14. Scribe Security</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-14-1-scribehub">C.14.1. ScribeHub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix-c.html#c-14-2-heyman">C.14.2. Heyman</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-d.html">Appendix D Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Secure Software Development, Security, and Operations (DevSecOps) Practices</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3. </span>Notional Reference Model for DevSecOps for Demonstration of NIST SSDF</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/notational-reference-model.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="notional-reference-model-for-devsecops-for-demonstration-of-nist-ssdf">
+<h1><span class="section-number">3. </span>Notional Reference Model for DevSecOps for Demonstration of NIST SSDF<a class="headerlink" href="#notional-reference-model-for-devsecops-for-demonstration-of-nist-ssdf" title="Link to this heading"></a></h1>
+<p>As mentioned earlier, this project illustrates how NIST SSDF practices and tasks can be implemented in DevSecOps to aid organizations in improving the security of the software they develop and operate. Since the SSDF does not provide a specific software development architecture, the project adopted a strategy to define a development model that bridges the gap between the SSDF’s recommended security practices and practical implementation. To that end, the project interpreted the NIST SSDF recommended security practices with the objective of decomposing them into more granular and actionable tasks. Building on this strategic foundation, future versions of this document will document and justify the concrete connections between technologies and activities that exist in the example implementations and the SSDF proper.</p>
+<p>To guide this task, the NCCoE developed a notional reference model for SSDF with DevSecOps, which is illustrated in the figure below. This model was developed and refined in conjunction with the project’s collaborators. DevSecOps is one of many methodologies used to develop software; however, the exact process and technology implementations can vary significantly depending on the software’s requirements and the tools and skills available to the development team. Generally, the main phases of a DevSecOps model are similar, although there can be variations even at the most general level. The concrete activities, technologies, and processes used can differ substantially between organizations, and even between groups within an organization. To construct the software factories, the project developed a notional reference model for DevSecOps using a bottom-up approach based on the technologies made available through the project’s collaborators and group consensus concerning essential components. This model is not intended to be a one-size-fits-all solution, but rather a guide for software development efforts.</p>
+<p>Each phase of the development process represents a logical stage and a separate environment in the path as the software is developed. Furthermore, it highlights the emphasis on feedback using control gates that are applied before software changes are permitted to proceed to the next stage in the lifecycle. Control gates consist of technical or organizational controls that are designed to provide the necessary feedback or insights that help inform development, operational, or security tasking for resolving discovered vulnerabilities or defects. By leveraging technologies to apply and automate these controls, this project will demonstrate real-world, repeatable, and verifiable mechanisms to increase the security of software development.</p>
+<figure class="align-default" id="id1">
+<img alt="This figure shows DevSecOps notional reference model that NCCoE is using for this project." src="_images/vola-image2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.1 </span><span class="caption-text">Notional Reference Model for DevSecOps for Demonstration of NIST SSDF</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The figure above illustrates the project’s DevSecOps notional reference model, which includes five functional dimensions that support the demonstration of NIST SSDF:</p>
+<ol class="arabic simple">
+<li><p>Phases of Continuous DevSecOps Lifecycle: The lifecycle begins with the Plan phase, where security considerations are incorporated from the start. The
+process then moves through Develop, Build, Test, Release, Deploy, and Operation phases as shown below:</p>
+<ol class="loweralpha simple">
+<li><p>Plan − Development, operations, and security teams collaboratively define functional, non-functional, and security requirements, establish secure practices, and create roadmaps, updating them as
+feedback from later phases informs new functional or security needs.</p></li>
+<li><p>Develop − Teams collaboratively create and proactively review code, infrastructure, and policies with approved tools to meet plan phase requirements and ensure
+quality, security, and policy concurrence early in the process.</p></li>
+<li><p>Build − Automated pipelines transform code and configurations into deployable artifacts, using ephemeral environments and integrated analysis to ensure
+quality, security, and policy concurrence while providing actionable feedback to all teams.</p></li>
+<li><p>Test − Teams use automated testing and ephemeral environments to independently evaluate deployable artifacts for functional, non-functional, and security
+requirements with CI/CD feedback guiding future improvements.</p></li>
+<li><p>Release − Automated processes package and transfer software to production environments while teams coordinate releases, verify readiness and security,
+document changes, and collect feedback to improve future releases.</p></li>
+<li><p>Deploy − Automated pipelines install and configure software on production infrastructure while teams monitor deployments, verify security and performance,
+and collect feedback to ensure reliable, secure, and consistent releases.</p></li>
+<li><p>Operate − Teams use automated monitoring and evidence collection to ensure the integrity, security, and reliability of production systems, using feedback
+to address issues and guide continuous improvement.</p></li>
+</ol>
+</li>
+<li><p>Continuous Improvements, Security, and Monitoring − This consists of a collection of components and activities that appear throughout the DevSecOps
+lifecycle. These ever-present components provide phase-specific integrations to enable the goals and objectives of a given phase.</p></li>
+<li><p>Continuous Feedback − While not a technology or processing component, this concept covers how events or signals emitted from control gates or learned from
+external events (new technologies, attack patterns or regulations) are fed back into earlier phases of the DevSecOps lifecycle to inform changes in
+subsequent phases of the lifecycle.</p></li>
+<li><p>Continuous Integration/Continuous Delivery (CI/CD) Pipeline − This technology provides the automated pipelines (e.g., continuous build, integration, delivery
+and deployment) that are used to run many of the components that are unique to each of the phases in the DevSecOps lifecycle. Different phases of the
+DevSecOps lifecycle have direct influence on components and activities conducted by the automated pipelines previously described. Each automated pipeline
+functions independently from other pipelines but are combined in sequence to produce the full automated process of building and deploying software to
+production.</p></li>
+<li><p>Zero Trust Security − This underlying security environment includes all aspects of Zero Trust Architecture (ZTA) implemented at NCCoE, as described in
+<a class="reference external" href="https://doi.org/10.6028/NIST.SP.1800-35">NIST SP 1800-35</a> and <a class="reference external" href="https://doi.org/10.6028/NIST.SP.800-207">NIST SP 800-207</a>. It includes ZTA components such as Identity, Credential, Access Management (ICAM), Policy Decision Point (PDP), Policy
+Enforcement Point (PEP), Data Security, Security Analytics, Endpoint Security and Resource Protection.</p></li>
+</ol>
+<p>The detail of the notional reference model is shown below.</p>
+<section id="phases-of-the-continuous-devsecops-lifecycle">
+<h2><span class="section-number">3.1. </span>Phases of the Continuous DevSecOps Lifecycle<a class="headerlink" href="#phases-of-the-continuous-devsecops-lifecycle" title="Link to this heading"></a></h2>
+<p>The phases of continuous DevSecOps lifecycle begin with the Plan phase, where security considerations are incorporated from the start. The process then moves
+through Develop, Build, Test, Release, Deploy, and Operate phases unless an error occurs, in which case, the feedback process collects the necessary information
+for reevaluation in the Plan phase. Each of these phases are described below in detail. They encompass components provided by the NCCoE’s collaborators for
+implementation in this project. Not all components used in software development are shown in this architecture as certain activities (e.g., product management,
+disposing of an old system) can take place outside of the DevSecOps lifecycle, but within the product’s lifecycle. Components are used in multiple phases and
+thus duplications are seen in component tables. Some repeated components are used to confirm that prior phases behaved correctly, while other components serve
+different purposes in different phases. Those components that are used in all phases are detailed in <a class="reference external" href="#continuous-improvements-security-and-monitoring">Continuous Improvements, Security and Monitoring—Section 3.2</a>.</p>
+<section id="plan">
+<h3><span class="section-number">3.1.1. </span>Plan<a class="headerlink" href="#plan" title="Link to this heading"></a></h3>
+<p>The Plan phase is the starting point of the DevSecOps lifecycle. This is where organizations establish secure and efficient software development processes by
+defining functional, non-functional and security requirements, assessing risks, and crafting a proactive security strategy that fosters a consistent and secure development process. This process of
+establishing secure development processes at the beginning of the lifecycle enables a “shift-left” approach, which incorporates security considerations into
+software design and development processes both from the beginning and throughout the lifecycle. With this process in mind, during the Plan phase, software
+development, operations, and security team members adhere to organizational, government-regulated, or industry-defined policies, standards, and best practices
+to ensure the secure and functional operation of software applications. These team members will also work to build their own requirements for software
+applications, their dependencies, and the underlying systems. This phase establishes secure software development and security practices for the software
+project, defines the application architecture that incorporates secure design principles, and allocates resources to address threats, vulnerabilities, and
+defects.</p>
+<p>Planning components and activities are used to create development and security roadmaps for updates, repairs, and future enhancements for the project backlog.
+Initial discussions and considerations regarding the toolchain and strategies for automated security checks also begin here.</p>
+<p>Because the DevSecOps lifecycle is a continuous loop, feedback from later stages constantly informs and refines the initial planning, rather than remaining
+static. Initial requirements are established but are then continuously refined based on feedback from subsequent development, security, and operations stages.
+This feedback helps clarify technical issues, which in turn lead to new or updated requirements for supported applications, tools, and components.</p>
+<p>Each team member contributes distinct expertise during the Plan phase. Developers help define, refine, and address requirements proposed by other team members,
+pipeline feedback, or external stakeholders.</p>
+<p>Operations team members gather and document functional, non-functional, and security requirements, and may capture them in source code, documentation, or
+infrastructure-as-code (IaC) scripts. For this document, source code and IaC scripts are treated similarly, and any component interacting with source code may provide similar
+features for IaC scripts.</p>
+<p>Security team members collect security feedback (e.g., discovered vulnerabilities, emerging threats, or evidence of policy deviations) from components in
+the Plan phase and throughout the DevSecOps lifecycle, often leveraging Continuous Improvements functionality. They are instrumental in conducting threat
+modeling, defining security requirements, and ensuring evidence-based verification, collaborating closely with Developers and Operations.</p>
+<p>All requirements are tracked as issues or tasks within a shared ticketing system. This system is used by all team members and visible to people outside of the
+team, as understanding the flow of work is important to more than just the DevSecOps team. The figure below illustrates the Plan phase.</p>
+<figure class="align-default" id="id2">
+<img alt="This diagram shows the components used in the plan phase as shown in the components tablet message." src="_images/volb-image2.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.2 </span><span class="caption-text">Plan Phase</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Below are the Plan phase components implemented within the project.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="appendix-b.html#term-Certificate-Management-System"><span class="xref std std-term">Certificate Management System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Configuration-Management-System"><span class="xref std std-term">Configuration Management System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Credential-Management-System"><span class="xref std std-term">Credential Management System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Cyber-Intelligence-Threat-and-Security-Metadata-Feeds-e.g.-OpenSSF-National-Vulnerability-Database-NVD-Open-Source-Vulnerabilities-OSV-and-Common-Vulnerabilities-and-Exposures-CVE-Common-Weakness-Enumeration-CWE"><span class="xref std std-term">Cyber Intelligence, Threat, and Security Metadata Feeds (e.g., OpenSSF, National Vulnerability Database (NVD), Open Source Vulnerabilities (OSV), and Common Vulnerabilities and Exposures (CVE)/ Common Weakness Enumeration (CWE))</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Firmware-Services"><span class="xref std std-term">Firmware Services</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Hardware-Security-Module-HSM-including-Software-or-Virtual-HSMs"><span class="xref std std-term">Hardware Security Module (HSM) (including Software or Virtual HSMs)</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Product-Management-System"><span class="xref std std-term">Product Management System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Project-Management-System-e.g.-Team-Planning-Team-Collaboration-and-Training"><span class="xref std std-term">Project Management System (e.g., Team Planning, Team Collaboration, and Training)</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Requirements-Management-System"><span class="xref std std-term">Requirements Management System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Risk-Management-System"><span class="xref std std-term">Risk Management System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Secrets-Management-System"><span class="xref std std-term">Secrets Management System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Threat-Modeling-System"><span class="xref std std-term">Threat Modeling System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Ticketing-System"><span class="xref std std-term">Ticketing System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Zero-Trust-Security-System"><span class="xref std std-term">Zero Trust Security System</span></a></p></li>
+</ul>
+</section>
+<section id="develop">
+<h3><span class="section-number">3.1.2. </span>Develop<a class="headerlink" href="#develop" title="Link to this heading"></a></h3>
+<p>The Develop phase is focused on software coding, where developers produce source code to create new applications and features and testers and security create
+test cases for the new applications and features. This phase also involves collaboration with operations and security team members, who may contribute essential
+assets, including source code, IaC scripts, and Policy-as-Code scripts (such as for Zero Trust Architecture). Using approved tools and
+binaries, developers build new features, embed security and integrity into the code, and verify the integrity of developed artifacts before introducing changes
+to downstream phases of the DevSecOps lifecycle.</p>
+<p>Software development team members use various components in the Develop phase to generate source code that implements the requirements defined in earlier
+phases. They adopt “shift-left” practices by performing peer reviews and running analyzers—such as Software Composition Analysis (SCA), Static Application
+Security Testing (SAST), and linting tools—to identify and remediate flaws or vulnerabilities before committing changes to source code management (SCM)
+systems.</p>
+<p>Operations team members support development and security efforts, as well as the underlying infrastructure that enables development activities and meets
+application requirements. Operations personnel use approved client tools and binaries to develop IaC scripts to define the various environments and supporting
+artifacts. All developed artifacts are analyzed for technical issues, security vulnerabilities, and policy verification by other tools and team members prior to
+merging changes into relevant branches before progressing to later phases in the DevSecOps lifecycle.</p>
+<p>Security team members coordinate the use of components in the Develop phase to implement security and analysis functions leveraged by software development and
+operations team members. Additionally, these developed artifacts, metadata, or collected evidence could provide transparency or help apply security and policy
+throughout the DevSecOps lifecycle. The figure below illustrates the Develop phase.</p>
+<figure class="align-default" id="id3">
+<img alt="This diagram shows the components used in the develop phase as shown in the components table." src="_images/volb-image3.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.3 </span><span class="caption-text">Develop Phase</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Below are the Develop phase components implemented within the project.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="appendix-b.html#term-Artifact-Repository-e.g.-Internal-and-External"><span class="xref std std-term">Artifact Repository (e.g., Internal and External)</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Artifact-Signing-and-Verification-Tool"><span class="xref std std-term">Artifact Signing and Verification Tool</span></a> (e.g., Source Code, Commits, Images, Binaries, and Libraries)</p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-CI-CD-Pipeline"><span class="xref std std-term">CI/CD Pipeline</span></a> (Developer Initiated)</p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Developer-Tools-e.g.-IDE-CLI-and-Binaries"><span class="xref std std-term">Developer Tools (e.g., IDE, CLI, and Binaries)</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-IaC-Scanner"><span class="xref std std-term">IaC Scanner</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-IaC-Scripts"><span class="xref std std-term">IaC Scripts</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Lint-Tool"><span class="xref std std-term">Lint Tool</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Secret-Scanner"><span class="xref std std-term">Secret Scanner</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-SCA-System"><span class="xref std std-term">SCA System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Software-Libraries-e.g.-Internal-and-External"><span class="xref std std-term">Software Libraries (e.g., Internal and External)</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-SCM-System-e.g.-Version-Control-Commit-Hooks-and-Branch-Merge-Protection"><span class="xref std std-term">SCM System (e.g., Version Control, Commit Hooks, and Branch/Merge Protection)</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-SAST-System"><span class="xref std std-term">SAST System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Unit-Test-Framework"><span class="xref std std-term">Unit Test Framework</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Zero-Trust-Security-System"><span class="xref std std-term">Zero Trust Security System</span></a></p></li>
+</ul>
+</section>
+<section id="build">
+<h3><span class="section-number">3.1.3. </span>Build<a class="headerlink" href="#build" title="Link to this heading"></a></h3>
+<p>During the Build phase, source code and configuration files are transformed into deployable artifacts through automated CI/CD components. Decentralized build
+pipelines compile code, resolve dependencies, and package components into deployable units. Build environments provide mechanisms to independently verify the
+quality and security of these artifacts before integration with downstream systems.</p>
+<p>Build, test, and release environments can be ephemeral (e.g., recreated with each iteration) to ensure that source code, software components, and supporting
+IaC scripts are secure and function correctly with every pipeline execution.</p>
+<p>Software development team members receive feedback from components and activities in the Build phase. This feedback may include flaws detected during the
+automated build process, policy failures, or security issues identified by scanning and analysis tools (e.g., container image scanner or secrets scanner).</p>
+<p>Operations team members use feedback received from the automated build process components and activities to review IaC and other build-time components for
+functional or security issues. They capture feedback in the form of logs, alerts, or other build-time artifacts, which are preserved as evidence and used to
+inform changes in the Plan phase to address discovered problems.</p>
+<p>Security personnel leverage all feedback generated by automated build components. Build-time analysis detects leaked credentials, secrets, and sensitive
+variables; examines the provenance of source code and software dependencies; and verifies cryptographic signatures generated by people and services to ensure
+proper authorization and overall integrity. The figure below illustrates the Build phase.</p>
+<figure class="align-default" id="id4">
+<img alt="This diagram shows the components used in the build phase as shown in the components table." src="_images/volb-image4.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.4 </span><span class="caption-text">Build Phase</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Below are the Build phase components implemented within the project.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="appendix-b.html#term-Artifact-Repository-e.g.-Internal-and-External"><span class="xref std std-term">Artifact Repository (e.g., Internal and External)</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Artifact-Signing-and-Verification-Tool"><span class="xref std std-term">Artifact Signing and Verification Tool</span></a> (e.g., Images, Binaries, and Libraries)</p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Attestation-Signing-and-Verification-Tool"><span class="xref std std-term">Attestation Signing and Verification Tool</span></a> (e.g., SLSA)</p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Build-Tools-e.g.-CLI-and-Binaries"><span class="xref std std-term">Build Tools (e.g., CLI, and Binaries)</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-CI-CD-Pipeline"><span class="xref std std-term">CI/CD Pipeline</span></a> (Build Environment, e.g., Automation, Actions, Runners, and Build Agents)</p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Container-Image-Scanner"><span class="xref std std-term">Container Image Scanner</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-IaC-Scanner"><span class="xref std std-term">IaC Scanner</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-IaC-Scripts"><span class="xref std std-term">IaC Scripts</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Lint-Tool"><span class="xref std std-term">Lint Tool</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-SAST-System"><span class="xref std std-term">SAST System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-SCA-System"><span class="xref std std-term">SCA System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Secret-Scanner"><span class="xref std std-term">Secret Scanner</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Provenance-Generation-and-Verification-Tool"><span class="xref std std-term">Provenance Generation and Verification Tool</span></a> (e.g., SBOM)</p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Software-Libraries-e.g.-Internal-and-External"><span class="xref std std-term">Software Libraries (e.g., Internal and External)</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Unit-Test-Framework"><span class="xref std std-term">Unit Test Framework</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Zero-Trust-Security-System"><span class="xref std std-term">Zero Trust Security System</span></a></p></li>
+</ul>
+</section>
+<section id="test">
+<h3><span class="section-number">3.1.4. </span>Test<a class="headerlink" href="#test" title="Link to this heading"></a></h3>
+<p>As part of the Test phase, deployable artifacts are independently evaluated through security and integration testing mechanisms. As in the Build phase, CI/CD
+components execute deployable artifacts on decentralized systems to ensure consistency and reliability.</p>
+<p>During this phase, software development team members are responsible for implementing and maintaining automated test suites that validate both functional and
+non-functional requirements. These tests may include unit test framework, integration tests, regression tests, smoke tests, and user acceptance tests. Developers analyze
+test results to identify defects or areas for improvement before artifacts progress to later stages.</p>
+<p>Operations team members support the Test phase by provisioning and managing ephemeral environments needed for testing. These test environments are built from
+scratch, code is loaded, and tests are executed. Upon completion of each iteration, the test environments are decommissioned to prepare for subsequent
+executions.</p>
+<p>Operations team members ensure that test environments reflect production conditions as much as possible while enabling meaningful and reliable test results.
+Operations personnel may also monitor security functions (i.e., policy verification and software vulnerabilities) and system health during testing to identify
+potential operational issues with testing infrastructure.</p>
+<p>Security team members integrate security-focused tests, such as dynamic application security testing (DAST), fuzz testing, and vulnerability scanning. These
+activities help uncover security weaknesses, misconfigurations, or policy violations that could impact the integrity or safety of the software.</p>
+<p>Throughout this phase, CI/CD components provide various forms of feedback related to the quality and security of the artifacts. This feedback is used to inform
+future development, operational improvements, and security enhancements. The figure below shows the Test phase.</p>
+<figure class="align-default" id="id5">
+<img alt="This diagram shows the components used in the test phase as shown in the components table." src="_images/volb-image5.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.5 </span><span class="caption-text">Test Phase</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Below are the Test phase components implemented within the project.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="appendix-b.html#term-Acceptance-Test-Tool"><span class="xref std std-term">Acceptance Test Tool</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-API-Test-Tool"><span class="xref std std-term">API Test Tool</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Artifact-Repository-e.g.-Internal-and-External"><span class="xref std std-term">Artifact Repository (e.g., Internal and External)</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Artifact-Signing-and-Verification-Tool"><span class="xref std std-term">Artifact Signing and Verification Tool</span></a> (e.g., Images, Binaries, and Libraries)</p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Attestation-Signing-and-Verification-Tool"><span class="xref std std-term">Attestation Signing and Verification Tool</span></a> (e.g., SLSA)</p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-CI-CD-Execution-Test-and-Security-Policy-Verification-Tool"><span class="xref std std-term">CI/CD Execution, Test and Security Policy Verification Tool</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-CI-CD-Pipeline"><span class="xref std std-term">CI/CD Pipeline</span></a> (Test Environment, e.g., Automation, Actions, Runners, and Build Agents)</p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Container-Image-Scanner"><span class="xref std std-term">Container Image Scanner</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-DAST-System"><span class="xref std std-term">DAST System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Fuzz-Test-Tool"><span class="xref std std-term">Fuzz Test Tool</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-IaC-Scanner"><span class="xref std std-term">IaC Scanner</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-IaC-Scripts"><span class="xref std std-term">IaC Scripts</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Integration-Test-Tool"><span class="xref std std-term">Integration Test Tool</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-IAST-System"><span class="xref std std-term">IAST System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Provenance-Generation-and-Verification-Tool"><span class="xref std std-term">Provenance Generation and Verification Tool</span></a> (e.g., SBOM)</p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Regression-Test-Tool"><span class="xref std std-term">Regression Test Tool</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-SAST-System"><span class="xref std std-term">SAST System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-SCA-System"><span class="xref std std-term">SCA System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Smoke-Test-Tool"><span class="xref std std-term">Smoke Test Tool</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Unit-Test-Framework"><span class="xref std std-term">Unit Test Framework</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Zero-Trust-Security-System"><span class="xref std std-term">Zero Trust Security System</span></a></p></li>
+</ul>
+</section>
+<section id="release">
+<h3><span class="section-number">3.1.5. </span>Release<a class="headerlink" href="#release" title="Link to this heading"></a></h3>
+<p>During the Release phase, software applications and their dependencies are packaged and transferred into pre-production or production environments. Automated
+release processes ensure that new features, bug fixes, and resolved vulnerabilities are documented and communicated to system and application stakeholders.
+Release management components coordinate the release, notify stakeholders, and automate the transfer of released software artifacts into approved artifact
+repositories.</p>
+<p>Ephemeral release environments ensure that source code, software components, and supporting IaC scripts are secure and function correctly with
+every pipeline execution.</p>
+<p>Software development team members are responsible for preparing release notes, gathering evidence that all changes have passed needed tests, and ensuring that
+release artifacts meet organizational standards.</p>
+<p>Operations team members manage the logistics of the release process, including scheduling deployments, validating the readiness of production environments, and
+ensuring that rollback procedures are in place if issues arise. They also monitor the release process to ensure minimal disruption to users and services.</p>
+<p>Security team members verify the security configuration of runtime environments, collect release evidence logs, and implement security measures such as least
+privilege access controls to protect against potential vulnerabilities during the release and delivery process. They may also perform final security checks or
+policy validations before the software is made available to end users.</p>
+<p>Throughout the Release phase, feedback from automated tools and manual reviews is collected to inform future improvements in the release process. The figure
+below illustrates the Release phase.</p>
+<figure class="align-default" id="id6">
+<img alt="This diagram shows the components used in the release phase as shown in the components table." src="_images/volb-image6.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.6 </span><span class="caption-text">Release Phase</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Below are the Release phase components implemented within the project.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="appendix-b.html#term-Acceptance-Test-Tool"><span class="xref std std-term">Acceptance Test Tool</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Artifact-Repository-e.g.-Internal-and-External"><span class="xref std std-term">Artifact Repository (e.g., Internal and External)</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Artifact-Signing-and-Verification-Tool"><span class="xref std std-term">Artifact Signing and Verification Tool</span></a> (e.g., Images, Binaries, and Libraries)</p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Attestation-Signing-and-Verification-Tool"><span class="xref std std-term">Attestation Signing and Verification Tool</span></a> (e.g., SLSA)</p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-CI-CD-Pipeline"><span class="xref std std-term">CI/CD Pipeline</span></a> (Release Environment, e.g., Automation, Actions, Runners, and Build Agents)</p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Container-Image-Scanner"><span class="xref std std-term">Container Image Scanner</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-DAST-System"><span class="xref std std-term">DAST System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-IaC-Scanner"><span class="xref std std-term">IaC Scanner</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-IaC-Scripts"><span class="xref std std-term">IaC Scripts</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-IAST-System"><span class="xref std std-term">IAST System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Package-Management-System"><span class="xref std std-term">Package Management System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Provenance-Generation-and-Verification-Tool"><span class="xref std std-term">Provenance Generation and Verification Tool</span></a> (e.g., SBOM)</p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Release-Management-System"><span class="xref std std-term">Release Management System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-SCA-System"><span class="xref std std-term">SCA System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Smoke-Test-Tool"><span class="xref std std-term">Smoke Test Tool</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Zero-Trust-Security-System"><span class="xref std std-term">Zero Trust Security System</span></a></p></li>
+</ul>
+</section>
+<section id="deploy">
+<h3><span class="section-number">3.1.6. </span>Deploy<a class="headerlink" href="#deploy" title="Link to this heading"></a></h3>
+<p>During the Deploy phase, automated components install and configure packaged software and its dependencies on production infrastructure. This process is
+typically orchestrated by CI/CD pipelines, which ensure consistency and repeatability. Automated scans and runtime analyzers verify and assess the runtime
+status of software applications and systems, evaluating security posture, application performance, and operational quality.</p>
+<p>Software development team members may provide configuration management components (i.e., deployment scripts, configuration files, and documentation) to support
+a smooth deployment process. They are also responsible for gathering evidence for any issues that arise during deployment.</p>
+<p>Operations team members oversee the deployment processes—such as rolling or blue/green deployment ensuring that infrastructure is properly provisioned and
+configured to support the new release. They monitor deployment progress, validate successful installation, and manage any needed rollbacks in the event of a
+deployment failure.</p>
+<p>Security team members monitor deployments for potential vulnerabilities or misconfigurations, leveraging automated tools to detect anomalies or unauthorized
+changes. They may also implement runtime security controls, such as artifact verification, configuration management, and continuous monitoring, to maintain the
+integrity and security of the production environment.</p>
+<p>Throughout the Deploy phase, feedback from automated tools and monitoring systems is collected to inform future improvements and to ensure that deployments meet
+organizational standards for security, reliability, and performance. The figure below illustrates the Deploy phase.</p>
+<figure class="align-default" id="id7">
+<img alt="This diagram shows the components used in the deploy phase as shown in the components table." src="_images/volb-image7.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.7 </span><span class="caption-text">Deploy Phase</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Below are the Deploy phase components implemented within the project.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="appendix-b.html#term-Artifact-Repository-e.g.-Internal-and-External"><span class="xref std std-term">Artifact Repository (e.g., Internal and External)</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Artifact-Signing-and-Verification-Tool"><span class="xref std std-term">Artifact Signing and Verification Tool</span></a> (Verification Only) (e.g., Images, Binaries, and Libraries)</p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Attestation-Signing-and-Verification-Tool"><span class="xref std std-term">Attestation Signing and Verification Tool</span></a> (Verification Only) (e.g., SLSA)</p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-CI-CD-Pipeline"><span class="xref std std-term">CI/CD Pipeline</span></a> (Deploy Environment, e.g., Container and Virtualization Environment)</p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Deployment-Management-System-e.g.-Release-Orchestration-Rollback-and-Canary"><span class="xref std std-term">Deployment Management System (e.g., Release Orchestration, Rollback, and Canary)</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-IaC-Scanner"><span class="xref std std-term">IaC Scanner</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-IaC-Scripts"><span class="xref std std-term">IaC Scripts</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Provenance-Generation-and-Verification-Tool"><span class="xref std std-term">Provenance Generation and Verification Tool</span></a> (Verification Only) (e.g., SBOM)</p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Zero-Trust-Security-System"><span class="xref std std-term">Zero Trust Security System</span></a></p></li>
+</ul>
+</section>
+<section id="operate">
+<h3><span class="section-number">3.1.7. </span>Operate<a class="headerlink" href="#operate" title="Link to this heading"></a></h3>
+<p>The Operate phase encompasses the running applications, binaries, software dependencies, and system components that make up the production environment.
+Automated processes provide stakeholders with documented evidence of application and system component integrity, SBOM, and attestations.</p>
+<p>Software development team members may be involved in monitoring application behavior to address defects and implement changes based on operational feedback.
+This feedback from components, services, and the operations and security teams help to resolve incidents, inform root-cause analysis and post-mortem reviews,
+and to meet the requirements of deployed software applications.</p>
+<p>Operations team members are responsible for maintaining the underlying systems (e.g., containerized, virtualized, and cloud infrastructures). They monitor
+system metrics, manage infrastructure resources, and respond to incidents or outages.</p>
+<p>Security team members continuously monitor the production environment for threats, vulnerabilities, and policy violations. They leverage automated tools for intrusion detection, log analysis, and monitoring. While not used to generate or verify artifacts in this phase, security personnel also review provenance information (e.g., SBOMs) to verify that only authorized software dependencies and components are running in production.</p>
+<p>Throughout the Operate phase, feedback from monitoring, logging, and security tools is collected and analyzed. This feedback is used to inform future planning,
+development, and operational improvements, ensuring that the software supply chain remains secure and resilient. The figure below shows the Operate phase.</p>
+<figure class="align-default" id="id8">
+<img alt="This diagram shows the components used in the operate phase as shown in the components table." src="_images/volb-image8.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.8 </span><span class="caption-text">Operate Phase</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Below are the Operate phase components implemented within the project.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="appendix-b.html#term-CI-CD-Pipeline"><span class="xref std std-term">CI/CD Pipeline</span></a> (Operate Environment, e.g., Container and Virtualization Environment)</p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-IaC-Scripts"><span class="xref std std-term">IaC Scripts</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Runtime-Signature-Verification-Tool"><span class="xref std std-term">Runtime Signature Verification Tool</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Zero-Trust-Security-System"><span class="xref std std-term">Zero Trust Security System</span></a></p></li>
+</ul>
+</section>
+</section>
+<section id="continuous-improvements-security-and-monitoring">
+<h2><span class="section-number">3.2. </span>Continuous Improvements, Security and Monitoring<a class="headerlink" href="#continuous-improvements-security-and-monitoring" title="Link to this heading"></a></h2>
+<p>Continuous Improvements, Security, and Monitoring is not a distinct phase of the DevSecOps Lifecycle, but rather a set of persistent services and activities
+that span all phases. Components present in Continuous Improvements, Security, and Monitoring provide ongoing monitoring, assessment, and management of systems,
+applications, and supporting infrastructure throughout the entire lifecycle. Continuous Improvements, Security, and Monitoring components are responsible for
+detecting and notifying stakeholders of system and application deviations, anomalies, and performance issues across various timescales. These automated
+processes deliver continuous visibility into the health, security, and integrity of all system components, which enable detection and response to threats that
+could impact security, integrity, or availability.</p>
+<p>While the specific activities performed by Continuous Improvements, Security, and Monitoring components are tailored to the needs of each DevSecOps Lifecycle
+phase, their overarching goal is to ensure that all systems meet the requirements necessary for deployed software applications.</p>
+<p>Software development, operations, and security team members all rely on feedback generated by Continuous Improvement, security and monitoring to inform their
+activities, drive improvements, and maintain a secure software supply chain. These team members leverage components from Continuous Improvements, Security, and
+Monitoring to perform tasks such as addressing system failures, responding to security or operational incidents, or handling escalating issues associated with
+running software applications and supporting systems. The figure below illustrates the role of Continuous Improvements, Security, and Monitoring within the
+notional architecture.</p>
+<figure class="align-default" id="id9">
+<img alt="This diagram shows the components used in the continuous improvements, security and monitoring as shown in the components table." src="_images/volb-image9.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.9 </span><span class="caption-text">Continuous Improvements, Security, and Monitoring</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Below are Continuous Improvements, Security, and Monitoring components implemented within the project. These components are used in every phase of the DevSecOps lifecycle.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="appendix-b.html#term-Certificate-Management-System"><span class="xref std std-term">Certificate Management System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-CI-CD-Pipeline"><span class="xref std std-term">CI/CD Pipeline</span></a> (Plan, Develop, Build, Test, Release, Deploy, and Operate Environments)</p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Configuration-Management-System"><span class="xref std std-term">Configuration Management System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Credential-Management-System"><span class="xref std std-term">Credential Management System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Firmware-Services"><span class="xref std std-term">Firmware Services</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Hardware-Security-Module-HSM-including-Software-or-Virtual-HSMs"><span class="xref std std-term">Hardware Security Module (HSM) (including Software or Virtual HSMs)</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Operations-Monitoring-System-e.g.-Infrastructure-Management-Log-Management-and-Performance-Monitoring"><span class="xref std std-term">Operations Monitoring System (e.g., Infrastructure Management, Log Management, and Performance Monitoring)</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Risk-Management-System"><span class="xref std std-term">Risk Management System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-SCM-System-e.g.-Version-Control-Commit-Hooks-and-Branch-Merge-Protection"><span class="xref std std-term">SCM System (e.g., Version Control, Commit Hooks, and Branch/Merge Protection)</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Secrets-Management-System"><span class="xref std std-term">Secrets Management System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Security-Monitoring-System-e.g.-Vulnerability-Management-Incident-Management-Security-Information-and-Event-Management-SIEM-and-Security-Orchestration-Automation-and-Response-SOAR"><span class="xref std std-term">Security Monitoring System (e.g., Vulnerability Management, Incident Management, Security Information and Event Management (SIEM), and Security Orchestration, Automation, and Response (SOAR))</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Team-Collaboration-Tools"><span class="xref std std-term">Team Collaboration Tools</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Threat-Modeling-System"><span class="xref std std-term">Threat Modeling System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Ticketing-System"><span class="xref std std-term">Ticketing System</span></a></p></li>
+<li><p><a class="reference internal" href="appendix-b.html#term-Zero-Trust-Security-System"><span class="xref std std-term">Zero Trust Security System</span></a></p></li>
+</ul>
+</section>
+<section id="continuous-feedback">
+<h2><span class="section-number">3.3. </span>Continuous Feedback<a class="headerlink" href="#continuous-feedback" title="Link to this heading"></a></h2>
+<p>The Continuous Feeback cycle is a continuous, adaptive concept where all decision criteria (i.e., success, failure, or anomalous signals) generated throughout
+the DevSecOps lifecycle are collected and used to drive ongoing improvement in development efficiency, operational quality, and security posture. This
+comprehensive feedback is systematically delivered to teams at the earliest point of detection. This process facilitates the “shift-left” mechanism, which
+ensures that issues, particularly security vulnerabilities and policy deviations, are identified and addressed proactively enabling the rapid delivery of
+secure, high-quality, and resilient software.</p>
+</section>
+<section id="continuous-integration-continuous-delivery-ci-cd-pipeline">
+<h2><span class="section-number">3.4. </span>Continuous Integration/Continuous Delivery (CI/CD) Pipeline<a class="headerlink" href="#continuous-integration-continuous-delivery-ci-cd-pipeline" title="Link to this heading"></a></h2>
+<p>CI/CD pipelines form automated systems that orchestrate the continuous building, testing, release, and deployment of software or system artifacts and generates
+necessary evidence throughout the various pipeline stages. The CI/CD pipelines documented in this notional architecture are comprised of these five
+interconnected stages:</p>
+<ol class="arabic simple">
+<li><p><strong>Continuous Build:</strong> This stage consists of automated build mechanisms which stage source code, software and system dependencies, and configuration items
+for the purposes of building software and system artifacts. Automated processes in this stage are commonly associated with either polling or triggering
+effects coupled with changes to source code or configuration items. Artifacts and evidence (i.e., notifications, alerting, and logging) are generated as part
+of the continuous build process then passed downstream to the next phases of automation.</p></li>
+<li><p><strong>Continuous Integration (CI)</strong>: As build artifacts are staged in a testing environment, this CI component performs an assortment of tests and assessments to
+verify operational integrity prior to deployment. These components integrate security testing and analysis via SAST, SCA, and various asset
+scanners (i.e., secrets, IaC, container image scanner) to detect any defects, security vulnerabilities, or configuration issues.</p></li>
+<li><p><strong>Continuous Delivery (CD)</strong>: Once tested, automated processes package the generated artifacts (i.e., software assets and configuration items) for release.
+These artifacts are delivered to distribution systems such as artifact repositories, package managers, or SCMs. These packaged artifacts are continually
+tested and assessed for defects, security vulnerabilities, or configuration issues.</p></li>
+<li><p><strong>Continuous Deployment</strong>: Released artifacts are retrieved from artifact repositories, package managers, or SCMs and deployed into the operational
+environment using automated processes. These processes can consist of various deployment strategies such as blue/green or canary-based deployments. Deployed
+artifacts, software systems, and software applications in the operational environment are constantly assessed for defects, security vulnerabilities, and
+configuration issues.</p></li>
+<li><p><strong>Continuous Operations</strong>: Deployed artifacts and their environments (e.g., hosts, networks, and services) are monitored for defects, security
+vulnerabilities, and configuration issues. The environment is updated as needed with infrastructure patches and configuration changes. The results feed into
+the continuous improvement cycle, providing necessary information for engineers to make changes to the software and its environment.</p></li>
+</ol>
+<p>All these automated processes flow sequentially throughout the DevSecOps Lifecycle. Each of the CI/CD pipeline stages has presence in one or more lifecycle
+phases. Detection of defects or vulnerabilities in each lifecycle phase will trigger failure states and distribute any evidence necessary to notify
+stakeholders. Automated processes and teams review evidence generated in each phase. This evidence is used to verify the requirements of source code,
+software asset, or configuration changes. It’s the combination of generated evidence and artifacts that provide the necessary feedback that continues the
+software development and DevSecOps Lifecycle.</p>
+</section>
+<section id="zero-trust-security">
+<h2><span class="section-number">3.5. </span>Zero Trust Security<a class="headerlink" href="#zero-trust-security" title="Link to this heading"></a></h2>
+<p>Zero Trust serves as an underlying component of this architecture. Each of the phases is dependent on operating in a Zero Trust environment. ZTA operates on the
+principle of “never trust, always verify,” enforcing strict identity authentication and authorization for every user and device attempting to access resources,
+regardless of their location. It also assesses the device posture—evaluating the security health of the accessing device. Based on the continuous
+assessment of user/system identity and device posture, only the “least privilege access” is granted for devices that meet security requirements, and these permissions are revoked
+when no longer needed. This approach prevents lateral movement of attackers within a network.</p>
+<p>Specifically, Zero Trust is being implemented at the NCCoE within the DevSecOps lifecycle as shown below:</p>
+<ul class="simple">
+<li><p>Enforcing Strict Access Controls: ZTA requires continuous assessment of user/system identity and device posture, authenticating and authorizing user/system
+access according to the policy. User/system cannot gain access to resources for which they are not approved.</p></li>
+<li><p>Granting Least Privilege Access: Based on continuous assessment, only least privilege access is granted for devices that meet security requirements, for the duration of the
+session. Users/systems are granted the least privileges only for the specific role they play and for the pipeline.</p></li>
+<li><p>Preventing Lateral Movement: By continuously verifying every access attempt and only allowing access to the needed resource, prevents lateral movement
+within a network or a pipeline.</p></li>
+<li><p>Securing Pipeline Identities: Within the pipeline, Zero Trust is applied by assigning a unique identity to the application and ensuring this pipeline
+identity adheres to zero-trust principles.</p></li>
+<li><p>Isolating Actor Identities: The identities of the pipeline itself and the actors (users/systems) who initiate pipeline activities are kept unique and
+independent.</p></li>
+<li><p>Device Posture Verification for Access: Access to pipeline resources is granted only if the initiating device’s security posture meets the predefined
+security policies.</p></li>
+</ul>
+<p>This comprehensive approach ensures that every interaction within the DevSecOps pipeline, whether human or automated, is authenticated, authorized, and
+continuously validated against strict security policies, thereby enhancing the overall security posture and integrity of the software supply chain.</p>
+<p>The NCCoE DevSecOps project leveraged the NCCoE’s Zero Trust project environment, which included components such as Identity Credential Access Management
+(ICAM), Policy Decision Point (PDP), Policy Enforcement Point (PEP), Data Security, Security Analytics, Endpoint Security, and Resource Protection. For more
+information about NCCoE’s Zero Trust Architecture project, please refer to the NCCoE’s <a class="reference external" href="https://www.nccoe.nist.gov/projects/implementing-zero-trust-architecture">Implementing a Zero Trust
+Architecture</a> site.</p>
+</section>
+<section id="artificial-intelligence">
+<h2><span class="section-number">3.6. </span>Artificial Intelligence<a class="headerlink" href="#artificial-intelligence" title="Link to this heading"></a></h2>
+<p>Throughout the software development lifecycle AI is increasingly being used for the initial draft of processes and recommending ways to enhance the security and
+effectiveness of the organization. AI-augmented tools are used to facilitate automation, coding, security analysis, and even automated analysis for detecting
+and remediating vulnerabilities.</p>
+<p>When considering the use of AI-augmentation for the software development lifecycle, it is important to have a strong, preexisting methodology and associated
+baseline metrics. The use of AI technology in software development can improve work efficiency and may also improve software quality in a timelier
+manner. However, AI may exacerbate organizational and process flaws, so the software development team members still need to ensure AI-generated content is
+monitored and validated by a human and that verifiable processes are in place to ensure its accuracy and trust. There is a real need to employ oversight
+necessary to prevent insecure and non-functional code from being inserted into the software development process.</p>
+<p>The underlying models used by AI are not updated in real-time. Therefore, the information AI provides may be out of date. A human should review the
+recommendations and see if there are newer tools or guidelines that the AI is unaware of.</p>
+<p>Identifying where AI is being used, including use by third-party models, in source code, in testing, and in documentation is challenging. It is necessary to
+provide mechanisms for tracing models, modifications, and annotations to ensure that AI-assisted processes can be subjected to a level of review matching for
+human modification of software systems and applications. Examples of such mechanisms may include analysis of confidence scores, oversight and approval
+procedures, evidence tracking of false positives, and exploits.</p>
+<p>The list of activities below describes areas where example implementations help explain how AI extends existing DevSecOps components and activities:</p>
+<ul class="simple">
+<li><p>AI may assist in describing features or tasks needed to meet functional or security requirements. AI may be used to help identify poorly written requirements or
+gaps in design and can ensure correct traceability of added features or new requirements.</p></li>
+<li><p>AI may aid with summarizing results of automated activities — this  can include automated builds, tests, or scans. It can also include analysis of logs to help
+identify abnormal results that require a human review. AI may also recommend changes to these automated activities based on the results.  For more information about Incident Response Recommendations and Considerations for Cybersecurity Risk Management, please refer to <a class="reference external" href="https://csrc.nist.gov/pubs/sp/800/61/r3/final">NIST SP 800-61</a>.</p></li>
+</ul>
+<p>For additional NIST guidelines regarding cybersecurity opportunities and risks related to AI adoption and use, please refer to the <a class="reference external" href="https://www.nccoe.nist.gov/projects/cyber-ai-profile">NIST Cyber AI Profile</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <div class="page-footer"><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="project-overview.html" class="btn btn-neutral float-left" title="2. Project Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="example-implementations.html" class="btn btn-neutral float-right" title="4. Example Implementations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+</div>
+        </div>
+      </div>
+      <footer class="nist-footer">
+  <div class="nist-footer__inner">
+    <div class="nist-footer__menu" role="navigation">
+      <ul>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy-policy">Site Privacy</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/oism/accessibility">Accessibility</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy">Privacy Program</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/oism/copyrights">Copyrights</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.commerce.gov/vulnerability-disclosure-policy">Vulnerability Disclosure</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/no-fear-act-policy">No Fear Act Policy</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/foia">FOIA</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/environmental-policy-statement">Environmental Policy</a>
+        </li>
+        <li class="nist-footer__menu-item ">
+          <a href="https://www.nist.gov/summary-report-scientific-integrity">Scientific Integrity</a>
+        </li>
+        <li class="nist-footer__menu-item ">
+          <a href="https://www.nist.gov/nist-information-quality-standards">Information Quality Standards</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.commerce.gov/">Commerce.gov</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.science.gov/">Science.gov</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.usa.gov/">USA.gov</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://vote.gov/">Vote.gov</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="nist-footer__logo">
+    <a href="https://www.nist.gov/" title="National Institute of Standards and Technology" class="nist-footer__logo-link" rel="home">
+      <img src="https://pages.nist.gov/nist-header-footer/images/nist_logo_brand_white.svg" alt="National Institute of Standards and Technology logo">
+    </a>
+  </div>
+</footer>
+    </section>
+  </div>
+  <script>
+      // expose collapse_navigation theme option to runtime JS so theme scripts can
+      // decide whether to expand first-level toctree entries automatically.
+      window.themeCollapseNavigation = true;
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+    <!-- Old DAP UA tag -->
+    <script async type="text/javascript" id="_fed_an_ua_tag"
+        src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NIST&subagency=github&pua=UA-66610693-1&yt=true&exts=ppsx,pps,f90,sch,rtf,wrl,txz,m1v,xlsm,msi,xsd,f,tif,eps,mpg,xml,pl,xlt,c">
+    </script> 
+
+</body>
+</html>

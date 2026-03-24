@@ -1,0 +1,1185 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RJSMY46M5C"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RJSMY46M5C');
+    </script>
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Appendix C Collaborators and their Contribution &mdash; Secure Software Development, Security, and Operations (DevSecOps) Practices  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=29363509" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-2.3.0/datatables.min.css" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=3e258017" />
+
+  <link rel="stylesheet" href="_static/css/datatables.min.css">
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+      <script src="https://cdn.datatables.net/v/dt/dt-2.3.0/datatables.min.js"></script>
+      <script src="_static/activate_datatables.js"></script>
+      <script src="_static/main.js?v=6f23e640"></script>
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/d3.min.js"></script>
+    <script src="_static/js/mermaid.min.js"></script>
+    <script>
+      // Configure and let Mermaid auto-run when DOM is ready
+      window.addEventListener('DOMContentLoaded', () => {
+        mermaid.initialize({startOnLoad: true,securityLevel: 'loose'});
+      });
+    </script>
+    <script src="_static/js/datatables.min.js"></script>
+    <script src="_static/js/main.js"></script>
+    <link rel="stylesheet" href="_static/css/leaveNotice.css">
+    <script src="_static/js/jquery.leaveNotice-nist.js"></script>
+    <script src="_static/js/applyLeaveNotice.js"
+            data-site-name="Secure Software Development, Security, and Operations (DevSecOps) Practices"></script>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // only run on pages that have: .. meta::  :comments: on
+      if (!document.querySelector('meta[name="comments"][content="on"]')) return;
+
+      var base = "_static/";
+
+      // load CSS
+      var css = document.createElement('link');
+      css.rel = 'stylesheet';
+      css.href = base + 'css/annotator.min.css';
+      document.head.appendChild(css);
+
+      // load annotator, then our capture script
+      var a = document.createElement('script');
+      a.src = base + 'js/annotator-full.min.js';
+      a.onload = function () {
+        var c = document.createElement('script');
+        c.src = base + 'js/comment-capture.js';
+        c.setAttribute('data-email', "nccoe-devsecops@list.nist.gov");
+        c.setAttribute('data-site-name', "Secure Software Development, Security, and Operations (DevSecOps) Practices");
+        c.setAttribute('data-subject', "[Doc review] Secure Software Development, Security, and Operations (DevSecOps) Practices — {N} comments");
+        c.setAttribute('data-static-base', base);
+        document.body.appendChild(c);
+      };
+      document.body.appendChild(a);
+    });
+    </script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Appendix D Change Log" href="appendix-d.html" />
+    <link rel="prev" title="Appendix B Component Description" href="appendix-b.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+  
+    <header class="nist-header" id="nist-header" role="banner">
+    
+        <a href="https://www.nist.gov/" title="National Institute of Standards and Technology"
+            class="nist-header__logo-link" rel="home">
+            <svg aria-hidden="true" class="nist-header__logo-icon" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                width="24" height="32" viewBox="0 0 24 32">
+                <path
+                    d="M20.911 5.375l-9.482 9.482 9.482 9.482c0.446 0.446 0.446 1.161 0 1.607l-2.964 2.964c-0.446 0.446-1.161 0.446-1.607 0l-13.25-13.25c-0.446-0.446-0.446-1.161 0-1.607l13.25-13.25c0.446-0.446 1.161-0.446 1.607 0l2.964 2.964c0.446 0.446 0.446 1.161 0 1.607z">
+                </path>
+            </svg>
+            <svg class="nist-header__logo-image" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                viewBox="-237 385.7 109.7 29.3">
+                <title>National Institute of Standards and Technology</title>
+                <g>
+                    <path class="st0" d="M-231,415h-6v-23.1c0,0,0-4.4,4.4-5.8c4-1.3,6.6,1.3,6.6,1.3l19.7,21.3c1,0.6,1.4,0,1.4-0.6v-22h6.1V409
+              c0,1.9-1.6,4.4-4,5.3c-2.4,0.9-4.9,0.9-7.9-1.7l-18.5-20c-0.5-0.5-1.8-0.6-1.8,0.4L-231,415L-231,415z"></path>
+                    <path class="st0" d="M-195,386.1h6.1v20.7c0,2.2,1.9,2.2,3.6,2.2h26.8c1.1,0,2.4-1.3,2.4-2.7c0-1.4-1.3-2.8-2.5-2.8H-176
+              c-3,0.1-9.2-2.7-9.2-8.5c0-7.1,5.9-8.8,8.6-9h49.4v6.1h-12.3V415h-6v-22.9h-30.2c-2.9-0.2-4.9,4.7-0.2,5.4h18.6
+              c2.8,0,7.4,2.4,7.5,8.4c0,6.1-3.6,9-7.5,9H-185c-4.5,0-6.2-1.1-7.8-2.5c-1.5-1.5-1.7-2.3-2.2-5.3L-195,386.1
+              C-194.9,386.1-195,386.1-195,386.1z"></path>
+                </g>
+            </svg>
+        </a>
+    
+    </header>
+  
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+
+          
+          
+          <a class="nccoe-logo"  href="index.html" aria-label="NIST | National Cybersecurity Center of Excellence (NCCoE)">
+            <!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+            <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+              xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
+              xmlns="http://www.w3.org/2000/svg" xml:space="preserve" enable-background="new 75 0 245 75"
+              viewBox="75 0 245 75" height="82.323px" width="273.268px" y="0px" x="0px" class="nccoe-logo-svg"
+              version="1.1">
+              <style type="text/css">
+                .nccoe-logo-svg .st0 {
+                  fill: #4F8BBE;
+                }
+
+                .nccoe-logo-svg .st1 {
+                  fill: none;
+                }
+
+                .nccoe-logo-svg .st2 {
+                  fill: #818286;
+                }
+
+                .nccoe-logo-svg .st3 {
+                  fill: #D3AF73;
+                }
+
+                .nccoe-logo-svg .st4 {
+                  fill: #E89824;
+                }
+
+                .nccoe-logo-svg .st5 {
+                  fill: #10659C;
+                }
+
+                .nccoe-logo-svg .st6 {
+                  fill: none;
+                  stroke: #000000;
+                  stroke-width: 1.0443;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                  stroke-miterlimit: 10;
+                }
+              </style>
+              <g>
+                <g>
+                  <path d="M79.1,51.4h-3.4V38.1c0,0,0-2.5,2.5-3.3c2.3-0.7,3.8,0.7,3.8,0.7l11.3,12.3c0.6,0.4,0.8,0,0.8-0.4V34.8h3.5V48
+          			c0,1.1-0.9,2.5-2.3,3.1c-1.3,0.5-2.8,0.5-4.6-1L80.1,38.5c-0.3-0.3-1-0.3-1,0.3V51.4L79.1,51.4z"></path>
+                  <path d="M99.8,34.8h3.5v11.9c0,1.3,1,1.3,2.1,1.3h15.4c0.6,0,1.4-0.8,1.4-1.5c0-0.8-0.7-1.6-1.4-1.6h-10c-1.7,0.1-5.3-1.5-5.3-4.9
+          			c0-4.1,3.4-5,4.9-5.2h28.4v3.5h-7.1v13.1h-3.4V38.3h-17.4c-1.7-0.1-2.8,2.7-0.1,3.1h10.7c1.6,0,4.3,1.4,4.3,4.8
+          			c0,3.5-2.1,5.2-4.3,5.2h-15.8c-2.6,0-3.5-0.6-4.5-1.5c-0.9-0.8-1-1.3-1.3-3.1V34.8L99.8,34.8z"></path>
+                </g>
+              </g>
+              <rect x="158.3" y="42.8" class="st0" width="4.1" height="1"></rect>
+              <rect x="174" y="43" class="st0" width="16.8" height="0.5"></rect>
+              <path class="st1" d="M172.6,34.4c-4.9,0-8.9,4-8.9,8.9c0,4.9,4,8.9,8.9,8.9c2.8,0,5.4-1.3,7-3.4l-4.5-5.1c-0.3,1-1.3,1.8-2.4,1.8
+          	c-1.4,0-2.5-1.1-2.5-2.5s1.1-2.5,2.5-2.5c1.1,0,2,0.7,2.4,1.7l4.3-4.6C177.6,35.6,175.2,34.4,172.6,34.4z"></path>
+              <path class="st1" d="M172.6,29.5c-7.6,0-13.7,6.2-13.7,13.7S165,57,172.6,57c4.1,0,7.8-1.8,10.3-4.7l-1.7-1.9c-2.1,2.5-5.2,4-8.6,4
+          	c-6.2,0-11.3-5.1-11.3-11.3c0-6.2,5.1-11.3,11.3-11.3c3.3,0,6.3,1.4,8.4,3.7l1.6-1.7C180.1,31.2,176.5,29.5,172.6,29.5z">
+              </path>
+              <path class="st1" d="M172.1,25.1c-10,0-18.2,8.2-18.2,18.2c0,10,8.2,18.2,18.2,18.2c5.4,0,10.2-2.3,13.5-6l-2-2.2
+          	c-2.7,3-6.7,5-11.1,5c-8.3,0-15-6.7-15-15s6.7-15,15-15c4.3,0,8.1,1.8,10.8,4.7l2-2.1C182,27.3,177.3,25.1,172.1,25.1z">
+              </path>
+              <path class="st0" d="M172.6,52.1c-4.9,0-8.9-4-8.9-8.9c0-4.9,4-8.9,8.9-8.9c2.7,0,5,1.2,6.7,3l1.7-1.8c-2.1-2.3-5-3.7-8.4-3.7
+          	c-6.2,0-11.3,5.1-11.3,11.3c0,6.2,5.1,11.3,11.3,11.3c3.5,0,6.6-1.6,8.6-4l-1.7-1.9C177.9,50.8,175.4,52.1,172.6,52.1z">
+              </path>
+              <path class="st2"
+                d="M172.6,57c-7.6,0-13.7-6.2-13.7-13.7s6.2-13.7,13.7-13.7c3.9,0,7.5,1.7,10,4.3l0.8-0.9
+          	c-2.7-2.9-6.6-4.7-10.8-4.7c-8.3,0-15,6.7-15,15s6.7,15,15,15c4.4,0,8.4-1.9,11.1-5l-0.8-0.9C180.4,55.2,176.7,57,172.6,57z"></path>
+              <path class="st3" d="M172.1,61.4c-10,0-18.2-8.2-18.2-18.2c0-10,8.2-18.2,18.2-18.2c5.2,0,9.9,2.2,13.2,5.7l0.3-0.4
+          	c-3.4-3.6-8.2-5.8-13.5-5.8c-10.3,0-18.6,8.3-18.6,18.6c0,10.3,8.3,18.6,18.6,18.6c5.5,0,10.4-2.4,13.8-6.1l-0.3-0.4
+          	C182.3,59.1,177.5,61.4,172.1,61.4z"></path>
+              <path class="st4" d="M175,42.4c-0.4-1-1.3-1.7-2.4-1.7c-1.4,0-2.5,1.1-2.5,2.5c0,1.4,1.1,2.5,2.5,2.5c1.1,0,2.1-0.8,2.4-1.8
+          	c0.1-0.2,0.1-0.5,0.1-0.8C175.2,42.9,175.1,42.6,175,42.4z"></path>
+              <g>
+                <path class="st5" d="M190.9,28.8l1.5,0L195,33c0.2,0.4,0.5,1,0.5,1l0,0c0,0,0-0.8,0-1.3l0-3.9l1.5,0l0,7.5l-1.5,0l-2.6-4.1
+          		c-0.2-0.4-0.5-1-0.5-1h0c0,0,0,0.8,0,1.3l0,3.9l-1.5,0L190.9,28.8z"></path>
+                <path class="st5" d="M200.2,28.8l1.6,0l2.7,7.5l-1.6,0l-0.5-1.6l-2.7,0l-0.5,1.6l-1.5,0L200.2,28.8z M200,33.5l2,0l-0.7-2.2
+          		c-0.1-0.4-0.3-1.2-0.3-1.2h0c0,0-0.2,0.8-0.3,1.2L200,33.5z"></path>
+                <path class="st5" d="M203.7,28.8l6,0l0,1.3l-2.3,0l0,6.2l-1.5,0l0-6.2l-2.3,0L203.7,28.8z"></path>
+                <path class="st5" d="M210.5,28.7l1.5,0l0,7.5l-1.5,0L210.5,28.7z"></path>
+                <path class="st5" d="M212.9,32.5c0-2.2,1.4-3.9,3.6-3.9c2.2,0,3.6,1.7,3.6,3.9s-1.4,3.9-3.6,3.9C214.4,36.4,212.9,34.7,212.9,32.5z
+          		 M218.6,32.5c0-1.5-0.7-2.7-2.1-2.7c-1.4,0-2.1,1.2-2.1,2.7c0,1.5,0.7,2.7,2.1,2.6C217.9,35.1,218.6,33.9,218.6,32.5z">
+                </path>
+                <path class="st5" d="M221,28.7l1.5,0l2.5,4.2c0.2,0.4,0.5,1,0.5,1h0c0,0,0-0.8,0-1.3l0-3.9l1.5,0l0,7.5l-1.5,0L223,32
+          		c-0.2-0.4-0.5-1-0.5-1h0c0,0,0,0.8,0,1.3l0,3.9l-1.5,0L221,28.7z"></path>
+                <path class="st5" d="M230.2,28.6l1.6,0l2.7,7.5l-1.6,0l-0.5-1.6l-2.7,0l-0.5,1.6l-1.5,0L230.2,28.6z M230,33.4l2,0l-0.7-2.2
+          		c-0.1-0.4-0.3-1.2-0.3-1.2h0c0,0-0.2,0.8-0.3,1.2L230,33.4z"></path>
+                <path class="st5" d="M235.1,28.6l1.5,0l0,6.2l3.5,0l0,1.3l-5,0L235.1,28.6z"></path>
+                <path class="st5" d="M190.7,43.1c0-2.2,1.4-3.9,3.6-3.9c1.8,0,2.9,1.1,3.1,2.5l-1.5,0c-0.1-0.8-0.7-1.2-1.6-1.2c-1.4,0-2,1.2-2,2.7
+          		c0,1.5,0.8,2.6,2.1,2.6c0.9,0,1.5-0.5,1.6-1.3l1.5,0c0,0.7-0.3,1.3-0.8,1.8c-0.5,0.5-1.2,0.8-2.3,0.8
+          		C192.2,47,190.7,45.4,190.7,43.1z"></path>
+                <path class="st5" d="M199.7,43.9l-2.5-4.6l1.7,0l1.1,2.2c0.2,0.4,0.5,1.1,0.5,1.1h0c0,0,0.3-0.6,0.5-1.1l1.1-2.2l1.6,0l-2.5,4.6
+          		l0,2.9l-1.5,0L199.7,43.9z"></path>
+                <path class="st5" d="M204.4,39.3l3.4,0c0.8,0,1.4,0.2,1.8,0.5c0.4,0.4,0.6,0.8,0.6,1.4c0,0.8-0.5,1.3-1.2,1.5v0
+          		c0.8,0.2,1.4,0.9,1.4,1.9c0,0.7-0.2,1.2-0.7,1.6c-0.4,0.4-1.1,0.6-1.9,0.6l-3.4,0L204.4,39.3z M207.5,42.3c0.7,0,1.1-0.3,1.1-0.9
+          		c0-0.6-0.4-0.9-1.1-0.9l-1.7,0l0,1.8L207.5,42.3z M205.9,45.5l1.8,0c0.7,0,1.2-0.4,1.2-1c0-0.7-0.5-1.1-1.2-1.1l-1.7,0L205.9,45.5z
+          		"></path>
+                <path class="st5" d="M211.2,39.2l5.5,0l0,1.3l-4,0l0,1.7l3.5,0l0,1.2l-3.5,0l0,2l4,0l0,1.3l-5.6,0L211.2,39.2z">
+                </path>
+                <path class="st5" d="M217.7,39.2l3.4,0c1.4,0,2.4,0.8,2.4,2.1c0,0.9-0.4,1.6-1.4,1.8l0,0c0.7,0.2,1.1,0.6,1.2,1.5
+          		c0.1,1.1,0.1,1.9,0.3,2v0.1l-1.5,0c-0.2-0.1-0.2-0.9-0.3-1.7c-0.1-0.8-0.5-1.3-1.5-1.3l-1.2,0l0,3l-1.5,0L217.7,39.2z M219.3,42.5
+          		l1.6,0c0.8,0,1.2-0.4,1.2-1c0-0.6-0.4-1.1-1.2-1.1l-1.7,0L219.3,42.5z"></path>
+                <path class="st5" d="M224.3,44.3l1.5,0c0.1,0.9,0.6,1.3,1.7,1.3c0.8,0,1.5-0.3,1.5-1c0-0.7-0.7-0.9-1.9-1.1
+          		c-1.3-0.3-2.6-0.6-2.6-2.2c0-1.5,1.2-2.3,2.9-2.3c1.7,0,2.8,0.8,2.9,2.3l-1.5,0c-0.1-0.8-0.7-1.1-1.5-1.1c-0.8,0-1.4,0.4-1.4,0.9
+          		c0,0.6,0.5,0.8,1.6,1c1.5,0.3,2.8,0.7,2.8,2.3c0,1.5-1.2,2.4-2.9,2.4C225.5,46.8,224.3,45.9,224.3,44.3z"></path>
+                <path class="st5" d="M231.3,39.1l5.5,0l0,1.3l-4,0l0,1.7l3.5,0l0,1.2l-3.5,0l0,2l4,0l0,1.3l-5.6,0L231.3,39.1z">
+                </path>
+                <path class="st5" d="M237.4,42.9c0-2.2,1.4-3.9,3.6-3.9c1.8,0,2.9,1.1,3.1,2.5l-1.5,0c-0.1-0.8-0.7-1.2-1.6-1.2c-1.4,0-2,1.2-2,2.7
+          		c0,1.5,0.8,2.6,2.1,2.6c0.9,0,1.5-0.5,1.6-1.3l1.5,0c0,0.7-0.3,1.3-0.8,1.8c-0.5,0.5-1.2,0.8-2.3,0.8
+          		C238.9,46.8,237.4,45.1,237.4,42.9z"></path>
+                <path class="st5" d="M244.8,44.2l0-5.1l1.5,0l0,5.1c0,0.8,0.4,1.3,1.4,1.3c1,0,1.4-0.6,1.4-1.3l0-5.1l1.5,0l0,5.1
+          		c0,1.6-1,2.5-2.9,2.6C245.8,46.7,244.8,45.8,244.8,44.2z"></path>
+                <path class="st5" d="M251.7,39l3.4,0c1.4,0,2.4,0.8,2.4,2.1c0,0.9-0.4,1.6-1.4,1.8l0,0c0.7,0.2,1.1,0.6,1.2,1.5
+          		c0.1,1.1,0.1,1.9,0.3,2v0.1l-1.5,0c-0.2-0.1-0.2-0.9-0.3-1.7c-0.1-0.8-0.5-1.3-1.5-1.3l-1.2,0l0,3l-1.5,0L251.7,39z M253.3,42.3
+          		l1.6,0c0.8,0,1.2-0.4,1.2-1c0-0.6-0.4-1.1-1.2-1.1l-1.7,0L253.3,42.3z"></path>
+                <path class="st5" d="M258.6,39l1.5,0l0,7.5l-1.5,0L258.6,39z"></path>
+                <path class="st5" d="M260.9,39l6,0l0,1.3l-2.3,0l0,6.2l-1.5,0l0-6.2l-2.3,0L260.9,39z"></path>
+                <path class="st5" d="M269.8,43.6l-2.5-4.6l1.7,0l1.1,2.2c0.2,0.5,0.5,1.1,0.5,1.1l0,0c0,0,0.3-0.6,0.5-1.1l1.1-2.2l1.6,0l-2.5,4.6
+          		l0,2.9l-1.5,0L269.8,43.6z"></path>
+                <path class="st5" d="M190.9,53.6c0-2.2,1.3-3.9,3.5-3.9c1.8,0,2.8,1,3,2.4l-0.9,0c-0.2-0.9-0.9-1.6-2.1-1.6c-1.6,0-2.6,1.3-2.6,3.1
+          		c0,1.8,1,3.1,2.6,3.1c1.4,0,2.1-1,2.2-2.1l0.9,0c0,0.7-0.4,1.6-0.9,2.1c-0.5,0.5-1.3,0.8-2.2,0.8C192.3,57.5,190.9,55.8,190.9,53.6
+          		z"></path>
+                <path class="st5" d="M198.6,49.8l5.3,0l0,0.8l-4.4,0l0,2.4l4,0l0,0.8l-4,0l0,2.6l4.5,0l0,0.9l-5.4,0L198.6,49.8z">
+                </path>
+                <path class="st5" d="M205.1,49.8l1,0l3.4,5.2c0.3,0.4,0.6,1,0.6,1h0l0-6.2l0.9,0l0,7.5l-1,0l-3.5-5.2c-0.2-0.4-0.6-0.9-0.6-0.9h0
+          		l0,6.2l-0.9,0L205.1,49.8z"></path>
+                <path class="st5" d="M211.9,49.7l5.9,0l0,0.8l-2.5,0l0,6.7l-0.9,0l0-6.7l-2.5,0L211.9,49.7z"></path>
+                <path class="st5" d="M218.8,49.7l5.3,0l0,0.8l-4.4,0l0,2.4l4,0l0,0.8l-4,0l0,2.6l4.5,0l0,0.9l-5.4,0L218.8,49.7z">
+                </path>
+                <path class="st5" d="M225.4,49.7l3.5,0c1.3,0,2.2,0.8,2.2,2c0,0.9-0.4,1.6-1.3,1.9v0c0.8,0.3,1,0.8,1.1,1.9
+          		c0.1,1.2,0.2,1.5,0.4,1.6l0,0l-1,0c-0.2-0.1-0.2-0.4-0.3-1.7c-0.1-1.1-0.5-1.5-1.5-1.5l-2.1,0l0,3.2l-0.9,0L225.4,49.7z
+          		 M226.3,53.2l2.2,0c1,0,1.6-0.5,1.6-1.4c0-0.9-0.4-1.4-1.5-1.4l-2.3,0L226.3,53.2z"></path>
+                <path class="st5" d="M233.6,53.4c0-2.2,1.4-3.9,3.7-3.9s3.7,1.7,3.7,3.9c0,2.2-1.4,3.9-3.7,3.9S233.6,55.6,233.6,53.4z M240,53.3
+          		c0-1.8-1-3.1-2.7-3.1s-2.7,1.3-2.7,3.1s1,3.1,2.7,3.1S240,55.1,240,53.3z"></path>
+                <path class="st5" d="M242.1,49.6l5.1,0l0,0.8l-4.1,0l0,2.3l3.5,0l0,0.8l-3.5,0l0,3.5l-0.9,0L242.1,49.6z"></path>
+                <path class="st5" d="M249.8,49.5l5.3,0l0,0.8l-4.4,0l0,2.4l4,0l0,0.8l-4,0l0,2.6l4.5,0l0,0.9l-5.4,0L249.8,49.5z">
+                </path>
+                <path class="st5"
+                  d="M258.4,53.2l-2.4-3.7l1.1,0l1.9,3h0l1.9-3l1,0l-2.4,3.7L262,57l-1.1,0l-1.9-3.2h0l-2,3.2l-1.1,0L258.4,53.2z">
+                </path>
+                <path class="st5" d="M261.9,53.2c0-2.2,1.3-3.9,3.5-3.9c1.8,0,2.8,1,3,2.4l-0.9,0c-0.2-0.9-0.9-1.6-2.1-1.6c-1.6,0-2.6,1.3-2.6,3.1
+          		c0,1.8,1,3.1,2.6,3.1c1.4,0,2.1-1,2.2-2.1l0.9,0c0,0.7-0.4,1.6-0.9,2.1c-0.5,0.5-1.3,0.8-2.2,0.8C263.3,57.1,261.9,55.5,261.9,53.2
+          		z"></path>
+                <path class="st5" d="M269.6,49.5l5.3,0l0,0.8l-4.4,0l0,2.4l4,0l0,0.8l-4,0l0,2.6l4.5,0l0,0.9l-5.4,0L269.6,49.5z">
+                </path>
+                <path class="st5" d="M276.2,49.4l0.9,0l0,6.6l3.9,0l0,0.9l-4.9,0L276.2,49.4z"></path>
+                <path class="st5" d="M282,49.4l0.9,0l0,6.6l3.9,0l0,0.9l-4.9,0L282,49.4z"></path>
+                <path class="st5" d="M287.8,49.4l5.3,0l0,0.8l-4.4,0l0,2.4l4,0l0,0.8l-4,0l0,2.6l4.5,0l0,0.9l-5.4,0L287.8,49.4z">
+                </path>
+                <path class="st5" d="M294.3,49.3l1,0l3.4,5.2c0.3,0.4,0.6,1,0.6,1h0l0-6.2l0.9,0l0,7.5l-1,0l-3.5-5.2c-0.2-0.4-0.6-0.9-0.6-0.9h0
+          		l0,6.2l-0.9,0L294.3,49.3z"></path>
+                <path class="st5"
+                  d="M301.3,53.1c0-2.2,1.3-3.9,3.5-3.9c1.8,0,2.8,1,3,2.4l-0.9,0c-0.2-0.9-0.9-1.6-2.1-1.6c-1.6,0-2.6,1.3-2.6,3.1
+          		c0,1.8,1,3.1,2.6,3.1c1.4,0,2.1-1,2.2-2.1l0.9,0c0,0.7-0.4,1.6-0.9,2.1c-0.5,0.5-1.3,0.8-2.2,0.8C302.7,57,301.3,55.3,301.3,53.1z">
+                </path>
+                <path class="st5" d="M309,49.3l5.3,0l0,0.8l-4.4,0l0,2.4l4,0l0,0.8l-4,0l0,2.6l4.5,0l0,0.9l-5.4,0L309,49.3z"></path>
+              </g>
+              <polyline class="st6" points="143.9,24.8 143.9,40 148.6,42.7 143.9,45.5 143.9,61.2 "></polyline>
+
+            </svg>
+          </a>
+          <a class="project-title" href="index.html">
+          Secure Software Development, Security, and Operations (DevSecOps) Practices
+          </a>
+
+          <a class="project-page-link" href="https://www.nccoe.nist.gov/projects/secure-software-development-security-and-operations-devsecops-practices">
+            Go to Project Page
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search" aria-label="Search" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="executive-summary.html">DevSecOps Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="executive-summary.html#executive-summary">Executive Summary</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#background">1.1. Background</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#development-security-and-operations-devsecops">1.1.1. Development, Security, and Operations (DevSecOps)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#the-role-of-ai-in-software-development">1.1.2. The Role of AI in Software Development</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#the-role-of-zero-trust-in-software-development">1.1.3. The Role of Zero Trust in Software Development</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#audience">1.2. Audience</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#scope">1.3. Scope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#challenges">1.4. Challenges</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="project-overview.html">2. Project Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notational-reference-model.html">3. Notional Reference Model for DevSecOps for Demonstration of NIST SSDF</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notational-reference-model.html#phases-of-the-continuous-devsecops-lifecycle">3.1. Phases of the Continuous DevSecOps Lifecycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notational-reference-model.html#plan">3.1.1. Plan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notational-reference-model.html#develop">3.1.2. Develop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notational-reference-model.html#build">3.1.3. Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notational-reference-model.html#test">3.1.4. Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notational-reference-model.html#release">3.1.5. Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notational-reference-model.html#deploy">3.1.6. Deploy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notational-reference-model.html#operate">3.1.7. Operate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notational-reference-model.html#continuous-improvements-security-and-monitoring">3.2. Continuous Improvements, Security and Monitoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notational-reference-model.html#continuous-feedback">3.3. Continuous Feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notational-reference-model.html#continuous-integration-continuous-delivery-ci-cd-pipeline">3.4. Continuous Integration/Continuous Delivery (CI/CD) Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notational-reference-model.html#zero-trust-security">3.5. Zero Trust Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notational-reference-model.html#artificial-intelligence">3.6. Artificial Intelligence</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="example-implementations.html">4. Example Implementations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="example-implementations.html#example-implementation-1-e1">4.1. Example Implementation 1 (E1)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="example-implementations.html#plan">4.1.1. Plan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example-implementations.html#develop">4.1.2. Develop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example-implementations.html#build">4.1.3. Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example-implementations.html#test">4.1.4. Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example-implementations.html#release">4.1.5. Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example-implementations.html#deploy">4.1.6. Deploy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example-implementations.html#operate">4.1.7. Operate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example-implementations.html#continuous-improvements-security-and-monitoring">4.1.8. Continuous Improvements, Security and Monitoring</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="next-steps.html">5. Next Steps</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="appendix-a.html">Appendix A List of Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-b.html">Appendix B Component Description</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Appendix C Collaborators and their Contribution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#c-1-ami">C.1. AMI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c-1-1-meridian-firmware-management-service">C.1.1. Meridian Firmware Management Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-1-2-meridian-security-services-vms-and-sbom">C.1.2. Meridian Security Services: VMS and SBOM</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#c-2-black-duck">C.2. Black Duck</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c-2-1-polaris-platform">C.2.1. Polaris Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-2-2-black-duck-sca">C.2.2. Black Duck SCA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-2-3-black-duck-coverity">C.2.3. Black Duck Coverity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-2-4-continuous-dynamic">C.2.4. Continuous Dynamic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-2-5-software-risk-manager-srm">C.2.5. Software Risk Manager (SRM)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#c-3-cyberark-software">C.3. CyberArk Software</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c-3-1-cyberark-privilege-cloud">C.3.1. CyberArk Privilege Cloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-3-2-cyberark-endpoint-privilege-manager">C.3.2. CyberArk Endpoint Privilege Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-3-3-cyberark-code-sign-manager">C.3.3. CyberArk Code Sign Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-3-4-cyberark-secrets-hub">C.3.4. CyberArk Secrets Hub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-3-5-cyberark-conjur-cloud">C.3.5. CyberArk Conjur Cloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-3-6-cyberark-workload-identity">C.3.6. CyberArk Workload Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-3-7-cyberark-certificate-manager-saas">C.3.7. CyberArk Certificate Manager SaaS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-3-8-cyberark-certificate-manager-self-hosted">C.3.8. CyberArk Certificate Manager (Self-Hosted)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#c-4-dell-technologies">C.4. Dell Technologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c-5-digicert">C.5. DigiCert</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c-5-1-digicert-software-trust-manager">C.5.1. DigiCert Software Trust Manager</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#c-6-endor-labs">C.6. Endor Labs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c-6-1-reachability-based-sca">C.6.1. Reachability-Based SCA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-6-2-endor-code-sast-secret-scanning">C.6.2. Endor Code (SAST + Secret Scanning)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-6-3-container-scanning">C.6.3. Container Scanning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-6-4-endor-patches">C.6.4. Endor Patches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-6-5-ai-code-security-review">C.6.5. AI Code Security Review</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#c-7-gitlab">C.7. GitLab</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c-7-1-the-gitlab-platform">C.7.1. The GitLab Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-7-2-gitlab-duo-ai">C.7.2. GitLab Duo (AI)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#c-8-google">C.8. Google</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c-8-1-cloud-workstations">C.8.1. Cloud Workstations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-8-2-google-cloud-build">C.8.2. Google Cloud Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-8-3-artifact-registry-and-artifact-analysis">C.8.3. Artifact Registry and Artifact Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-8-4-binary-authorization">C.8.4. Binary Authorization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-8-5-cloud-deploy">C.8.5. Cloud Deploy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-8-6-google-kubernetes-engine">C.8.6. Google Kubernetes Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-8-7-cloud-run">C.8.7. Cloud Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-8-8-security-command-center">C.8.8. Security Command Center</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-8-9-deps-dev">C.8.9. deps.dev</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#c-9-ibm">C.9. IBM</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c-9-1-ibm-cloud-and-devsecops">C.9.1 IBM Cloud and DevSecOps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-9-2-ibm-cloud-continuous-delivery">C.9.2 IBM Cloud Continuous Delivery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-9-3-ibm-cloud-container-registry-and-vulnerability-advisor">C.9.3 IBM Cloud Container Registry and Vulnerability Advisor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-9-4-ibm-cloud-kubernetes-service-and-red-hat-openshift-services">C.9.4 IBM Cloud Kubernetes Service and Red Hat OpenShift Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-9-5-ibm-cloud-secrets-manager">C.9.5 IBM Cloud Secrets Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-9-6-ibm-cloud-key-protect">C.9.6 IBM Cloud Key Protect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-9-7-ibm-cloud-object-storage-s3compatible">C.9.7 IBM Cloud Object Storage (S3‑Compatible)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#c-10-microsoft-and-github-advanced-security-ghazdo">C.10. Microsoft and GitHub Advanced Security (GHAzDO)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c-10-1-azure-container-registry-acr">C.10.1. Azure Container Registry (ACR)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-10-2-azure-devops-azdo">C.10.2. Azure DevOps (AzDO)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-10-3-azure-entra-id">C.10.3. Azure Entra ID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-10-4-azure-key-vault-akv">C.10.4. Azure Key Vault (AKV)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-10-5-azure-managed-devops-pool-mdp">C.10.5. Azure Managed DevOps Pool (MDP)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-10-6-azure-privileged-identity-management-pim">C.10.6. Azure Privileged Identity Management (PIM)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-10-7-azure-sentinel">C.10.7. Azure Sentinel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-10-8-bicep-and-azure-resource-manager-arm">C.10.8. Bicep and Azure Resource Manager (ARM)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-10-9-github-advanced-security-ghas">C.10.9. GitHub Advanced Security (GHAS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-10-10-github-copilot">C.10.10. GitHub Copilot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-10-11-ides-visual-studio-and-visual-studio-code-vs-code">C.10.11. IDEs – Visual Studio and Visual Studio Code (VS Code)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-10-12-microsoft-defender-for-cloud-mdc">C.10.12. Microsoft Defender for Cloud (MDC)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-10-13-microsoft-sbom-tool">C.10.13. Microsoft SBOM Tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-10-14-notary-project">C.10.14. Notary Project</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#c-11-nextlabs">C.11. NextLabs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c-11-1-nextlabs-cloudaz-zero-trust-policy-platform">C.11.1. NextLabs CloudAz Zero Trust Policy Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-11-2-nextlabs-policy-enforcer">C.11.2. NextLabs Policy Enforcer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c-11-2-1-application-enforcer-externalized-authorization-management-abac">C.11.2.1. Application Enforcer – Externalized Authorization Management &amp; ABAC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c-11-2-2-data-access-enforcer-secure-global-data-access">C.11.2.2. Data Access Enforcer – Secure Global Data Access</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c-11-2-3-skydrm-enterprise-digital-rights-management">C.11.2.3. SkyDRM – Enterprise Digital Rights Management</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#c-12-palo-alto-networks">C.12. Palo Alto Networks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c-12-1-cortex-cloud-security-platform">C.12.1. Cortex Cloud Security Platform</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#c-13-sagittal-ai">C.13. Sagittal AI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c-13-1-neo">C.13.1. Neo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#c-14-scribe-security">C.14. Scribe Security</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c-14-1-scribehub">C.14.1. ScribeHub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-14-2-heyman">C.14.2. Heyman</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-d.html">Appendix D Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Secure Software Development, Security, and Operations (DevSecOps) Practices</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Appendix C Collaborators and their Contribution</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/appendix-c.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="appendix-c-collaborators-and-their-contribution">
+<h1>Appendix C Collaborators and their Contribution<a class="headerlink" href="#appendix-c-collaborators-and-their-contribution" title="Link to this heading"></a></h1>
+<p>The organizations participating in this project submitted their capabilities in response to an open call in the Federal Register and entered into a CRADA with
+NIST. Each collaborator provides products, services, and/or expertise relevant to the project. Each of these technology collaborators has described the relevant
+products and capabilities they bring to this project in the following subsections.</p>
+<p>The NCCoE does not certify, validate, or endorse products or services. We demonstrate the capabilities that can be achieved by using participants’ contributed
+technology. Your organization’s information security experts should identify the products that will best integrate with your existing tools and IT system
+infrastructure.</p>
+<section id="c-1-ami">
+<h2>C.1. AMI<a class="headerlink" href="#c-1-ami" title="Link to this heading"></a></h2>
+<p>AMI offers firmware for security, orchestration, and manageability solutions and enables compute platforms from on-premises, to the cloud, to the edge.</p>
+<section id="c-1-1-meridian-firmware-management-service">
+<h3>C.1.1. Meridian Firmware Management Service<a class="headerlink" href="#c-1-1-meridian-firmware-management-service" title="Link to this heading"></a></h3>
+<p>Meridian Firmware Management Service (FMS), a cloud-hosted solution, is a component of AMI’s firmware platform, designed to improve how Original Design
+Manufacturers (ODMs) manage platform firmware lifecycles. As part of the broader Meridian platform, FMS’s role is to deliver a secure, scalable pipeline for
+accessing and maintaining AMI firmware sources, allowing ODMs to port and customize firmware for their specific hardware platforms. The service exposes suites
+of APIs to manage firmware sources, perform cryptographic signing, orchestrate automated test scripts, generate SBOM reports, and deploy validated firmware
+directly to platforms.</p>
+</section>
+<section id="c-1-2-meridian-security-services-vms-and-sbom">
+<h3>C.1.2. Meridian Security Services: VMS and SBOM<a class="headerlink" href="#c-1-2-meridian-security-services-vms-and-sbom" title="Link to this heading"></a></h3>
+<p>The Meridian Vulnerability Management Service (VMS) and SBOM Security Service under the cloud-based Meridian Security Services provides a framework for securing
+the firmware supply chain across AMI, ODM, and Original Equipment Manufacturer (OEM) deliverables. By generating and continuously updating SBOMs for every
+firmware build, the service provides visibility into embedded components, libraries, and third-party dependencies. This supports identification and assessment
+of vulnerabilities tied to specific versions, track component provenance, and responses to emerging CVEs. For ODMs and OEMs, the service supports identification
+and management of inherited risks from upstream firmware sources. Integrated with vulnerability databases and real-time threat intelligence, the service
+supports automated alerts, risk scoring, and policy implementations.</p>
+</section>
+</section>
+<section id="c-2-black-duck">
+<h2>C.2. Black Duck<a class="headerlink" href="#c-2-black-duck" title="Link to this heading"></a></h2>
+<p>Black Duck offers a portfolio of software security products and services that address application security needs in sectors such as financial services,
+automotive, critical infrastructure, and cloud services. Black Duck, originally a division of Synopsys called the Software Integrity Group, officially separated
+from Synopsys as an independent company and was rebranded as Black Duck.</p>
+<section id="c-2-1-polaris-platform">
+<h3>C.2.1. Polaris Platform<a class="headerlink" href="#c-2-1-polaris-platform" title="Link to this heading"></a></h3>
+<p>The Black Duck Polaris™ Platform is an integrated, cloud-based application security testing solution for use by development and DevSecOps teams. Polaris brings
+the Black Duck Coverity, Dynamic, and SCA security analysis engines together in a unified platform for risk identification and management. Risk classes
+identified include hard-coded secrets, security and quality defects in proprietary code, weaknesses in IaC templates, vulnerabilities in software supply chains,
+and deployment risks in web applications, single-page applications, and cloud-native APIs.</p>
+</section>
+<section id="c-2-2-black-duck-sca">
+<h3>C.2.2. Black Duck SCA<a class="headerlink" href="#c-2-2-black-duck-sca" title="Link to this heading"></a></h3>
+<p>Black Duck® SCA supports management of security, code quality, and license risks that come from the use of open source and third-party code in applications and
+containers. Black Duck SCA is a software supply chain security and risk management solution capable of analyzing binary, SBOM, and source code present within
+applications.</p>
+</section>
+<section id="c-2-3-black-duck-coverity">
+<h3>C.2.3. Black Duck Coverity<a class="headerlink" href="#c-2-3-black-duck-coverity" title="Link to this heading"></a></h3>
+<p>Coverity® Static Analysis provides comprehensive code scanning to support software security, functional safety, and industry standards. Coverity facilitates
+tracking and management of business coding standards. The Code Sight™ IDE plugin extends Coverity analysis to the developer desktop, enabling developers to find
+and fix quality and security defects as they code.</p>
+</section>
+<section id="c-2-4-continuous-dynamic">
+<h3>C.2.4. Continuous Dynamic<a class="headerlink" href="#c-2-4-continuous-dynamic" title="Link to this heading"></a></h3>
+<p>Continuous Dynamic™ is a DAST solution that supports finding vulnerabilities in websites and applications. The DAST solution performs scans and testing of
+entire application portfolios as opposed to performing targeted scans. Continuous Dynamic combines AI with expert security analysis.</p>
+</section>
+<section id="c-2-5-software-risk-manager-srm">
+<h3>C.2.5. Software Risk Manager (SRM)<a class="headerlink" href="#c-2-5-software-risk-manager-srm" title="Link to this heading"></a></h3>
+<p>Software Risk Manager™ is an application security posture management (ASPM) solution for supporting security and development teams in managing application
+security at enterprise scale. Correlation, deduplication, and summarization of findings across manual and automated AST tools help prioritize high-impact fixes
+based on risk. Software Risk Manager provides software risk assessment of components including custom code, third-party, and open source as well as related
+components like APIs, containers, and microservices.</p>
+</section>
+</section>
+<section id="c-3-cyberark-software">
+<h2>C.3. CyberArk Software<a class="headerlink" href="#c-3-cyberark-software" title="Link to this heading"></a></h2>
+<p>CyberArk is a provider of Identity Security, centered on privilege controls, with a focus on protecting organizations against identity-based cyber attacks.
+Privilege controls are applied to all identities—human and machine—with continuous threat detection and prevention across the identity lifecycle. CyberArk
+supports Zero Trust and least-privilege with visibility so that identities can securely access approved resources in multiple locations from a single Identity
+Security platform.</p>
+<section id="c-3-1-cyberark-privilege-cloud">
+<h3>C.3.1. CyberArk Privilege Cloud<a class="headerlink" href="#c-3-1-cyberark-privilege-cloud" title="Link to this heading"></a></h3>
+<p>CyberArk Privilege Cloud is a SaaS-based privileged access management (PAM) solution that is used to help organizations secure, control, and monitor privileged
+access across hybrid environments. It offers automated credential management, real-time session monitoring, and least-privilege enforcement through native,
+isolated access. It includes secure tunnels, SSH session support, and integrations with platforms like ServiceNow.</p>
+</section>
+<section id="c-3-2-cyberark-endpoint-privilege-manager">
+<h3>C.3.2. CyberArk Endpoint Privilege Manager<a class="headerlink" href="#c-3-2-cyberark-endpoint-privilege-manager" title="Link to this heading"></a></h3>
+<p>CyberArk Endpoint Privilege Manager supports least-privilege enforcement and blocking and containment of attacks at the endpoint. A combination of Endpoint
+Privilege Management, Privilege Threat Protection, and Application Control stops support-containment of damaging attacks at the point of entry. These protection
+technologies are deployed as a single agent for desktops, laptops, and servers running Windows, Windows Server, macOS, or Linux.</p>
+</section>
+<section id="c-3-3-cyberark-code-sign-manager">
+<h3>C.3.3. CyberArk Code Sign Manager<a class="headerlink" href="#c-3-3-cyberark-code-sign-manager" title="Link to this heading"></a></h3>
+<p>CyberArk Code Sign Manager is a centralized, policy-driven solution for securing enterprise code signing processes by safeguarding private keys in secure
+hardware or software modules (HSMs or CM-SH), enforcing role-based access, and enabling audit-ready workflows. It combats key sprawl and unauthorized usage by
+avoiding private keys from leaving the secure environment, while allowing developers to sign code from any location without direct access to the keys. The
+platform supports timestamping, certificate lifecycle management, and integration with CI/CD pipelines. With upcoming SaaS deployment options and compatibility
+across Windows, Linux, and macOS environments, Code Sign Manager is designed to support software supply chain integrity and trust.</p>
+</section>
+<section id="c-3-4-cyberark-secrets-hub">
+<h3>C.3.4. CyberArk Secrets Hub<a class="headerlink" href="#c-3-4-cyberark-secrets-hub" title="Link to this heading"></a></h3>
+<p>CyberArk Secrets Hub is a SaaS solution for providing centralized visibility and control over secrets stored in native cloud provider vaults such as AWS Secrets
+Manager, Azure Key Vault, and GCP Secret Manager. It supports security team discovery, monitoring and management of secrets across multi-cloud environments with
+a goal of avoiding disruption of developer workflows or code changes. Secrets Hub acts as a bridge between CyberArk Privilege Cloud and cloud-native secret
+stores. It supports automated onboarding, analytics for unused or unrotated secrets, and secure synchronization of credentials from Privilege Cloud to cloud
+vaults.</p>
+</section>
+<section id="c-3-5-cyberark-conjur-cloud">
+<h3>C.3.5. CyberArk Conjur Cloud<a class="headerlink" href="#c-3-5-cyberark-conjur-cloud" title="Link to this heading"></a></h3>
+<p>CyberArk Conjur Cloud is a SaaS-based, cloud-agnostic secrets management solution designed to secure non-human access to credentials across dynamic,
+multi-cloud, and hybrid environments. It provides centralized control, auditability, and policy enforcement for secrets used by applications, containers, and
+DevOps tools. Conjur Cloud integrates with CyberArk Privilege Cloud and Certificate Manager, supports secure secret distribution via Conjur Cloud Edge, and
+enables certificate issuance through integrations with CAs. It addresses the “secret zero” problem by avoiding hardcoding or exposure of secrets.</p>
+</section>
+<section id="c-3-6-cyberark-workload-identity">
+<h3>C.3.6. CyberArk Workload Identity<a class="headerlink" href="#c-3-6-cyberark-workload-identity" title="Link to this heading"></a></h3>
+<p>CyberArk Workload Identity is a cloud-native solution designed to secure machine-to-machine authentication across dynamic, multi-cloud, and hybrid environments.
+It issues short-lived, cryptographically verifiable identities to workloads, such as containers, VMs, and serverless functions, without relying on static
+secrets, enabling secure workload-to-workload communication. Built on standards like SPIFFE/SPIRE, it integrates with CyberArk Conjur and Secrets Hub.</p>
+</section>
+<section id="c-3-7-cyberark-certificate-manager-saas">
+<h3>C.3.7. CyberArk Certificate Manager SaaS<a class="headerlink" href="#c-3-7-cyberark-certificate-manager-saas" title="Link to this heading"></a></h3>
+<p>CyberArk Certificate Manager SaaS is a cloud-native solution designed to secure machine identities across dynamic, multi-cloud, and hybrid environments. It
+automates the discovery, issuance, renewal, and revocation of SSL/TLS certificates to eliminate outages and ensure secure communication between services. It
+enables automated, policy-based certificate management to eliminate manual errors. It is built to integrate with certificate authorities, cloud providers,
+DevOps toolchains, and enterprise platforms to enforce zero-trust principles, eliminate certificate sprawl, and support consistent policy enforcement across
+distributed systems.</p>
+</section>
+<section id="c-3-8-cyberark-certificate-manager-self-hosted">
+<h3>C.3.8. CyberArk Certificate Manager (Self-Hosted)<a class="headerlink" href="#c-3-8-cyberark-certificate-manager-self-hosted" title="Link to this heading"></a></h3>
+<p>CyberArk Certificate Manager (Self-Hosted) is an enterprise-grade solution designed to secure machine identities across dynamic, multi-cloud, and hybrid
+environments. It provides control over the discovery, issuance, renewal, and revocation of SSL/TLS certificates to reduce outages and enable secure
+service-to-service communication. It is built to integrate with certificate authorities, cloud infrastructure, DevOps tools, and enterprise systems to support
+zero-trust initiatives, minimize certificate sprawl, and implement consistent policies across environments. It centralizes governance, detailed audit logs, and
+customizable workflows.</p>
+</section>
+</section>
+<section id="c-4-dell-technologies">
+<h2>C.4. Dell Technologies<a class="headerlink" href="#c-4-dell-technologies" title="Link to this heading"></a></h2>
+<p>Dell Technologies provides infrastructure designed to enable organizations to build and protect information and embed security throughout the product or
+application lifecycle with the objective of products and applications being built securely and remain secure. Dell’s security program includes analysis
+activities such as threat modeling, static code analysis, and security testing to discover and address security defects throughout the development lifecycle.</p>
+<p>Dell’s baseline security capabilities are designed to meet customers’ security objectives and policy requirements including an internal business readiness
+review process and internal security assessments of products or applications, to support Dell’s Secure Development Lifecycle (SDL).</p>
+</section>
+<section id="c-5-digicert">
+<h2>C.5. DigiCert<a class="headerlink" href="#c-5-digicert" title="Link to this heading"></a></h2>
+<p>DigiCert® provides high-assurance digital certificates and software to securely store and manage PKI and DNS. DigiCert solutions are designed to provide digital
+trust for web TLS/SSL, identity, authentication, and encryption for Internet of Things (IoT)X, code and content signing, email, Post-Quantum Cryptography, and
+DNS.</p>
+<section id="c-5-1-digicert-software-trust-manager">
+<h3>C.5.1. DigiCert Software Trust Manager<a class="headerlink" href="#c-5-1-digicert-software-trust-manager" title="Link to this heading"></a></h3>
+<p>DigiCert® Software Trust Manager centralizes code signing governance to help companies comply with regulations. It securely manages the code signing certificate
+lifecycle, including auto-renewing and auto-rekeying, plus certificate and keypair storage in cloud-based FIPS 140-2 Level 3 HSMs.</p>
+<p>Software Trust Manager gives organizations granular control over team, and role-based access, privileges, policy, certificate and keypair templates, and
+workflows, all with signing backed by Private or Public (Internal) PKI. Scanning for vulnerabilities, malware and license issues, signing code and software
+artifacts, such as SBOMs, help protect the software supply chain.</p>
+<p>With native integrations, APIs, and CLIs, DigiCert Software Trust Manager connects to modern CI/CD and development platforms, allowing automation to speed
+software delivery and reduce manual delays and errors.</p>
+</section>
+</section>
+<section id="c-6-endor-labs">
+<h2>C.6. Endor Labs<a class="headerlink" href="#c-6-endor-labs" title="Link to this heading"></a></h2>
+<p>Endor Labs is an AppSec platform for AI and open source-driven software development. Endor Labs offers code reviews, static analysis, risk-based prioritization,
+and efficient remediation in a single, connected view. Its products cover open source, AI-generated and human-written code, and support flexible policies and
+APIs. The endorctl client application provides access to the capabilities described below.</p>
+<section id="c-6-1-reachability-based-sca">
+<h3>C.6.1. Reachability-Based SCA<a class="headerlink" href="#c-6-1-reachability-based-sca" title="Link to this heading"></a></h3>
+<p>Endor Labs uses deep program analysis to build a call graph of applications, showing whether vulnerable code is reachable instead of just present. Upgrade
+Impact Analysis steers developers toward safe upgrades or, when upgrades are risky, applies minimal and verifiable patches that fix issues without breaking
+functionality. The platform also uncovers transitive dependencies, AI models, and GitHub Actions. It centralizes inventories and monitors every item for more
+than 150 risk factors across license, code quality, maintainability, and malicious software to prevent supply chain attacks. A native MCP server brings that
+same intelligence straight into AI coding assistants, and as AI accelerates the flow of code and dependencies, this blend of precise reachability analysis,
+in-workflow remediation, and AI code governance cuts noise, sustains developer trust and helps teams meet remediation SLAs.</p>
+</section>
+<section id="c-6-2-endor-code-sast-secret-scanning">
+<h3>C.6.2. Endor Code (SAST + Secret Scanning)<a class="headerlink" href="#c-6-2-endor-code-sast-secret-scanning" title="Link to this heading"></a></h3>
+<p>Endor Code brings SAST into the same platform that powers SCA, container scanning, and secrets detection, so it is not necessary to juggle separate tools, UIs,
+or policy engines. Endor Code ships with easily customized curated rules by a team of security researchers. Findings are actionable and backed by code-level
+context to inform developers regarding what triggered an alert and what to do next. Endor Code is managed through a unified policy engine.</p>
+</section>
+<section id="c-6-3-container-scanning">
+<h3>C.6.3. Container Scanning<a class="headerlink" href="#c-6-3-container-scanning" title="Link to this heading"></a></h3>
+<p>Endor Labs integrates container scanning directly with SCA to provide a single view of vulnerability risk across application code and container images. False
+positives are reduced by correlating findings across both scans and extending reachability analysis to containers. Layered analysis identifies exactly which
+part of the image introduced a vulnerability, base image vs. app layer to enable assigning a fix to the right team. Combined with consolidated SBOMs and CI/CD
+policies for trusted base images supports remediation, ownership, and streamlined security from one platform. Endor Labs enhances software supply chain security
+by providing transparent mechanisms for signing and verifying software artifacts.</p>
+</section>
+<section id="c-6-4-endor-patches">
+<h3>C.6.4. Endor Patches<a class="headerlink" href="#c-6-4-endor-patches" title="Link to this heading"></a></h3>
+<p>Endor Patches are backported security patches that permit vulnerability fixes without an upgrade. Endor extracts and backports vetted open-source patches from
+newer versions and applies them directly to the desired version. These minimal patches are scoped only to the security fix and tested for compatibility. These
+can be applied manually or automatically during builds across many repos. Patches are transparent and verifiable with reproducible builds and full SBOM
+reporting, and, with reachability analysis and Upgrade Impact Analysis, can support decisions regarding when patching is the right call and when a safe upgrade
+is possible.</p>
+</section>
+<section id="c-6-5-ai-code-security-review">
+<h3>C.6.5. AI Code Security Review<a class="headerlink" href="#c-6-5-ai-code-security-review" title="Link to this heading"></a></h3>
+<p>AI Security Code Review from Endor Labs detects material changes to an application’s security architecture. A material change might include the introduction of
+a new API endpoint, alteration to authentication methods, collection of additional types of personally identifiable information (PII), or changes to the
+cryptographic library for SSL, as examples. Endor Labs uses a multi-agent architecture for AI Security Code Review. The AI agents mimic the way a human
+application security engineer would approach a secure code review by playing a distinct role in the analysis process. The AI agents work in sequence to analyze
+every PR, identify security-relevant changes, and then categorize and prioritize them. Together, the agents form a layered reasoning system that moves from
+“what changed” to “why it matters” for security.</p>
+</section>
+</section>
+<section id="c-7-gitlab">
+<h2>C.7. GitLab<a class="headerlink" href="#c-7-gitlab" title="Link to this heading"></a></h2>
+<p>GitLab provides a DevSecOps platform in a single application designed to constitute the entire software development lifecycle—from source code management and
+CI/CD to issue tracking, security, testing, deployment, and monitoring. The platform can be used as either a traditional SaaS solution, a single-tenant
+dedicated SaaS offering (with a FedRAMP option), or via self-managed and cloud-agnostic instances that customers control and operate (connected to the Internet
+or not). GitLab Duo adds advanced AI features to each step of the SDLC. Customers can swap one or more built-in features out.</p>
+<section id="c-7-1-the-gitlab-platform">
+<h3>C.7.1. The GitLab Platform<a class="headerlink" href="#c-7-1-the-gitlab-platform" title="Link to this heading"></a></h3>
+<p>GitLab is an integrated DevSecOps platform that covers all stages of the software development lifecycle in a single application with a unified data store. For
+planning, it includes issue creation/tracking, milestones to organize work, boards for project management, roadmaps for strategic planning, and requirements for
+management capabilities. The development core is Git-based source code management with merge requests for code review and a Web IDE. GitLab’s CI/CD pipelines
+automate building, testing, and packaging code, supporting multiple languages and frameworks and generating SBOMs. Automated testing is integrated throughout,
+including unit tests, integration tests, code quality checks, and accessibility testing. Security scanning throughout the pipeline includes SAST, DAST,
+dependency scanning, and container scanning. A built-in package registry supports various formats and container registry for Docker images featuring
+container-specific SBOMs. GitLab allows automated deployment to multiple environments, including Kubernetes integration and support for gradual rollouts.
+Application performance monitoring, error tracking, and incident management help teams maintain production systems. Integrated logging and tracing provide
+visibility into application behavior.</p>
+</section>
+<section id="c-7-2-gitlab-duo-ai">
+<h3>C.7.2. GitLab Duo (AI)<a class="headerlink" href="#c-7-2-gitlab-duo-ai" title="Link to this heading"></a></h3>
+<p>GitLab Duo is GitLab’s suite of AI features designed to enhance developer productivity throughout the software development lifecycle, integrating AI
+capabilities directly into the GitLab platform rather than requiring separate tools or plugins. Key features include AIcode completion and generation that
+understands context across files and projects, conversational AI chatting for answering questions about code, GitLab features, and development best practices,
+quick summarization of sections of code, issues, merge requests, epics or discussion threads, vulnerability explanations for security issues, including
+remediation guidelines, root cause analysis for failed pipelines, automated suggestions during code reviews, automatic creation of unit tests based on existing
+code, and an overarching umbrella of privacy protection so that code and queries are not retained or used to train future models.</p>
+</section>
+</section>
+<section id="c-8-google">
+<h2>C.8. Google<a class="headerlink" href="#c-8-google" title="Link to this heading"></a></h2>
+<p>Alphabet Inc. (Google) is an American multinational technology corporation. Google specializes in internet-related services and products, which include online
+advertising technologies, a search engine, cloud computing (Google Cloud), software, and hardware. Google’s portfolio of products and services includes
+categories such as search, advertising, operating systems (Android, Chrome OS), cloud platforms (Google Cloud), threat intelligence (Mandiant), video sharing
+(YouTube), mapping (Google Maps), artificial intelligence (Google Deep Mind), and a range of consumer electronics like smartphones (Pixel) and smart home
+devices. Google is also heavily involved in research and development, constantly involved in areas like autonomous driving (Waymo) and life sciences (Calico).</p>
+<section id="c-8-1-cloud-workstations">
+<h3>C.8.1. Cloud Workstations<a class="headerlink" href="#c-8-1-cloud-workstations" title="Link to this heading"></a></h3>
+<p>Cloud Workstations is a managed development environment. It allows for running inside a VPC perimeter or can apply a “no source code on local devices.”
+Workstations can run inside any editor, including IntelliJ IDEA, PyCharm, Rider, and CLion through JetBrains Gateway, as well as Posit Workbench. It also
+provides a managed experience using predefined or custom containers to specify environment configuration, such as pre-installed tools, libraries, IDE
+extensions, preloaded files, and start-up scripts. Finally, Cloud Workstations supports Gemini Code Assist, which provides AI assistance to developers, such as
+auto code completion, code generation, and chat.</p>
+</section>
+<section id="c-8-2-google-cloud-build">
+<h3>C.8.2. Google Cloud Build<a class="headerlink" href="#c-8-2-google-cloud-build" title="Link to this heading"></a></h3>
+<p>Google Cloud Build is Google’s serverless CI/CD platform. Cloud Build supports fast builds via access to machines connected via Google’s global network and
+allows running of builds on high-CPU VMs and to cache source code, images, or other dependencies. Builds can be run on default or private pools based on
+networking and scaling needs. Default pool lets you run builds in a secure, hosted environment with access to the public internet. Private pools are private,
+dedicated pools of workers offering you greater flexibility over the build environment with greater concurrency, and the ability to access resources in a
+private network. Cloud Build features native integration with other Google CI/CD products, including Google Kubernetes Engine, Cloud Run, App Engine, Cloud
+Functions, and Firebase. Finally, Cloud Build automatically generates provenance metadata and verification for container images and language packages at build
+time to trace binary to the source code and prevent tampering.</p>
+</section>
+<section id="c-8-3-artifact-registry-and-artifact-analysis">
+<h3>C.8.3. Artifact Registry and Artifact Analysis<a class="headerlink" href="#c-8-3-artifact-registry-and-artifact-analysis" title="Link to this heading"></a></h3>
+<p>Artifact Registry, Google’s universal package manager, permits central storage of artifacts and build dependencies as part of an integrated Google Cloud
+experience. Artifact Registry natively supports storage of Docker container images, language packages (including Python, Javascript, Go, etc.), OS packages
+(including APT and RPM), and generic package formats. In addition to local storage, Artifact Registry provides remote repositories to cache dependencies from
+upstream public sources to provide greater control over the artifacts and their metadata, as well as virtual repositories to group remote and private
+repositories behind a single endpoint. Artifact Registry natively integrates with Artifact Analysis, which provides vulnerability scanning and metadata
+generation for containers on Google Cloud. Artifact Analysis allows for continuous scanning of artifacts in Artifact Registry, as well as On-Demand Scanning for
+local artifacts. Artifact Analysis further allows for the generation of SBOM.</p>
+</section>
+<section id="c-8-4-binary-authorization">
+<h3>C.8.4. Binary Authorization<a class="headerlink" href="#c-8-4-binary-authorization" title="Link to this heading"></a></h3>
+<p>Binary Authorization is a service on Google Cloud that provides centralized software supply-chain security for applications that run on Google Kubernetes Engine
+(GKE) and Cloud Run. Binary Authorization enforcement can be configured to apply that images that are being deployed conform with a policy that users define.
+Images that conform with the policy are allowed to be deployed; otherwise, they are disallowed from being deployed. Alternatively, users can configure
+continuous validation with check-based platform policies to periodically monitor that container images associated with running Pods conform to a policy that
+they define. If images don’t conform with the policy, CV produces log entries in Cloud Logging.</p>
+</section>
+<section id="c-8-5-cloud-deploy">
+<h3>C.8.5. Cloud Deploy<a class="headerlink" href="#c-8-5-cloud-deploy" title="Link to this heading"></a></h3>
+<p>Cloud Deploy creates deployment pipelines for GKE, Cloud Run, and other supported runtimes. It allows defining releases and progressing them through
+environments, such as test, stage, and production. Cloud Deploy provides one-step promotion and rollback of releases via the web console, CLI, or API. Built-in
+metrics enable insight into deployment frequency and success. Furthermore, it is fully integrated with GKE, Cloud Run, and Anthos deployment platform available,
+which allows locking down release progression via IAM, monitor release events with Cloud Logging, and achieve traceability with Cloud Audit Logs. It also can be
+integrated with DevOps tools, such as CI and ticketing. Cloud Deploy brings Skaffold to pipelines, which, in unison with Cloud Code, brings pipeline parity
+across dev and CI/CD.</p>
+</section>
+<section id="c-8-6-google-kubernetes-engine">
+<h3>C.8.6. Google Kubernetes Engine<a class="headerlink" href="#c-8-6-google-kubernetes-engine" title="Link to this heading"></a></h3>
+<p>Google Kubernetes Engine is a scalable, automated Kubernetes service. GKE supports up to 65,000 nodes per cluster, which allows for model training, serving,
+inference, conducting ad hoc research, and managing auxiliary tasks. GKE provides fully automated cluster life cycle management, pod and cluster autoscaling,
+cost visibility, and automated infrastructure cost optimization, plus management, governance, security, and configuration for multiple teams and clusters with
+unified console experience and integrated service mesh. GKE integrates natively with the suite of Google Cloud products, allowing for Google Cloud Build and
+Cloud Deploy to deploy directly to the GKE cluster.</p>
+</section>
+<section id="c-8-7-cloud-run">
+<h3>C.8.7. Cloud Run<a class="headerlink" href="#c-8-7-cloud-run" title="Link to this heading"></a></h3>
+<p>Cloud Run allows users to run apps or websites on a managed platform, while allowing writing of code using a choice of language, framework, and libraries,
+package it up as a container, and deploy it with one command. Cloud Run automatically scales containers up and down from zero, and only charges when code is
+running. Cloud Run can also automate getting to production, using buildpacks that enable direct deployment from source without having to install Docker on your
+machine. Builds can be automated and code can be deployed whenever new commits are pushed to a given branch of a Git repository. Finally, Cloud Run supports AI
+inference workloads by providing access to NVIDIA L4 GPUs.</p>
+</section>
+<section id="c-8-8-security-command-center">
+<h3>C.8.8. Security Command Center<a class="headerlink" href="#c-8-8-security-command-center" title="Link to this heading"></a></h3>
+<p>Security Command Center (SCC) delivers security for Google Cloud environments with solutions for managing cloud risks and protecting AI workloads. SCC allows
+users to discover and catalog AI assets, including the use of models, applications, and data, guard against prompt injection, jailbreak, data loss, malicious
+URLs, and offensive content, and defend AI systems against AI-specific threats and risks. It provides support to discover malicious and suspicious activity in
+Google Cloud services, including Compute Engine, GKE, BigQuery, CloudRun, and more. Finally, SCC automatically scans the user cloud environment to identify
+cloud misconfigurations and software vulnerabilities that could lead to compromise without having to install or manage agents. High-risk findings are presented
+on the Security Command Center risk dashboard, to permit users to know which issues to prioritize.</p>
+</section>
+<section id="c-8-9-deps-dev">
+<h3>C.8.9. deps.dev<a class="headerlink" href="#c-8-9-deps-dev" title="Link to this heading"></a></h3>
+<p>deps.dev is Google’s open-source data warehouse, designed to enhance the understanding, security, and health of the open-source software supply chain. It
+functions by collecting, processing, and aggregating data on open-source artifacts, making it universally accessible and useful, to help developers better
+understand the structure, construction, and security of open-source software packages. The service can be used via the deps.dev website, API or BigQuery
+datasets.</p>
+</section>
+</section>
+<section id="c-9-ibm">
+<h2>C.9. IBM<a class="headerlink" href="#c-9-ibm" title="Link to this heading"></a></h2>
+<p>International Business Machines Corporation (IBM) is an American multinational technology corporation. IBM produces computer hardware, middleware, and software,
+and provides hosting and consulting services spanning areas from mainframe computing to nanotechnology. IBM is also a research organization and has a diverse
+portfolio of products and services that include the categories of cloud computing, AI, commerce, data and analytics, IoT, IT infrastructure, mobile, digital
+workplace, and cybersecurity.</p>
+<section id="c-9-1-ibm-cloud-and-devsecops">
+<h3>C.9.1 IBM Cloud and DevSecOps<a class="headerlink" href="#c-9-1-ibm-cloud-and-devsecops" title="Link to this heading"></a></h3>
+<p>IBM Cloud is designed to permit organizations in regulated industries to deliver software rapidly while maintaining security controls and continuous audit
+readiness. IBM Cloud offers a reference implementation for a secure, integrated software supply chain that enables DevSecOps by embedding security across the
+software lifecycle.</p>
+<p>The platform combines security automation, policy enforcement, and auditability. The platform orchestrates activities including vulnerability scanning, artifact
+signing, SBOM generation and assessment, GitOps-based deployments, change tracking, reporting, and code remediation. Deviations from policy are tracked and
+documented, and change requests include rationale and approvals to support governance transparency. Evidence for each control, including build logs and test
+results to vulnerability findings, remediation actions, and release artifacts is automatically captured and stored in S3‑compatible object storage.</p>
+</section>
+<section id="c-9-2-ibm-cloud-continuous-delivery">
+<h3>C.9.2 IBM Cloud Continuous Delivery<a class="headerlink" href="#c-9-2-ibm-cloud-continuous-delivery" title="Link to this heading"></a></h3>
+<p>IBM Cloud Continuous Delivery is a fully managed, hosted service for creating toolchains from templates, streamlining build, test, and release workflows through
+integrated Git repositories, issue tracking, and Tekton‑based pipeline orchestration. Pipelines are declarative, reusable, and portable, enabling teams to
+standardize delivery processes across applications and environments. The service includes Code Risk Analyzer for early source composition analysis, SBOM
+generation, and dependency checks, as well as DevOps Insights for aggregating build, test, and scan data into quality and governance dashboards with policy
+gates.</p>
+<p>With IBM Cloud Continuous Delivery, IBM operates the complete pipeline runtime in order to provide scalability and availability while pipeline executions run
+within Kata Containers to deliver strong and lightweight isolation in multi‑tenant environments. For hybrid scenarios, private workers can be deployed into
+customer‑managed networks—including on‑premises, private cloud, and isolated environments, allowing pipelines to securely access internal systems and deploy
+workloads across heterogeneous infrastructures.</p>
+</section>
+<section id="c-9-3-ibm-cloud-container-registry-and-vulnerability-advisor">
+<h3>C.9.3 IBM Cloud Container Registry and Vulnerability Advisor<a class="headerlink" href="#c-9-3-ibm-cloud-container-registry-and-vulnerability-advisor" title="Link to this heading"></a></h3>
+<p>The IBM Cloud Container Registry provides a managed, hardened repository for storing and promoting container images across environments. The registry integrates
+with IBM Cloud Vulnerability Advisor to perform continuous security scanning of images, analyzing operating system packages and application dependencies against
+known vulnerabilities. Findings are presented with risk context and remediation, enabling rapid response.</p>
+<p>Policies can be applied to prevent images that exceed defined risk thresholds from advancing to staging or production, helping ensure that only approved
+artifacts are deployed. Image signing and integrity verification further strengthen the chain of custody, providing assurance that artifacts have not been
+altered and that provenance can be demonstrated.</p>
+</section>
+<section id="c-9-4-ibm-cloud-kubernetes-service-and-red-hat-openshift-services">
+<h3>C.9.4 IBM Cloud Kubernetes Service and Red Hat OpenShift Services<a class="headerlink" href="#c-9-4-ibm-cloud-kubernetes-service-and-red-hat-openshift-services" title="Link to this heading"></a></h3>
+<p>For deployment and scaling of cloud‑native workloads, IBM Cloud Kubernetes Service (IKS) and Red Hat OpenShift on IBM Cloud (ROKS) provide managed container
+orchestration platforms. These services support capabilities such as role‑based access control, network policies, cluster hardening options, and integration
+with identity and access management, IBM Cloud Secrets Manager, and IBM Cloud Key Protect.</p>
+<p>Both services are intended for GitOps-based delivery models, where declarative manifests define the desired state and operational changes are
+version‑controlled, reviewed, and auditable. Admission controls and policy engines can prevent workloads that do not meet the requirements from being deployed,
+ensuring that runtime environments maintain the same governance rigor as build and packaging stages.</p>
+</section>
+<section id="c-9-5-ibm-cloud-secrets-manager">
+<h3>C.9.5 IBM Cloud Secrets Manager<a class="headerlink" href="#c-9-5-ibm-cloud-secrets-manager" title="Link to this heading"></a></h3>
+<p>IBM Cloud Secrets Manager provides centralized, encrypted storage for sensitive data such as API keys, passwords, tokens, and certificates. Secrets are
+protected both in transit and at rest, and access can be precisely scoped to specific applications, services, or pipeline stages.</p>
+</section>
+<section id="c-9-6-ibm-cloud-key-protect">
+<h3>C.9.6 IBM Cloud Key Protect<a class="headerlink" href="#c-9-6-ibm-cloud-key-protect" title="Link to this heading"></a></h3>
+<p>Cryptographic controls and artifact integrity are supported through IBM Cloud Key Protect, a managed key management service that enables organizations to
+generate, store, rotate, and control encryption keys. Keys can be used for data encryption, artifact signing, and protection of sensitive information across
+pipelines and applications.</p>
+<p>Key lifecycle operations are centrally governed, and customer‑managed keys support data protection and sovereignty requirements. When combined with artifact
+signing, SBOMs, and provenance metadata, Key Protect helps organizations demonstrate the origin, integrity, and contents of software artifacts throughout the
+supply chain.</p>
+</section>
+<section id="c-9-7-ibm-cloud-object-storage-s3compatible">
+<h3>C.9.7 IBM Cloud Object Storage (S3‑Compatible)<a class="headerlink" href="#c-9-7-ibm-cloud-object-storage-s3compatible" title="Link to this heading"></a></h3>
+<p>IBM Cloud Object Storage provides highly available, scalable storage for logs and artifacts. Build outputs, SBOMs, test results, pipeline logs, vulnerability
+reports, change records, and deployment manifests can be preserved using versioning and immutability controls.</p>
+<p>Lifecycle policies help balance retention requirements with cost management, while maintaining rapid access to critical evidence. With a centralized repository
+for artifacts, organizations can respond to audits efficiently and present traceable records demonstrating control adherence across the software delivery
+lifecycle.</p>
+</section>
+</section>
+<section id="c-10-microsoft-and-github-advanced-security-ghazdo">
+<h2>C.10. Microsoft and GitHub Advanced Security (GHAzDO)<a class="headerlink" href="#c-10-microsoft-and-github-advanced-security-ghazdo" title="Link to this heading"></a></h2>
+<p>Microsoft and GitHub offer a comprehensive DevSecOps ecosystem designed to integrate security into all phases of the software development lifecycle. At the core
+GitHub Advanced Security for Azure DevOps (GHAzDO) includes CodeQL for static code analysis, secret scanning, and dependency vulnerability detection. These
+tools are designed to enable early identification and remediation of security issues, embodying the “shift-left” security principle.</p>
+<p>Azure DevOps (AzDO) complements GitHub by providing secure CI/CD pipelines, artifact provenance, and SBOM generation. Features like GitHub Actions and Azure
+Policy integration allow automated implementation of security and policy controls. GitHub Copilot further enhances developer productivity with AI-assisted
+coding while maintaining secure coding practices.</p>
+<p>Azure Entra ID provides identity and access management, with granular RBAC, multifactor authentication, conditional access policies, and anomaly detection.
+Azure Key Vault secures secrets, while Azure Policy and Defender for Cloud apply policy and monitor security posture across environment.</p>
+<section id="c-10-1-azure-container-registry-acr">
+<h3>C.10.1. Azure Container Registry (ACR)<a class="headerlink" href="#c-10-1-azure-container-registry-acr" title="Link to this heading"></a></h3>
+<p>Azure Container Registry (ACR) is a managed Docker container registry service by Microsoft Azure. It is intended to enable developers to store, manage, and
+deploy container images and artifacts securely. ACR integrates with Azure Kubernetes Service (AKS), Azure DevOps, and GitHub Actions, supporting
+geo-replication, private endpoints, and content trust for secure, efficient CI/CD workflows.</p>
+</section>
+<section id="c-10-2-azure-devops-azdo">
+<h3>C.10.2. Azure DevOps (AzDO)<a class="headerlink" href="#c-10-2-azure-devops-azdo" title="Link to this heading"></a></h3>
+<p>Azure DevOps (AzDO) is Microsoft’s end-to-end platform for managing the software development lifecycles, integrating planning, development, testing, delivery,
+and monitoring. The core services include Azure Boards for agile planning and tracking, Azure Repos for version control, Azure Pipelines for CI/CD automation,
+Azure Test Plans for quality assurance, and Azure Artifacts for package management.</p>
+<p>AzDO supports hybrid and multi-cloud deployments, integrates with GitHub, and enables IaC using Bicep, ARM templates, and Terraform. It also facilitates secure
+software supply chains through component governance and vulnerability scanning during build and release pipelines. Organizations can customize workflows using
+extensions and manage access via Microsoft Entra ID (formerly Azure AD).</p>
+<p>Azure Artifacts is a service within AzDO that enables teams to create, host, and share packages such as NuGet, NPM, Maven, PyPi, and Universal Packages. It
+supports versioning, retention policies, and upstream sources, allowing secure and scalable package management. Integrated with CI/CD pipelines, it helps
+maintain reliable and traceable builds.</p>
+<p>AzDO extensions are add-ons that enhance the functionality of AzDO by integrating third-party tools or adding custom capabilities; they support tasks like test
+management, security scanning, deployment automation, and reporting. Available through the Visual Studio Marketplace, these extensions help teams tailor AzDO to
+fit their workflows and DevSecOps needs.</p>
+</section>
+<section id="c-10-3-azure-entra-id">
+<h3>C.10.3. Azure Entra ID<a class="headerlink" href="#c-10-3-azure-entra-id" title="Link to this heading"></a></h3>
+<p>Azure Entra ID is designed to provide secure identity and access management across the software development lifecycle. It enables conditional access,
+multifactor authentication, and least-privilege enforcement for developers, pipelines, and workloads. With workload identity federation, DevOps tools like
+GitHub Actions and Azure Pipelines can be able to securely access Azure resources without storing secrets. Entra ID also supports just-in-time access, access
+reviews, and role-based access control to minimize exposure and apply governance. Integration with Microsoft Defender for Cloud and Microsoft Sentinel allows
+real-time monitoring and automated response to identity-related threats. These capabilities help embed security into DevOps workflows.</p>
+</section>
+<section id="c-10-4-azure-key-vault-akv">
+<h3>C.10.4. Azure Key Vault (AKV)<a class="headerlink" href="#c-10-4-azure-key-vault-akv" title="Link to this heading"></a></h3>
+<p>Azure Key Vault (AKV) is designed to enable DevOps teams to secure secrets, keys, and certificates. By centralizing sensitive information, it eliminates
+hard-coded credentials and reduces security risks across pipelines. Integrated with Azure DevOps and automation tools, Key Vault enables secret rotation, access
+control, and policy implementation. Its robust encryption and identity-based access provide auditable security to deployments, accelerate delivery, and maintain
+enterprise-grade protection for cloud-native applications.</p>
+</section>
+<section id="c-10-5-azure-managed-devops-pool-mdp">
+<h3>C.10.5. Azure Managed DevOps Pool (MDP)<a class="headerlink" href="#c-10-5-azure-managed-devops-pool-mdp" title="Link to this heading"></a></h3>
+<p>Azure Managed DevOps Pools (MDP) are a managed, scalable solution for running Azure DevOps pipelines without needing to independently manage infrastructure.
+Hosted in Microsoft’s Azure subscription, these pools provide agent provisioning, maintenance, and pre-configured environments for CI/CD workloads. They support
+custom VM images, caching, and long-running jobs up to 48 hours and support complex enterprise builds.</p>
+<p>Under Azure Dev Center, the MDP centralizes preconfigured, secure compute, and build images for projects, governed by policy and RBAC. Teams can draw
+standardized environments on demand, with elastic scaling, cost controls, and secure baselines. Automation via pipelines and APIs provisions, updates, and
+retires resources, and supporting consistent developments.</p>
+</section>
+<section id="c-10-6-azure-privileged-identity-management-pim">
+<h3>C.10.6. Azure Privileged Identity Management (PIM)<a class="headerlink" href="#c-10-6-azure-privileged-identity-management-pim" title="Link to this heading"></a></h3>
+<p>Azure Privileged Identity Management (PIM) delivers just in time, time bound, and approval based privileged access across Microsoft Entra ID, Azure, and
+Microsoft 365 resources. It reduces standing administrator permissions, applies MFA, captures detailed audit logs, and supports access reviews to ensure least
+privilege governance. PIM offers automated role activation workflows and robust monitoring.</p>
+</section>
+<section id="c-10-7-azure-sentinel">
+<h3>C.10.7. Azure Sentinel<a class="headerlink" href="#c-10-7-azure-sentinel" title="Link to this heading"></a></h3>
+<p>Azure Sentinel, now known as Microsoft Sentinel, is a scalable, cloud-native security information and event management (SIEM) and security orchestration,
+automation, and response (SOAR) solution. It enables organizations to collect, analyze, and respond to security data across hybrid and multi-cloud environments.
+Sentinel uses built-in AI and Microsoft threat intelligence to detect and investigate threats in real time, reducing alert fatigue and enabling faster incident
+response. It supports data ingestion from a wide range of sources, including Microsoft 365, Azure, AWS, and third-party platforms.</p>
+</section>
+<section id="c-10-8-bicep-and-azure-resource-manager-arm">
+<h3>C.10.8. Bicep and Azure Resource Manager (ARM)<a class="headerlink" href="#c-10-8-bicep-and-azure-resource-manager-arm" title="Link to this heading"></a></h3>
+<p>Azure Resource Manager (ARM) is a deployment and management service for consistent provisioning and management of Azure resources. It uses JSON-based templates
+to define infrastructure, enabling repeatable, declarative deployments with support for dependencies, role-based access control, and policy enforcement.</p>
+<p>Bicep is a domain-specific language (DSL) that simplifies authoring ARM templates in a concise, readable syntax while maintaining full ARM compatibility. Bicep
+supports modularization, symbolic references, and tooling integration with Visual Studio Code and Azure CLI, making it easier to manage complex cloud
+environments.</p>
+</section>
+<section id="c-10-9-github-advanced-security-ghas">
+<h3>C.10.9. GitHub Advanced Security (GHAS)<a class="headerlink" href="#c-10-9-github-advanced-security-ghas" title="Link to this heading"></a></h3>
+<p>GitHub Advanced Security (GHAS) is a native, developer-centric security suite integrated into GitHub Enterprise. It provides proactive protection through
+features like Code Scanning (powered by CodeQL), Secret Scanning, and Dependency Review. These tools are designed to help developers identify and fix
+vulnerabilities directly in pull requests, with AI suggestions and minimal context switching.</p>
+<p>GHAS is designed for extensibility, and diverse DevSecOps workflows. GHAS is offered as two standalone products—GitHub Secret Protection and GitHub Code
+Security.</p>
+<p>GHAS also integrates with Azure DevOps called GitHub Advanced Security for Azure DevOps (GHAzDO), to enable unified visibility and remediation across platforms.</p>
+</section>
+<section id="c-10-10-github-copilot">
+<h3>C.10.10. GitHub Copilot<a class="headerlink" href="#c-10-10-github-copilot" title="Link to this heading"></a></h3>
+<p>GitHub Copilot is becoming a DevSecOps enabler. It blends AI-assisted development with secure software practices. At its core, Copilot acts as an AI pair
+programmer, with real-time code suggestions, test generation, and documentation support across popular IDEs like Visual Studio Code, JetBrains, and NeoVim. For
+DevSecOps, Copilot integrates with GitHub Actions and GitHub Advanced Security to apply security checks, scan for secrets and vulnerabilities, and support SBOM
+generation directly within CI/CD pipelines.</p>
+<p>The new “Agent Mode” allows developers to interact with Copilot using natural language to execute predefined tasks—such as provisioning infrastructure with
+Bicep templates or validating security policies. Copilot Spaces, launched in May 2025, grounds Copilot’s responses in curated project-specific context,
+including code, documentation, and custom instructions. Copilot’s reduces context switching, supports accelerated secure coding, and supports developers’
+development of security best practices.</p>
+</section>
+<section id="c-10-11-ides-visual-studio-and-visual-studio-code-vs-code">
+<h3>C.10.11. IDEs – Visual Studio and Visual Studio Code (VS Code)<a class="headerlink" href="#c-10-11-ides-visual-studio-and-visual-studio-code-vs-code" title="Link to this heading"></a></h3>
+<p>Visual Studio is Microsoft’s integrated development environment (IDE) for building, debugging, and deploying applications across platforms including Windows,
+web, cloud, and mobile. It supports multiple programming languages like C#, C++, Python, and JavaScript, and offers features such as IntelliSense, live unit
+testing, and integrated Git support.</p>
+<p>Visual Studio Code (VS Code) is a lightweight, open-source code. It supports a wide range of languages and frameworks through extensions, includes Git
+integration, and offers features like IntelliCode, debugging, and remote development. It can be used for web and cloud-native development.</p>
+</section>
+<section id="c-10-12-microsoft-defender-for-cloud-mdc">
+<h3>C.10.12. Microsoft Defender for Cloud (MDC)<a class="headerlink" href="#c-10-12-microsoft-defender-for-cloud-mdc" title="Link to this heading"></a></h3>
+<p>Microsoft Defender for Cloud is a cloud-native application protection platform (CNAPP) for securing multi-cloud and hybrid environments across the application
+lifecycle—from code to runtime. It combines Cloud Security Posture Management (CSPM), Cloud Workload Protection (CWP), and DevSecOps capabilities for unified
+visibility, threat detection, and proactive risk mitigation. CSPM features include agentless vulnerability scanning, data-aware posture insights, and advanced
+threat hunting via the Cloud Security Graph. CWP provides protection to virtual machines, containers, databases, storage, APIs, and AI workloads with
+workload-specific threat detection and adaptive controls. Defender for Cloud also integrates with Microsoft Threat Intelligence to detect anomalies and
+prioritize remediation.</p>
+<p>Microsoft Defender for Cloud supports third-party integrations to extend security visibility and response across hybrid and multi-cloud environments. It
+connects with tools like ServiceNow, Splunk, and Palo Alto Networks to share threat intelligence, automate incident response, and more.</p>
+</section>
+<section id="c-10-13-microsoft-sbom-tool">
+<h3>C.10.13. Microsoft SBOM Tool<a class="headerlink" href="#c-10-13-microsoft-sbom-tool" title="Link to this heading"></a></h3>
+<p>Microsoft SBOM Tool supports the creation and validation of SBOMs to support supply chain security. It supports industry standards like SPDX to enable
+developers to generate accurate SBOMs for open-source and proprietary components. Integrated with CI/CD pipelines, the tools are designed to help organizations
+meet regulatory requirements, improve transparency, and reduce risk by identifying vulnerabilities early. Its automation capabilities are designed to make SBOM
+management more efficient and scalable across DevSecOps workflows.</p>
+</section>
+<section id="c-10-14-notary-project">
+<h3>C.10.14. Notary Project<a class="headerlink" href="#c-10-14-notary-project" title="Link to this heading"></a></h3>
+<p>Notary Project is a CNCF initiative to establish standards for signing and verifying OCI artifacts such as container images, SBOMs, and Helm chartsin support of
+software supply chain security. It includes tools like Notation for signing and Ratify for policy-based verification. Microsoft contributes by integrating
+Notary Project with Azure Key Vault, Trusted Signing, and Azure Kubernetes Service for automated certificate management and enforcement of signature
+verification at deployment.</p>
+</section>
+</section>
+<section id="c-11-nextlabs">
+<h2>C.11. NextLabs<a class="headerlink" href="#c-11-nextlabs" title="Link to this heading"></a></h2>
+<p>NextLabs®, Inc. provides zero trust data-centric security software and services to protect data across applications, databases, files or file
+repositories—on-premises or in the cloud. NextLabs’® dynamic authorization technology and attribute-based zero trust policy platform supports enterprise
+identification and protection of sensitive data, monitor and control access to the data, and prevent violations. NextLabs software is designed to prevent
+unauthorized access and automates implementation of security controls and policies to enable secure collaboration and information sharing across the extended
+enterprise. NextLabs Zero Trust Data Security is a suite of access enforcement and data protection products driven by a zero-trust policy platform. The Suite
+consists of the CloudAz Zero Trust Policy Platform and three lines of Policy Enforcers:</p>
+<ol class="arabic simple">
+<li><p>Application Enforcer to secure applications, externalize entitlement, protect application data, and enforce access based on least privilege principles</p></li>
+<li><p>Data Access Enforcer to secure all access to critical data independent of application</p></li>
+<li><p>SkyDRM to provide persistent protection of digital information stored in files at rest, in use, and in motion</p></li>
+</ol>
+<section id="c-11-1-nextlabs-cloudaz-zero-trust-policy-platform">
+<h3>C.11.1. NextLabs CloudAz Zero Trust Policy Platform<a class="headerlink" href="#c-11-1-nextlabs-cloudaz-zero-trust-policy-platform" title="Link to this heading"></a></h3>
+<p>CloudAz is a centralized policy management platform with a dynamic authorization policy engine that centralizes administration of policy and employs zero-trust
+principle to enforce data-centric security measures and policy-based access control in real-time. The CloudAz policy engine provides the foundation for
+automating least privilege access, securing applications with Attribute Based Access Control (ABAC), and ensuring proper protection and security controls on
+data. It integrates with existing identity management solutions and provides comprehensive logging and reporting capabilities to simplify policy verification.</p>
+</section>
+<section id="c-11-2-nextlabs-policy-enforcer">
+<h3>C.11.2. NextLabs Policy Enforcer<a class="headerlink" href="#c-11-2-nextlabs-policy-enforcer" title="Link to this heading"></a></h3>
+<p>Sections below describe the details of NextLabs’ Policy Enforcer.</p>
+<section id="c-11-2-1-application-enforcer-externalized-authorization-management-abac">
+<h4>C.11.2.1. Application Enforcer – Externalized Authorization Management &amp; ABAC<a class="headerlink" href="#c-11-2-1-application-enforcer-externalized-authorization-management-abac" title="Link to this heading"></a></h4>
+<p>NextLabs’ Application Enforcer is a collection of enforcers that work natively with enterprise applications through built-in awareness of the application data
+model and business process workflow. Application Enforcer augments an application’s underlying security model, providing an extra layer of control for
+organizations with extensive security and policy requirements, without the need for custom coding. The solution also enforces Attribute-Based (ABAC) and
+Policy-Based Access Control (PBAC) in real-time based on the values of the subject, data, and environmental attributes, as well as externalizing authorization
+via a zero-trust policy engine to simplify access management, strengthen application security, and eliminate authorization siloes.</p>
+</section>
+<section id="c-11-2-2-data-access-enforcer-secure-global-data-access">
+<h4>C.11.2.2. Data Access Enforcer – Secure Global Data Access<a class="headerlink" href="#c-11-2-2-data-access-enforcer-secure-global-data-access" title="Link to this heading"></a></h4>
+<p>Applying Zero Trust principles to implement robust data access security across applications, Data Access Enforcer (DAE) supports privacy and protection of data
+with <a class="reference external" href="https://www.nextlabs.com/products/data-access-enforcer/what-is-data-segregation/">logical data segregation</a>, record-level filtering, field-level data
+masking, and dynamic data obfuscation. It controls access to data through fine-grained attribute-based policies that are dynamically enforced at runtime,
+regardless of how the data is being accessed. DAE provides dynamic data-level security controls and fine-grained data access governance independent of services,
+applications, UI, and API, while supporting any commercial-off-the-shelf application with a single set of policies.</p>
+</section>
+<section id="c-11-2-3-skydrm-enterprise-digital-rights-management">
+<h4>C.11.2.3. SkyDRM – Enterprise Digital Rights Management<a class="headerlink" href="#c-11-2-3-skydrm-enterprise-digital-rights-management" title="Link to this heading"></a></h4>
+<p>SkyDRM provides persistent control of access and usage of digital information stored in files throughout its lifecycle—at rest, in use, and on the move using
+attribute-based policies. Attribute-based policies dynamically grant permissions for specific actions, such as viewing, editing, copying, forwarding, printing,
+and extracting content, based on the recipient’s identity. The enforcer is file type agnostic and provides support for federated identity to enable
+cross-enterprise collaboration. Any file type can be protected and accessed from any device to ensure secure collaboration across devices, data centers, apps,
+cloud services, and on-premises. Users can access protected files through a web browser, mobile clients, or their native applications.</p>
+</section>
+</section>
+</section>
+<section id="c-12-palo-alto-networks">
+<h2>C.12. Palo Alto Networks<a class="headerlink" href="#c-12-palo-alto-networks" title="Link to this heading"></a></h2>
+<p>Palo Alto Networks provides a portfolio of security services and platforms. The company has expanded its offering from Next-Generation Firewalls (NGFWs) to
+address security across network, cloud, and endpoint environments. Its products and services include securing infrastructure, protecting against cyber threats,
+and managing security operations, with a focus on cloud-native security and the integration of artificial intelligence for threat detection and response.</p>
+<section id="c-12-1-cortex-cloud-security-platform">
+<h3>C.12.1. Cortex Cloud Security Platform<a class="headerlink" href="#c-12-1-cortex-cloud-security-platform" title="Link to this heading"></a></h3>
+<p>The Cortex platform provides security orchestration and automation capabilities. Within a DevSecOps framework, it functions by integrating with the various
+security and development tools used throughout the CI/CD pipeline. Its capabilities extend from development to deployment and runtime. The platform integrates
+with CI/CD pipelines and development tools to scan IaC templates, source code, and container images for vulnerabilities and security issues. Once deployed, it
+provides Cloud Security Posture Management (CSPM) to monitor for misconfigurations in the cloud environment and Cloud Workload Protection (CWPP) to secure
+running hosts, containers, and serverless functions against threats. When a security scanner or monitoring tool detects a potential vulnerability or
+misconfiguration, the platform triggers automated playbooks. These playbooks execute a sequence of actions, such as creating a detailed ticket in a project
+management system, notifying the appropriate development team via communication platforms, and enriching the alert with contextual data to facilitate a faster
+remediation process.</p>
+</section>
+</section>
+<section id="c-13-sagittal-ai">
+<h2>C.13. Sagittal AI<a class="headerlink" href="#c-13-sagittal-ai" title="Link to this heading"></a></h2>
+<p>Sagittal AI is an early-stage, VC-backed startup focused on collaboration between humans and AI. Rather than forcing humans to adapt to AI, Sagittal designs AI
+systems to adapt to humans. By integrating AI workflows with existing tools, processes, and job functions, Sagittal supports reducing workload and enhanced team
+AI capabilities.</p>
+<section id="c-13-1-neo">
+<h3>C.13.1. Neo<a class="headerlink" href="#c-13-1-neo" title="Link to this heading"></a></h3>
+<p>Sagittal AI’s initial offering, Neo, is designed to streamline the software development lifecycle through seamlessly integrating with existing tools. Neo
+activates upon work assignments within these tools, gathering scattered contextual information, and directly completing tasks within those same tools while
+collaborating with the human team throughout the operation. Neo is designed to support reduced time and cognitive burden. Neo generates sprint status reports by
+analyzing Jira tickets and GitHub comments, refactor code from an architecture diagram, resolve P2 bugs using PRDs and Figma documents.</p>
+</section>
+</section>
+<section id="c-14-scribe-security">
+<h2>C.14. Scribe Security<a class="headerlink" href="#c-14-scribe-security" title="Link to this heading"></a></h2>
+<p>Scribe Security provides an end-to-end software supply chain security SaaS platform that is designed to secure code throughout its life cycle. Scribe Hub
+integrates with enterprise pipelines to provide deep visibility, integrity protection, risk insights, and continuous verification.</p>
+<p>Scribe signs and verifies the evidence cryptographically, enhances it with open intelligence sources, and analyzes aspects such as integrity to control risk.</p>
+<section id="c-14-1-scribehub">
+<h3>C.14.1. ScribeHub<a class="headerlink" href="#c-14-1-scribehub" title="Link to this heading"></a></h3>
+<p>ScribeHub is a comprehensive software supply chain platform for managing SDLC risk and protecting software factories and products from development to
+deployment. ScribeHub has automated SDLC security practices (signing, attestations, risk management, prevention, mitigation, and trust) into the DevOps
+toolchains in order to support secure-by-design products and reduce security and liability risks. SLDC data is collected by two Scribe tools: Valint, a command
+line interface tool for generating, signing, and verification, and Platforms, a tool for generating security posture and security reports evidence, and
+verifying evidence and in an agent-less manner.</p>
+</section>
+<section id="c-14-2-heyman">
+<h3>C.14.2. Heyman<a class="headerlink" href="#c-14-2-heyman" title="Link to this heading"></a></h3>
+<p>Heyman by Scribe Security is an AI ASPM agent that acts as a virtual AppSec and DevSecOps co-pilot deliver deep, contextual insights from across the software
+supply chain that go beyond basic scan aggregation. Integrated with Scribe’s continuous assurance platform, it prioritizes vulnerabilities based on real impact,
+automates remediation workflows, and helps teams catch issues early. Heyman supports natural language interaction and seamless integration into developer tools.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <div class="page-footer"><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="appendix-b.html" class="btn btn-neutral float-left" title="Appendix B Component Description" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="appendix-d.html" class="btn btn-neutral float-right" title="Appendix D Change Log" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+</div>
+        </div>
+      </div>
+      <footer class="nist-footer">
+  <div class="nist-footer__inner">
+    <div class="nist-footer__menu" role="navigation">
+      <ul>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy-policy">Site Privacy</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/oism/accessibility">Accessibility</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy">Privacy Program</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/oism/copyrights">Copyrights</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.commerce.gov/vulnerability-disclosure-policy">Vulnerability Disclosure</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/no-fear-act-policy">No Fear Act Policy</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/foia">FOIA</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/environmental-policy-statement">Environmental Policy</a>
+        </li>
+        <li class="nist-footer__menu-item ">
+          <a href="https://www.nist.gov/summary-report-scientific-integrity">Scientific Integrity</a>
+        </li>
+        <li class="nist-footer__menu-item ">
+          <a href="https://www.nist.gov/nist-information-quality-standards">Information Quality Standards</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.commerce.gov/">Commerce.gov</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.science.gov/">Science.gov</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.usa.gov/">USA.gov</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://vote.gov/">Vote.gov</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="nist-footer__logo">
+    <a href="https://www.nist.gov/" title="National Institute of Standards and Technology" class="nist-footer__logo-link" rel="home">
+      <img src="https://pages.nist.gov/nist-header-footer/images/nist_logo_brand_white.svg" alt="National Institute of Standards and Technology logo">
+    </a>
+  </div>
+</footer>
+    </section>
+  </div>
+  <script>
+      // expose collapse_navigation theme option to runtime JS so theme scripts can
+      // decide whether to expand first-level toctree entries automatically.
+      window.themeCollapseNavigation = true;
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+    <!-- Old DAP UA tag -->
+    <script async type="text/javascript" id="_fed_an_ua_tag"
+        src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NIST&subagency=github&pua=UA-66610693-1&yt=true&exts=ppsx,pps,f90,sch,rtf,wrl,txz,m1v,xlsm,msi,xsd,f,tif,eps,mpg,xml,pl,xlt,c">
+    </script> 
+
+</body>
+</html>
