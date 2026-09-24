@@ -1,30 +1,33 @@
-Notional Reference Model for DevSecOps for Demonstration of NIST SSDF 
+Notional Reference Model for DevSecOps for Demonstration of NIST SSDF :bdg-secondary:`Updated`
 =========================================================================================================
 
-As mentioned earlier, this project illustrates how NIST SSDF practices and tasks can be implemented in DevSecOps to aid organizations in improving the security of the software they develop and operate. Since the SSDF does not provide a specific software development architecture, the project adopted a strategy to define a development model that bridges the gap between the SSDF’s recommended security practices and practical implementation. To that end, the project interpreted the NIST SSDF recommended security practices with the objective of decomposing them into more granular and actionable tasks. Building on this strategic foundation, future versions of this document will document and justify the concrete connections between technologies and activities that exist in the example implementations and the SSDF proper.
+As previously noted, this project illustrates how NIST SSDF practices and tasks can be integrated into DevSecOps across the SDLC to help organizations improve their software security. Because SSDF is software-agnostic, the project utilizes an implementation strategy that bridges the gap between high-level recommendations and practical applications. To that end, the project team analyzed the framework's security practices in depth, translating them into actionable objectives for demonstration. Building on this strategic foundation, Section 3 of this document details how SSDF practices map to the project’s notional reference model (outlined in the following paragraphs), while Appendix C provides a comprehensive analysis of those practices and tasks.
 
-To guide this task, the NCCoE developed a notional reference model for SSDF with DevSecOps, which is illustrated in the figure below. This model was developed and refined in conjunction with the project’s collaborators. DevSecOps is one of many methodologies used to develop software; however, the exact process and technology implementations can vary significantly depending on the software's requirements and the tools and skills available to the development team. Generally, the main phases of a DevSecOps model are similar, although there can be variations even at the most general level. The concrete activities, technologies, and processes used can differ substantially between organizations, and even between groups within an organization. To construct the software factories, the project developed a notional reference model for DevSecOps using a bottom-up approach based on the technologies made available through the project’s collaborators and group consensus concerning essential components. This model is not intended to be a one-size-fits-all solution, but rather a guide for software development efforts.
+To guide this task, the NCCoE developed a notional reference model for SSDF with DevSecOps, which is illustrated in the figure below. The central component of the reference model consists of an SDLC developed and refined in conjunction with the project’s collaborators. DevSecOps is one of many methodologies used to develop software; however, the exact SDLC processes and technology implementations can vary significantly depending on the software’s requirements and the tools and skills available to the development team. Generally, the main SDLC phases proposed with a DevSecOps model may appear similar, although there can be specific alterations to processes even at the most general level. The concrete activities, technologies, and processes used can differ substantially between organizations, and even between groups within an organization. To construct the software factories, the project developed a notional reference model for DevSecOps using a bottom-up approach based on the technologies made available through the project’s collaborators and group consensus concerning essential components. Note that the reference model is vendor-neutral, but the project’s example implementations are vendor-specific. This model is not intended to be a one-size-fits-all solution, but rather a guide for software development efforts.
 
-Each phase of the development process represents a logical stage and a separate environment in the path as the software is developed. Furthermore, it highlights the emphasis on feedback using control gates that are applied before software changes are permitted to proceed to the next stage in the lifecycle. Control gates consist of technical or organizational controls that are designed to provide the necessary feedback or insights that help inform development, operational, or security tasking for resolving discovered vulnerabilities or defects. By leveraging technologies to apply and automate these controls, this project will demonstrate real-world, repeatable, and verifiable mechanisms to increase the security of software development.
+Each phase of the SDLC represents a logical state and a distinct environment along the path as the software is developed. Furthermore, it highlights an emphasis on feedback through control gates applied before software changes are permitted to proceed to the next stage in the lifecycle. Control gates consist of technical or organizational controls at any phase that are designed to provide the necessary conditions (success or failure), feedback, or insights to inform or direct development, operational, or security tasking to resolve discovered vulnerabilities or defects. By leveraging technologies to apply and automate these controls, this project will demonstrate real-world, repeatable, and verifiable mechanisms to increase the security of software development.
 
 .. figure:: media/vola-image2.png
    :alt: This figure shows DevSecOps notional reference model that NCCoE is using for this project.
+   :width: 750px
 
    Notional Reference Model for DevSecOps for Demonstration of NIST SSDF
 
-The figure above illustrates the project's DevSecOps notional reference model, which includes five functional dimensions that support the demonstration of NIST SSDF:
+The figure above illustrates the project's DevSecOps notional reference model, which includes six functional dimensions that support the demonstration of NIST SSDF:
 
-1. Phases of Continuous DevSecOps Lifecycle: The lifecycle begins with the Plan phase, where security considerations are incorporated from the start. The
-   process then moves through Develop, Build, Test, Release, Deploy, and Operation phases as shown below:
+1. Organizational Preparation: This consists of a secure foundation upon which the SDLC can begin. The foundation includes defined high-level security objectives, an understanding of organizational risks, and a proactive security strategy that fosters a consistent and secure development process.
+
+2. Phases of the SDLC: The lifecycle begins with the Plan phase, where security considerations are incorporated from the start. The
+   process then moves through the Develop, Build, Test, Release, Deploy, and Operation phases as shown below:
 
    a. Plan − Development, operations, and security teams collaboratively define functional, non-functional, and security requirements, establish secure practices, and create roadmaps, updating them as
       feedback from later phases informs new functional or security needs.
 
-   b. Develop − Teams collaboratively create and proactively review code, infrastructure, and policies with approved tools to meet plan phase requirements and ensure
-      quality, security, and policy concurrence early in the process.
+   b. Develop − Teams collaboratively create and proactively review code, infrastructure, and policies using approved tools to meet plan phase requirements and ensure
+      quality, security, and policy concurrence early in the process. This results in source code, policies, and configurations that are committed to the source code management (SCM) system.
 
    c. Build − Automated pipelines transform code and configurations into deployable artifacts, using ephemeral environments and integrated analysis to ensure
-      quality, security, and policy concurrence while providing actionable feedback to all teams.
+      quality, security, and policy concurrence while providing actionable feedback to all teams. These processes create provenance and attestation information, which is signed with trusted certificates to ensure the integrity and authenticity of generated artifacts.
 
    d. Test − Teams use automated testing and ephemeral environments to independently evaluate deployable artifacts for functional, non-functional, and security
       requirements with CI/CD feedback guiding future improvements.
@@ -38,53 +41,47 @@ The figure above illustrates the project's DevSecOps notional reference model, w
    g. Operate − Teams use automated monitoring and evidence collection to ensure the integrity, security, and reliability of production systems, using feedback
       to address issues and guide continuous improvement.
 
-2. Continuous Improvements, Security, and Monitoring − This consists of a collection of components and activities that appear throughout the DevSecOps
+3. Continuous Improvements, Security, and Monitoring − This consists of a collection of components and activities that appear throughout the DevSecOps
    lifecycle. These ever-present components provide phase-specific integrations to enable the goals and objectives of a given phase.
 
-3. Continuous Feedback − While not a technology or processing component, this concept covers how events or signals emitted from control gates or learned from
-   external events (new technologies, attack patterns or regulations) are fed back into earlier phases of the DevSecOps lifecycle to inform changes in
+4. Continuous Feedback − While not a technology or processing component, this concept covers how events or signals emitted from control gates or learned from
+   external events (new technologies, attack patterns, or regulations) are fed back into earlier phases of the DevSecOps lifecycle to inform changes in
    subsequent phases of the lifecycle.
 
-4. Continuous Integration/Continuous Delivery (CI/CD) Pipeline − This technology provides the automated pipelines (e.g., continuous build, integration, delivery
-   and deployment) that are used to run many of the components that are unique to each of the phases in the DevSecOps lifecycle. Different phases of the
-   DevSecOps lifecycle have direct influence on components and activities conducted by the automated pipelines previously described. Each automated pipeline
-   functions independently from other pipelines but are combined in sequence to produce the full automated process of building and deploying software to
-   production.
+5. Continuous Integration/Continuous Delivery (CI/CD) Pipeline − This technology provides automated pipelines (e.g., continuous build, integration, delivery, and deployment) that run many components unique to each phase of the DevSecOps lifecycle. Different phases of the DevSecOps lifecycle directly influence the components and activities performed by the previously described automated pipelines. While each automated pipeline functions independently from other pipelines, they are combined in sequence to produce the full automated process of building and deploying software to production.
 
-5. Zero Trust Security − This underlying security environment includes all aspects of Zero Trust Architecture (ZTA) implemented at NCCoE, as described in 
+6. Zero Trust Security − This underlying security environment includes all aspects of Zero Trust Architecture (ZTA) implemented at NCCoE, as described in 
    `NIST SP 1800-35 <https://doi.org/10.6028/NIST.SP.1800-35>`__ and `NIST SP 800-207 <https://doi.org/10.6028/NIST.SP.800-207>`__. It includes ZTA components such as Identity, Credential, Access Management (ICAM), Policy Decision Point (PDP), Policy
-   Enforcement Point (PEP), Data Security, Security Analytics, Endpoint Security and Resource Protection.
+   Enforcement Point (PEP), Data Security, Security Analytics, Endpoint Security, and Resource Protection.
 
-The detail of the notional reference model is shown below.
+The details of the notional reference model are provided below.
 
-Phases of the Continuous DevSecOps Lifecycle
+Organizational Preparation
 --------------------------------------------
 
-The phases of continuous DevSecOps lifecycle begin with the Plan phase, where security considerations are incorporated from the start. The process then moves
+Before the development lifecycle can begin, the organization performing the development needs to have a strong, secure foundation in place. This foundation enables teams, infrastructure, and processes to be established in support of each individual development effort. Organizations do this by defining high-level security objectives, assessing organizational risks, and crafting a proactive security strategy that fosters a consistent and secure development process.
+
+This process of establishing secure development guidance before development begins enables a “shift-left” approach that incorporates security considerations into software design and development from the outset. By adhering to organizational, government-regulated, and industry-defined policies, standards, and best practices, development teams can ensure the secure and functional operation of software applications. Each team can use these to derive specific requirements for the software application being developed, its dependencies, and the underlying systems.
+
+
+Phases of the Software Development Lifecycle
+--------------------------------------------
+
+The phases of SDLC begin with the Plan phase, where security considerations are incorporated from the start. The process then moves
 through Develop, Build, Test, Release, Deploy, and Operate phases unless an error occurs, in which case, the feedback process collects the necessary information
-for reevaluation in the Plan phase. Each of these phases are described below in detail. They encompass components provided by the NCCoE's collaborators for
-implementation in this project. Not all components used in software development are shown in this architecture as certain activities (e.g., product management,
-disposing of an old system) can take place outside of the DevSecOps lifecycle, but within the product’s lifecycle. Components are used in multiple phases and
-thus duplications are seen in component tables. Some repeated components are used to confirm that prior phases behaved correctly, while other components serve
-different purposes in different phases. Those components that are used in all phases are detailed in `Continuous Improvements, Security and Monitoring—Section 3.2 <#continuous-improvements-security-and-monitoring>`__.
+for reevaluation in the Plan phase. Each of these phases is described in detail below. They encompass components provided by the NCCoE's collaborators for
+implementation in this project. Not all components used in software development are shown in this architecture, as certain activities (e.g., product management,
+disposing of an old system) can take place outside of the SDLC, but within the product’s lifecycle. Components are used across multiple phases, so duplication is seen in component tables. Some components are repeated to confirm that prior phases behaved correctly, while others serve
+different purposes in different phases. Those components that are used in all phases are detailed in the `Continuous Improvements, Security and Monitoring of this document <#continuous-improvements-security-and-monitoring>`__.
 
 Plan
 ~~~~
 
-The Plan phase is the starting point of the DevSecOps lifecycle. This is where organizations establish secure and efficient software development processes by
-defining functional, non-functional and security requirements, assessing risks, and crafting a proactive security strategy that fosters a consistent and secure development process. This process of
-establishing secure development processes at the beginning of the lifecycle enables a “shift-left” approach, which incorporates security considerations into
-software design and development processes both from the beginning and throughout the lifecycle. With this process in mind, during the Plan phase, software
-development, operations, and security team members adhere to organizational, government-regulated, or industry-defined policies, standards, and best practices
-to ensure the secure and functional operation of software applications. These team members will also work to build their own requirements for software
-applications, their dependencies, and the underlying systems. This phase establishes secure software development and security practices for the software
-project, defines the application architecture that incorporates secure design principles, and allocates resources to address threats, vulnerabilities, and
-defects.
+The Plan phase is the starting point of the SDLC. This phase establishes secure software development and security requirements for the software project (based on organizational guidance), defines the application architecture that incorporates secure design principles, and allocates resources to address threats, vulnerabilities, and defects.
 
-Planning components and activities are used to create development and security roadmaps for updates, repairs, and future enhancements for the project backlog.
-Initial discussions and considerations regarding the toolchain and strategies for automated security checks also begin here.
+The results of planning activities are used to create development and security roadmaps for updates, repairs, and future enhancements for the project backlog. Initial discussions and con-siderations regarding the toolchain and strategies for automated security checks also begin here.
 
-Because the DevSecOps lifecycle is a continuous loop, feedback from later stages constantly informs and refines the initial planning, rather than remaining
+Because the SDLC is a continuous loop, feedback from later stages constantly informs and refines the initial planning, rather than remaining
 static. Initial requirements are established but are then continuously refined based on feedback from subsequent development, security, and operations stages.
 This feedback helps clarify technical issues, which in turn lead to new or updated requirements for supported applications, tools, and components.
 
@@ -92,23 +89,23 @@ Each team member contributes distinct expertise during the Plan phase. Developer
 pipeline feedback, or external stakeholders.
 
 Operations team members gather and document functional, non-functional, and security requirements, and may capture them in source code, documentation, or
-infrastructure-as-code (IaC) scripts. For this document, source code and IaC scripts are treated similarly, and any component interacting with source code may provide similar
+infrastructure-as-code (IaC) scripts. In this document, source code and IaC scripts are treated similarly, and any component that interacts with source code may provide similar
 features for IaC scripts.
 
 Security team members collect security feedback (e.g., discovered vulnerabilities, emerging threats, or evidence of policy deviations) from components in
-the Plan phase and throughout the DevSecOps lifecycle, often leveraging Continuous Improvements functionality. They are instrumental in conducting threat
+the Plan phase and throughout the SDLC, often leveraging Continuous Improvements functionality. They are instrumental in conducting threat
 modeling, defining security requirements, and ensuring evidence-based verification, collaborating closely with Developers and Operations.
 
-All requirements are tracked as issues or tasks within a shared ticketing system. This system is used by all team members and visible to people outside of the
+All requirements are tracked as issues or tasks within a shared ticketing system. This system is used by all team members and is visible to people outside of the
 team, as understanding the flow of work is important to more than just the DevSecOps team. The figure below illustrates the Plan phase.
 
 .. figure:: media/volb-image2.jpg
    :alt: This diagram shows the components used in the plan phase as shown in the components tablet message.
-
+   :width: 750px
 
    Plan Phase
 
-Below are the Plan phase components implemented within the project.
+Below are Plan phase components that were implemented as part of the project.
 
 - :term:`Certificate Management System`
 - :term:`Configuration Management System`
@@ -129,33 +126,28 @@ Below are the Plan phase components implemented within the project.
 Develop
 ~~~~~~~
 
-The Develop phase is focused on software coding, where developers produce source code to create new applications and features and testers and security create
+The Develop phase focuses on software coding, where developers produce source code to create new applications and features, and testers and security teams create
 test cases for the new applications and features. This phase also involves collaboration with operations and security team members, who may contribute essential
-assets, including source code, IaC scripts, and Policy-as-Code scripts (such as for Zero Trust Architecture). Using approved tools and
-binaries, developers build new features, embed security and integrity into the code, and verify the integrity of developed artifacts before introducing changes
-to downstream phases of the DevSecOps lifecycle.
+assets, including source code, IaC scripts, and Policy-as-Code scripts (such as for Zero Trust Architecture). Using approved tools and binaries, developers build new features, embed security and integrity into the code, and verify the integrity of developed artifacts before introducing changes to downstream phases of the SDLC. Ideally, pinned dependencies via immutable identifiers (e.g., cryptographic hashes) and hosting artifacts in internal repositories should be implemented to prevent unauthorized or malicious updates.
 
 Software development team members use various components in the Develop phase to generate source code that implements the requirements defined in earlier
 phases. They adopt “shift-left” practices by performing peer reviews and running analyzers—such as Software Composition Analysis (SCA), Static Application
-Security Testing (SAST), and linting tools—to identify and remediate flaws or vulnerabilities before committing changes to source code management (SCM)
-systems.
+Security Testing (SAST), and linting tools—to identify and remediate flaws or vulnerabilities before committing changes to SCM systems.
 
-Operations team members support development and security efforts, as well as the underlying infrastructure that enables development activities and meets
-application requirements. Operations personnel use approved client tools and binaries to develop IaC scripts to define the various environments and supporting
-artifacts. All developed artifacts are analyzed for technical issues, security vulnerabilities, and policy verification by other tools and team members prior to
-merging changes into relevant branches before progressing to later phases in the DevSecOps lifecycle.
+Operations team members support development and security efforts, as well as the underlying infrastructure that enables development activities and meets application requirements. Opera-tions personnel use approved client tools and binaries to develop IaC scripts to define the vari-ous environments and supporting artifacts. All developed artifacts are analyzed for technical issues, security vulnerabilities, and policy compliance by other tools and team members using the SCM system's code review tools prior to merging changes into relevant branches, before progressing to later phases in the SDLC.
 
-Security team members coordinate the use of components in the Develop phase to implement security and analysis functions leveraged by software development and
-operations team members. Additionally, these developed artifacts, metadata, or collected evidence could provide transparency or help apply security and policy
-throughout the DevSecOps lifecycle. The figure below illustrates the Develop phase.
+Security team members coordinate the use of components during the Develop phase to implement security and analysis functions that software development and
+operations team members leverage. Additionally, these developed artifacts, metadata, or collected evidence could provide transparency or help apply security and policy
+throughout the SDLC. The figure below illustrates the Develop phase.
 
 .. figure:: media/volb-image3.jpg
    :alt: This diagram shows the components used in the develop phase as shown in the components table.
+   :width: 750px
 
 
    Develop Phase
 
-Below are the Develop phase components implemented within the project.
+Below are Develop phase components that were implemented as part of the project.
 
 •	:term:`Artifact Repository (e.g., Internal and External)`
 •	:term:`Artifact Signing and Verification Tool` (e.g., Source Code, Commits, Images, Binaries, and Libraries)
@@ -196,11 +188,12 @@ proper authorization and overall integrity. The figure below illustrates the Bui
 
 .. figure:: media/volb-image4.jpg
    :alt: This diagram shows the components used in the build phase as shown in the components table.
+   :width: 750px
 
 
    Build Phase
 
-Below are the Build phase components implemented within the project.
+Below are Build phase components that were implemented as part of the project.
 
 •	:term:`Artifact Repository (e.g., Internal and External)`
 •	:term:`Artifact Signing and Verification Tool` (e.g., Images, Binaries, and Libraries)
@@ -227,16 +220,12 @@ As part of the Test phase, deployable artifacts are independently evaluated thro
 components execute deployable artifacts on decentralized systems to ensure consistency and reliability.
 
 During this phase, software development team members are responsible for implementing and maintaining automated test suites that validate both functional and
-non-functional requirements. These tests may include unit test framework, integration tests, regression tests, smoke tests, and user acceptance tests. Developers analyze
+non-functional requirements. These tests may include unit test frameworks, integration tests, regression tests, smoke tests, and user acceptance tests. Developers analyze
 test results to identify defects or areas for improvement before artifacts progress to later stages.
 
-Operations team members support the Test phase by provisioning and managing ephemeral environments needed for testing. These test environments are built from
-scratch, code is loaded, and tests are executed. Upon completion of each iteration, the test environments are decommissioned to prepare for subsequent
-executions.
+Operations team members support the Test phase by provisioning and managing ephemeral environments needed for testing. These test environments are built from scratch, code is load-ed, and tests are executed. They may be built using automation, base images, harnesses, and frameworks to ensure consistency and accuracy. Upon completion of each iteration, the logs are retained, results are documented, and test environments are decommissioned to prepare for subsequent executions.
 
-Operations team members ensure that test environments reflect production conditions as much as possible while enabling meaningful and reliable test results.
-Operations personnel may also monitor security functions (i.e., policy verification and software vulnerabilities) and system health during testing to identify
-potential operational issues with testing infrastructure.
+Operations team members ensure that test environments reflect production conditions as much as possible while enabling meaningful and reliable test results. Operations personnel also need to monitor security functions (e.g., policy verification and software vulnerabilities) and system health during testing to identify potential operational issues in the testing infrastructure.
 
 Security team members integrate security-focused tests, such as dynamic application security testing (DAST), fuzz testing, and vulnerability scanning. These
 activities help uncover security weaknesses, misconfigurations, or policy violations that could impact the integrity or safety of the software.
@@ -246,11 +235,12 @@ future development, operational improvements, and security enhancements. The fig
 
 .. figure:: media/volb-image5.jpg
    :alt: This diagram shows the components used in the test phase as shown in the components table.
+   :width: 750px
 
 
    Test Phase
 
-Below are the Test phase components implemented within the project.
+Below are the Test phase components that were implemented as part of the project.
 
 •	:term:`Acceptance Test Tool`
 •	:term:`API Test Tool`
@@ -286,7 +276,7 @@ repositories.
 Ephemeral release environments ensure that source code, software components, and supporting IaC scripts are secure and function correctly with
 every pipeline execution.
 
-Software development team members are responsible for preparing release notes, gathering evidence that all changes have passed needed tests, and ensuring that
+Software development team members are responsible for preparing release notes, gathering evidence that all changes have passed the needed tests, and ensuring that
 release artifacts meet organizational standards.
 
 Operations team members manage the logistics of the release process, including scheduling deployments, validating the readiness of production environments, and
@@ -296,16 +286,16 @@ Security team members verify the security configuration of runtime environments,
 privilege access controls to protect against potential vulnerabilities during the release and delivery process. They may also perform final security checks or
 policy validations before the software is made available to end users.
 
-Throughout the Release phase, feedback from automated tools and manual reviews is collected to inform future improvements in the release process. The figure
-below illustrates the Release phase.
+Throughout the Release phase, feedback from automated tools and manual reviews is collected to inform future improvements in the release process. Note that Automated pipeline controls should support, not replace, manual release authorization. The figure below illustrates the Re-lease phase.
 
 .. figure:: media/volb-image6.jpg
    :alt: This diagram shows the components used in the release phase as shown in the components table.
+   :width: 750px
 
 
    Release Phase
 
-Below are the Release phase components implemented within the project.
+Below are the Release phase components that were implemented as part of the project.
 
 •	:term:`Acceptance Test Tool`
 •	:term:`Artifact Repository (e.g., Internal and External)` 
@@ -328,11 +318,9 @@ Below are the Release phase components implemented within the project.
 Deploy
 ~~~~~~
 
-During the Deploy phase, automated components install and configure packaged software and its dependencies on production infrastructure. This process is
-typically orchestrated by CI/CD pipelines, which ensure consistency and repeatability. Automated scans and runtime analyzers verify and assess the runtime
-status of software applications and systems, evaluating security posture, application performance, and operational quality.
+During the Deploy phase, automated components install and configure packaged software and its dependencies on the production system. Correct installation and configuration are verified. This process is typically orchestrated by CI/CD pipelines, which ensure consistency and repeatability. Automated scans and runtime analyzers verify and assess the runtime status of software applications and systems, evaluating security posture, application performance, and operational quality.
 
-Software development team members may provide configuration management components (i.e., deployment scripts, configuration files, and documentation) to support
+Software development team members may review configuration management components (e.g., deployment scripts, configuration files, and documentation) to support
 a smooth deployment process. They are also responsible for gathering evidence for any issues that arise during deployment.
 
 Operations team members oversee the deployment processes—such as rolling or blue/green deployment ensuring that infrastructure is properly provisioned and
@@ -348,11 +336,12 @@ organizational standards for security, reliability, and performance. The figure 
 
 .. figure:: media/volb-image7.jpg
    :alt: This diagram shows the components used in the deploy phase as shown in the components table.
+   :width: 750px
 
 
    Deploy Phase
 
-Below are the Deploy phase components implemented within the project.
+Below are the Deploy phase components that were implemented as part of the project.
 
 •	:term:`Artifact Repository (e.g., Internal and External)` 
 •	:term:`Artifact Signing and Verification Tool` (Verification Only) (e.g., Images, Binaries, and Libraries)
@@ -372,11 +361,10 @@ The Operate phase encompasses the running applications, binaries, software depen
 Automated processes provide stakeholders with documented evidence of application and system component integrity, SBOM, and attestations.
 
 Software development team members may be involved in monitoring application behavior to address defects and implement changes based on operational feedback.
-This feedback from components, services, and the operations and security teams help to resolve incidents, inform root-cause analysis and post-mortem reviews,
-and to meet the requirements of deployed software applications.
+This feedback from components, services, and the operations and security teams helps resolve incidents, inform root-cause analysis and post-mortem reviews,
+and meet the requirements of deployed software applications.
 
-Operations team members are responsible for maintaining the underlying systems (e.g., containerized, virtualized, and cloud infrastructures). They monitor
-system metrics, manage infrastructure resources, and respond to incidents or outages.
+Operations team members are responsible for maintaining the underlying systems (e.g., containerized, virtualized, and cloud infrastructures). They monitor system metrics, manage infrastructure resources, and respond to incidents or outages. Operations teams require visibility into application code when investigating problems (e.g., they need to understand which software artifacts are currently deployed, when they were built, from which source commits, with which dependencies, and any known vulnerabilities).
 
 Security team members continuously monitor the production environment for threats, vulnerabilities, and policy violations. They leverage automated tools for intrusion detection, log analysis, and monitoring. While not used to generate or verify artifacts in this phase, security personnel also review provenance information (e.g., SBOMs) to verify that only authorized software dependencies and components are running in production.
 
@@ -385,11 +373,12 @@ development, and operational improvements, ensuring that the software supply cha
 
 .. figure:: media/volb-image8.jpg
    :alt: This diagram shows the components used in the operate phase as shown in the components table.
+   :width: 750px
 
 
    Operate Phase
 
-Below are the Operate phase components implemented within the project.
+Below are the Operate phase components that were implemented as part of the project.
 
 •	:term:`CI/CD Pipeline` (Operate Environment, e.g., Container and Virtualization Environment)
 •	:term:`IaC Scripts`
@@ -397,20 +386,19 @@ Below are the Operate phase components implemented within the project.
 •	:term:`Zero Trust Security System`
 
 
-Continuous Improvements, Security and Monitoring
+Continuous Improvements, Security, and Monitoring
 ------------------------------------------------
 
-Continuous Improvements, Security, and Monitoring is not a distinct phase of the DevSecOps Lifecycle, but rather a set of persistent services and activities
+Continuous Improvements, Security, and Monitoring is not a distinct phase of the SDLC, but rather a set of persistent services and activities
 that span all phases. Components present in Continuous Improvements, Security, and Monitoring provide ongoing monitoring, assessment, and management of systems,
 applications, and supporting infrastructure throughout the entire lifecycle. Continuous Improvements, Security, and Monitoring components are responsible for
 detecting and notifying stakeholders of system and application deviations, anomalies, and performance issues across various timescales. These automated
 processes deliver continuous visibility into the health, security, and integrity of all system components, which enable detection and response to threats that
 could impact security, integrity, or availability.
 
-While the specific activities performed by Continuous Improvements, Security, and Monitoring components are tailored to the needs of each DevSecOps Lifecycle
-phase, their overarching goal is to ensure that all systems meet the requirements necessary for deployed software applications.
+While the specific activities performed by Continuous Improvements, Security, and Monitoring components are tailored to the needs of each SDLC phase, their overarching goal is to ensure that all systems meet the requirements necessary for deployed software applications.
 
-Software development, operations, and security team members all rely on feedback generated by Continuous Improvement, security and monitoring to inform their
+Software development, operations, and security team members all rely on feedback generated by Continuous Improvement, security, and monitoring to inform their
 activities, drive improvements, and maintain a secure software supply chain. These team members leverage components from Continuous Improvements, Security, and
 Monitoring to perform tasks such as addressing system failures, responding to security or operational incidents, or handling escalating issues associated with
 running software applications and supporting systems. The figure below illustrates the role of Continuous Improvements, Security, and Monitoring within the
@@ -418,11 +406,12 @@ notional architecture.
 
 .. figure:: media/volb-image9.jpg
    :alt: This diagram shows the components used in the continuous improvements, security and monitoring as shown in the components table.
+   :width: 750px
 
 
    Continuous Improvements, Security, and Monitoring
 
-Below are Continuous Improvements, Security, and Monitoring components implemented within the project. These components are used in every phase of the DevSecOps lifecycle.
+Below are the Continuous Improvements, Security, and Monitoring components that were implemented as part of the project. These components are used in every phase of the SDLC.
 
 •	:term:`Certificate Management System`
 •	:term:`CI/CD Pipeline` (Plan, Develop, Build, Test, Release, Deploy, and Operate Environments) 
@@ -444,29 +433,25 @@ Below are Continuous Improvements, Security, and Monitoring components implement
 Continuous Feedback 
 --------------------
 
-The Continuous Feeback cycle is a continuous, adaptive concept where all decision criteria (i.e., success, failure, or anomalous signals) generated throughout
-the DevSecOps lifecycle are collected and used to drive ongoing improvement in development efficiency, operational quality, and security posture. This
-comprehensive feedback is systematically delivered to teams at the earliest point of detection. This process facilitates the "shift-left" mechanism, which
-ensures that issues, particularly security vulnerabilities and policy deviations, are identified and addressed proactively enabling the rapid delivery of
-secure, high-quality, and resilient software.
+The Continuous Feedback cycle is an adaptive, iterative process that aggregates decision criteria (such as success, failure, or anomaly signals) from across the SDLC and uses them to drive ongoing improvements in development efficiency, operational quality, and security posture. This comprehensive feedback is systematically delivered to teams at the earliest point of detection. This process facilitates the “shift-left” mechanism, which ensures that issues, particularly security vulnerabilities and policy deviations, are identified and addressed proactively, enabling the rapid delivery of secure, high-quality, and resilient software.
 
 Continuous Integration/Continuous Delivery (CI/CD) Pipeline
 -----------------------------------------------------------
 
-CI/CD pipelines form automated systems that orchestrate the continuous building, testing, release, and deployment of software or system artifacts and generates
+CI/CD pipelines form automated systems that orchestrate the continuous building, testing, release, and deployment of software or system artifacts and generate
 necessary evidence throughout the various pipeline stages. The CI/CD pipelines documented in this notional architecture are comprised of these five
 interconnected stages:
 
-1. **Continuous Build:** This stage consists of automated build mechanisms which stage source code, software and system dependencies, and configuration items
+1. **Continuous Build:** This stage consists of automated build mechanisms that stage source code, software, system dependencies, and configuration items
    for the purposes of building software and system artifacts. Automated processes in this stage are commonly associated with either polling or triggering
-   effects coupled with changes to source code or configuration items. Artifacts and evidence (i.e., notifications, alerting, and logging) are generated as part
-   of the continuous build process then passed downstream to the next phases of automation.
+   effects coupled with changes to source code or configuration items. Artifacts and evidence (e.g., notifications, alerts, and logs) are generated during
+   the continuous build process and then passed downstream to the next phases of automation.
 
 2. **Continuous Integration (CI)**: As build artifacts are staged in a testing environment, this CI component performs an assortment of tests and assessments to
    verify operational integrity prior to deployment. These components integrate security testing and analysis via SAST, SCA, and various asset
-   scanners (i.e., secrets, IaC, container image scanner) to detect any defects, security vulnerabilities, or configuration issues.
+   scanners (e.g., secrets, IaC, and container image scanners) to detect defects, security vulnerabilities, and configuration issues.
 
-3. **Continuous Delivery (CD)**: Once tested, automated processes package the generated artifacts (i.e., software assets and configuration items) for release.
+3. **Continuous Delivery (CD)**: Once tested, automated processes package the generated artifacts (e.g., software assets and configuration items) for release.
    These artifacts are delivered to distribution systems such as artifact repositories, package managers, or SCMs. These packaged artifacts are continually
    tested and assessed for defects, security vulnerabilities, or configuration issues.
 
@@ -481,34 +466,34 @@ interconnected stages:
 
 
 
-All these automated processes flow sequentially throughout the DevSecOps Lifecycle. Each of the CI/CD pipeline stages has presence in one or more lifecycle
-phases. Detection of defects or vulnerabilities in each lifecycle phase will trigger failure states and distribute any evidence necessary to notify
+Software conceptually flows through each of these automated processes sequentially. However, each  of the CI/CD pipeline stages has presence in one or more lifecycle
+phases. Detection of defects or vulnerabilities at each lifecycle phase will trigger failure states and distribute the necessary evidence to notify
 stakeholders. Automated processes and teams review evidence generated in each phase. This evidence is used to verify the requirements of source code,
-software asset, or configuration changes. It's the combination of generated evidence and artifacts that provide the necessary feedback that continues the
-software development and DevSecOps Lifecycle.
+software assets, or configuration changes. It's the combination of generated evidence and artifacts that provides the necessary feedback to continue the
+software development throughout the lifecycle.
 
 Zero Trust Security
 -------------------
 
-Zero Trust serves as an underlying component of this architecture. Each of the phases is dependent on operating in a Zero Trust environment. ZTA operates on the
+Zero Trust serves as an underlying component of this architecture. Each phase depends on operating in a Zero Trust environment. ZTA operates on the
 principle of "never trust, always verify," enforcing strict identity authentication and authorization for every user and device attempting to access resources,
 regardless of their location. It also assesses the device posture—evaluating the security health of the accessing device. Based on the continuous
 assessment of user/system identity and device posture, only the "least privilege access" is granted for devices that meet security requirements, and these permissions are revoked
 when no longer needed. This approach prevents lateral movement of attackers within a network.
 
-Specifically, Zero Trust is being implemented at the NCCoE within the DevSecOps lifecycle as shown below:
+Specifically, Zero Trust is being implemented at the NCCoE within SDLC as shown below:
 
 -  Enforcing Strict Access Controls: ZTA requires continuous assessment of user/system identity and device posture, authenticating and authorizing user/system
-   access according to the policy. User/system cannot gain access to resources for which they are not approved.
+   access according to the policy. The user/system cannot access resources for which they are not approved. This includes but is not limited to source code repositories, infrastructure, and developer workstations.
 
--  Granting Least Privilege Access: Based on continuous assessment, only least privilege access is granted for devices that meet security requirements, for the duration of the
-   session. Users/systems are granted the least privileges only for the specific role they play and for the pipeline.
+-  Granting Least Privilege Access: Based on continuous assessment, only devices that meet security requirements are granted least privilege access for the duration of the session. Users/systems are granted only the least privileges necessary for the specific role they play and the pipeline.
 
--  Preventing Lateral Movement: By continuously verifying every access attempt and only allowing access to the needed resource, prevents lateral movement
-   within a network or a pipeline.
+-  Preventing Lateral Movement: Continuously verifying every access attempt and allowing access only to the needed resource prevents lateral movement within a network or pipeline.
 
 -  Securing Pipeline Identities: Within the pipeline, Zero Trust is applied by assigning a unique identity to the application and ensuring this pipeline
    identity adheres to zero-trust principles.
+
+-  Securing Pipeline and Code Repository Actions: All pipeline actions and code repository actions (e.g., merge requests) must be initiated and/or approved by authorized entities.
 
 -  Isolating Actor Identities: The identities of the pipeline itself and the actors (users/systems) who initiate pipeline activities are kept unique and
    independent.
@@ -516,41 +501,117 @@ Specifically, Zero Trust is being implemented at the NCCoE within the DevSecOps 
 -  Device Posture Verification for Access: Access to pipeline resources is granted only if the initiating device's security posture meets the predefined
    security policies.
 
-This comprehensive approach ensures that every interaction within the DevSecOps pipeline, whether human or automated, is authenticated, authorized, and
+-   Securing Container Images and Build Artifacts: Zero Trust policy is applied by enforcing source verification requirements. All container images must be sourced from trusted registries, and all build artifacts must be cryptographically signed and verified. SBOMs for container images and build artifacts are cryptographically signed and verified. SBOMs for deployed applications are continuously reviewed for newly discovered vulnerabilities.
+
+-   Continuous Diagnostics and Mitigation: DevSecOps infrastructure and systems are continuously monitored, and mitigations are automatically triggered in response to incidents or Zero Trust policy violations.
+
+This approach ensures that every interaction within the CI/CD pipeline, whether human or automated, is authenticated, authorized, and
 continuously validated against strict security policies, thereby enhancing the overall security posture and integrity of the software supply chain.
+
+As AI capabilities become increasingly integrated into the SDLC, it is critical for Zero Trust principles to be extended to AI-enabled systems, agents, and services. AI components should be identified, inventoried, and assigned managed identities within the enterprise architecture. Access by AI systems to source code repositories, build systems, artifact registries, models, data sources, APIs, and infrastructure should be continuously authenticated, authorized, and governed ac-cording to least-privilege principles. Communications between AI-enabled components should be protected through Zero Trust controls, while access to data, software artifacts, and other sensitive re-sources should be continuously monitored and restricted based on mission need. AI-enabled applica-tions, models, prompts, agents, and supporting infrastructure should be developed using se-cure-by-design principles and protected against emerging threats. AI should be deployed using careful threat modeling, robust governance, and a secure-by-default approach to configuration with clear, specific, and constrained guardrails. Security monitoring, threat detection, and incident response processes should also be extended to include AI-specific risks and behaviors to ensure the integrity, security, and trustworthiness of AI-enabled DevSecOps operations. Risk assessments should be per-formed and used to determine which higher-risk and higher-impact decisions should require a human in the loop. Monitoring and auditing data should be regularly evaluated to validate proper governance and policy enforcement throughout the organization.
 
 The NCCoE DevSecOps project leveraged the NCCoE’s Zero Trust project environment, which included components such as Identity Credential Access Management
 (ICAM), Policy Decision Point (PDP), Policy Enforcement Point (PEP), Data Security, Security Analytics, Endpoint Security, and Resource Protection. For more
 information about NCCoE’s Zero Trust Architecture project, please refer to the NCCoE’s `Implementing a Zero Trust
 Architecture <https://www.nccoe.nist.gov/projects/implementing-zero-trust-architecture>`__ site.
 
-Artificial Intelligence
------------------------
+Artificial Intelligence :bdg-primary:`New`
+-------------------------------------------
 
-Throughout the software development lifecycle AI is increasingly being used for the initial draft of processes and recommending ways to enhance the security and
-effectiveness of the organization. AI-augmented tools are used to facilitate automation, coding, security analysis, and even automated analysis for detecting
-and remediating vulnerabilities.
+AI provides opportunities to optimize how organizations plan, develop, secure, deploy, and operate software systems. Rather than viewing AI as a standalone capability, our approach is to integrate AI into the SDLC in a controlled, measurable, and risk-aware manner.
 
-When considering the use of AI-augmentation for the software development lifecycle, it is important to have a strong, preexisting methodology and associated
-baseline metrics. The use of AI technology in software development can improve work efficiency and may also improve software quality in a timelier
-manner. However, AI may exacerbate organizational and process flaws, so the software development team members still need to ensure AI-generated content is
-monitored and validated by a human and that verifiable processes are in place to ensure its accuracy and trust. There is a real need to employ oversight
-necessary to prevent insecure and non-functional code from being inserted into the software development process.
+AI enables teams to work more efficiently, accelerate delivery timelines, and identify security concerns earlier in the development lifecycle. However, as with any emerging technology, AI adoption must be balanced with robust security, governance, and operational risk management. While modern AI systems can generate code, make recommendations, and act autonomously, these capabilities introduce risks such as inaccurate outputs, insecure code generation, unauthorized actions, limited explainability, hallucinated security recommendations, and data leakage. Furthermore, risks include excessive privileges granted to AI agents, context tampering (e.g., model, prompt, or workflow), and AI-generated artifacts entering the supply chain without provenance or approval.
 
-The underlying models used by AI are not updated in real-time. Therefore, the information AI provides may be out of date. A human should review the
-recommendations and see if there are newer tools or guidelines that the AI is unaware of.
+Consequently, operational, security, and software development teams must ensure that AI-generated content is monitored and validated by human stakeholders, with established security processes in place to maintain accuracy and trust. 
 
-Identifying where AI is being used, including use by third-party models, in source code, in testing, and in documentation is challenging. It is necessary to
-provide mechanisms for tracing models, modifications, and annotations to ensure that AI-assisted processes can be subjected to a level of review matching for
-human modification of software systems and applications. Examples of such mechanisms may include analysis of confidence scores, oversight and approval
-procedures, evidence tracking of false positives, and exploits.
+In this project, we adopted a phased approach to implementing AI in DevSecOps. The current phase demonstrates human-directed Generative AI capabilities, while future phases will introduce Agentic AI to enable autonomous multi-step execution and tool interaction in the software development lifecycle.
 
-The list of activities below describes areas where example implementations help explain how AI extends existing DevSecOps components and activities:
+In the current phase, we leveraged Generative AI to automate requirements generation, task decomposition, ticketing, source code generation and modification, infrastructure configurations, and test case creation, while utilizing code scanning and vulnerability detection for security analysis and remediation summaries. To ensure quality and security, this initial phase operated under direct human supervision, requiring users to review and validate all AI-generated outputs. 
 
--  AI may assist in describing features or tasks needed to meet functional or security requirements. AI may be used to help identify poorly written requirements or
-   gaps in design and can ensure correct traceability of added features or new requirements.
+This implementation focuses on the Plan, Develop, and Continuous Feedback phases of the proposed Notional Reference Model for DevSecOps, where the collaborator technologies were available. These phases offer opportunities to improve productivity while maintaining human oversight and minimizing operational risk; at this stage, AI acts as an advisor and assistant rather than an autonomous decision-maker. This phased approach allows the organization to gain experience with AI technologies, establish governance, and build trust before introducing higher levels of automation. To maintain integrity, all AI-generated outputs should be traceable to their source context, reviewed through established SDLC control gates, logged for auditability, and approved by accountable stakeholders before being utilized as requirements, code, configurations, or deployment inputs. 
 
--  AI may aid with summarizing results of automated activities — this  can include automated builds, tests, or scans. It can also include analysis of logs to help
-   identify abnormal results that require a human review. AI may also recommend changes to these automated activities based on the results.  For more information about Incident Response Recommendations and Considerations for Cybersecurity Risk Management, please refer to `NIST SP 800-61 <https://csrc.nist.gov/pubs/sp/800/61/r3/final>`__. 
+**Plan Phase:**
+
+During the Plan phase of SDLC, we used AI tools to help the team transform requirements into actionable work items. Activities that occur during this phase involve usage of AI for task documentation, decomposition, and assignment. Descriptive material, also known as context, provides AI applications with work requirements to be organized, broken down, or summarized appropriately. AI may recommend work items, assignments, priorities, and remediation actions; however, acceptance, prioritization, and execution remain the responsibility of authorized human stakeholders. During the Plan phase of SDLC, we used AI to analyze project documentation, requirements, and stakeholders including:
+
+-  Generate work items, issues, tasks, user stories, epics, or milestones
+-  Decompose large requirements into manageable tasks
+-  Identify missing requirements or software dependencies
+-  Provide remediations, mitigations, or implementations based on provided frameworks or control standards
+-  Assist with project documentation, knowledge management, and team communication
+-  Support threat modeling activities
+-	Perform risk-based prioritization
+
+
+The diagram below describes an example of an AI-assisted Plan phase. The AI component shown in the diagram performs the planning activities as described above. When completed, the planned activities are coordinated with a developer in the Develop phase. Output is reviewed and submitted by the developer to begin the CI/CD pipeline, with content submitted to the Build phase.
+
+
+.. figure:: media/ai-diagram.jpg
+   :alt: This figure shows Notional Reference Model with AI-assisted Plan Phase.
+
+   Notional Reference Model with AI-assisted Plan Phase
+
+
+**Develop Phase:**
+
+Develop phase activities executed by the team can be assisted by chat- or agent-based applications, using tools installed on individual systems or provided by online platforms. These tools can interface with documentation, source code, or other contexts to assist in tasks such as code generation, unit test generation, static application security analysis, or other software and system tool interactions. The results of these activities should be evaluated to verify the functional and security postures of any modifications. During the Develop phase of SDLC, we used AI directly in software development activities, where we used AI-powered assistants through chat interfaces and integrated development environments (IDEs) to accelerate tasks, including: 
+
+-  Generate source code and infrastructure-as-code (IaC) 
+-  Generate unit and integration tests
+-  Assist with API development and documentation
+-  Refactor source code or configurations based on user-provided recommendations or other context
+-  Generate project documentation
+-  Analyze software or system dependencies for issues
+-  Provide more secure code recommendations
+-  Analyze security and vulnerability reports
+-  Interpret threat modeling information
+-  Build security control mappings and documentation
+-  Manage source code or configurations
+-  Assist with building automation for CI/CD pipelines
+-  Inspect and recommend changes based on analyzed system architectures
+
+The diagram below describes an example of an AI-assisted Develop phase. A developer coordinates with AI components to perform the development activities described in the list above. In this example, the AI content is submitted to the Build phase to initiate CI/CD pipeline automation.
+
+.. figure:: media/ai-dev-diagram..png
+   :alt: This figure shows Notional Reference Model with AI-assisted Develop Phase.
+   :width: 300px
+
+   Notional Reference Model with AI-assisted Develop Phase
+
+
+AI-generated outputs are always reviewed through established DevSecOps processes, including peer review, security validation, automated testing, and approval workflows. In this phase, AI assists with execution but does not independently deploy or modify production environments.
+
+**Continuous Feedback:**
+
+As components and activities occur during the SDLC, context can be gathered from logs and other outputs as part of the Continuous Feedback process. This context can be utilized by various AI technologies to assist with troubleshooting, security remediation, or other corrective actions. Corrective actions could include generating new source code, configuration data, or other changes to software or system state, using the feedback for future Plan and Develop phase activities to finally resolve any discovered issues. AI-generated corrective actions should be treated as proposed inputs to future planning or development activities and should not modify software, configurations, or system state without review and approval through established DevSecOps processes. During the Continuous feedback phase, we used AI systems to analyze information generated throughout the software lifecycle, including:
+
+-  Generated systems or software application logs
+-  Generated security events or discovered vulnerabilities
+-  Published vulnerability reports or threat metadata
+-  Generated system or software performance metrics
+-  Captured or documented operational incidents
+-  Deployment logs or other historical context on past deployments
+
+Using this information, AI can:
+
+-  Identify emerging trends and potential security or implementation anomalies
+-  Recommend remediations, mitigations, or corrective actions for discovered vulnerabilities
+-  Prioritize new or existing software or system vulnerabilities
+-  Assist with root-cause analysis
+-  Recommend improvements for documented processes and activities
+
+The diagram below describes an example of AI-assisted Continuous Feedback. The AI components will automatically respond to content being generated by one or more feedback components and submitted to Plan phase components. Once received, the AI component will proceed through the Plan phase example described earlier in this section.
+
+
+.. figure:: media/ai-feedback-diagram.png
+   :alt: This figure shows Notional Reference Model with AI-assisted Feedback.
+   :width: 400px
+
+   Notional Reference Model with AI-assisted Feedback
+
+
+By leveraging AI tools, the role shifts from manual execution to orchestration. Now, team members can utilize AI chat interfaces to generate implementation plans based on existing tickets and repositories. Integrated AI tools further accelerate the process by generating code changes, authoring tests, and executing security scans. Rather than writing every line of code during the Develop phase, the engineer now focuses on reviewing AI-generated output via the source control management (SCM) system and issue tracker. This transition ensures that deployments remain consistent, scalable, and aligned with the team's SDLC requirements.
+
+Our future phase will introduce Agentic AI capabilities. Unlike today's Generative AI assistants, Agentic AI systems can execute multi-step workflows, interact with tools, retrieve information, make decisions based on objectives, and coordinate activities across multiple systems. Future project work will explore an AI-enabled DevSecOps ecosystem where planning, development, security, operations, and continuous feedback operate as a connected lifecycle. Human experts remain responsible for governance, approval, and mission outcomes, while AI may support and accelerate analysis, automation, and execution. It's important to ensure that any reviews or changes proposed by AI are assessed by stakeholders before implementation.
 
 For additional NIST guidelines regarding cybersecurity opportunities and risks related to AI adoption and use, please refer to the `NIST Cyber AI Profile <https://www.nccoe.nist.gov/projects/cyber-ai-profile>`__. 

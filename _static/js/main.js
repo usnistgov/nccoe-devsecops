@@ -111,7 +111,6 @@ $(document).ready(function () {
     var $this = $(this);
     var $panel = $('#' + $this.attr('aria-controls'));
     var isExpanded = $this.attr('aria-expanded') === 'true';
-    console.log("clicked");
 
     $this.attr('aria-expanded', isExpanded ? 'false' : 'true');
     if (isExpanded) {
@@ -138,5 +137,27 @@ $(document).ready(function () {
     $expandCollapseAllButton.text(isExpandedAll ? 'Collapse All' : 'Expand All');
   });
 
-});
+  function openLinkedDropdown() {
+    if (!window.location.hash) return;
 
+    const id = decodeURIComponent(window.location.hash.slice(1)); // Remove the '#' from the hash
+    const target = document.getElementById(id);
+
+    if (!target) return;
+
+    const dropdown = target.closest("details.sd-dropdown");
+    if (dropdown) {
+      dropdown.open = true;
+      target.scrollIntoView({ block: "center" });
+    }
+  }
+
+  openLinkedDropdown();
+  window.addEventListener("hashchange", openLinkedDropdown);
+
+  // Accessibility fix for generated Sphinx/docutils citation markup.
+  // Sphinx may emit citation entries with the deprecated doc-biblioentry role.
+  // Since the parent is role=list, expose each citation as a listitem.
+  $(".citation-list[role='list'] > .citation[role='doc-biblioentry']").attr("role", "listitem");
+
+});

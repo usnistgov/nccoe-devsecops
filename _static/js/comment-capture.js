@@ -1,13 +1,13 @@
 /* global Annotator */
 (function () {
   // ---- config ----
-  var MAILTO = (document.currentScript && document.currentScript.dataset && document.currentScript.dataset.email)
-    || "nccoe@nist.gov";
-  var PROJECT = (document.currentScript && document.currentScript.dataset && document.currentScript.dataset.siteName)
-    || "NIST | NCCoE";
-  var SUBJECT = (document.currentScript && document.currentScript.dataset && document.currentScript.dataset.subject)
-    || "[Doc review] {PROJECT} - {N} comments";
-  var STATIC_BASE = (document.currentScript && document.currentScript.dataset && document.currentScript.dataset.staticBase)
+  var DATA = (document.currentScript && document.currentScript.dataset) || {};
+  var EXPORT_HTML = DATA.exportHtml !== 'false';
+  var EXPORT_CSV = DATA.exportCsv !== 'false';
+  var MAILTO = DATA.email || "nccoe@nist.gov";
+  var PROJECT = DATA.siteName || "NIST | NCCoE";
+  var SUBJECT = DATA.subject || "[Doc review] {PROJECT} - {N} comments";
+  var STATIC_BASE = DATA.staticBase || "";
   var KEY = 'cm_comment_queue_v1';
 
   if (!window.Annotator) return;
@@ -25,11 +25,67 @@
       updateBtn();
     }
   }
+  function qUpdateById(id, item) {
+    var q = qLoad();
+    var idx = q.findIndex(function (x) { return x.id === id; });
+    if (idx !== -1) {
+      q[idx] = item;
+      qSave(q);
+      updateBtn();
+    }
+  }
+  function qRemoveById(id) {
+    var q = qLoad().filter(function (x) { return x.id !== id; });
+    qSave(q);
+    updateBtn();
+  }
 
   // ---- helpers ----
   function title() { var h = document.querySelector('h1,h2'); return (h && h.textContent) || document.title || ''; }
   function selObj() { var s = window.getSelection && window.getSelection(); return (s && s.rangeCount) ? s : null; }
   function selText() { var s = selObj(); return s ? s.toString() : ''; }
+
+  function makeCommentID() {
+    return 'cm_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
+  }
+
+  function tagHighlights(ann) {
+    if (!ann || !ann.highlights || !ann._cmId) {
+      return;
+    }
+
+    ann.highlights.forEach(function (highlight) {
+      highlight.setAttribute('data-cm-id', ann._cmId);
+    });
+  }
+
+  function escapeHtml(s) {
+    return String(s || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+  // Build a consistent export filename from the configured subject template.
+  function exportFilename(ext) {
+    return SUBJECT.replace(/\{PROJECT\}/g, PROJECT.replace(/\s+/g, '_'))
+      .replace(/\{N\}/g, String(qLoad().length))
+      .replace(/[^a-z0-9_\-\.]/gi, '_') + '.' + ext;
+  }
+
+  function downloadFile(content, mimeType, filename) {
+    if (!content) return;
+    var blob = new Blob([content], { type: mimeType });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
 
   function nearestId() {
     var s = selObj(); if (!s) return '';
@@ -47,36 +103,59 @@
     if (!s) return '';
     return String(s).replace(/\r/g, '').trim().slice(0, 1000);
   }
-  function linkQuote(s) {
-    if (!s) return '';
-    return String(s).replace(/\s+/g, ' ').trim().slice(0, 150);
-  }
-  function scrollToTextLink(url, exact) {
-    return exact ? (url + '#:~:text=' + encodeURIComponent(exact)) : url;
-  }
 
   function normalize(ann) {
     var url = String(location.href).split('#')[0];
-    var qRaw = (ann && ann.quote) ? String(ann.quote) : selText();
+    var selectedText = String((ann && ann.quote) || selText() || '').trim();
+    var highlightSpan = ann && ann.highlights && ann.highlights[0];
+    var block = highlightSpan && highlightSpan.closest('p,li,td,th,blockquote,pre,h1,h2,h3,h4,h5,h6');
+    var contextSnippet = selectedText;
+
+    if (block && selectedText && selectedText.length < 30) {
+      var blockText = block.textContent.replace(/\s+/g, ' ').trim();
+
+      var r = document.createRange();
+      r.selectNodeContents(block);
+      r.setEndBefore(highlightSpan);
+
+      var beforeText = r.toString().replace(/\s+/g, ' ');
+      var matchIndex = beforeText.length;
+
+      if (matchIndex >= 0) {
+        var contextStart = Math.max(0, matchIndex - 60);
+        var contextEnd = Math.min(blockText.length, matchIndex + selectedText.length + 60);
+
+        contextSnippet = (blockText.slice(contextStart, matchIndex) + selectedText + blockText.slice(matchIndex + selectedText.length, contextEnd)).trim();
+      }
+    }
+
+    var anchorId = '';
+    for (var currentEl = highlightSpan; currentEl && currentEl.nodeType === 1; currentEl = currentEl.parentElement) {
+      if (currentEl.id) { anchorId = currentEl.id; break; }
+    }
+
+    if (!anchorId) anchorId = nearestId();
+
     return {
+      id: ann && ann._cmId,
       url: url,
       page_title: title(),
-      anchor_id: nearestId(),                 // <— key addition
-      text_quote: displayQuote(qRaw),
-      link_quote: linkQuote(qRaw),
-      comment: (ann && ann.text ? String(ann.text).trim() : '')
+      anchor_id: anchorId,
+      text_quote: displayQuote(selectedText),
+      context: contextSnippet,
+      comment: String((ann && ann.text) || '').trim()
     };
   }
 
   function csvCell(value) {
     if (value == null) return '';
-    let valueStr = String(value);
+    var valueStr = String(value);
     valueStr = valueStr.replace(/"/g, '""');
     return '"' + valueStr + '"';
   }
 
   function buildCsvFromQueue() {
-    var headers = ['url', 'text', 'comment'];
+    var headers = ['url', 'text', 'context (±60 chars around selection)', 'comment'];
     var q = qLoad();
     var lines = [];
 
@@ -85,9 +164,10 @@
     q.forEach(function (item) {
       var url = item.url || '';
       var quote = (item.text_quote || '').replace(/\r?\n/g, ' ');
+      var context = (item.context || '').replace(/\r?\n/g, ' ');
       var comment = (item.comment || '').replace(/\r?\n/g, ' ');
 
-      lines.push([url, quote, comment].map(csvCell).join(','));
+      lines.push([url, quote, context, comment].map(csvCell).join(','));
     })
     return lines.join('\n');
   }
@@ -97,21 +177,108 @@
     if (csvContent === '') {
       return;
     }
-    var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-    var url = URL.createObjectURL(blob);
-    var a = document.createElement('a');
-    a.href = url;
-    a.download = SUBJECT
-      .replace(/\{PROJECT\}/g, PROJECT.replace(/\s+/g, '_'))
-      .replace(/\{N\}/g, String(qLoad().length))
-      .replace(/[^a-z0-9_\-\.]/gi, '_') + '.csv';
-    document.body.appendChild(a);
-    a.click();
-    URL.revokeObjectURL(url);
+    downloadFile(csvContent, 'text/csv;charset=utf-8;', exportFilename('csv'));
   }
 
-  window.downloadCsvFromQueue = downloadCsvFromQueue;
-  window.buildCsvFromQueue = buildCsvFromQueue;
+  function buildHtmlFromQueue() {
+    var htmlClone = document.documentElement.cloneNode(true);
+    var removeSelector = [
+      'script',
+      '.cm-send-btn',
+      '.cm-ep-overlay',
+      '.cm-instr-overlay',
+      '.annotator-adder',
+      '.annotator-editor'
+    ].join(', ');
+
+    htmlClone.querySelectorAll(removeSelector).forEach(function (node) {
+      if (node.parentElement) {
+        node.parentElement.removeChild(node); // remove scripts & UI elements related to commenting and email preview, as well as annotator editor UI
+      }
+    });
+
+    htmlClone.querySelectorAll('link[rel="stylesheet"][href]').forEach(function (link) {
+      link.href = new URL(link.getAttribute('href'), location.href).href; // convert stylesheets to absolute URLs so they still load in the exported file
+    });
+
+    htmlClone.querySelectorAll('img[src]').forEach(function (img) {
+      img.src = new URL(img.getAttribute('src'), location.href).href; // convert images to absolute URLs so they still load in the exported file
+    });
+
+    htmlClone.querySelectorAll('a[href]').forEach(function (link) {
+      var href = link.getAttribute('href');
+
+      if (!href || href.charAt(0) === '#') {
+        return;
+      }
+
+      link.href = new URL(href, location.href).href;
+    });
+
+    htmlClone.querySelectorAll('[data-cm-id]').forEach(function (highlight) {
+      highlight.classList.add('cm-export-highlight');
+    });
+
+    var commentData = document.createElement('script');
+    commentData.type = 'application/json';
+    commentData.id = 'cm-export-comments';
+    commentData.textContent = JSON.stringify(qLoad());
+    htmlClone.querySelector('body').appendChild(commentData);
+
+    var commentScript = document.createElement('script');
+    commentScript.textContent =
+      '(function () {' +
+      '  var dataEl = document.getElementById("cm-export-comments");' +
+      '  if (!dataEl) return;' +
+      '  var comments = [];' +
+      '  try { comments = JSON.parse(dataEl.textContent || "[]"); } catch (e) { comments = []; }' +
+      '  document.addEventListener("click", function (e) {' +
+      '    var highlight = e.target.closest("[data-cm-id]");' +
+      '    if (!highlight) return;' +
+      '    var id = highlight.getAttribute("data-cm-id");' +
+      '    var item = comments.find(function (x) { return x.id === id; });' +
+      '    if (!item) return;' +
+      '    var popup = document.getElementById("cm-export-popup");' +
+      '    if (!popup) {' +
+      '      popup = document.createElement("div");' +
+      '      popup.id = "cm-export-popup";' +
+      '      popup.className = "cm-export-popup";' +
+      '      document.body.appendChild(popup);' +
+      '    }' +
+      '    popup.innerHTML = "<button type=\\"button\\" class=\\"cm-export-popup-close\\" id=\\"cm-export-popup-close\\" aria-label=\\"Close comment\\">×</button>" +' +
+      '      "<strong>Selected text</strong><div class=\\"cm-export-popup-text\\"></div>" +' +
+      '      "<strong>Comment</strong><div class=\\"cm-export-popup-comment\\"></div>";' +
+      '    popup.querySelector(".cm-export-popup-text").textContent = item.text_quote || "";' +
+      '    popup.querySelector(".cm-export-popup-comment").textContent = item.comment || "";' +
+      '    popup.querySelector("#cm-export-popup-close").onclick = function () {' +
+      '      popup.remove();' +
+      '    };' +
+      '    var rect = highlight.getBoundingClientRect();' +
+      '    var popupTop = window.scrollY + rect.top - popup.offsetHeight - 10;' +
+      '    var popupLeft = window.scrollX + rect.left;' +
+      '    if (popupTop < window.scrollY + 10) {' +
+      '      popupTop = window.scrollY + rect.bottom + 10;' +
+      '    }' +
+      '    popup.style.top = popupTop + "px";' +
+      '    popup.style.left = popupLeft + "px";' +
+      '  });' +
+      '})();';
+
+    htmlClone.querySelector('body').appendChild(commentScript);
+    return '<!DOCTYPE html>\n' + htmlClone.outerHTML;
+  }
+
+  function downloadHtmlFromQueue() {
+    var htmlContent = buildHtmlFromQueue();
+
+    if (!htmlContent) {
+      return;
+    }
+
+    downloadFile(htmlContent, 'text/html;charset=utf-8;', exportFilename('html'));
+  }
+
+  window.buildHtmlFromQueue = buildHtmlFromQueue; //expose the function to global scope for testing/demo purposes
 
   // ---- email composer ----
   function buildEmailPieces(q) {
@@ -119,21 +286,28 @@
     var lines = ['Project: ' + PROJECT, 'Total comments: ' + q.length, ''];
     Object.keys(by).forEach(function (u) {
       var g = by[u];
-      lines.push('=== ' + 'Welcome' + ' ===');
+      lines.push('==========================================');
+      lines.push('PAGE: ' + g.t);
       lines.push('URL: ' + u);
+      lines.push('==========================================');
       g.items.forEach(function (it, i) {
-        var link = it.anchor_id ? (u + '#' + it.anchor_id) : scrollToTextLink(u, it.link_quote);
         lines.push('');
-        lines.push('- Comment #' + (i + 1));
+        lines.push('Comment #' + (i + 1));
+        lines.push('-------------------------------------');
         if (it.text_quote) {
-          lines.push('  Document Text:');
-          lines.push('  ---------------------------------');
-          it.text_quote.split('\n').forEach(function (line) { lines.push('  ' + line); });
-          lines.push('  ---------------------------------');
+          lines.push('');
+          lines.push('Selected Text:');
+          var cleanedQuote = it.text_quote.replace(/\r/g, '').trim();
+          lines.push('"' + cleanedQuote + '"');
+          lines.push('');
         }
-        lines.push('  Comment: ' + (it.comment || '(no comment)'));
-        lines.push('  ---------------------------------');
-        lines.push('  Link: ' + link);
+        if (it.context && it.context.length > 10) {
+          lines.push('Context:');
+          it.context.split('\n').forEach(function (line) { lines.push(line); });
+          lines.push('');
+        }
+        lines.push('Comment: ');
+        it.comment.split('\n').forEach(function (line) { lines.push(line); });
         lines.push('\n');
       });
       lines.push('');
@@ -146,13 +320,6 @@
     return { to: MAILTO, subject: subject, body: body };
   }
 
-  function buildEmail(q) {
-    var p = buildEmailPieces(q);
-    return 'mailto:' + encodeURIComponent(p.to) +
-      '?subject=' + encodeURIComponent(p.subject) +
-      '&body=' + encodeURIComponent(p.body);
-  }
-
   // ---- minimal email preview ----
   (function initEmailPreview() {
     if (window.openEmailPreview) return; // only once
@@ -163,6 +330,7 @@
     wrap.innerHTML =
       '<div class="cm-ep-dialog" role="dialog" aria-modal="true" aria-labelledby="cm-ep-title">' +
       '<div class="cm-ep-h"><h3 id="cm-ep-title" style="margin:0;font-size:16px;">Review and send</h3>' +
+      '<button type="button" class="cm-ep-help" id="cm-ep-help" aria-label="How to comment">How to comment</button>' +
       '<button type="button" class="cm-ep-x" aria-label="Close">×</button></div>' +
       '<div class="cm-ep-f"><label for="cm-ep-to">To</label><input id="cm-ep-to" class="cm-ep-in" type="email"></div>' +
       '<div class="cm-ep-f"><label for="cm-ep-sub">Subject</label><input id="cm-ep-sub" class="cm-ep-in"></div>' +
@@ -173,7 +341,20 @@
       '<button type="button" class="cm-ep-b danger" id="cm-ep-clear">Clear all</button>' +
       '<button type="button" class="cm-ep-b sec" id="cm-ep-copy">Copy</button>' +
       '<button type="button" class="cm-ep-b" id="cm-ep-open">Open in email app</button>' +
-      '<button type="button" class="cm-ep-b export" id="cm-ep-export">Export comments</button>' +
+      //only show export controls when at least one export format is enabled
+      (EXPORT_CSV || EXPORT_HTML ? (
+        '<div class="cm-export-wrap">' +
+        '<button type="button" class="cm-ep-b export" id="cm-ep-export" aria-expanded="false" aria-controls="cm-export-menu">' +
+        (EXPORT_CSV && EXPORT_HTML ? 'Export' : (EXPORT_CSV ? 'Export CSV' : 'Export HTML')) +
+        '</button>' +
+
+        // Export menu options are controlled by the feature flags at the top of this file.
+        '<div class="cm-export-menu" id="cm-export-menu" hidden>' +
+        (EXPORT_CSV ? '<button type="button" class="cm-export-option" data-export-type="csv">Export CSV</button>' : '') +
+        (EXPORT_HTML ? '<button type="button" class="cm-export-option" data-export-type="html">Export HTML</button>' : '') +
+        '</div>' +
+        '</div>'
+      ) : '') +
       '</div>' +
       '</div>';
     document.body.appendChild(wrap);
@@ -185,7 +366,6 @@
     window.openEmailPreview = function (opts) {
       opts = opts || {};
       var to = opts.to || '', sub = opts.subject || '', body = opts.body || '';
-      var onSend = typeof opts.onSend === 'function' ? opts.onSend : null;
 
       var $to = document.getElementById('cm-ep-to');
       var $su = document.getElementById('cm-ep-sub');
@@ -197,18 +377,53 @@
       var $cl = document.getElementById('cm-ep-clear');
       var $list = document.getElementById('cm-ep-list');
       var $ex = document.getElementById('cm-ep-export');
+      var $exportMenu = document.getElementById('cm-export-menu');
+      var $help = document.getElementById('cm-ep-help');
 
-      $ex.onclick = function () {
+      function exportCsv() {
         downloadCsvFromQueue();
-      };
+      }
 
-      function escapeHtml(s) {
-        return String(s || '')
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;')
-          .replace(/'/g, '&#39;');
+      function exportHtml() {
+        downloadHtmlFromQueue();
+      }
+
+      if ($ex && $exportMenu) {
+        $ex.onclick = function () {
+          if (EXPORT_CSV && EXPORT_HTML) {
+            $exportMenu.hidden = !$exportMenu.hidden;
+            $ex.setAttribute('aria-expanded', String(!$exportMenu.hidden));
+            return;
+          }
+
+          if (EXPORT_CSV) {
+            exportCsv();
+            return;
+          }
+
+          if (EXPORT_HTML) {
+            exportHtml();
+          }
+        };
+
+        $exportMenu.onclick = function (e) {
+          var option = e.target.closest('[data-export-type]');
+
+          if (!option) {
+            return;
+          }
+
+          var exportType = option.getAttribute('data-export-type');
+
+          if (exportType === 'csv') {
+            exportCsv();
+          } else if (exportType === 'html') {
+            exportHtml();
+          }
+
+          $exportMenu.hidden = true;
+          $ex.setAttribute('aria-expanded', 'false');
+        };
       }
 
       function renderList() {
@@ -219,13 +434,13 @@
           return;
         }
         var html = q.map(function (it, idx) {
-          var title = it.page_title || '(no title)';
+          var itemTitle = it.page_title || '(no title)';
           var preview = (it.text_quote || it.comment || '').split('\n')[0].slice(0, 120);
           return (
-            '<div class="cm-ep-row" style="display:flex;gap:8px;align-items:start;margin:6px 0;">' +
-            '<div style="flex:1;min-width:0;">' +
-            '<div style="font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + escapeHtml(title) + '</div>' +
-            '<div style="font-size:12px;opacity:.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + escapeHtml(preview) + '</div>' +
+            '<div class="cm-ep-row">' +
+            '<div class="cm-ep-row-main">' +
+            '<div class="cm-ep-row-title">' + escapeHtml(itemTitle) + '</div>' +
+            '<div class="cm-ep-row-sub">' + escapeHtml(preview) + '</div>' +
             '</div>' +
             '<button type="button" class="cm-ep-b danger" data-remove="' + idx + '">Remove</button>' +
             '</div>'
@@ -268,7 +483,19 @@
         }
       };
 
-      function close() { hide(); document.removeEventListener('keydown', esc); }
+      $help.onclick = openInstructions;
+
+      function close() {
+        hide();
+        if ($exportMenu) {
+          $exportMenu.hidden = true;
+        }
+
+        if ($ex) {
+          $ex.setAttribute('aria-expanded', 'false');
+        }
+        document.removeEventListener('keydown', esc);
+      }
       function esc(e) { if (e.key === 'Escape') close(); }
       document.addEventListener('keydown', esc);
       $x.onclick = $c.onclick = close;
@@ -340,12 +567,10 @@
       '</div>' +
       '</div>';
 
-    // basic overlay styles (kept inline for simplicity)
-    wrap.style.cssText = 'display:none;position:fixed;inset:0;z-index:10001;place-items:center;background:rgba(0,0,0,.35)';
     document.body.appendChild(wrap);
 
-    function show() { wrap.style.display = 'grid'; }
-    function hide() { wrap.style.display = 'none'; }
+    function show() { wrap.classList.add('is-open'); }
+    function hide() { wrap.classList.remove('is-open'); }
 
     window.openInstructionsModal = function (opts) {
       opts = opts || {};
@@ -375,39 +600,27 @@
   // ---- annotator wiring ----
   var app = new Annotator(document.body);
 
-  function injectButton(editor) {
-    if (editor.querySelector('.cm-add-queue')) return;
-    var controls = editor.querySelector('.annotator-controls') || editor;
-    var b = document.createElement('button');
-    b.type = 'button';
-    b.className = 'annotator-button cm-add-queue';
-    b.textContent = 'Add to Queue';
-    b.style.marginLeft = '8px';
-    b.addEventListener('click', function () {
-      var ta = editor.querySelector('textarea');
-      var ann = { text: ta ? ta.value : '', quote: selText(), ranges: [{}] };
-      qAdd(normalize(ann));
-      var cancel = editor.querySelector('.annotator-cancel'); if (cancel) cancel.click();
-    });
-    controls.appendChild(b);
-  }
-
-  var mo = new MutationObserver(function (ms) {
-    for (var i = 0; i < ms.length; i++) {
-      var nodes = ms[i].addedNodes || [];
-      for (var j = 0; j < nodes.length; j++) {
-        var n = nodes[j];
-        if (n.nodeType === 1 && n.classList.contains('annotator-editor')) injectButton(n);
-      }
-    }
-  });
-  mo.observe(document.body, { childList: true, subtree: true });
-
   Annotator.Plugin = Annotator.Plugin || {};
   Annotator.Plugin.QueueCapture = function () { };
   Annotator.Plugin.QueueCapture.prototype.pluginInit = function () {
-    this.annotator.subscribe('annotationCreated', function (ann) { qAdd(normalize(ann)); });
+    this.annotator.subscribe('annotationCreated', function (ann) {
+      if (!ann._cmId) ann._cmId = makeCommentID();
+      tagHighlights(ann);
+      qAdd(normalize(ann));
+    });
+
+    this.annotator.subscribe('annotationUpdated', function (ann) {
+      if (!ann._cmId) return;
+      tagHighlights(ann);
+      qUpdateById(ann._cmId, normalize(ann));
+    });
+
+    this.annotator.subscribe('annotationDeleted', function (ann) {
+      if (!ann._cmId) return;
+      qRemoveById(ann._cmId);
+    });
   };
+
   app.addPlugin('QueueCapture');
 
   // ---- floating comment button ----
@@ -479,8 +692,9 @@
         var q = qLoad(); if (!q.length) return;
         var parts = buildEmailPieces(q);
         window.openEmailPreview({
-          to: parts.to, subject: parts.subject, body: parts.body,
-          onSend: function () { setTimeout(qClear, 500); }
+          to: parts.to,
+          subject: parts.subject,
+          body: parts.body
         });
       };
     }

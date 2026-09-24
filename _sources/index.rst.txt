@@ -20,7 +20,7 @@ Secure Software Development, Security, and Operations (DevSecOps) Practices
    |
    |
 
-   March 2026
+   September 2026
 
    |
 
@@ -49,6 +49,7 @@ Secure Software Development, Security, and Operations (DevSecOps) Practices
 
 
 
+      | **Drew Buttner**
       | **Parisa Grayeli**
       | **Joshua Klosterman**
       | **Phillip Millwee**
@@ -75,7 +76,6 @@ Secure Software Development, Security, and Operations (DevSecOps) Practices
 
 
 
-      | **Rahul Dubey**
       | **James Imanian**
       | CyberArk
 
@@ -100,7 +100,6 @@ Secure Software Development, Security, and Operations (DevSecOps) Practices
       
 
 
-      | **Paul Pickhardt**
       | **MaryGrace Wajda**
       | GitLab
 
@@ -138,15 +137,15 @@ Secure Software Development, Security, and Operations (DevSecOps) Practices
 
 
 
+      | **Guy Chernobrov**
+      | **Daniel Nebenzahl**
+      | Resilience Cyber Security
+
+
+      
       | **Jose Palazon**
       | **Michael Smith**
       | Sagittal AI
-
-
-
-      | **Guy Chernobrov**
-      | **Daniel Nebenzahl**
-      | Scribe Security
 
    |
 
@@ -180,10 +179,11 @@ National Institute of Standards and Technology
    :numbered:
 
    introduction
-   project-overview
    notational-reference-model
+   mapping-ssdf
    collaborators
    example-implementations
+   functional-demonstrations
    next-steps
    
 
@@ -195,3 +195,4 @@ National Institute of Standards and Technology
    appendix-b
    appendix-c
    appendix-d
+   appendix-e
