@@ -24,6 +24,114 @@
   {%- block htmltitle %}
   <title>{{ title|striptags|e }}{{ titlesuffix }}</title>
   {%- endblock -%}
+  
+  {% set meta = publication_metadata|default({}) %}
+  {% set meta_title = meta.title|default(title|striptags, true) %}
+  {% set meta_description = meta.description|default('', true) %}
+  {% set meta_url = meta.url|default(pageurl|default(''), true) %}
+  {% set meta_keywords = meta.keywords|default([]) %}
+  {% set meta_authors = meta.authors|default([]) %}
+  {% set meta_keywords_joined = meta_keywords|join(',') %}
+
+  <!-- HTML Meta Tags -->
+  {% if meta_description %}
+  <meta name="description" content="{{ meta_description|e }}">
+  {% endif %}
+
+  <!-- dcterms meta information -->
+  <meta name="dcterms.title" content="{{ meta_title|e }}">
+  {% if meta_description %}
+  <meta name="dcterms.description" content="{{ meta_description|e }}">
+  {% endif %}
+
+  <!-- dcterms authors -->
+  {% for author in meta_authors %}
+  <meta name="dcterms.creator" content="{{ author.dcterms_name|default(author.name)|e }}">
+  {% endfor %}
+
+  <!-- dcterms editors -->
+  {% for editor in meta.editors|default([]) %}
+  <meta name="dcterms.contributor" content="{{ editor.dcterms_name|default(editor.name)|e }}">
+  {% endfor %}
+
+  {% if meta.date_created %}
+  <meta name="dcterms.date.created" schema="ISO8601" content="{{ meta.date_created|e }}">
+  {% endif %}
+  {% if meta_url %}
+  <meta name="dcterms.identifier" content="{{ meta_url|e }}">
+  {% endif %}
+  <meta name="dcterms.language" scheme="DCTERMS.RFC1766" content="{{ meta.language_dcterms|default('EN-US')|e }}">
+
+  <!-- Google Scholar Info -->
+  <meta name="citation_title" content="{{ meta.citation_title|default(meta_title, true)|e }}">
+  {% if meta.published_date_google %}
+  <meta name="citation_publication_date" content="{{ meta.published_date_google|e }}">
+  {% endif %}
+  {% if meta.technical_report_number %}
+  <meta name="citation_technical_report_number" content="{{ meta.technical_report_number|e }}">
+  {% endif %}
+  {% if meta.technical_report_institution %}
+  <meta name="citation_technical_report_institution" content="{{ meta.technical_report_institution|e }}">
+  {% endif %}
+  {% if meta_keywords_joined %}
+  <meta name="citation_keywords" content="{{ meta_keywords_joined|e }}">
+  {% endif %}
+  <meta name="citation_language" content="{{ meta.language|default('en')|e }}">
+  {% if meta_url %}
+  <meta name="citation_abstract_html_url" content="{{ meta_url|e }}">
+  {% endif %}
+
+  <!-- Google Scholar Authors -->
+  {% for author in meta_authors %}
+  <meta name="citation_author" content="{{ author.citation_name|default(author.name)|e }}">
+  {% endfor %}
+
+  <!-- OpenGraph Article Info -->
+  {% for author in meta_authors %}
+  <meta name="article:author" content="{{ author.citation_name|default(author.name)|e }}">
+  {% endfor %}
+  {% if meta_keywords_joined %}
+  <meta name="article:tag" content="{{ meta_keywords_joined|e }}">
+  {% endif %}
+
+  <!-- JSON-LD structured data -->
+  {% if meta %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": {{ meta.jsonld_type|default('Report')|tojson }},
+    "name": {{ meta_title|tojson }},
+    "headline": {{ meta.headline|default(meta.citation_title|default(meta_title, true), true)|tojson }},
+    "description": {{ meta_description|tojson }},
+    "url": {{ meta_url|tojson }},
+    "identifier": {{ meta_url|tojson }},
+    "inLanguage": {{ meta.language|default('en-US')|tojson }},
+    "datePublished": {{ meta.published_date|default('')|tojson }},
+    "dateCreated": {{ meta.date_created|default('')|tojson }},
+    "publisher": {
+      "@type": "Organization",
+      "name": {{ meta.publisher_name|default('National Institute of Standards and Technology')|tojson }},
+      "url": {{ meta.publisher_url|default('https://www.nist.gov/')|tojson }}
+    },
+    "reportNumber": {{ meta.technical_report_number|default('')|tojson }},
+    "keywords": {{ meta_keywords|tojson }},
+    "author": [
+      {% for author in meta_authors %}
+      {
+        "@type": "Person",
+        "name": {{ author.name|tojson }},
+        "givenName": {{ author.given_name|default('')|tojson }},
+        "familyName": {{ author.family_name|default('')|tojson }},
+        "affiliation": {
+          "@type": "Organization",
+          "name": {{ author.affiliation|default('')|tojson }}
+        }
+      }{{ "," if not loop.last }}
+      {% endfor %}
+    ]
+  }
+  </script>
+  {% endif %}
 
   {#- CSS #}
   {%- for css_file in css_files %}
@@ -64,16 +172,17 @@
   {#- JAVASCRIPTS #}
   {%- block scripts %}
   {%- if not embedded %}
+
     {%- for scriptfile in script_files %}
       {{ js_tag(scriptfile) }}
     {%- endfor %}
+
     <script src="{{ pathto('_static/js/theme.js', 1) }}"></script>
     <script src="{{ pathto('_static/js/d3.min.js', 1) }}"></script>
     <script src="{{ pathto('_static/js/mermaid.min.js', 1) }}"></script>
     <script>
-      // Configure and let Mermaid auto-run when DOM is ready
       window.addEventListener('DOMContentLoaded', () => {
-        mermaid.initialize({startOnLoad: true,securityLevel: 'loose'});
+        mermaid.initialize({startOnLoad: true, securityLevel: 'loose'});
       });
     </script>
     <script src="{{ pathto('_static/js/datatables.min.js', 1) }}"></script>
@@ -82,12 +191,6 @@
     <script src="{{ pathto('_static/js/jquery.leaveNotice-nist.js', 1) }}"></script>
     <script src="{{ pathto('_static/js/applyLeaveNotice.js', 1) }}"
             data-site-name="{{ project | default('Site') }}"></script>
-
-    {#- VERSION WARNING BANNER #}
-
-    {%- if READTHEDOCS or DEBUG %}
-    <script src="{{ pathto('_static/js/versions.js', 1) }}"></script>
-    {%- endif %}
 
     {#- OPENSEARCH #}
     {%- if use_opensearch %}
@@ -99,29 +202,35 @@
     {# === Dynamic per-page comment loader: reads <meta name="comments" content="on"> === #}
     <script>
     document.addEventListener('DOMContentLoaded', function () {
-      // only run on pages that have: .. meta::  :comments: on
       if (!document.querySelector('meta[name="comments"][content="on"]')) return;
 
       var base = "{{ pathto('_static/', 1) }}";
 
-      // load CSS
       var css = document.createElement('link');
       css.rel = 'stylesheet';
       css.href = base + 'css/annotator.min.css';
       document.head.appendChild(css);
 
-      // load annotator, then our capture script
-      var a = document.createElement('script');
-      a.src = base + 'js/annotator-full.min.js';
-      a.onload = function () {
+      function loadCommentCapture() {
         var c = document.createElement('script');
         c.src = base + 'js/comment-capture.js';
         c.setAttribute('data-email', "{{ email | default('feedback@example.com') }}");
         c.setAttribute('data-site-name', "{{ project | default('Site') }}");
         c.setAttribute('data-subject', "{{ subject | default('[Doc review] ' ~ project ~ ' — {N} comments') }}");
         c.setAttribute('data-static-base', base);
+        c.setAttribute('data-export-html', "{{ 'true' if comment_capture_export_html | default(true) else 'false' }}");
+        c.setAttribute('data-export-csv', "{{ 'true' if comment_capture_export_csv | default(true) else 'false' }}");
         document.body.appendChild(c);
-      };
+      }
+
+      if (window.Annotator) {
+        loadCommentCapture();
+        return;
+      }
+
+      var a = document.createElement('script');
+      a.src = base + 'js/annotator-full.min.js';
+      a.onload = loadCommentCapture;
       document.body.appendChild(a);
     });
     </script>
@@ -408,7 +517,25 @@
     </section>
   </div>
   {% include "versions.html" -%}
+  
+  <script>
+    (function () {
+      document.addEventListener(
+        "click",
+        function (e) {
+          const current = e.target.closest(".rst-current-version");
+          if (!current) return;
 
+          const versions = document.querySelector(".rst-versions");
+          if (!versions) return;
+
+          versions.classList.toggle("shift-up");
+        },
+        true // capture: works even if something stops propagation later
+      );
+    })();
+  </script>
+  
   <script>
       // expose collapse_navigation theme option to runtime JS so theme scripts can
       // decide whether to expand first-level toctree entries automatically.

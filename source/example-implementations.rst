@@ -1,9 +1,10 @@
-Example Implementations
-=======================
+Example Implementations :bdg-secondary:`Updated`
+=================================================
 
-This section covers the details for each of the example implementations that are implemented at the NCCoE. Note: Products marked as "N/A" were not included in
-specific example implementations. This is due to either the product being unavailable from the collaborator or project time constraints at the NCCoE that
-prevented full integration.
+This section covers the details of each example implementation at the NCCoE. Note: Products marked as “N/A” were not included in specific example implementations. This is due either to the product being unavailable from the collaborator or to project time constraints at the NCCoE that prevented full integration.
+
+Please note, while the Example Implementations (Section 4) describe the solutions built using collaborators’ products, the Functional Demonstrations (Section 5) outline the specific scenarios including detailed Demonstration Steps, Components, Expected Outcomes, and related SSDF tasks.
+
 
 
 .. _e1:
@@ -16,7 +17,7 @@ Black Duck, CyberArk, DigiCert, Endor Labs, and Sagittal AI.
 
 The figure below shows the architecture used in E1. Microsoft Azure Platform as a Service (PaaS) and Azure DevOps (AzDO) are used as the foundation for this
 implementation. The E1 environment establishes three separate environments, which provide networking and computing as Infrastructure as a Service (IaaS). These
-three environments provide hermetic build environments for providing isolated and independent verification of IaaS and components needed for E1 functionality.
+three environments provide hermetic build environments for isolated, independent verification of IaaS and the components needed for E1 functionality.
 Microsoft Bicep is used to deploy and manage these three environments:
 
 1. The Build/Test environment
@@ -30,14 +31,14 @@ descriptive breakdown of components and their purposes:
 
 -  Azure Virtual Network (VNet) – This provides underlying network connectivity and Internet Protocol (IP) address space. It also provides attachment points for
    many supporting services, such as Network Address Translation (NAT) Gateway, Private Endpoints, Load Balancer, and many others. The VNets for E1 include
-   Develop, Build/Test, Release, Deploy/Operate and Management VNets.
+   Develop, Build/Test, Release, Deploy/Operate, and Management VNets.
 
 -  Subnets – Each virtual network is divided into multiple subnets that serve to isolate traffic and group services. These subnets include:
 
    -  Workload subnet – Workloads in each environment are managed via Azure Kubernetes Services (AKS). These workloads consist of applications that are used to
       simulate functional applications.
 
-   -  Shared Services subnet – The shared services hosted in each environment describe PaaS components that are leveraged commonly across one or more subnet.
+   -  Shared Services subnet –  The shared services hosted in each environment are PaaS components commonly leveraged across one or more subnets.
       Shared services include Azure Container Registry, Azure Log Analytics, Private Endpoint, and Azure Storage Account
 
    -  Managed DevOps Pools (MDP) subnet – This service provides on-demand compute to perform automated actions used by Azure DevOps. These actions create,
@@ -46,15 +47,14 @@ descriptive breakdown of components and their purposes:
    -  Web subnet – The web subnet provides ingress functionality to each environment. Workloads hosted in the workload subnet are exposed to external
       connectivity via Azure Load Balancers that are provisioned in the Web subnet.
 
--  Azure Key Vault – This service exists in the management VNet and provides certificates, keys, and secrets to each of the environments that are hosted as part
-   of E1.
+-  Azure Key Vault –  This service is in the management VNet and provides certificates, keys, and secrets to each environment hosted as part of E1.
 
 -  Azure Virtual Machine or Microsoft DevBox – These services provide the compute resources used for management and simulated development activities for E1.
 
--  Azure DevOps (AzDO) – AzDO is Software as a Service (SaaS) and provides the SCM, ticketing systems, issue tracking, and CI/CD functionality used for E1.
+-  Azure DevOps (AzDO) – AzDO is a Software-as-a-Service (SaaS) platform that provides SCM, ticketing systems, issue tracking, and CI/CD functionality used for E1.
 
--  NCCoE Azure Tenant – This tenant is used for NCCoE’s DevSecOps project and other NCCoE projects. For the DevSecOps project components below are used
-   showcasing the zero trust capabilities used in E1:
+-  NCCoE Azure Tenant – This tenant is used for NCCoE’s DevSecOps project and other NCCoE projects. For the DevSecOps project, the components below are used to
+   showcase the zero trust capabilities used in E1:
 
    -  Microsoft Entra Conditional Access and Entra Governance – Microsoft Entra Conditional Access provides automated access controls based on user and device
       risk, while Entra Governance manages identity lifecycle and permissions, both serving as core components of a Zero Trust security strategy by ensuring
@@ -64,8 +64,8 @@ descriptive breakdown of components and their purposes:
    -  Microsoft Intune – manages and secures devices and applications, ensuring that only verified and trusted endpoints can access organizational resources,
       which is essential for enforcing Zero Trust principles.
 
-   -  Microsoft Defender for EndPoint – provides advanced threat protection and monitoring for devices, helping to detect, prevent, and respond to security
-      threats, which supports Zero Trust by continuously validating device health and security before granting access to resources.
+   -  Microsoft Defender for Endpoint – provides advanced threat protection and monitoring for devices, helping detect, prevent, and respond to security
+      threats, and supports Zero Trust by continuously validating device health and security before granting access to resources.
 
    -  Microsoft Defender for Cloud – provides unified security management and threat protection across cloud and hybrid environments, supporting Zero Trust by
       continuously assessing, monitoring, and enforcing security policies to ensure only secure resources and users can access cloud workloads.
@@ -79,20 +79,19 @@ descriptive breakdown of components and their purposes:
       Architecture <https://www.nccoe.nist.gov/projects/implementing-zero-trust-architecture>`__ (ZTA) project. The DevSecOps project reused the components
       implemented for the NCCoE ZTA project.
 
--  All the other collaborators products including Blackduck, CyberArk, DigiCert, Endor labs, and Sagittal AI are SaaS based and are connected to Microsoft’s
-   environment using Microsoft’s NAT Gateway as shown in the figure below.
+-  All the other collaborators' products, including Blackduck, CyberArk, DigiCert, Endor Labs, and Sagittal AI, are SaaS-based and connected to Microsoft’s environment via Microsoft’s NAT Gateway, as shown in the figure below.
 
 .. figure:: media/example-implementation-1-architecture.jpg
    :alt: This diagram provides information about the Example Implementation 1 Architecture as described above.
    
-   Implementation 1 Architecture
+   Example Implementation 1 Architecture
 
 .. _plan-1:
 
 Plan
 ~~~~
 
-Table below shows the components used for the Plan phase in E1.
+The table below shows the products used for the Plan phase in E1.
 
 .. table::
 
@@ -125,8 +124,8 @@ Table below shows the components used for the Plan phase in E1.
 
          - Cyber Intelligence, Threat, and Security Metadata Feeds (e.g., OpenSSF, NVD, OSV, and CVE/CWE)
          - | Endor Labs Reachability-Based SCA - Vulnerability Database,
-           | Microsoft MDC,
-           | Sagittal Neo
+           | Microsoft MDC
+           
       - 
 
          - Firmware Services
@@ -187,7 +186,7 @@ Table below shows the components used for the Plan phase in E1.
 Develop
 ~~~~~~~
 
-Table below shows the components used for the Develop phase in E1.
+The table below shows the products used for the Develop phase in E1.
 
 .. table::
 
@@ -262,8 +261,7 @@ Table below shows the components used for the Develop phase in E1.
       - 
 
          - SCM System (e.g., Version Control, Commit Hooks, and Branch/Merge protection)
-         - | Microsoft AzDO – Repos,
-           | Sagittal Neo
+         - | Microsoft AzDO – Repos      
       - 
 
          - SAST System
@@ -290,7 +288,7 @@ Table below shows the components used for the Develop phase in E1.
 Build
 ~~~~~
 
-Table below shows the components used for the Build phase in E1.
+The table below shows the products used for the Build phase in E1.
 
 .. table::
 
@@ -404,7 +402,7 @@ Table below shows the components used for the Build phase in E1.
 Test
 ~~~~
 
-Table below shows the components used for the Test phase in E1.
+The table below shows the products used for the Test phase in E1.
 
 .. table::
 
@@ -536,7 +534,7 @@ Table below shows the components used for the Test phase in E1.
 Release
 ~~~~~~~
 
-Table below shows the components used for the Release phase in E1.
+The table below shows the products used for the Release phase in E1.
 
 .. table::
 
@@ -641,7 +639,7 @@ Table below shows the components used for the Release phase in E1.
 Deploy
 ~~~~~~
 
-Table below shows the components used for the Deploy phase in E1.
+The table below shows the products used for the Deploy phase in E1.
 
 .. table::
 
@@ -713,7 +711,7 @@ Table below shows the components used for the Deploy phase in E1.
 Operate
 ~~~~~~~
 
-Table below shows the components used for the Operate phase in E1.
+The table below shows the products used for the Operate phase in E1.
 
 .. table::
 
@@ -750,14 +748,14 @@ Table below shows the components used for the Operate phase in E1.
 
 .. _continuous-improvements-security-and-monitoring-1:
 
-Continuous Improvements, Security and Monitoring
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Continuous Improvements, Security, and Monitoring
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Table below shows the components used during the continuous improvements, security, and monitoring in E1.
+The table below shows the products used during the Continuous Improvements, Security, and Monitoring in E1.
 
 .. table::
 
-   .. list-table:: Continuous Improvements, Security and Monitoring Phase Products used in E1
+   .. list-table:: Continuous Improvements, Security, and Monitoring Phase Products used in E1
       :widths: 32 128
       :header-rows: 1
 
@@ -810,8 +808,7 @@ Table below shows the components used during the continuous improvements, securi
       - 
 
          - SCM System (e.g., Version Control, Commit Hooks, and Branch/Merge Protection)
-         - | Microsoft AzDO – Repos,
-           | Sagittal Neo
+         - | Microsoft AzDO – Repos           
       - 
 
          - Secrets Management System
@@ -846,3 +843,699 @@ Table below shows the components used during the continuous improvements, securi
            | Microsoft Intune,
            | Microsoft MDC,
            | Microsoft Sentinel
+
+
+.. _e2:
+
+Example Implementation 2 (E2) :bdg-primary:`New`
+-------------------------------------------------
+
+This section describes the architecture and products used in the Example Implementation 2 (E2). The collaborators involved in E2 include Microsoft, CyberArk
+(recently acquired by Palo Alto Networks), DigiCert, Sagittal AI, GitLab, Resilience Cyber Security (formerly Scribe Security), and NextLabs.
+
+E2 builds on the Microsoft Azure PaaS and ZTA foundation established in E1 but introduces different DevSecOps software, tools, platforms, and Zero Trust components. Key differences include:
+
+•	GitLab provides source code management, containerized deployments, and CI/CD automation.
+•	GitLab provides security platform tools, such as SAST, DAST, SCA, and other scanning components.
+•	Microsoft and NextLabs platforms implement Zero Trust controls on developer virtual machines and CI/CD automation components.
+•	CyberArk, DigiCert, and Microsoft provide automated certificate lifecycle management.
+•	CyberArk provides secret and code signing capabilities.
+•	GitLab and Resilience Cybersecurity provide supply chain and attestation components.
+•	GitLab and Sagittal AI provide generative AI tools.
+
+
+The figure below shows the architecture used in E2. The foundation of E2 is built on the same concepts leveraged in E1. We have isolated environments that
+provide separation of components when necessary. Our architecture consists of these three environments:
+
+1. Build/Test Environment
+
+2. Release Environment
+
+3. Deploy/Operate Environment
+
+
+.. figure:: media/example-implementation-2-architecture.png
+   :alt: The diagram provides information about the Example Implementation 2 architecture as described above.
+   
+   Example Implementation 2 Architecture
+
+
+The E2 architecture relies on many of the same Azure Virtual Network and Subnet resources described in section 4.1. Key differences include a shift in the source code management (SCM) to the GitLab Platform. The GitLab Platform also provided GitLab CI as a CI/CD replacement for Azure DevOps (AzDO) and Azure Managed DevOps Pools (MDP). Many of the foundational E1 security components are also still present in E2. Users and roles are still managed using Azure Entra ID and Conditional Access. For more on these components, please see section 4.1 for details on the component selection and functions.
+
+E2 includes automated components that perform application testing alongside security scans to assess the quality of artifacts generated by these pipelines. There's an emphasis on monitoring and reporting of results from security scans and code quality tools. Additional architecture was added to control containerized deployments through Azure Kubernetes Service (AKS). Certificate Management services were also demonstrated to provide automated lifecycle management and provisioning of web services with
+certificates that could be validated with a trusted internal Public Key Infrastructure (PKI) or publicly available PKI sources. Finally, zero trust components
+were implemented to control authorization, access, and policy enforcement on processing endpoints, either leveraged by software developers or by CI/CD
+automation. The list below provides a descriptive analysis of components and their purposes:
+
+- GitLab Platform - Foundationally, this provides source code management (SCM) for all projects and CI/CD automation for all pipelines hosted in E2. Other
+  functions are provided, such as compliance monitoring, security scanning, package and container registries, issue tracing, releases, and deployment
+  environment configurations.
+
+- GitLab Runners – These virtual machine hosts provide the runtime components leveraged by GitLab CI/CD pipelines and host many of the tools and components used
+  by CI/CD automation for projects.
+
+- GitLab Kubernetes (k8s) Agent - This provides a control interface to manage Kubernetes configurations hosted in Azure Kubernetes Service (AKS). Additionally,
+  it provides deployment environment management using the open-source FluxCD service.
+
+- Azure Kubernetes Service - This is the runtime environment for containerized instances of test, staging, and production instances of projects. This also
+  provides integration with Azure Load Balancer and App Gateway services to manage ingress for containerized applications and to serve as attachment points for
+  valid TLS certificates.
+
+- Resilience Attestation Store - This is an internally hosted instance of a metadata store that tracks software bill of materials (SBOM) and supply-chain levels
+  of software artifacts (SLSA) attestations. These artifacts are generated by the Resilience Valint tool, which is used in CI/CD automation. This also provides
+  policy analysis and enforcement of build and runtime artifacts.
+
+- CyberArk Certificate Manager SaaS and Secrets Hub Agents - These services provide a management point internal to E2's private network where certificates and
+  secrets can be managed according to policy and configurations controlled by CyberArk Certificate Manager SaaS, CyberArk Secrets Hub and Secrets Manager, and
+  CyberArk Code Sign Manager SaaS.
+
+- DigiCert Connector - This agent provides a management point internal to E2's private network where certificates can be managed according to policy and
+  configurations controlled by DigiCert Trust Lifecycle Manager (TLM).
+
+- NextLabs SaaS - The NextLabs SaaS provides a Zero Trust policy platform, distributed policy decision service, and centralized identity and attribute
+  management, as well as enforcement capabilities. CloudAz, SkyDRM, and the ZTA Policy Engines act in concert to define policies for the protection of CI/CD
+  pipelines, GitLab runners, and developer workstations. Enforcement of these policies is handled by NextLabs GitLab Enforcer, Windows Enforcer, ABAC Enforcer,
+  and SkyDRM.
+
+- All the other collaborators' products, including Sagittal AI, are external SaaS platforms and are connected to Microsoft’s Azure environment using Azure NAT
+  Gateway, as shown in the previous figure.
+
+Plan
+~~~~~~~~~~~
+
+The table below shows the products used for the Plan phase in E2.
+
+.. list-table:: Plan Phase Products used in E2
+   :widths: 32 128
+   :header-rows: 1
+
+   * - **Component**
+     - **Product**
+   * - Certificate Management System
+     - CyberArk Certificate Manager SaaS,
+
+       CyberArk Machine Identity Security,
+
+       DigiCert Trust Lifecycle Manager,
+
+       Microsoft AKV - Certificate object type
+   * - Configuration Management System
+     - N/A
+   * - Credential Management System
+     - CyberArk Privilege Cloud,
+
+       CyberArk Secrets Hub,
+
+       GitLab Platform,
+
+       Microsoft Azure Entra ID
+   * - Cyber Intelligence, Threat, and Security Metadata Feeds (e.g., OpenSSF, NVD, OSV, and CVE/CWE)
+     - GitLab Platform – GitLab Duo and Security Dashboard, Vulnerability Report, and Vulnerability Database,
+
+       Microsoft MDC
+   * - Firmware Services
+     - N/A
+   * - HSM (including Software or Virtual HSMs)
+     - CyberArk Machine Identity Security
+   * - Product Management System
+     - GitLab Platform – GitLab Duo,
+
+       Sagittal Neo
+   * - Project Management System (e.g., Team Planning, Team Collaboration, and Training)
+     - GitLab Platform – GitLab Duo,
+
+       Sagittal Neo
+   * - Requirements Management System
+     - GitLab Platform – GitLab Duo,
+
+       Sagittal Neo
+   * - Risk Management System
+     - GitLab Platform – Security Dashboard and Vulnerability Report,
+
+       Microsoft MDC – Cloud Ops Security, CSPM, CWPP,
+
+       Resilience Cyber Security Attestation Store
+   * - Secrets Management System
+     - CyberArk Privilege Cloud,
+
+       CyberArk Secrets Hub,
+
+       DigiCert Trust Lifecycle Manager,
+
+       GitLab Platform – CI/CD Variables and Environments,
+
+       Microsoft AKV – Secrets object type
+   * - Threat Modeling System
+     - N/A
+   * - Ticketing System
+     - GitLab Platform – GitLab Duo and GitLab Issues,
+
+       Sagittal Neo
+   * - Zero Trust Security System
+     - Microsoft Azure Entra ID – Conditional Access, Identity Governance,
+
+       Microsoft Azure PIM,
+
+       Microsoft Defender for Endpoint,
+
+       Microsoft Intune,
+
+       Microsoft MDC,
+
+       Microsoft Sentinel,
+
+       NextLabs CloudAz Platform,
+
+       NextLabs SkyDRM
+
+Develop
+~~~~~~~~~~~~~~
+
+The table below shows the products used for the Develop phase in E2.
+
+.. list-table:: Develop Phase Products used in E2
+   :widths: 32 128
+   :header-rows: 1
+
+   * - **Component**
+     - **Product**
+   * - Artifact Repository (e.g., Internal and External)
+     - GitLab Platform - Container Registry and Package Registry,
+
+       Resilience Cyber Security Attestation Store
+   * - Artifact Signing and Verification (e.g., Source Code, Commits, Images, Binaries, and Libraries)
+     - CyberArk Code Sign Manager,
+
+       CyberArk Machine Identity Security,
+
+       Resilience Cyber Security Attestation Store,
+
+       Resilience Cyber Security Valint
+   * - CI/CD Pipeline (Developer Initiated)
+     - GitLab Platform - GitLab CI
+   * - Developer Tools (e.g., IDE, CLI, and Binaries)
+     - GitLab Platform – GitLab Duo and Web UI,
+
+       Microsoft VS Code
+   * - IaC Scanner
+     - GitLab Platform – Code Quality
+   * - IaC Scripts
+     - GitLab Platform – GitLab CI,
+
+       GitLab Platform – GitLab Duo and Web UI,
+
+       Microsoft VS Code
+   * - Lint Tool
+     - GitLab Platform – GitLab Duo and Code Quality,
+
+       Sagittal Neo
+   * - Secret Scanner
+     - GitLab Platform – Advanced SAST and Code Quality,
+
+       GitLab Platform - GitLab CI,
+
+       NextLabs CloudAz,
+
+       NextLabs GitLab Enforcer
+   * - SCA System
+     - GitLab Platform – Dependency Scanning,
+
+       Sagittal Neo
+   * - Software Libraries (e.g., Internal and External)
+     - GitLab Platform - Container Registry and Package Registry
+   * - SCM System (e.g., Version Control, Commit Hooks, and Branch/Merge protection)
+     - GitLab Platform – SCM
+
+       NextLabs CloudAz,
+
+       NextLabs GitLab Enforcer
+   * - SAST System
+     - GitLab Platform – Advanced SAST,
+
+       Sagittal Neo
+   * - Unit Test Framework
+     - GitLab Platform - GitLab CI,
+
+       GitLab Platform – GitLab Duo,
+
+       Sagittal Neo
+   * - Zero Trust Security System
+     - Microsoft Azure Entra ID – Conditional Access, Identity Governance,
+
+       Microsoft Azure PIM,
+
+       Microsoft Defender for Endpoint,
+
+       Microsoft Intune,
+
+       Microsoft MDC,
+
+       Microsoft Sentinel,
+
+       NextLabs CloudAz Platform,
+
+       NextLabs GitLab Enforcer,
+
+       NextLabs SkyDRM
+
+Build
+~~~~~~~~~~~~
+
+The table below shows the products used for the Build phase in E2.
+
+.. list-table:: Build Phase Products used in E2
+   :widths: 32 128
+   :header-rows: 1
+
+   * - **Component**
+     - **Product**
+   * - Artifact Repository (e.g., Internal and External)
+     - GitLab Platform – Container Registry and Package Registry,
+
+       Resilience Cyber Security Attestation Store
+   * - Artifact Signing and Verification (e.g., Images, Binaries, and Libraries)
+     - CyberArk Code Sign Manager,
+
+       CyberArk Machine Identity Security,
+
+       Resilience Cyber Security Attestation Store,
+
+       Resilience Cyber Security Valint
+   * - Attestation Signing and Verification Tool (e.g., SLSA)
+     - CyberArk Certificate Manager SaaS,
+
+       CyberArk Machine Identity Security,
+
+       Resilience Cyber Security Attestation Store,
+
+       Resilience Cyber Security Valint
+   * - Build Tools (e.g., CLI and Binaries)
+     - GitLab Platform - GitLab CI, and GitLab Duo
+   * - CI/CD Pipeline (Build Environment, e.g., Automation, Actions, Runners, and Build Agents)
+     - GitLab Platform - GitLab CI
+   * - Container Image Scanner
+     - GitLab Platform - GitLab CI
+   * - IaC Scanner
+     - GitLab Platform – Code Quality
+   * - IaC Scripts
+     - N/A
+   * - Lint Tool
+     - GitLab Platform – Code Quality,
+
+       GitLab Platform - GitLab CI
+   * - SAST System
+     - GitLab Platform – Advanced SAST,
+
+       GitLab Platform - GitLab CI
+   * - SCA System
+     - GitLab Platform – Dependency Scanning,
+
+       GitLab Platform - GitLab CI,
+
+       Resilience Cyber Security Valint
+   * - Secret Scanner
+     - GitLab Platform – Advanced SAST and Code Quality,
+
+       GitLab Platform - GitLab CI
+   * - Provenance Generation and Verification Tool (e.g., SBOM)
+     - CyberArk Machine Identity Security,
+
+       Resilience Cyber Security Attestation Store,
+
+       Resilience Cyber Security Valint
+   * - Software Libraries (e.g., Internal and External)
+     - GitLab Platform - Container Registry and Package Registry
+   * - Unit Test Framework
+     - GitLab Platform - GitLab CI
+   * - Zero Trust Security System
+     - Microsoft Azure Entra ID – Conditional Access, Identity Governance,
+
+       Microsoft Azure PIM,
+
+       Microsoft Defender for Endpoint,
+
+       Microsoft Intune,
+
+       Microsoft MDC,
+
+       Microsoft Sentinel,
+
+       NextLabs CloudAz Platform,
+
+       NextLabs GitLab Enforcer
+
+Test
+~~~~~~~~~~~
+
+The table below shows the products used for the Test phase in E2.
+
+.. list-table:: Test Phase Products used in E2
+   :widths: 32 128
+   :header-rows: 1
+
+   * - **Component**
+     - **Product**
+   * - Acceptance Test Tool
+     - N/A
+   * - API Test Tool
+     - N/A
+   * - Artifact Repository (e.g., Internal and External)
+     - GitLab Platform Container Registry and Package Registry
+   * - Artifact Signing and Verification Tool (e.g., Images, Binaries, and Libraries)
+     - CyberArk Code Sign Manager,
+
+       CyberArk Machine Identity Security,
+
+       Resilience Cyber Security Attestation Store,
+
+       Resilience Cyber Security Valint
+   * - Attestation Signing and Verification Tool (e.g., SLSA)
+     - CyberArk Certificate Manager SaaS,
+
+       CyberArk Machine Identity Security,
+
+       Resilience Cyber Security Attestation Store,
+
+       Resilience Cyber Security Valint
+   * - CI/CD Execution, Test and Security Policy Verification Tool
+     - GitLab Platform - GitLab CI,
+
+       NextLabs CloudAz,
+
+       NextLabs GitLab Enforcer
+   * - CI/CD pipeline (Test Environment, e.g., Automation, Actions, Runners, and Build Agents)
+     - GitLab Platform - GitLab CI
+   * - Container Image Scanner
+     - GitLab Platform – Container Image Scanning and Dependency Scanning,
+
+       GitLab Platform - GitLab CI
+   * - DAST System
+     - GitLab Platform – Advanced DAST,
+
+       GitLab Platform - GitLab CI,
+
+       NextLabs CloudAz,
+
+       NextLabs GitLab Enforcer
+   * - Fuzz Test Tool
+     - N/A
+   * - IaC Scanner
+     - GitLab Platform – Code Quality,
+
+       GitLab Platform - GitLab CI
+   * - IaC Scripts
+     - GitLab Platform - GitLab CI
+   * - Integration Test Tool
+     - N/A
+   * - IAST System
+     - N/A
+   * - Provenance Generation and Verification Tool (e.g., SBOM)
+     - CyberArk Machine Identity Security,
+
+       Resilience Cyber Security Attestation Store,
+
+       Resilience Cyber Security Valint
+   * - Regression Test Tool
+     - N/A
+   * - SAST System
+     - GitLab Platform – Advanced SAST,
+
+       GitLab Platform - GitLab CI
+   * - SCA System
+     - GitLab Platform – Dependency Scanning,
+
+       GitLab Platform - GitLab CI,
+
+       Resilience Cyber Security Valint
+   * - Smoke Test Tool
+     - N/A
+   * - Unit Test Framework
+     - N/A
+   * - Zero Trust Security System
+     - Microsoft Azure Entra ID – Conditional Access, Identity Governance,
+
+       Microsoft Azure PIM,
+
+       Microsoft Defender for Endpoint,
+
+       Microsoft Intune,
+
+       Microsoft MDC,
+
+       Microsoft Sentinel,
+
+       NextLabs CloudAz Platform,
+
+       NextLabs GitLab Enforcer,
+
+       NextLabs SkyDRM
+
+Release
+~~~~~~~~~~~~~~
+
+The table below shows the products used for the Release phase in E2.
+
+.. list-table:: Release Phase Products used in E2
+   :widths: 32 128
+   :header-rows: 1
+
+   * - **Component**
+     - **Product**
+   * - Acceptance Test Tool
+     - N/A
+   * - Artifact Repository (e.g., Internal and External)
+     - GitLab Platform - Container Registry and Package Registry
+   * - Artifact Signing and Verification Tool (e.g., Images, Binaries, and Libraries)
+     - CyberArk Machine Identity Security,
+
+       CyberArk Code Sign Manager,
+
+       Resilience Cyber Security Valint,
+
+       Resilience Cyber Security Attestation Store
+   * - Attestation Signing and Verification Tool (e.g., SLSA)
+     - CyberArk Machine Identity Security,
+
+       Resilience Cyber Security Attestation Store,
+
+       Resilience Cyber Security Valint
+   * - CI/CD Pipeline (Release Environment, e.g., Automation, Actions, Runners, and Build Agents)
+     - GitLab Platform – GitLab CI
+   * - Container Image Scanner
+     - GitLab Platform – Container Image Scanning and Dependency Scanning
+   * - DAST System
+     - GitLab Platform – Advanced DAST
+
+       NextLabs CloudAz,
+
+       NextLabs GitLab Enforcer
+   * - IaC Scanner
+     - GitLab Platform – Code Quality
+   * - IaC Scripts
+     - N/A
+   * - IAST System
+     - N/A
+   * - Package Management System
+     - GitLab Platform – Package Registry
+   * - Provenance Generation and Verification Tool (e.g., SBOM)
+     - CyberArk Machine Identity Security,
+
+       Resilience Cyber Security Attestation Store,
+
+       Resilience Cyber Security Valint
+   * - Release Management System
+     - GitLab Platform - GitLab CI
+   * - SCA System
+     - GitLab Platform – Dependency Scanning,
+
+       Resilience Cyber Security Valint
+   * - Smoke Test Tool
+     - N/A
+   * - Zero Trust Security System
+     - Microsoft Azure Entra ID – Conditional Access, Identity Governance,
+
+       Microsoft Azure PIM,
+
+       Microsoft Defender for Endpoint,
+
+       Microsoft Intune,
+
+       Microsoft MDC,
+
+       Microsoft Sentinel,
+
+       NextLabs CloudAz Platform,
+
+       NextLabs GitLab Enforcer,
+
+       NextLabs SkyDRM
+
+Deploy
+~~~~~~~~~~~~~
+
+The table below shows the products used for the Deploy phase in E2.
+
+.. list-table:: Deploy Phase Products used in E2
+   :widths: 32 128
+   :header-rows: 1
+
+   * - **Component**
+     - **Product**
+   * - Artifact Repository (e.g., Internal and External)
+     - GitLab Platform - Container Registry and Package Registry
+   * - Artifact Signing and Verification Tool (Verification Only) (e.g., Images, Binaries, and Libraries)
+     - CyberArk Code Sign Manager,
+
+       CyberArk Machine Identity Security,
+
+       Resilience Cyber Security Attestation Store,
+
+       Resilience Cyber Security Valint
+   * - Attestation Signing and Verification Tool (Verification Only) (e.g., SLSA)
+     - CyberArk Machine Identity Security,
+
+       Resilience Cyber Security Attestation Store,
+
+       Resilience Cyber Security Valint
+   * - CI/CD Pipeline (Deploy Environment, e.g., Container and Virtualization Environment)
+     - GitLab Platform - GitLab CI
+   * - Deployment Management System (e.g., Release Orchestration, Rollback, and Canary)
+     - GitLab Platform - GitLab CI and Environments
+   * - IaC Scanner
+     - GitLab Platform – Code Quality
+   * - IaC Scripts
+     - N/A
+   * - Provenance Generation and Verification Tool (Verification Only) (e.g., SBOM)
+     - CyberArk Machine Identity Security,
+
+       Resilience Cyber Security Attestation Store,
+
+       Resilience Cyber Security Valint
+   * - Zero Trust Security System
+     - Microsoft Azure Entra ID – Conditional Access, Identity Governance,
+
+       Microsoft Azure PIM,
+
+       Microsoft Defender for Endpoint,
+
+       Microsoft Intune,
+
+       Microsoft MDC,
+
+       Microsoft Sentinel,
+
+       NextLabs CloudAz Platform,
+
+       NextLabs GitLab Enforcer,
+
+       NextLabs SkyDRM
+
+Operate
+~~~~~~~~~~~~~~
+
+The table below shows the products used for the Operate phase in E2.
+
+.. list-table:: Operate Phase Products used in E2
+   :widths: 32 128
+   :header-rows: 1
+
+   * - **Component**
+     - **Product**
+   * - CI/CD pipeline (Operate Environment, e.g., Container and Virtualization Environment)
+     - GitLab Platform - GitLab CI
+   * - IaC Scripts
+     - N/A
+   * - Runtime Signature Verification Tool
+     - CyberArk Machine Identity Security
+   * - Zero Trust Security System
+     - Microsoft Azure Entra ID – Conditional Access, Identity Governance,
+
+       Microsoft Azure PIM,
+
+       Microsoft Defender for Endpoint,
+
+       Microsoft Intune,
+
+       Microsoft MDC,
+
+       Microsoft Sentinel,
+
+       NextLabs CloudAz Platform,
+
+       NextLabs GitLab Enforcer
+
+Continuous Improvements, Security, and Monitoring
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The table below shows the products used during Continuous Improvements, Security, and Monitoring in E2.
+
+.. list-table:: Continuous Improvements, Security, and Monitoring Phase Products used in E2
+   :widths: 32 128
+   :header-rows: 1
+
+   * - **Component**
+     - **Product**
+   * - Certificate Management System
+     - DigiCert Software Trust Manager,
+
+       Microsoft AKV – Certificate object type
+   * - CI/CD pipeline (Plan, Develop, Build, Test, Release, Deploy, Operate Environments)
+     - GitLab Platform - GitLab CI
+   * - Configuration Management System
+     - NextLabs CloudAz
+   * - Credential Management System
+     - CyberArk Machine Identity Security,
+
+       Microsoft Azure Entra ID
+   * - Firmware Services
+     - N/A
+   * - HSM (including Software or Virtual HSMs)
+     - CyberArk Machine Identity Security
+   * - Operations Monitoring System (e.g., Infrastructure Management, Log Management, and Performance Monitoring)
+     - Microsoft Sentinel
+   * - Risk Management System
+     - N/A
+   * - SCM System (e.g., Version Control, Commit Hooks, and Branch/Merge Protection)
+     - GitLab Platform – GitLab Duo and SCM
+   * - Secrets Management System
+     - CyberArk Privilege Cloud,
+
+       CyberArk Secrets Hub,
+
+       DigiCert Trust Lifecycle Manager,
+
+       GitLab Platform – CI/CD Variables and Environments,
+
+       Microsoft AKV – Secrets object type
+   * - Security Monitoring System (e.g., Vulnerability Management, Incident Management, SIEM, and SOAR)
+     - GitLab Platform – GitLab Security Dashboard and Vulnerability Reports,
+
+       Microsoft Sentinel
+   * - Team Collaboration Tools
+     - GitLab Platform – GitLab Duo and GitLab Issues, Boards, and Milestones,
+
+       Sagittal Neo
+   * - Threat Modeling System
+     - N/A
+   * - Ticketing System
+     - GitLab Platform – GitLab Duo and GitLab Issues,
+
+       Sagittal Neo
+   * - Zero Trust Security System
+     - Microsoft Azure Entra ID – Conditional Access, Identity Governance,
+
+       Microsoft Azure PIM,
+
+       Microsoft Defender for Endpoint,
+
+       Microsoft Intune,
+
+       Microsoft MDC,
+
+       Microsoft Sentinel,
+
+       NextLabs CloudAz Platform,
+
+       NextLabs GitLab Enforcer,
+
+       NextLabs SkyDRM

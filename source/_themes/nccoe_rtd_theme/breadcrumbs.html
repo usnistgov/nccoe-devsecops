@@ -30,6 +30,9 @@
     {%- endblock %}
     {%- block breadcrumbs_aside %}
       <li class="wy-breadcrumbs-aside">
+        {%- if theme_pdf_url %}
+          <a href="{{ pathto(theme_pdf_url, 1) }}" rel="nofollow"> {{ _('View PDF') }}</a>
+        {%- endif %}
         {%- if hasdoc(pagename) and display_vcs_links %}
           {%- if display_github %}
             {%- if check_meta and 'github_url' in meta %}

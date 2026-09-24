@@ -8,11 +8,13 @@ import os
 from os import path
 from sys import version_info as python_version
 
+from sphinx import addnodes
 from sphinx import version_info as sphinx_version
 from sphinx.util.logging import getLogger
+from sphinx.writers.html5 import HTML5Translator
 
 
-__version__ = '0.4.12'
+__version__ = '1.0.1'
 __version_full__ = __version__
 
 logger = getLogger(__name__)
@@ -56,6 +58,29 @@ def extend_html_context(app, pagename, templatename, context, doctree):
      context['sphinx_version_info'] = sphinx_version
 
 
+class NCCOEHTML5Translator(HTML5Translator):
+    """HTML translator with accessible toctree support."""
+
+    def visit_title(self, node):
+        if (
+            isinstance(node.parent, addnodes.compact_paragraph) and
+            node.parent.get("toctree")
+        ):
+            self.body.append(
+                self.starttag(
+                    node,
+                    "p",
+                    "",
+                    CLASS="caption",
+                    ROLE="heading",
+                    **{"aria-level": "2"},
+                )
+            )
+            self.body.append('<span class="caption-text">')
+            self.context.append("</span></p>\n")
+        else:
+            super().visit_title(node)
+
 
 # See http://www.sphinx-doc.org/en/stable/theming.html#distribute-your-theme-as-a-python-package
 def setup(app):
@@ -81,6 +106,8 @@ def setup(app):
 
     # Register the theme that can be referenced without adding a theme path
     app.add_html_theme('nccoe_rtd_theme', path.abspath(path.dirname(__file__)))
+
+    app.set_translator('html', NCCOEHTML5Translator, override=True)
 
     app.connect('config-inited', config_initiated)
 

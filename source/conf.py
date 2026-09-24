@@ -84,3 +84,12 @@ html_context = {
     "email": u'nccoe-devsecops@list.nist.gov',
     "email_subject": u'[Doc review] {PROJECT} - {N} comments'
 }
+
+# Use xelatex for better font/Unicode support
+latex_engine = "xelatex"
+
+# (Optional) Set a clean paper size & font size
+latex_elements = {
+    "papersize": "letterpaper",  # or 'a4paper'
+    "pointsize": "11pt",
+}

@@ -17,7 +17,7 @@ div.cover-author-block {
     border-top: 1px solid #e1e4e5;
     padding: 3em 2em 0 2em;
     margin-bottom: 0 !important;
- }
+}
 
 .rst-content dl.glossary dd {
     margin: 0 !important;
@@ -38,16 +38,23 @@ div.cover-author-block {
 .rst-content figure figcaption,
 .rst-content figure .caption-text,
 .rst-content table.docutils caption,
-.rst-content table.docutils caption span
- {
+.rst-content table.docutils caption span {
     color: #626060;
     font-weight: bold;
     text-align: center;
     font-size: 100% !important;
     font-style: normal;
-    font: bold 100%/1 arial,sans-serif
+    font: bold 100%/1 arial, sans-serif
 }
 
 figure {
     text-align: center;
+}
+
+.rst-content table .line-block {
+    line-height: inherit;
+}
+
+.wy-side-scroll .wy-menu-vertical ul li {
+    font-size: 1em;
 }
