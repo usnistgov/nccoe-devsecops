@@ -2067,8 +2067,10 @@ E2 Plan Phase
    * - :ref:`E2.A-10.3 <scenario-a-10>`
      - | Strong machine identity is established using certificate-based authentication or token-based authentication (e.g., JavaScript Web Token (JWT)) to adhere to best practices, including rotation and short expiration times.
      - | Microsoft Entra ID provided token-based authentication via managed identities and workload identity federation. 
+
        | NextLabs was supported by API key-based authentication. 
      - | Partially Implemented: Machine/workload identities were implemented to provide machine or service-level authentication using short-lived tokens. Certificate-based authentication and lifecycle management controls will be included in a future Example Implementation.
+
        | Partially Implemented: API key-based authentication was implemented to support NextLabs CloudAZ, SkyDRM, and GitLab Enforcer. Machine identity with certificate-based authentication and lifecycle management controls will be included in a future Example Implementation.
    * - :ref:`E2.A-11.1 <scenario-a-11>`
      - New work items, tickets, or issues are generated.
@@ -2387,8 +2389,10 @@ E2 Develop Phase
    * - :ref:`E2.B-10.4 <scenario-b-10>`
      - | Strong machine identity is established using certificate-based authentication or token-based authentication (e.g., JavaScript Web Token (JWT)) to adhere to best practices, including rotation and short expiration times.
      - | Microsoft Entra ID provided token-based authentication via managed identities and workload identity federation.
+
        | NextLabs was supported by API key-based authentication. 
      - | Partially Implemented: Machine/workload identities were implemented to provide machine or service-level authentication using short-lived tokens. Certificate-based authentication and lifecycle management controls will be included in a future Example Implementation.
+     
        | Partially Implemented: API key-based authentication was implemented to support NextLabs CloudAZ, SkyDRM, and GitLab Enforcer. Machine identity with certificate-based authentication and lifecycle management controls will be included in a future Example Implementation.
    * - :ref:`E2.B-10.5 <scenario-b-10>`
      - Only pipeline runs satisfying the applicable ZT policy conditions are permitted to advance.
