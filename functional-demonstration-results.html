@@ -1009,7 +1009,7 @@
 <td><p>Implemented: Microsoft AzDO Area Path RBAC was leveraged for the protection of access to user stories, requirements, and design specifications.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="functional-demonstration-scenarios.html#scenario-a-10"><span class="std std-ref">E1.A-10.3</span></a></p></td>
-<td><p>Strong machine identity is established using certificate-based authentication. Token-based authentication usage is limited and adheres to best practices, including rotation and short expiration times.</p></td>
+<td><p>Strong machine identity is established using certificate-based authentication or token-based authentication (e.g., JavaScript Web Token (JWT)) to adhere to best practices, including rotation and short expiration times.</p></td>
 <td><p>Microsoft Entra ID provided token-based authentication via managed identities and workload identity federation.</p></td>
 <td><p>Partially Implemented: Machine/workload identities were implemented to provide machine or service-level authentication using short-lived tokens. Certificate-based authentication and lifecycle management controls will be included in a future Example Implementation.</p></td>
 </tr>
@@ -1507,7 +1507,7 @@
 <td><p>Only authorized endpoints can access source control systems and development systems.</p></td>
 <td><p>Microsoft Entra Conditional Access leveraged.</p></td>
 <td><div class="line-block">
-<div class="line">Implemented – Microsoft Entra Conditional Access policy for the cloud app “Azure DevOps” can be created and enforce user access. Azure Policy can also be</div>
+<div class="line">Implemented: Microsoft Entra Conditional Access policy for the cloud app “Azure DevOps” can be created and enforce user access. Azure Policy can also be</div>
 <div class="line">used to constrain what can be deployed. Microsoft Intune and Defender for Endpoint can be integrated to provide device posture capabilities.</div>
 </div>
 </td>
@@ -1522,17 +1522,16 @@
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="functional-demonstration-scenarios.html#scenario-b-10"><span class="std std-ref">E1.B-10.4</span></a></p></td>
 <td><div class="line-block">
-<div class="line">Strong machine identity is established using certificate-based authentication. Token-based authentication usage is limited and adheres to best practices,</div>
-<div class="line">including rotation and short expiration times.</div>
+<div class="line">Strong machine identity is established using certificate-based authentication or token-based authentication (e.g., JavaScript Web Token (JWT)) to adhere to best practices, including rotation and short expiration times.</div>
 </div>
 </td>
 <td><p>Microsoft Entra ID provided token-based authentication via managed identities and workload identity federation.</p></td>
-<td><p>Partially Implemented: Machine/workload identities were implemented to provide machine or service-level authentication using short-lived tokens. Certificate-based authen-tication and lifecycle management controls will be included in a future Example Implementation.</p></td>
+<td><p>Partially Implemented: Machine/workload identities were implemented to provide machine or service-level authentication using short-lived tokens. Certificate-based authentication and lifecycle management controls will be included in a future Example Implementation.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="functional-demonstration-scenarios.html#scenario-b-10"><span class="std std-ref">E1.B-10.5</span></a></p></td>
 <td><p>Only pipeline runs satisfying the applicable ZT policy conditions are permitted to advance.</p></td>
-<td><p>This demonstration has been deferred to a future example implementation.</p></td>
-<td><p>This demonstration has been deferred to a future example implementation.</p></td>
+<td><p>Scenario not available during Example Implementation 1 – This demonstration was added in Example Implementation 2.</p></td>
+<td><p>Scenario not available during Example Implementation 1 – This demonstration was added in Example Implementation 2.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="functional-demonstration-scenarios.html#scenario-b-11"><span class="std std-ref">E1.B-11.1</span></a></p></td>
 <td><p>Source code and configuration files are generated and changes, explanations, and commits are captured.</p></td>
@@ -1751,7 +1750,7 @@
 </td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="functional-demonstration-scenarios.html#scenario-c-1"><span class="std std-ref">E1.C-1.3</span></a></p></td>
-<td><p>CI/CD Pipelines run all build process components, and each component generates output for tracking status and logging de-tailed information.</p></td>
+<td><p>CI/CD Pipelines run all build process components, and each component generates output for tracking status and logging detailed information.</p></td>
 <td><p>Build CI/CD pipeline run was completed successfully.</p></td>
 <td><p>Implemented: The CI/CD pipeline was initiated and completed. Summary and raw logs provided.</p></td>
 </tr>
@@ -2511,7 +2510,7 @@
 </td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="functional-demonstration-scenarios.html#scenario-d-1"><span class="std std-ref">E1.D-1.4</span></a></p></td>
-<td><p>The resources used for the test environment have been freed up – no VMs, Containers, tools, or other environment components are still provisioned.</p></td>
+<td><p>The resources used for the test environment have been freed up. No VMs, Containers, tools, or other environment components are still provisioned.</p></td>
 <td><p>AzDO pipelines performed “clean up” tasks.</p></td>
 <td><div class="line-block">
 <div class="line">Implemented: When resources are no longer used, the CI/CD pipeline performed functions to free up the resources in the environment. These steps were configured in the end of the pipeline execution.</div>
@@ -2803,7 +2802,7 @@
 </td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="functional-demonstration-scenarios.html#scenario-d-17"><span class="std std-ref">E1.D-17.2</span></a></p></td>
-<td><p>Confirm SBOM signatures to verify authenticity and integrity of all soft-ware artifacts.</p></td>
+<td><p>Confirm SBOM signatures to verify authenticity and integrity of all software artifacts.</p></td>
 <td><div class="line-block">
 <div class="line">SBOM artifact was produced.</div>
 </div>
@@ -3482,7 +3481,7 @@
 <td><p>System-to-system communications are restricted based on functionality and ZT policies.</p></td>
 <td><p>Microsoft Entra ID and Azure Policy leveraged to secure communications.</p></td>
 <td><div class="line-block">
-<div class="line">Implemented: Entra ID provided the role base access, leveraging service principles – for secure service to service communication. Azure Policy can also be used to define and enforce policies for infrastructure to constrain what can be deployed by developers.</div>
+<div class="line">Implemented: Entra ID provided the role base access, leveraging service principals for secure service to service communication. Azure Policy can also be used to define and enforce policies for infrastructure to constrain what can be deployed by developers.</div>
 </div>
 </td>
 </tr>
@@ -3922,7 +3921,7 @@
 <div class="line">Components were not available to implement in this demonstration. Cyber Intelligence Threat and Security Metadata Feeds will be included in future example implementation.</div>
 </div>
 <div class="line-block">
-<div class="line">Gitlab Platform Issues provided Work Items, Issues, and Milestones to track issues and document changes; Gitlab Platform Secu-rity Dashboard and Vulnerability Report displayed findings.</div>
+<div class="line">Gitlab Platform Issues provided Work Items, Issues, and Milestones to track issues and document changes; Gitlab Platform Security Dashboard and Vulnerability Report displayed findings.</div>
 </div>
 </td>
 <td><p>Components were not available to implement in this demonstration. Cyber Intelligence Threat and Security Metadata Feeds will be included in future example implementation.</p></td>
@@ -3947,7 +3946,7 @@
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="functional-demonstration-scenarios.html#scenario-a-7"><span class="std std-ref">E2.A-7.2</span></a></p></td>
 <td><div class="line-block">
-<div class="line">Tickets are created and updated as configurations change. Both Design and Requirements Management Systems are updated to track con-figuration changes over time.</div>
+<div class="line">Tickets are created and updated as configurations change. Both Design and Requirements Management Systems are updated to track configuration changes over time.</div>
 </div>
 </td>
 <td><p>Gitlab Platform provided Issues, Tasks, Labels, and Milestones to track configuration changes over time.</p></td>
@@ -4116,17 +4115,17 @@
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="functional-demonstration-scenarios.html#scenario-a-10"><span class="std std-ref">E2.A-10.3</span></a></p></td>
 <td><div class="line-block">
-<div class="line">Strong machine identity is established using certificate-based authentication. Token-based authentication usage is limited and adheres to best practices, including rotation and short expiration times.</div>
+<div class="line">Strong machine identity is established using certificate-based authentication or token-based authentication (e.g., JavaScript Web Token (JWT)) to adhere to best practices, including rotation and short expiration times.</div>
 </div>
 </td>
 <td><div class="line-block">
 <div class="line">Microsoft Entra ID provided token-based authentication via managed identities and workload identity federation.</div>
-<div class="line">NextLabs was supported by API-based authentication.</div>
+<div class="line">NextLabs was supported by API key-based authentication.</div>
 </div>
 </td>
 <td><div class="line-block">
 <div class="line">Partially Implemented: Machine/workload identities were implemented to provide machine or service-level authentication using short-lived tokens. Certificate-based authentication and lifecycle management controls will be included in a future Example Implementation.</div>
-<div class="line">Partially Implemented: API-based authentication was implemented to support NextLabs CloudAZ, SkyDRM, and GitLab Enforcer. Machine identity with certificate-based authentication and lifecycle management controls will be included in a future Example Implementation.</div>
+<div class="line">Partially Implemented: API key-based authentication was implemented to support NextLabs CloudAZ, SkyDRM, and GitLab Enforcer. Machine identity with certificate-based authentication and lifecycle management controls will be included in a future Example Implementation.</div>
 </div>
 </td>
 </tr>
@@ -4699,18 +4698,17 @@
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="functional-demonstration-scenarios.html#scenario-b-10"><span class="std std-ref">E2.B-10.4</span></a></p></td>
 <td><div class="line-block">
-<div class="line">Strong machine identity is established using certificate-based authentication. Token-based authentication usage is limited and adheres to best practices,</div>
-<div class="line">including rotation and short expiration times.</div>
+<div class="line">Strong machine identity is established using certificate-based authentication or token-based authentication (e.g., JavaScript Web Token (JWT)) to adhere to best practices, including rotation and short expiration times.</div>
 </div>
 </td>
 <td><div class="line-block">
 <div class="line">Microsoft Entra ID provided token-based authentication via managed identities and workload identity federation.</div>
-<div class="line">NextLabs was sup-ported by API-based authentication.</div>
+<div class="line">NextLabs was supported by API key-based authentication.</div>
 </div>
 </td>
 <td><div class="line-block">
 <div class="line">Partially Implemented: Machine/workload identities were implemented to provide machine or service-level authentication using short-lived tokens. Certificate-based authentication and lifecycle management controls will be included in a future Example Implementation.</div>
-<div class="line">Partially Implemented: API-based authentication was implemented to support NextLabs CloudAZ, SkyDRM, and GitLab Enforcer. Machine identity with certificate-based authentication and lifecycle management controls will be included in a future Example Implementation.</div>
+<div class="line">Partially Implemented: API key-based authentication was implemented to support NextLabs CloudAZ, SkyDRM, and GitLab Enforcer. Machine identity with certificate-based authentication and lifecycle management controls will be included in a future Example Implementation.</div>
 </div>
 </td>
 </tr>
@@ -4915,7 +4913,7 @@
 <td><p>Implemented: Gitlab Runners provides CI/CD automation for source code, IaC, and configurations hosted in Gitlab SCM-managed projects.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="functional-demonstration-scenarios.html#scenario-c-1"><span class="std std-ref">E2.C-1.3</span></a></p></td>
-<td><p>CI/CD Pipelines run all build process components, and each component generates output for tracking status and logging de-tailed information.</p></td>
+<td><p>CI/CD Pipelines run all build process components, and each component generates output for tracking status and logging detailed information.</p></td>
 <td><div class="line-block">
 <div class="line">Gitlab Platform Runners automated CI/CD activities on source code, IaC, and configurations. Gitlab Platform SCM provided source control for all source code, IaC, and configurations.</div>
 </div>
@@ -5532,8 +5530,8 @@
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="functional-demonstration-scenarios.html#scenario-c-15"><span class="std std-ref">E2.C-15.10</span></a></p></td>
 <td><p>Trusted communication is enforced across build systems using certificate-based authentication.</p></td>
-<td><p>NextLabs was supported by API-based authentication.</p></td>
-<td><p>Partially Implemented: API-based authentication was implemented to support NextLabs’ CloudAZ and GitLab Enforcer. Trusted communication with certificate-based authentication will be included in a future Example Implementation.</p></td>
+<td><p>NextLabs was supported by API key-based authentication.</p></td>
+<td><p>Partially Implemented: API key-based authentication was implemented to support NextLabs’ CloudAZ and GitLab Enforcer. Trusted communication with certificate-based authentication will be included in a future Example Implementation.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="functional-demonstration-scenarios.html#scenario-c-16"><span class="std std-ref">E2.C-16.1</span></a></p></td>
 <td><p>Source code and configuration files are updated with generated changes and documented explanations.</p></td>
@@ -5661,7 +5659,7 @@
 <td><p>Implemented: Gitlab CI was leveraged to capture and log output from all build phase actions for CI/CD Pipelines.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="functional-demonstration-scenarios.html#scenario-d-1"><span class="std std-ref">E2.D-1.4</span></a></p></td>
-<td><p>The resources used for the test environment have been freed up – no VMs, Containers, tools, or other environment components are still provisioned.</p></td>
+<td><p>The resources used for the test environment have been freed up. No VMs, Containers, tools, or other environment components are still provisioned.</p></td>
 <td><p>Gitlab Platform Environments provided separate configurations for maintaining isolated build environments.</p></td>
 <td><p>Implemented: Gitlab Environments are defined for build environments to maintain isolation and parallel configurations.</p></td>
 </tr>
@@ -6001,11 +5999,11 @@
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="functional-demonstration-scenarios.html#scenario-d-18"><span class="std std-ref">E2.D-18.6</span></a></p></td>
 <td><div class="line-block">
-<div class="line">Test Phase communications are secured using certificate-based authentication. Token-based authentication usage is limited and adheres to best practices, including rotation and short expiration times.</div>
+<div class="line">Test Phase communications are secured using certificate-based authentication or token-based authentication (e.g., JavaScript Web Token (JWT)) to adhere to best practices, including rotation and short expiration times.</div>
 </div>
 </td>
-<td><p>NextLabs was sup-ported by API-based authentication.</p></td>
-<td><p>Partially Implemented: API-based authen-tication was implemented to support NextLabs’ CloudAZ and GitLab Enforcer. Machine identity with certificate-based authentication and lifecycle management controls will be included in a future Exam-ple Implementation.</p></td>
+<td><p>NextLabs was supported by API key-based authentication.</p></td>
+<td><p>Partially Implemented: API key-based authentication was implemented to support NextLabs’ CloudAZ and GitLab Enforcer. Machine identity with certificate-based authentication and lifecycle management controls will be included in a future Example Implementation.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="functional-demonstration-scenarios.html#scenario-d-18"><span class="std std-ref">E2.D-18.7</span></a></p></td>
 <td><p>Job logs are monitored for specific keywords based on ZT policy</p></td>
@@ -6173,7 +6171,7 @@
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="functional-demonstration-scenarios.html#scenario-e-1"><span class="std std-ref">E2.E-1.3</span></a></p></td>
 <td><div class="line-block">
-<div class="line">Output that was logged by the CI/CD Pipelines is returned to Con-figuration Management Systems to track status and detailed information about the Release process.</div>
+<div class="line">Output that was logged by the CI/CD Pipelines is returned to Configuration Management Systems to track status and detailed information about the Release process.</div>
 </div>
 </td>
 <td><p>Gitlab Platform CI provided CI/CD Pipelines to capture automated actions and save pipeline output.</p></td>
@@ -6328,13 +6326,13 @@
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="functional-demonstration-scenarios.html#scenario-e-10"><span class="std std-ref">E2.E-10.1</span></a></p></td>
 <td><p>Signed firmware artifacts are verified and authentic.</p></td>
-<td><p>Components were not available to imple-ment in this demonstration. Firmware Services will be included in future example implementation.</p></td>
-<td><p>Components were not available to imple-ment in this demonstration. Firmware Services will be included in future example implementation.</p></td>
+<td><p>Components were not available to implement in this demonstration. Firmware Services will be included in future example implementation.</p></td>
+<td><p>Components were not available to implement in this demonstration. Firmware Services will be included in future example implementation.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="functional-demonstration-scenarios.html#scenario-e-10"><span class="std std-ref">E2.E-10.2</span></a></p></td>
 <td><p>Logs of firmware updates or changes are captured</p></td>
-<td><p>Components were not available to imple-ment in this demonstration. Firmware Services will be included in future example implementation.</p></td>
-<td><p>Components were not available to imple-ment in this demonstration. Firmware Services will be included in future example implementation.</p></td>
+<td><p>Components were not available to implement in this demonstration. Firmware Services will be included in future example implementation.</p></td>
+<td><p>Components were not available to implement in this demonstration. Firmware Services will be included in future example implementation.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="functional-demonstration-scenarios.html#scenario-e-11"><span class="std std-ref">E2.E-11.1</span></a></p></td>
 <td><div class="line-block">
@@ -6483,7 +6481,7 @@
 <div class="line">Microsoft Azure Entra ID provided policy management of users, groups, service accounts, and other service principals as well as roles and role assignments.</div>
 </div>
 <div class="line-block">
-<div class="line">CyberArk Secure Infrastructure Access controls access to release servers with zero-trust policies.</div>
+<div class="line">CyberArk Secure Infrastructure Access controls access to release servers with ZT policies.</div>
 </div>
 </td>
 <td><div class="line-block">
@@ -6525,11 +6523,11 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="functional-demonstration-scenarios.html#scenario-e-15"><span class="std std-ref">E2.E-15.4</span></a></p></td>
 <td><p>Only software proven to originate from the approved build and test phase processes in compliance with ZT policies are staged for release.</p></td>
 <td><div class="line-block">
-<div class="line">NextLabs’ CloudAz and Gitlab Enforcer components ensure that all required evidence jobs have been completed successfully before the software is published. NextLabs’ Gitlab Enforcer receives dependency SBOM from the Gitlab dependency scanning job and checks for packages with invalid purl or version. NextLabs’ Gitlab Enforcer also reviews DAST scan results and blocks pipe-line progression when results fail to meet ZT policy criteria.</div>
+<div class="line">NextLabs’ CloudAz and Gitlab Enforcer components ensure that all required evidence jobs have been completed successfully before the software is published. NextLabs’ Gitlab Enforcer receives dependency SBOM from the Gitlab dependency scanning job and checks for packages with invalid purl or version. NextLabs’ Gitlab Enforcer also reviews DAST scan results and blocks pipeline progression when results fail to meet ZT policy criteria.</div>
 </div>
 </td>
 <td><div class="line-block">
-<div class="line">Implemented: ZT policy was written and defined within NextLabs’ CloudAz. Release phase progression was blocked by the Gitlab Enforcer if required evidence tests failed. A new pipeline job was created to depend on the GitLab dependency scanning job and poll the GitLab Enforcer with the report on successful run. Gitlab Enforcer receives dependency SBOM and checks for packages with invalid purl or version. If non-whitelisted invalid packages are found, release is blocked. NextLabs’ Gitlab Enforcer counts Medi-um, High, and Critical vulnerabilities be-fore passing the counts to the NextLabs PDP. Any such finding blocks progression, preventing release of applications with known exploitable vulnerabilities.</div>
+<div class="line">Implemented: ZT policy was written and defined within NextLabs’ CloudAz. Release phase progression was blocked by the Gitlab Enforcer if required evidence tests failed. A new pipeline job was created to depend on the GitLab dependency scanning job and poll the GitLab Enforcer with the report on successful run. Gitlab Enforcer receives dependency SBOM and checks for packages with invalid purl or version. If non-whitelisted invalid packages are found, release is blocked. NextLabs’ Gitlab Enforcer counts Medium, High, and Critical vulnerabilities before passing the counts to the NextLabs PDP. Any such finding blocks progression, preventing release of applications with known exploitable vulnerabilities.</div>
 </div>
 </td>
 </tr>
