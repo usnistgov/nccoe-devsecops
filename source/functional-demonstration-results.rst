@@ -183,7 +183,7 @@ E1 Plan Phase
      - Microsoft AzDO Leveraged.
      - Implemented: Microsoft AzDO Area Path RBAC was leveraged for the protection of access to user stories, requirements, and design specifications.
    * - :ref:`E1.A-10.3 <scenario-a-10>`
-     - Strong machine identity is established using certificate-based authentication. Token-based authentication usage is limited and adheres to best practices, including rotation and short expiration times.
+     - Strong machine identity is established using certificate-based authentication or token-based authentication (e.g., JavaScript Web Token (JWT)) to adhere to best practices, including rotation and short expiration times.
      - Microsoft Entra ID provided token-based authentication via managed identities and workload identity federation.
      - Partially Implemented: Machine/workload identities were implemented to provide machine or service-level authentication using short-lived tokens. Certificate-based authentication and lifecycle management controls will be included in a future Example Implementation.
    * - :ref:`E1.A-11.1 <scenario-a-11>`
@@ -470,21 +470,20 @@ E1 Develop Phase
    * - :ref:`E1.B-10.2 <scenario-b-10>`
      - Only authorized endpoints can access source control systems and development systems.
      - Microsoft Entra Conditional Access leveraged.
-     - | Implemented – Microsoft Entra Conditional Access policy for the cloud app “Azure DevOps” can be created and enforce user access. Azure Policy can also be
+     - | Implemented: Microsoft Entra Conditional Access policy for the cloud app “Azure DevOps” can be created and enforce user access. Azure Policy can also be
        | used to constrain what can be deployed. Microsoft Intune and Defender for Endpoint can be integrated to provide device posture capabilities.
    * - :ref:`E1.B-10.3 <scenario-b-10>`
      - Authorized users can make changes to restricted branches.
      - Azure policies were applied to users.
      - | Implemented: Policies were implemented in Azure Entra ID and AzDO (within AzDO Teams and Permissions settings) to restrict certain users from accessing specific AzDO capabilities.
    * - :ref:`E1.B-10.4 <scenario-b-10>`
-     - | Strong machine identity is established using certificate-based authentication. Token-based authentication usage is limited and adheres to best practices,
-       | including rotation and short expiration times.
+     - | Strong machine identity is established using certificate-based authentication or token-based authentication (e.g., JavaScript Web Token (JWT)) to adhere to best practices, including rotation and short expiration times.
      - Microsoft Entra ID provided token-based authentication via managed identities and workload identity federation.
-     - Partially Implemented: Machine/workload identities were implemented to provide machine or service-level authentication using short-lived tokens. Certificate-based authen-tication and lifecycle management controls will be included in a future Example Implementation.
+     - Partially Implemented: Machine/workload identities were implemented to provide machine or service-level authentication using short-lived tokens. Certificate-based authentication and lifecycle management controls will be included in a future Example Implementation.
    * - :ref:`E1.B-10.5 <scenario-b-10>`
      - Only pipeline runs satisfying the applicable ZT policy conditions are permitted to advance.
-     - This demonstration has been deferred to a future example implementation.
-     - This demonstration has been deferred to a future example implementation.
+     - Scenario not available during Example Implementation 1 – This demonstration was added in Example Implementation 2.
+     - Scenario not available during Example Implementation 1 – This demonstration was added in Example Implementation 2.
    * - :ref:`E1.B-11.1 <scenario-b-11>`
      - Source code and configuration files are generated and changes, explanations, and commits are captured.
      - Scenario not available during Example Implementation 1 – This demonstration was added in Example Implementation 2.
@@ -609,7 +608,7 @@ E1 Build Phase
      - Pipeline leveraged IaC and pulled in Juice Shop source code.
      - | Implemented: Results of the pipeline output showed that IaC was working, and source code was pulled into the pipeline to be executed. Note, this pipeline is leveraging IaC, which was built in a separate pipeline.
    * - :ref:`E1.C-1.3 <scenario-c-1>`
-     - CI/CD Pipelines run all build process components, and each component generates output for tracking status and logging de-tailed information.
+     - CI/CD Pipelines run all build process components, and each component generates output for tracking status and logging detailed information.
      - Build CI/CD pipeline run was completed successfully.
      - Implemented: The CI/CD pipeline was initiated and completed. Summary and raw logs provided.
    * - :ref:`E1.C-1.4 <scenario-c-1>`
@@ -1056,7 +1055,7 @@ E1 Test Phase
 
        | Implemented: Remediation issues were updated in AzDO Work Items from Black Duck via SRM.
    * - :ref:`E1.D-1.4 <scenario-d-1>`
-     - The resources used for the test environment have been freed up – no VMs, Containers, tools, or other environment components are still provisioned.
+     - The resources used for the test environment have been freed up. No VMs, Containers, tools, or other environment components are still provisioned.
      - AzDO pipelines performed “clean up” tasks.
      - | Implemented: When resources are no longer used, the CI/CD pipeline performed functions to free up the resources in the environment. These steps were configured in the end of the pipeline execution.
    * - :ref:`E1.D-2 <scenario-d-2>`
@@ -1246,7 +1245,7 @@ E1 Test Phase
 
        | Implemented: SBOMs were created in Endor Labs and can be exported.
    * - :ref:`E1.D-17.2 <scenario-d-17>`
-     - Confirm SBOM signatures to verify authenticity and integrity of all soft-ware artifacts.
+     - Confirm SBOM signatures to verify authenticity and integrity of all software artifacts.
      - | SBOM artifact was produced.
 
        | DigiCert Software Trust Manager leveraged certificates to sign the SBOM.
@@ -1675,7 +1674,7 @@ E1 Deploy Phase
    * - :ref:`E1.F-8.2 <scenario-f-8>`
      - System-to-system communications are restricted based on functionality and ZT policies.
      - Microsoft Entra ID and Azure Policy leveraged to secure communications.
-     - | Implemented: Entra ID provided the role base access, leveraging service principles – for secure service to service communication. Azure Policy can also be used to define and enforce policies for infrastructure to constrain what can be deployed by developers.
+     - | Implemented: Entra ID provided the role base access, leveraging service principals for secure service to service communication. Azure Policy can also be used to define and enforce policies for infrastructure to constrain what can be deployed by developers.
    * - :ref:`E1.F-8.3 <scenario-f-8>`
      - Only software proven to originate from the approved build and test phase processes are deployed.
      - Scenario not available during Example Implementation 1 – This demonstration was added in Example Implementation 2.
@@ -1955,7 +1954,7 @@ E2 Plan Phase
      - | Results of cyber intelligence and other security feeds were reviewed and documented. Tickets are created and updated to track and resolve issues related to threats.
      - | Components were not available to implement in this demonstration. Cyber Intelligence Threat and Security Metadata Feeds will be included in future example implementation.
 
-       | Gitlab Platform Issues provided Work Items, Issues, and Milestones to track issues and document changes; Gitlab Platform Secu-rity Dashboard and Vulnerability Report displayed findings. 
+       | Gitlab Platform Issues provided Work Items, Issues, and Milestones to track issues and document changes; Gitlab Platform Security Dashboard and Vulnerability Report displayed findings. 
      - Components were not available to implement in this demonstration. Cyber Intelligence Threat and Security Metadata Feeds will be included in future example implementation.
    * - :ref:`E2.A-6.2 <scenario-a-6>`
      - Threat Modeling System produced new model changes or presented new potential vulnerabilities.
@@ -1970,7 +1969,7 @@ E2 Plan Phase
      - Gitlab Platform SCM provided configuration management for projects, associated systems, and software applications.
      - | Implemented: Gitlab Platform SCM provides configuration management functionality using Operate, Compliance, and Policy settings, which control build and deploy environment settings as well as operational settings for deployed assets.
    * - :ref:`E2.A-7.2 <scenario-a-7>`
-     - | Tickets are created and updated as configurations change. Both Design and Requirements Management Systems are updated to track con-figuration changes over time.
+     - | Tickets are created and updated as configurations change. Both Design and Requirements Management Systems are updated to track configuration changes over time.
      - Gitlab Platform provided Issues, Tasks, Labels, and Milestones to track configuration changes over time.
      - | Implemented: Configuration changes are tracked through Issues and Tasks, categorized with Labels and grouped under Milestones, with change history retained on each item.
    * - :ref:`E2.A-8.1 <scenario-a-8>`
@@ -2066,11 +2065,11 @@ E2 Plan Phase
 
        | Implemented: Roles and Permissions were defined within Gitlab, restricting user access within Gitlab to the policy definitions.
    * - :ref:`E2.A-10.3 <scenario-a-10>`
-     - | Strong machine identity is established using certificate-based authentication. Token-based authentication usage is limited and adheres to best practices, including rotation and short expiration times.
+     - | Strong machine identity is established using certificate-based authentication or token-based authentication (e.g., JavaScript Web Token (JWT)) to adhere to best practices, including rotation and short expiration times.
      - | Microsoft Entra ID provided token-based authentication via managed identities and workload identity federation. 
-       | NextLabs was supported by API-based authentication. 
+       | NextLabs was supported by API key-based authentication. 
      - | Partially Implemented: Machine/workload identities were implemented to provide machine or service-level authentication using short-lived tokens. Certificate-based authentication and lifecycle management controls will be included in a future Example Implementation.
-       | Partially Implemented: API-based authentication was implemented to support NextLabs CloudAZ, SkyDRM, and GitLab Enforcer. Machine identity with certificate-based authentication and lifecycle management controls will be included in a future Example Implementation. 
+       | Partially Implemented: API key-based authentication was implemented to support NextLabs CloudAZ, SkyDRM, and GitLab Enforcer. Machine identity with certificate-based authentication and lifecycle management controls will be included in a future Example Implementation.
    * - :ref:`E2.A-11.1 <scenario-a-11>`
      - New work items, tickets, or issues are generated.
      - | Gitlab Duo provided analysis of requirements captured in Gitlab Issues and created new Work Items and Issues.
@@ -2386,12 +2385,11 @@ E2 Develop Phase
      - | NextLabs’ SkyDRM, CloudAz, and Gitlab enforcer components prevented unauthorized users from making change to restricted branches both on development workstations and within Gitlab.
      - | Implemented: ZT policy was written and defined within NextLabs’ CloudAz and changes to branches were restricted to authorized users through the SkyDRM, Windows Enforcer, and Gitlab Enforcer Components.
    * - :ref:`E2.B-10.4 <scenario-b-10>`
-     - | Strong machine identity is established using certificate-based authentication. Token-based authentication usage is limited and adheres to best practices,
-       | including rotation and short expiration times.
+     - | Strong machine identity is established using certificate-based authentication or token-based authentication (e.g., JavaScript Web Token (JWT)) to adhere to best practices, including rotation and short expiration times.
      - | Microsoft Entra ID provided token-based authentication via managed identities and workload identity federation.
-       | NextLabs was sup-ported by API-based authentication. 
+       | NextLabs was supported by API key-based authentication. 
      - | Partially Implemented: Machine/workload identities were implemented to provide machine or service-level authentication using short-lived tokens. Certificate-based authentication and lifecycle management controls will be included in a future Example Implementation.
-       | Partially Implemented: API-based authentication was implemented to support NextLabs CloudAZ, SkyDRM, and GitLab Enforcer. Machine identity with certificate-based authentication and lifecycle management controls will be included in a future Example Implementation.
+       | Partially Implemented: API key-based authentication was implemented to support NextLabs CloudAZ, SkyDRM, and GitLab Enforcer. Machine identity with certificate-based authentication and lifecycle management controls will be included in a future Example Implementation.
    * - :ref:`E2.B-10.5 <scenario-b-10>`
      - Only pipeline runs satisfying the applicable ZT policy conditions are permitted to advance.
      - NextLabs’ CloudAz and Gitlab Enforcer components implemented a ZT policy gate within Gitlab pipelines to enforce ZT policies within each pipeline.
@@ -2503,7 +2501,7 @@ E2 Build Phase
      - | Gitlab Platform Runners automated CI/CD activities on source code, IaC, and configurations. Gitlab Platform SCM provided source control for all source code, IaC, and configurations
      - Implemented: Gitlab Runners provides CI/CD automation for source code, IaC, and configurations hosted in Gitlab SCM-managed projects.
    * - :ref:`E2.C-1.3 <scenario-c-1>`
-     - CI/CD Pipelines run all build process components, and each component generates output for tracking status and logging de-tailed information.
+     - CI/CD Pipelines run all build process components, and each component generates output for tracking status and logging detailed information.
      - | Gitlab Platform Runners automated CI/CD activities on source code, IaC, and configurations. Gitlab Platform SCM provided source control for all source code, IaC, and configurations.
      - Implemented: Gitlab Runners provides CI/CD automation for source code, IaC, and configurations hosted in Gitlab SCM-managed projects.
    * - :ref:`E2.C-1.4 <scenario-c-1>`
@@ -2838,8 +2836,8 @@ E2 Build Phase
      - | Implemented: ZT policy was written and defined within NextLabs’ CloudAz. A new pipeline job was created to inspect the contents of the built image and send it to the GitLab Enforcer. Build processes were blocked by the Gitlab Enforcer if unapproved artifacts were detected.
    * - :ref:`E2.C-15.10 <scenario-c-15>`
      - Trusted communication is enforced across build systems using certificate-based authentication.
-     - NextLabs was supported by API-based authentication.
-     - Partially Implemented: API-based authentication was implemented to support NextLabs’ CloudAZ and GitLab Enforcer. Trusted communication with certificate-based authentication will be included in a future Example Implementation.
+     - NextLabs was supported by API key-based authentication.
+     - Partially Implemented: API key-based authentication was implemented to support NextLabs’ CloudAZ and GitLab Enforcer. Trusted communication with certificate-based authentication will be included in a future Example Implementation.
    * - :ref:`E2.C-16.1 <scenario-c-16>`
      - Source code and configuration files are updated with generated changes and documented explanations.
      - | Gitlab Duo generated source code, configuration, and documentation changes for Gitlab-hosted projects.
@@ -2909,7 +2907,7 @@ E2 Test Phase
      - Gitlab Platform CI feature provided CI/CD Pipelines to capture automated actions and save pipeline output.
      - Implemented: Gitlab CI was leveraged to capture and log output from all build phase actions for CI/CD Pipelines.
    * - :ref:`E2.D-1.4 <scenario-d-1>`
-     - The resources used for the test environment have been freed up – no VMs, Containers, tools, or other environment components are still provisioned.
+     - The resources used for the test environment have been freed up. No VMs, Containers, tools, or other environment components are still provisioned.
      - Gitlab Platform Environments provided separate configurations for maintaining isolated build environments.
      - Implemented: Gitlab Environments are defined for build environments to maintain isolation and parallel configurations.
    * - :ref:`E2.D-2 <scenario-d-2>`
@@ -3115,9 +3113,9 @@ E2 Test Phase
      - NextLabs’ CloudAz and NextLabs’ Gitlab Enforcer components block pipeline progression if mandatory tests fail.
      - | Implemented: ZT policy was written and defined within NextLabs’ CloudAz. A new pipeline job was created to poll the GitLab Enforcer with tests in the pipeline. Pipeline progression was blocked by the Gitlab Enforcer if tests defined in ZT policy were not found in the running pipeline.
    * - :ref:`E2.D-18.6 <scenario-d-18>`
-     - | Test Phase communications are secured using certificate-based authentication. Token-based authentication usage is limited and adheres to best practices, including rotation and short expiration times.
-     - NextLabs was sup-ported by API-based authentication.
-     - Partially Implemented: API-based authen-tication was implemented to support NextLabs’ CloudAZ and GitLab Enforcer. Machine identity with certificate-based authentication and lifecycle management controls will be included in a future Exam-ple Implementation.
+     - | Test Phase communications are secured using certificate-based authentication or token-based authentication (e.g., JavaScript Web Token (JWT)) to adhere to best practices, including rotation and short expiration times.
+     - NextLabs was supported by API key-based authentication.
+     - Partially Implemented: API key-based authentication was implemented to support NextLabs’ CloudAZ and GitLab Enforcer. Machine identity with certificate-based authentication and lifecycle management controls will be included in a future Example Implementation.
    * - :ref:`E2.D-18.7 <scenario-d-18>`
      - Job logs are monitored for specific keywords based on ZT policy
      - Nextlabs’ Gitlab Enforcer creates incident reports for specific keywords in job logs
@@ -3209,7 +3207,7 @@ E2 Release Phase
      - Gitlab Platform Runners automated release actions and logged findings.
      - Implemented: Gitlab Runners provides release actions of generated artifacts and captures detected findings.
    * - :ref:`E2.E-1.3 <scenario-e-1>`
-     - | Output that was logged by the CI/CD Pipelines is returned to Con-figuration Management Systems to track status and detailed information about the Release process.
+     - | Output that was logged by the CI/CD Pipelines is returned to Configuration Management Systems to track status and detailed information about the Release process.
      - Gitlab Platform CI provided CI/CD Pipelines to capture automated actions and save pipeline output.
      - Implemented: Gitlab CI was leveraged to capture and log output from all release phase actions for CI/CD Pipelines.
    * - :ref:`E2.E-2.1 <scenario-e-2>`
@@ -3298,12 +3296,12 @@ E2 Release Phase
      - This demonstration has been deferred to a future example implementation.
    * - :ref:`E2.E-10.1 <scenario-e-10>`
      - Signed firmware artifacts are verified and authentic.
-     - Components were not available to imple-ment in this demonstration. Firmware Services will be included in future example implementation.
-     - Components were not available to imple-ment in this demonstration. Firmware Services will be included in future example implementation.
+     - Components were not available to implement in this demonstration. Firmware Services will be included in future example implementation.
+     - Components were not available to implement in this demonstration. Firmware Services will be included in future example implementation.
    * - :ref:`E2.E-10.2 <scenario-e-10>`
      - Logs of firmware updates or changes are captured
-     - Components were not available to imple-ment in this demonstration. Firmware Services will be included in future example implementation.
-     - Components were not available to imple-ment in this demonstration. Firmware Services will be included in future example implementation.
+     - Components were not available to implement in this demonstration. Firmware Services will be included in future example implementation.
+     - Components were not available to implement in this demonstration. Firmware Services will be included in future example implementation.
    * - :ref:`E2.E-11.1 <scenario-e-11>`
      - | Software components and artifacts (e.g., commits, images, binaries, or libraries; Signature files) are digitally signed and secrets are stored and protected by HSM.
      - | Microsoft AKV provided storage and management functions for certificates.
@@ -3392,7 +3390,7 @@ E2 Release Phase
      - Users’ access to release systems and applications are allowed or denied based on ZT policies.
      - | Microsoft Azure Entra ID provided policy management of users, groups, service accounts, and other service principals as well as roles and role assignments.
 
-       | CyberArk Secure Infrastructure Access controls access to release servers with zero-trust policies.
+       | CyberArk Secure Infrastructure Access controls access to release servers with ZT policies.
 
      - | Implemented: Microsoft Azure Entra ID and Conditional Access policies provides role-based access control and user policies alongside network and resource access controls to restrict access to systems and resources.
 
@@ -3412,8 +3410,8 @@ E2 Release Phase
        | Implemented: DigiCert Trust Lifecycle Manager provided certificates, service accounts, and applications to securely access, managed, and store certificates.
    * - :ref:`E2.E-15.4 <scenario-e-15>`
      - Only software proven to originate from the approved build and test phase processes in compliance with ZT policies are staged for release.
-     - | NextLabs’ CloudAz and Gitlab Enforcer components ensure that all required evidence jobs have been completed successfully before the software is published. NextLabs’ Gitlab Enforcer receives dependency SBOM from the Gitlab dependency scanning job and checks for packages with invalid purl or version. NextLabs’ Gitlab Enforcer also reviews DAST scan results and blocks pipe-line progression when results fail to meet ZT policy criteria.
-     - | Implemented: ZT policy was written and defined within NextLabs’ CloudAz. Release phase progression was blocked by the Gitlab Enforcer if required evidence tests failed. A new pipeline job was created to depend on the GitLab dependency scanning job and poll the GitLab Enforcer with the report on successful run. Gitlab Enforcer receives dependency SBOM and checks for packages with invalid purl or version. If non-whitelisted invalid packages are found, release is blocked. NextLabs’ Gitlab Enforcer counts Medi-um, High, and Critical vulnerabilities be-fore passing the counts to the NextLabs PDP. Any such finding blocks progression, preventing release of applications with known exploitable vulnerabilities.
+     - | NextLabs’ CloudAz and Gitlab Enforcer components ensure that all required evidence jobs have been completed successfully before the software is published. NextLabs’ Gitlab Enforcer receives dependency SBOM from the Gitlab dependency scanning job and checks for packages with invalid purl or version. NextLabs’ Gitlab Enforcer also reviews DAST scan results and blocks pipeline progression when results fail to meet ZT policy criteria.
+     - | Implemented: ZT policy was written and defined within NextLabs’ CloudAz. Release phase progression was blocked by the Gitlab Enforcer if required evidence tests failed. A new pipeline job was created to depend on the GitLab dependency scanning job and poll the GitLab Enforcer with the report on successful run. Gitlab Enforcer receives dependency SBOM and checks for packages with invalid purl or version. If non-whitelisted invalid packages are found, release is blocked. NextLabs’ Gitlab Enforcer counts Medium, High, and Critical vulnerabilities before passing the counts to the NextLabs PDP. Any such finding blocks progression, preventing release of applications with known exploitable vulnerabilities.
    * - :ref:`E2.E-16.1 <scenario-e-16>`
      - Suggestions and remediation guidance are provided and documented for the identified source code and configuration issues.
      - | Gitlab Duo generated remediations from feedback provided by security scanning and reports.
