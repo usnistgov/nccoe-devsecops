@@ -353,8 +353,7 @@ Scenario A-10: Zero Trust Security
    * - A-10.3
      - Develop and apply policies in ZT solution tools to provide secure system-to-system communication.
      - Certificate Management System; ZT Security System
-     - Strong machine identity is established using certificate-based authentication. Token-based authentication usage is limited and adheres to best practices,
-       including rotation and short expiration times.
+     - Strong machine identity is established using certificate-based authentication or token-based authentication (e.g., JavaScript Web Token (JWT)) to adhere to best practices, including rotation and short expiration times.
      - PO.5.1
 
 
@@ -770,8 +769,7 @@ software applications, and sensitive resources hosted throughout the Develop Pha
    * - B-10.4
      - Develop and apply policies in ZT solution tools to provide secure access for system-to-system communication.
      - Certificate Management System; ZT Security System
-     - Strong machine identity is established using certificate-based authentication. Token-based authentication usage is limited and adheres to best practices,
-       including rotation and short expiration times.
+     - Strong machine identity is established using certificate-based authentication or token-based authentication (e.g., JavaScript Web Token (JWT)) to adhere to best practices, including rotation and short expiration times.
      - PO.5.1
    * - B-10.5
      - Develop and apply ZT policies to enforce compliance at each stage of the software delivery pipeline, permitting progression when explicit policy
