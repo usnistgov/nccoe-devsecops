@@ -1,0 +1,2 @@
+sphinxcontrib-spelling==8.0.2
+pyenchant==3.3.0

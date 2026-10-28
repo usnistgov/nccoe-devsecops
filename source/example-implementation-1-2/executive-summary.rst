@@ -4,6 +4,7 @@ DevSecOps Practices
 
 
 .. rst-class:: frontmatter-header
+
 **DISCLAIMER**
 
 Certain commercial entities, equipment, products, or materials may be identified by name or company logo or other insignia in order to acknowledge their
@@ -13,6 +14,7 @@ materials are necessarily the best available for the purpose.
 
 
 .. rst-class:: frontmatter-header
+
 **FEEDBACK**
 
 You can view or download the document at the `NCCoE Secure Software Development, Security, and Operations (DevSecOps) Practices project page <https://www.nccoe.nist.gov/projects/secure-software-development-security-and-operations-devsecops-practices>`__.
@@ -45,6 +47,7 @@ NIST is particularly interested in your feedback on the following questions:
 
 
 .. rst-class:: frontmatter-header
+
 **NATIONAL CYBERSECURITY CENTER OF EXCELLENCE**
 
 The National Cybersecurity Center of Excellence (NCCoE), a part of the National Institute of Standards and Technology (NIST), is a collaborative hub where
@@ -60,6 +63,7 @@ established in 2012 by NIST in partnership with the State of Maryland and Montgo
 | `https://www.nist.gov <https://www.nist.gov/>`__\ *.*
 
 .. rst-class:: frontmatter-header
+
 **ABSTRACT**
 
 Today’s software applications are typically constructed by combining a diverse range of com-ponents, including modules, frameworks, libraries, and tools. Rather than building everything from scratch, developers leverage a mix of proprietary code and externally sourced compo-nents. This modular approach—coupled with DevOps (Development and Operations) practices that integrate development and IT operations—creates a modern workflow that delivers im-proved quality, reliability, agility, and efficiency. This collaborative process is further accelerated by DevSecOps (Development, Security, and Operations), which builds on the DevOps philosophy by embedding security into every phase of the software lifecycle. Additionally, incorporating cloud-native technologies and AI helps opti-mize performance and bolster defenses. 
@@ -68,11 +72,13 @@ However, the complexities and rapid pace of modern software development can stil
 
 
 .. rst-class:: frontmatter-header
+
 **KEYWORDS**
 
 *DevOps; DevSecOps;* *Secure software development; Secure Software Development Framework (SSDF).*
 
 .. rst-class:: frontmatter-header
+
 **ACKNOWLEDGMENTS**
 
 We are grateful to the following individuals for their generous contributions of expertise and time.
@@ -116,6 +122,7 @@ Respondents with relevant capabilities or product components were invited to sig
 them to participate in a consortium to build this example solution. We are working with:
 
 .. rst-class:: frontmatter-header
+
 **TECHNOLOGY COLLABORATORS**
 
 
@@ -135,6 +142,7 @@ them to participate in a consortium to build this example solution. We are worki
 - `Sagittal AI <https://sagittal.ai/>`__
 
 .. rst-class:: frontmatter-header
+
 **DOCUMENT CONVENTIONS**
 
 The terms “shall” and “shall not” indicate requirements to be followed strictly to conform to the publication and from which no deviation is permitted. The
@@ -144,6 +152,7 @@ discouraged but not prohibited. The terms “may” and “need not” indicate 
 “cannot” indicate a possibility and capability, whether material, physical, or causal.
 
 .. rst-class:: frontmatter-header
+
 **CALL FOR PATENT CLAIMS**
 
 This public review includes a call for information on essential patent claims (claims whose use would be required for compliance with the guidance or

@@ -13,8 +13,9 @@ from sphinx import version_info as sphinx_version
 from sphinx.util.logging import getLogger
 from sphinx.writers.html5 import HTML5Translator
 
+from nccoe_rtd_theme.directives.kaltura import kalturaVideoDirective
 
-__version__ = '1.0.1'
+__version__ = '1.0.3'
 __version_full__ = __version__
 
 logger = getLogger(__name__)
@@ -108,6 +109,12 @@ def setup(app):
     app.add_html_theme('nccoe_rtd_theme', path.abspath(path.dirname(__file__)))
 
     app.set_translator('html', NCCOEHTML5Translator, override=True)
+
+    app.add_directive('kaltura-video', kalturaVideoDirective)
+
+    app.add_js_file("https://cdnapisec.kaltura.com/p/684682/embedPlaykitJs/uiconf_id/55674542")
+
+    app.add_js_file("js/kaltura.js")
 
     app.connect('config-inited', config_initiated)
 

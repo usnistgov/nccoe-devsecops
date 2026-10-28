@@ -29,6 +29,37 @@ extensions = [
     "sphinxcontrib.mermaid",
     "sphinx_datatables",
     "sphinxcontrib.googleanalytics",
+    "sphinx_reredirects",
+]
+
+# Redirect legacy documentation URLs to their Example Implementation locations.
+redirects = {
+    "executive-summary": "example-implementation-1-2/executive-summary.html",
+    "introduction": "example-implementation-1-2/introduction.html",
+    "notational-reference-model": "example-implementation-1-2/notational-reference-model.html",
+    "mapping-ssdf": "example-implementation-1-2/mapping-ssdf.html",
+    "example-implementations": "example-implementation-1-2/example-implementations.html",
+    "functional-demonstrations": "example-implementation-1-2/functional-demonstrations.html",
+    "functional-demonstration-scenarios": "example-implementation-1-2/functional-demonstration-scenarios.html",
+    "functional-demonstration-results": "example-implementation-1-2/functional-demonstration-results.html",
+    "next-steps": "example-implementation-1-2/next-steps.html",
+    "appendix-a": "example-implementation-1-2/appendix-a.html",
+    "appendix-b": "example-implementation-1-2/appendix-b.html",
+    "appendix-c": "example-implementation-1-2/appendix-c.html",
+    "appendix-d": "example-implementation-1-2/appendix-d.html",
+    "appendix-e": "example-implementation-1-2/appendix-e.html",
+}
+
+# Optionally include the spelling extension only if it's installed
+try:
+    import sphinxcontrib.spelling
+except Exception:
+    pass
+else:
+    extensions.append("sphinxcontrib.spelling")
+
+spelling_word_list_filename = [
+    "_themes/nccoe_rtd_theme/dictionaries/spelling_wordlist.txt"
 ]
 
 
