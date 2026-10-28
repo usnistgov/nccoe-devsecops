@@ -1,198 +1,47 @@
-.. rst-class:: cover-top
+DevSecOps Practices
+=======================
 
-    
-    
----------
+.. container:: devsecops-home-hero
 
-.. raw:: html
+   **Explore DevSecOps Practices by Example Implementation**
 
-    <style>.rst-content section h1:first-of-type {display: none;}</style>
-    <h1 class="cover-h1">Secure Software Development, Security, and Operations (DevSecOps) Practices</h1> <!-- manual title because raw html won't accept rst substitution -->
+   Explore the DevSecOps project documentation, including
+   reference models, example implementations, and functional
+   demonstrations.
 
-=============================================================================
-Secure Software Development, Security, and Operations (DevSecOps) Practices
-=============================================================================
+Explore the Example Implementations
+----------------------------------------
 
+Select an example implementation below to explore its documentation.
 
+.. grid:: 1 1 2 2
+   :gutter: 3
+   :class-container: devsecops-use-case-grid
 
-.. container:: cover
+   .. grid-item-card:: Example Implementation 1 and 2
+      :link: example-implementation-1-2/index
+      :link-type: doc
+      :shadow: md
 
-   |
-   |
+      **(Using Generative SI)**
 
-   September 2026
+      Explore the existing DevSecOps documentation, including
+      reference models, example implementations, and functional
+      demonstrations.
 
-   |
+   .. grid-item-card:: Example Implementation 3 
+      :link: example-implementation-3/index
+      :link-type: doc
+      :shadow: md
 
-   
-   |
-
-   This publication is available free of charge from https://www.nccoe.nist.gov/projects/secure-software-development-security-and-operations-devsecops-practices 
-
-   |
-
-
-   |nccoenistlogos|
-
-   |
-   |
-
-
-
-.. container:: cover-author-grid-3
-
-   .. container:: cover-author-block
-
-      | **Alper Kerman**
-      | **Michael Ogata**
-      | National Institute of Standards and Technology
-
-
-
-      | **Drew Buttner**
-      | **Parisa Grayeli**
-      | **Joshua Klosterman**
-      | **Phillip Millwee**
-      | **Deanna Stanley**
-      | **Allen Tan**
-      | The MITRE Corporation
-
-
-      | **William Barker**
-      | Dakota Consulting
-
-
-
-      | **Sudan Ayanam**
-      | **Stefano Righi**
-      | AMI
-
-
-
-      | **Chrissa Constantine**
-      | **Tim Mackey**
-      | Black Duck
-
-
-
-
-      | **James Imanian**
-      | CyberArk
-
-   .. container:: cover-author-block
-
-
-      | **Daniel Carroll**
-      | **Daniel Jackson**
-      | Dell Technologies
-
-
-
-      | **Dean Coclin**
-      | **Dave Roche**
-      | DigiCert
-
-
-
-      | **Matt Brown**
-      | **Tom Gleason**
-      | Endor Labs
+      **(Using Agentic SI)**
       
-
-
-      | **MaryGrace Wajda**
-      | GitLab
-
-
-
-      | **Isaac Hepworth**
-      | **Brandon Lum**
-      | Google
-
-
-
-      | **Philippe Mulet**
-      | **Harmeet Singh**
-      | IBM
-
-   .. container:: cover-author-block
-
-
-      | **Tal De La Rosa**
-      | **Segu Riluvan**
-      | **Mark Svancarek**
-      | Microsoft
-
-
-
-      | **Keng Lim**
-      | **Sameer Shukla**
-      | NextLabs
-
-
-
-      | **Chima Onukwuru**
-      | **Neil Roxburgh**
-      | Palo Alto Networks
-
-
-
-      | **Guy Chernobrov**
-      | **Daniel Nebenzahl**
-      | Resilience Cyber Security
-
-
-      
-      | **Jose Palazon**
-      | **Michael Smith**
-      | Sagittal AI
-
-   |
-
-   |
-|
-
-
-National Institute of Standards and Technology
-
-|
-
-
-.. |nccoenistlogos| image:: /_static/img/nccoe-logo.svg
-
-.. |doclogo| image:: /_static/img/department-of-commerce-small.png
-   :width: 1.27153in
-   :height: 1.24861in
-
-
+      Explore the third DevSecOps example implementation. Additional
+      documentation will be available here as the project develops.
 
 .. toctree::
-   :maxdepth: 4
-   :glob:
+   :maxdepth: 2
+   :hidden:
 
-   executive-summary
-   
-
-.. toctree::
-   :maxdepth: 4
-   :glob:
-   :numbered:
-
-   introduction
-   notational-reference-model
-   mapping-ssdf
-   collaborators
-   example-implementations
-   functional-demonstrations
-   next-steps
-   
-
-.. toctree::
-   :maxdepth: 4
-   :glob:
-
-   appendix-a
-   appendix-b
-   appendix-c
-   appendix-d
-   appendix-e
+   Example Implementation 1 & 2 <example-implementation-1-2/index>
+   Example Implementation 3 <example-implementation-3/index>

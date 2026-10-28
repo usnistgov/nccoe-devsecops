@@ -387,7 +387,7 @@ Below are the Operate phase components that were implemented as part of the proj
 
 
 Continuous Improvements, Security, and Monitoring
-------------------------------------------------
+-------------------------------------------------
 
 Continuous Improvements, Security, and Monitoring is not a distinct phase of the SDLC, but rather a set of persistent services and activities
 that span all phases. Components present in Continuous Improvements, Security, and Monitoring provide ongoing monitoring, assessment, and management of systems,

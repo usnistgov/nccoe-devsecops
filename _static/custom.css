@@ -58,3 +58,57 @@ figure {
 .wy-side-scroll .wy-menu-vertical ul li {
     font-size: 1em;
 }
+
+/* ==========================================
+   DevSecOps Homepage
+   ========================================== */
+
+/* Homepage introduction */
+.devsecops-home-hero {
+    background: linear-gradient(135deg, #eef4fa, #ffffff);
+    border: 1px solid #d7e1ed;
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 1.5rem 0 2rem;
+}
+
+.devsecops-home-hero p {
+    max-width: 65ch;
+    line-height: 1.6;
+}
+
+.devsecops-home-hero p:first-child {
+    font-size: 1.65rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #174a75;
+    margin-bottom: 0.75rem;
+}
+
+/* Example Implementation navigation cards */
+.devsecops-use-case-grid .sd-card {
+    border: 1px solid #d7e1ed;
+    border-radius: 8px;
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease,
+                border-color 0.2s ease;
+}
+
+.devsecops-use-case-grid .sd-card:hover,
+.devsecops-use-case-grid .sd-card:focus-within {
+    transform: translateY(-3px);
+    border-color: #174a75;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .devsecops-use-case-grid .sd-card {
+        transition: none;
+    }
+
+    .devsecops-use-case-grid .sd-card:hover,
+    .devsecops-use-case-grid .sd-card:focus-within {
+        transform: none;
+    }
+}
